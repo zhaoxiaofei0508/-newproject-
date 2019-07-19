@@ -49,6 +49,6 @@ background:white;
 position:fixed;
 width:100%;
 text-align:center;
-
+z-index: 999;
 }
 </style>
