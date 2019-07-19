@@ -3,19 +3,28 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import axios from "axios"
-
-require("./mock")
-
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+// import Ico from '../common/css/iconfont.css'
+// import Ico from './common/css/iconfont'
+import 'swiper/dist/css/swiper.css';
+import axios from 'axios'
 Vue.prototype.axios = axios
+
+Vue.use(ElementUI);
+// Vue.use(Ico);
+require("./mock");
 
 Vue.config.productionTip = false
 
+
 /* eslint-disable no-new */
 new Vue({
+  
   el: '#app',
   router,
   components: { App },
   template: '<App/>',
-  // render: h => h(App)
+  render: h => h(App),
+
 })
