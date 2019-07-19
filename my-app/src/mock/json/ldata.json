@@ -4,10 +4,10 @@
     "price":"9.9",
     "company":"份",
     "images":[
-        "../../../static/img/01.jpg",
+        "../../../static/indeximg/list1.png",
         "../../../static/img/02.jpg",
         "../../../static/img/03.jpg",
-        "../../../static/img/4.jpg",
+        "../../../static/indeximg/list2.png",
         "../../../static/img/5.jpg"
     ],
     "content":"适合生吃的番茄，1360小时的自然生长，自然成熟，富含维生素，热量低，吃的放心。",
@@ -15,13 +15,13 @@
         {
             "username":"药**8",
             "time":"2019-07-13",
-            "img":"http://www.baidu.com/1.jpg",
+            "img":"../../../static/indeximg/type7.png",
             "content":"很不错"
         },
         {
             "username":"欧**芬123",
             "time":"2019-07-14",
-            "img":"http://www.baidu.com/2.jpg",
+            "img":"../../../static/indeximg/type8.png",
             "content":"我觉得还不错哦"
         }
     ],
