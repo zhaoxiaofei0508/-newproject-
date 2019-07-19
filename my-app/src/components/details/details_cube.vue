@@ -1,6 +1,13 @@
 <template>
   <div class="root grid-content bg-purple-dark details_time" style="margin-bottom:.15rem;" @click="isShow = true">
-    已选择{{shopInfo.scale}}/{{shopInfo.company}}
+    <div class="rootnav">
+      <p>
+        已选择 {{shopInfo.details_title}}{{shopInfo.scale}}/{{shopInfo.company}}
+      </p>
+      <p style="color:red;font-size:.3rem;font-weight:600">>></p>
+    </div>
+    
+
     <div class="modal" v-if="isShow">
       <div class="root_coment">
         <div style="display:flex;">
@@ -22,7 +29,7 @@
         <p>购买数量（{{shopInfo.company}}</p>
         <div class="button_number">
           <button @click="jian()">-</button>
-          <span  class="details_number">{{number}}</span>
+          <span class="details_number">{{number}}</span>
           <button @click="jia()">+</button>
         </div>
       </div>
@@ -33,7 +40,7 @@
 <script>
 export default {
   name: "details_cube",
-  props: ["data"],
+  props: ["data",'getNum'],
   data() {
     return {
       isShow: false,
@@ -48,10 +55,11 @@ export default {
       console.log(this.isShow);
     },
     jian(){
-      this.number=this.number>1?this.number-1:1
-    },
-    jia(){
+      this.number=this.number>1?this.number>-1:1
+      this.grtNum(this.number)
+    },jia(){
       this.number++
+      this.getNum(this.number)
     }
   }
 };
@@ -77,6 +85,11 @@ export default {
   height: 1.2rem;
   border-radius: 0.1rem;
   margin: 0.2rem;
+}
+.rootnav{
+  display: flex;
+  justify-content: space-between;
+  padding:0 .15rem;
 }
 button {
   width: 0.6rem;

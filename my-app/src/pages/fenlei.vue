@@ -4,14 +4,10 @@
         <div class="wfoo"></div>
         <Fuvs></Fuvs>
         <div>
-            <div class="wfll">
-                <img src="" alt="">
-                <div>{{}}</div>
+            <div class="wfll" v-for="(v,i) in arrr"  :key="i">
+                <div class="wfqq"><img :src="v.fengimg" alt=""></div>
+                <div class="wfww">{{v.fengtitle}}</div>
             </div>
-
-
-
-
         </div>
        
     </div>
@@ -23,16 +19,16 @@ export default {
        components:{Fuvs,Top},
        data(){
         return{
-            arr:[]
+            arrr:[]
         }
     },
-        created(){
+    created(){
         this.axios({
           url:"/line/datea",
           method:"get"
         }).then((val)=>{
             console.log(val.data)
-              this.arr=val.data
+              this.arrr=val.data.arr
         })
 
     }
@@ -42,10 +38,23 @@ export default {
 .wfoo{
     width: 100%;
     height: 1.6rem;
+    margin-bottom: 1rem;
 }
 .wfll{
     width: 33.3%;
     height: 2rem;
-
+    float: left;
+}
+.wfqq{
+    width: 100%;
+    height: 1.5rem;
+}
+img{
+    width: 100%;
+    height: 100%;
+}
+.wfww{
+    font-size: 0.3rem;
+    text-align: center;
 }
 </style>

@@ -14,9 +14,13 @@ export default {
 <style>
 @charset "utf-8";
 /* CSS Document */
-body,p,ul,ol,dl,dd,h1,h2,h3,h4,h5,h6,td,input,textarea,select,option{
+body,p,ul,li,ol,dl,dd,h1,h2,h3,h4,h5,h6,td,input,textarea,select,option{
 	margin: 0;
 	padding: 0;
+}
+ul,li{
+  list-style: none;
+
 }
 
 div{
@@ -32,4 +36,7 @@ a{
 html,body{
 	height: 100%;
 } */
+a{
+  text-decoration: none;
+}
 </style>

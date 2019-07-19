@@ -43,12 +43,13 @@ export default {
 .dd{
 height:1.4rem;
   
-border-top:1px solid red;
+border-top:1px solid gray;
 bottom:0px;
+
 background:white;
 position:fixed;
 width:100%;
 text-align:center;
-
+z-index: 999;
 }
 </style>

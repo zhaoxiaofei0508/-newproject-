@@ -1,0 +1,41 @@
+{
+    "xiaRi":[
+        {"lundetailstop":
+            [
+                {"title":"爆款清单","imgurla":"../../../../static/img/feixing.png","imgurlb":"../../../../static/img/shopping1.png"}
+            ]
+        },
+        {"lunmiddle":
+            [
+                {"imgurl":"../../../../static/img/banner.png","color":"#00bdf7"}
+            ]
+        },
+       
+        {"goods":
+            [
+                {"imgurl":"../../../../static/img/a1.png","title":"小龙虾神鲜桶（麻辣）","outprice":"100","price":"90.00","car":"../../../../static/img/a2.png"},
+                {"imgurl":"../../../../static/img/a1.png","title":"小龙虾神鲜桶（麻辣）","outprice":"100","price":"90.00","car":"../../../../static/img/a2.png"},
+                {"imgurl":"../../../../static/img/a1.png","title":"小龙虾神鲜桶（麻辣）","outprice":"100","price":"90.00","car":"../../../../static/img/a2.png"},
+                {"imgurl":"../../../../static/img/a1.png","title":"小龙虾神鲜桶（麻辣）","outprice":"100","price":"90.00","car":"../../../../static/img/a2.png"},
+                {"imgurl":"../../../../static/img/a1.png","title":"小龙虾神鲜桶（麻辣）","outprice":"100","price":"90.00","car":"../../../../static/img/a2.png"},
+                {"imgurl":"../../../../static/img/a1.png","title":"小龙虾神鲜桶（麻辣）","outprice":"100","price":"90.00","car":"../../../../static/img/a2.png"},
+                {"imgurl":"../../../../static/img/a1.png","title":"小龙虾神鲜桶（麻辣）","outprice":"100","price":"90.00","car":"../../../../static/img/a2.png"},
+                {"imgurl":"../../../../static/img/a1.png","title":"小龙虾神鲜桶（麻辣）","outprice":"100","price":"90.00","car":"../../../../static/img/a2.png"},
+                {"imgurl":"../../../../static/img/a1.png","title":"小龙虾神鲜桶（麻辣）","outprice":"100","price":"90.00","car":"../../../../static/img/a2.png"},
+                {"imgurl":"../../../../static/img/a1.png","title":"小龙虾神鲜桶（麻辣）","outprice":"100","price":"90.00","car":"../../../../static/img/a2.png"},
+                {"imgurl":"../../../../static/img/a1.png","title":"小龙虾神鲜桶（麻辣）","outprice":"100","price":"90.00","car":"../../../../static/img/a2.png"},
+                {"imgurl":"../../../../static/img/a1.png","title":"小龙虾神鲜桶（麻辣）","outprice":"100","price":"90.00","car":"../../../../static/img/a2.png"},
+                {"imgurl":"../../../../static/img/a1.png","title":"小龙虾神鲜桶（麻辣）","outprice":"100","price":"90.00","car":"../../../../static/img/a2.png"},
+                {"imgurl":"../../../../static/img/a1.png","title":"小龙虾神鲜桶（麻辣）","outprice":"100","price":"90.00","car":"../../../../static/img/a2.png"},
+                {"imgurl":"../../../../static/img/a1.png","title":"小龙虾神鲜桶（麻辣）","outprice":"100","price":"90.00","car":"../../../../static/img/a2.png"},
+                {"imgurl":"../../../../static/img/a1.png","title":"小龙虾神鲜桶（麻辣）","outprice":"100","price":"90.00","car":"../../../../static/img/a2.png"},
+                {"imgurl":"../../../../static/img/a1.png","title":"小龙虾神鲜桶（麻辣）","outprice":"100","price":"90.00","car":"../../../../static/img/a2.png"},
+                {"imgurl":"../../../../static/img/a1.png","title":"小龙虾神鲜桶（麻辣）","outprice":"100","price":"90.00","car":"../../../../static/img/a2.png"},
+                {"imgurl":"../../../../static/img/a1.png","title":"小龙虾神鲜桶（麻辣）","outprice":"100","price":"90.00","car":"../../../../static/img/a2.png"},
+                {"imgurl":"../../../../static/img/a1.png","title":"小龙虾神鲜桶（麻辣）","outprice":"100","price":"90.00","car":"../../../../static/img/a2.png"}
+
+            ]
+
+        }
+    ]
+}

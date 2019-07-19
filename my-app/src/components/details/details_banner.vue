@@ -6,7 +6,7 @@
 			<img class="img" :src="v">
 		</div>
 	</div>
-	<!-- 分页器 -->
+	<!-- 如果需要分页器 -->
 	<div class="swiper-pagination"></div>
 </div>
 
@@ -20,7 +20,7 @@ export default {
         mounted:function(){
         new Swiper('.swiper-container', {
             loop: true, // 循环模式选项
-            // 分页器
+            // 如果需要分页器
             pagination: {
                 el: '.swiper-pagination',
             },

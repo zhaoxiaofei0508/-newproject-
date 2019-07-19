@@ -41,6 +41,7 @@ export default {
             var param=new URLSearchParams();
                 param.append({"username":this.username,"userpwd":this.userpwd});
                     this.axios({
+                    url:"/api/",
                     url:"http://localhost:3000/post",
                     method:"post",
                     // post发送数据的时候使用data属性

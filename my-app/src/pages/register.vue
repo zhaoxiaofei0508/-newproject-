@@ -15,10 +15,11 @@
             </div>
             <div class="wfaa">
                 <span class="wfbb">邮箱</span>
-                <input type="text" placeholder="请输入邮箱地址" class="wfinput" v-model="useremail" @mouseleave="fun2()">
+                <input type="text" placeholder="请输入邮箱地址" class="wfinput" v-model="useremail" @blur="fun2()">
             </div>
             <div class="wfaa">
-                <input type="text" placeholder="请输入验证码" class="wfinput" v-model="verify"><span class="wfmm" @click="fun1()">获取验证码</span>
+                <input type="text" placeholder="请输入验证码" class="wfinput" v-model="verify"><span class="wfmm"><button class="button" @click="fun1()">
+                    {{content}}</button></span>
             </div>
         </div>
         <div class="wfdd">
@@ -37,7 +38,11 @@ export default {
             useremail:'',
             verify:'', //用户输入验证码
             emailyz:'', //邮箱验证码
-            emailyzz:""
+            emailyzz:"",
+            content: '发送验证码', 
+            totalTime: 60,
+            canClick: true,
+
 
 
         }
@@ -49,23 +54,40 @@ export default {
         // 用户名是否存在验证
         nameyz(){
                this.axios({
-                url:"http://localhost:3000/get",//get发送数据方式
+                url:"/api/findAll",//get发送数据方式
                 method:"get",
                 params:{username:this.usernamel} //get发送数据方式
             }).then((ok)=>{
-                
                 console.log(ok)
-                 if(ok==0){
-                        alert("用户名已存在！");
-                    }
+
+                //  if(ok==0){
+                //         alert("用户名已存在！");
+                //     }
             })
         },
-    // 邮箱验证码请求
+       countDown () {
+         if (!this.canClick) return  //改动的是这两行代码
+        this.canClick = false
+        this.content = this.totalTime + 's后重新发送'
+        let clock = window.setInterval(() => {
+         this.totalTime--
+        this.content = this.totalTime + 's后重新发送'
+         if (this.totalTime < 0) {
+         window.clearInterval(clock)
+        this.content = '重新发送验证码'
+        this.totalTime = 10
+        this.canClick = true  //这里重新开启
+        }
+         },1000)
+    },
+    //y
+
         fun1(){
+            console.log(this.useremail)
              this.axios({
-                url:"http://localhost:3000/get",//get发送数据方式
+              url:"/api/user/sendVerifyCode",//get发送数据方式
                 method:"get",
-                params:{useremail:this.useremail} //get发送数据方式
+                params:{useremail:this.useremail},
             }).then((ok)=>{
                 this.emailyz = ok
                 console.log(ok)
@@ -98,7 +120,6 @@ export default {
                     alert("注册成功，请登录！");
                     this.$router.push("/denglutwo");
                 })
-
             }else{
                 alert("验证码不正确！")
 

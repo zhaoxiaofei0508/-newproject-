@@ -35,13 +35,17 @@
         <div>
             <Hqsh :arr="newarr"></Hqsh>
         </div>
+        <Fuvs></Fuvs>
     </div>
 </template>
 <script>
 import Hqsh from "../components/hqsh2/hqsh"
+import Fuvs from "../components/fuvs"
+
 export default {
     components:{
-        Hqsh
+        Hqsh,
+        Fuvs
     },
     data(){
         return {
