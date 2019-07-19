@@ -1,0 +1,26 @@
+.bulletClass{
+    background-color: white;
+    font-size: 0.2rem;
+    display: block;
+    width: 20%;
+    height:1.2rem; 
+    outline: none;
+}
+.bulletClass h1{
+    font-size: 0.28rem;
+    line-height: 0.64rem;
+    height: 0.64rem;
+    overflow: hidden;
+    text-align: center;
+    font-weight: 100;
+}
+.bulletClass p{
+    color: #a7a7a7;
+    height: 0.3rem;
+    line-height: 0.3rem;
+    font-size: 12px;
+    overflow: hidden;
+    text-align: center;
+    margin: 0 5px;
+    border-radius: 0.15rem;
+}
