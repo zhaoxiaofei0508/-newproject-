@@ -1,4 +1,14 @@
-const Mock = require('mockjs');
+var Mock=require("mockjs");
+Mock.mock("/link/data",'get',require("./json/data"));
+
+
+
+
+
+Mock.mock("/line/date",'get',require("./json/date"));
+
+Mock.mock("/link/cpydata",'get',require("./json/cpydata"));
+// const Mock = require('mockjs');
 
 Mock.mock('/lun/details','get',require('./json/lundetailsdata'))
 Mock.mock('/link/healer/hdata','get',require('./json/hdata'))

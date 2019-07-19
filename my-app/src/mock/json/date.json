@@ -2,10 +2,11 @@
 
 {
     "arr":[
-          {"title":"酱油","img":"../../../static/img/12.png","price":"12"},
-          {"title":"花生","img":"../../../static/img/13.png","price":"23"},
-          {"title":"香油","img":"../../../static/img/14.png","price":"123"},
-          {"title":"醋","img":"../../../static/img/15.png","price":"4546"},
-          {"title":"老坛酸菜","img":"../../../static/img/16.png","price":"/890"}
+          {"title":"酱油","img":"../../../static/img/12.png","price":"12","id":"1","num":"1","checked":"false"},
+          {"title":"花生","img":"../../../static/img/13.png","price":"23","id":"2","num":"1","checked":"false"},
+          {"title":"香油","img":"../../../static/img/14.png","price":"23","id":"3","num":"1","checked":"false"},
+          {"title":"醋糖","img":"../../../static/img/15.png","price":"45","id":"4","num":"1","checked":"false"},
+          {"title":"酸菜","img":"../../../static/img/16.png","price":"90","id":"5","num":"1","checked":"false"}
+         
           ]
       }

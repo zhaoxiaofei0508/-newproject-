@@ -2,7 +2,16 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Index from '../pages/index'
 import Home from '../pages/home'
+import Classific from '../pages/classific'
 import Shopping from '../pages/shopping'
+import Allorder from '../pages/allorder'
+import Payment from '../pages/payment'
+import Pdelivery from '../pages/pdelivery'
+import Preceipt from '../pages/preceipt'
+import Comment from '../pages/comment'
+import My_mine from '../pages/my_mine'
+import Mysearch from '../pages/mysearch'
+import My_set from '../pages/my_set'
 import Lundetails from "../pages/lundetails"
 import List from '../pages/list'
 //1引入分类
@@ -22,6 +31,9 @@ import Mine from '../pages/mine'
 import Carshop from '../pages/carshop'
 import Fenlei from '../pages/fenlei'
 import Hequlife from '../pages/Hequlife'
+import Xqy from '../pages/xqy'
+import Ddyvs from '../pages/ddyvs'
+
 import ContainerContent from '../components/index/containercontent'
 
 
@@ -40,6 +52,55 @@ export default new Router({
       component: Home
     },
     {
+      path: '/classific',
+      name: 'Classific',
+      component: Classific
+    },
+    {
+      path: '/shopping',
+      name: 'Shopping',
+      component: Shopping
+    },
+    {
+      path: '/my_mine',
+      name: 'My_mine',
+      component: My_mine
+    },
+    {
+      path: '/mysearch',
+      name: 'Mysearch',
+      component: Mysearch
+    },
+    {
+      path: '/allorder',
+      name: 'Allorder',
+      component: Allorder
+    },
+    {
+      path: '/payment',
+      name: 'Payment',
+      component: Payment
+    },
+    {
+      path: '/pdelivery',
+      name: 'Pdelivery',
+      component: Pdelivery
+    },
+    {
+      path: '/preceipt',
+      name: 'Preceipt',
+      component: Preceipt
+    },
+    {
+      path: '/comment',
+      name: 'Comment',
+      component: Comment
+    },
+    {
+      path: '/my_set',
+      name: 'My_set',
+      component: My_set},
+      {
       path: '/hequlife',
       name: 'Hequlife',
       component: Hequlife
@@ -64,6 +125,13 @@ export default new Router({
       name: 'Fenlei',
       component: Fenlei
     },
+    { path: '/xqy/:id',
+    name: 'Xqy',
+    component: Xqy},
+    { path: '/ddyvs',
+    name: 'Ddyvs',
+    component: Ddyvs
+  },
     {
       path: '/denglu',
       name: '/Denglu',

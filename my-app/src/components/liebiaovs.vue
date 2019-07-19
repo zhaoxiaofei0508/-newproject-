@@ -1,7 +1,7 @@
 <template>
     <div class="ddvs">
 
-    <Lie  v-for="(v,i) in obj"  :key="i" :img="v.img" :title="v.title" :price="v.price"></Lie>
+    <Lie  v-for="(v,i) in obj"  :key="i" :img="v.img" :title="v.title" :price="v.price" class="lpl" :id="v.id"></Lie>
         
     </div>
 </template>
@@ -33,6 +33,6 @@ export default {
 
 
 <style scoped>
-
+.lpl{display:inline-block;text-align:center;}
 </style>
 
