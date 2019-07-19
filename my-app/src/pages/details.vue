@@ -80,7 +80,7 @@
     </div>
     <!-- 加入购物车 -->
 
-    <router-link to="{path:'/shopping',params:{num:1,id:1}}">
+    <router-link :to="{path:'/carshop',params:{num:1,id:1}}">
       <div class="shopp">加入购物车</div>
     </router-link>
   </div>

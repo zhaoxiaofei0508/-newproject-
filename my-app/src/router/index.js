@@ -11,10 +11,10 @@ import Mine from '../pages/mine'
 import Carshop from '../pages/carshop'
 import Fenlei from '../pages/fenlei'
 import Hequlife from '../pages/Hequlife'
+import ContainerContent from '../components/index/containercontent'
+
 
 Vue.use(Router)
-
- 
 
 export default new Router({
   routes: [
@@ -73,7 +73,12 @@ export default new Router({
       name: 'DetailsComment',
       component: DetailsComment
     },
-    {path:'/*',redirect:"/index"},
+    {
+      path: '/containercontent/:id',
+      name: 'ContainerContent',
+      component: ContainerContent
+    },
+    // {path:'/*',redirect:"/index"},
 
 
   ],
