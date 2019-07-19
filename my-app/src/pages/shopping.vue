@@ -1,6 +1,6 @@
 <template>
     <div>
-        <!-- shopping  -->
+        shopping 
     </div>
 </template>
 <script>
