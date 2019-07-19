@@ -1,0 +1,82 @@
+<template>
+    <div>
+        <!---------------轮播图 -->
+        <div class="swiper-Container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" v-for="(v,i) in ContainerArr" :key="i" :data-hash="v.id">
+                  <IndexList v-for="(v,i) in v.Containerarr" :key="i" :ShopImg="v.imgurl" :ShopTitle="v.title" :ShopDetails="v.p" :ShopPrice="v.span"></IndexList>
+                </div>
+            </div>
+         <!------------- 分页器 -->
+            <div class="swiper-pagination" ></div>
+        </div>
+    </div>
+</template>
+<script>
+import Swiper from 'swiper';
+import bulletClass from './bullet.css';
+import bulletActiveClass from './bulletactive.css';
+import IndexList from './indexlist'
+export default {
+  data (){
+    return {
+      searchBarFixed:true,
+      Swiperstyle:display:flex;top: 0;
+  }
+  },
+  components:{
+      IndexList
+  },
+  props:{
+    ContainerArr:Array,
+  },
+  mounted(){
+    window.addEventListener('scroll', this.handleScroll);
+    let that=this
+     new Swiper ('.swiper-Container', {
+    loop: false,
+    hashNavigation: true,
+    // ----------------- 分页器
+    pagination: {
+    el: '.swiper-pagination',
+    hideOnClick :false,
+    bulletClass: 'bulletClass',
+    bulletActiveClass: 'bulletActiveClass',
+    clickable: true,
+    renderBullet: function (index, className) {
+          switch(index){
+            case 0:var title='全部' ,text='猜你喜欢';break;
+            case 1:var title='全部' ,text='猜你喜欢';break;
+            case 2:var title='全部' ,text='猜你喜欢';break;
+            case 3:var title='全部' ,text='猜你喜欢';break;
+            case 4:var title='全部' ,text='猜你喜欢';break;
+          }
+          return '<div  class="' + className + '"><h1>'+title+'</h1><p>'+text +'</p></div>';
+    },
+  },
+  })      
+  },
+  methods:{
+    handleScroll () {
+     let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+    scrollTop > 900 ? this.searchBarFixed = true : this.searchBarFixed = false;
+    
+   
+  },
+  }
+}
+
+</script>
+<style scoped>
+ .swiper-container {
+     overflow: hidden;
+        width: 100%;
+    }
+.swiper-pagination{
+    display: flex;
+    top: 0;
+}
+.swiper-slide :nth-child(2n){
+  margin-right: 0;
+}
+</style>

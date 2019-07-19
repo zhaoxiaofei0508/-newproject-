@@ -1,0 +1,13 @@
+{
+                  "arr":[
+                        {"title":"首页","img":"../../../static/img/6.png","link":"/index"},
+                        {"title":"分类","img":"../../../static/img/7.png","link":"/fenlei"},
+                        {"title":"盒区生活","img":"../../../static/img/8.png","link":"/hequlife"},
+                        {"title":"购物车","img":"../../../static/img/9.png","link":"/carshop"},
+                        {"title":"我的","img":"../../../static/img/10.png","link":"/mine"}
+                        ]
+                    
+   
+
+}
+
