@@ -28,7 +28,7 @@
             </p>
             <Tool></Tool>
         </div>
-        
+        <Fuvs></Fuvs>
     </div>
 </template>
 <script>
@@ -36,12 +36,14 @@ import Mineitem from '../components/mine/mineitem'
 import My from '../components/order/my'
 import Mine_activity from '../components/mine_activity/mine_activity'
 import Tool from '../components/tool/tool'
+import Fuvs from "../components/fuvs"
 export default {
      components:{
          Mineitem,
          My,
          Mine_activity,
-         Tool
+         Tool,
+         Fuvs
      },
       data(){
         return{
