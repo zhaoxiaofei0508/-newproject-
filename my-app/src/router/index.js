@@ -14,14 +14,6 @@ import Mysearch from '../pages/mysearch'
 import My_set from '../pages/my_set'
 import Lundetails from "../pages/lundetails"
 import List from '../pages/list'
-//1引入分类
-import Egg from '../components/list/egg3'
-import Fruit from '../components/list/fruit1'
-import Seasonal from '../components/list/seasonal2'
-import Summer from '../components/list/fruit/summer1'
-import Turn from '../components/list/fruit/turn2'
-import Season from '../components/list/fruit/season3'
-import Apricot from '../components/list/fruit/apricot4'
 import Details from '../pages/details'
 import DetailsComment from '../components/details/details_comment'
 import Denglu from '../pages/denglu'
@@ -133,55 +125,10 @@ export default new Router({
       name: 'Lundetails',
       component: Lundetails
     },
-   
-
-
-  
-    // 二级路由
       {
       path: '/list',
       name: 'List',
       component: List,
-      children:[
-        {
-          path: '/list/fruit',
-          name: 'Fruit',
-          component: Fruit,
-          // 三级路由
-          children:[
-            {
-              path: '/list/fruit/summer',
-              name: 'Summer',
-              component: Summer,
-            },
-            {
-              path: '/list/fruit/turn',
-              name: 'Turn',
-              component: Turn,
-            },
-            {
-              path: '/list/fruit/season',
-              name: 'Season',
-              component: Season,
-            },
-            {
-              path: '/list/fruit/apricot',
-              name: 'Apricot',
-              component: Apricot,
-            }
-          ]
-        },
-        {
-          path: '/list/seasonal',
-          name: 'Seasonal',
-          component: Seasonal
-        },
-        {
-          path: '/list/egg',
-          name: 'Egg',
-          component: Egg
-        }
-      ]
     },
     {
       path:'/details',
@@ -208,7 +155,7 @@ export default new Router({
       name: 'ContainerContent',
       component: ContainerContent
     },
-    // {path:'/*',redirect:"/index"},
+    {path:'/*',redirect:"/index"},
 
 
   ],
