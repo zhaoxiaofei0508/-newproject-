@@ -1,5 +1,5 @@
 <template>
-    <div class="ddvs">
+    <div class="ddvs"  style="background:hsla(0, 0%, 19%, 0.08);">
 
     <Lie  v-for="(v,i) in obj"  :key="i" :img="v.img" :title="v.title" :price="v.price" class="lpl" :id="v.id"></Lie>
         
@@ -33,6 +33,6 @@ export default {
 
 
 <style scoped>
-.lpl{display:inline-block;text-align:center;}
+.lpl{display:inline-block;margin:10px 5px;}
 </style>
 

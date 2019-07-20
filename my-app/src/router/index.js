@@ -14,14 +14,6 @@ import Mysearch from '../pages/mysearch'
 import My_set from '../pages/my_set'
 import Lundetails from "../pages/lundetails"
 import List from '../pages/list'
-//1引入分类
-import Egg from '../components/list/egg3'
-import Fruit from '../components/list/fruit1'
-import Seasonal from '../components/list/seasonal2'
-import Summer from '../components/list/fruit/summer1'
-import Turn from '../components/list/fruit/turn2'
-import Season from '../components/list/fruit/season3'
-import Apricot from '../components/list/fruit/apricot4'
 import Details from '../pages/details'
 import DetailsComment from '../components/details/details_comment'
 import Denglu from '../pages/denglu'
@@ -31,8 +23,8 @@ import Register from '../pages/register'
 import Carshop from '../pages/carshop'
 import Fenlei from '../pages/fenlei'
 import Hequlife from '../pages/Hequlife'
-import Xqy from '../pages/xqy'
 import Ddyvs from '../pages/ddyvs'
+import Searchdel from '../pages/searchdel'
 
 import ContainerContent from '../components/index/containercontent'
 import Consult from '../pages/consult'
@@ -61,6 +53,11 @@ export default new Router({
       path: '/mysearch',
       name: 'Mysearch',
       component: Mysearch
+    },
+    {
+      path: '/searchdel',
+      name: 'Searchdel',
+      component: Searchdel
     },
     {
       path: '/allorder',
@@ -107,9 +104,7 @@ export default new Router({
       name: 'Fenlei',
       component: Fenlei
     },
-    { path: '/xqy/:id',
-    name: 'Xqy',
-    component: Xqy},
+
     { path: '/ddyvs',
     name: 'Ddyvs',
     component: Ddyvs
@@ -134,58 +129,13 @@ export default new Router({
       name: 'Lundetails',
       component: Lundetails
     },
-   
-
-
-  
-    // 二级路由
       {
       path: '/list',
       name: 'List',
       component: List,
-      children:[
-        {
-          path: '/list/fruit',
-          name: 'Fruit',
-          component: Fruit,
-          // 三级路由
-          children:[
-            {
-              path: '/list/fruit/summer',
-              name: 'Summer',
-              component: Summer,
-            },
-            {
-              path: '/list/fruit/turn',
-              name: 'Turn',
-              component: Turn,
-            },
-            {
-              path: '/list/fruit/season',
-              name: 'Season',
-              component: Season,
-            },
-            {
-              path: '/list/fruit/apricot',
-              name: 'Apricot',
-              component: Apricot,
-            }
-          ]
-        },
-        {
-          path: '/list/seasonal',
-          name: 'Seasonal',
-          component: Seasonal
-        },
-        {
-          path: '/list/egg',
-          name: 'Egg',
-          component: Egg
-        }
-      ]
     },
     {
-      path:'/details',
+      path:'/details/:id',
       name:'Details',
       component:Details
     },
