@@ -37,6 +37,7 @@ export default {
 .cc{width:20%;
     float:left;text-align:center;
     font-size:.3rem;
+  
 
     }
 .cc p{color:gray;}
