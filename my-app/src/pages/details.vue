@@ -33,22 +33,23 @@
       </el-row>
       <!-- 选择 -->
 
-      <DetailsCube :data="shopInfo"></DetailsCube>
+      <DetailsCube :data="shopInfo" :getNum="getNum"></DetailsCube>
     </div>
     <!-- 评价 -->
     <div style="height:2.5rem;overflow:hidden" id="details_comment">
       <div class="details_time details_comment" style="border-bottom:1px solid black">
         <div>
-          <img :src="shopInfo.comment[0].img" alt />
+          <!-- <img  :src="shopInfo.comment[0].img" alt /> -->
           <span>评论（{{shopInfo.comment.length}}）</span>
         </div>
         <router-link to="/details_comment" >
-        <div>查看全部评论 ></div></router-link>
+        <div style="color:gray;">查看全部评论 </div></router-link>
         
       </div>
       <div v-for="(v,i) in shopInfo.comment" :key="i" style="margin-bottom:.1rem">
         <div class="details_time details_comment">
-          <span>{{v.username}}</span>
+          
+          <span><img class="touxiang" :src="v.img" alt="">{{v.username}}</span>
           <span>{{v.time}}</span>
         </div>
         <div class="details_time details_comment">{{v.content}}</div>
@@ -80,7 +81,7 @@
     </div>
     <!-- 加入购物车 -->
 
-    <router-link :to="{path:'/carshop',params:{num:1,id:1}}">
+    <router-link :to="{path:'/carshop',query:{num:num,id:1}}">
       <div class="shopp">加入购物车</div>
     </router-link>
   </div>
@@ -103,7 +104,8 @@ export default {
   data() {
     return {
       Time: "",
-      shopInfo: data
+      shopInfo: data,
+      num:1
     };
   },
   methods: {
@@ -116,6 +118,10 @@ export default {
           .toLocaleString()
           .slice(0, -2);
       }, 1000);
+    },
+    getNum(num){
+      this.num=num;
+      console.log(num)
     }
   },
   created() {
@@ -140,7 +146,7 @@ a {
   margin: 0.15rem auto;
 }
 .details_time {
-  background: gainsboro;
+  background: #fafafa;
   font-size: 0.2rem;
   line-height: 0.8rem;
   margin: auto 0.15rem;
@@ -156,6 +162,11 @@ a {
 
 .details_comment span {
   margin: 0 0.2rem;
+}
+.touxiang{
+  display: inline-block;
+  width:.5rem;
+  height:.5rem;
 }
 .shopp {
   width: 100%;

@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Index from '../pages/index'
+import Hequxq from '../pages/hequxq'
+import Hqsh from '../pages/hqsh'
 import Home from '../pages/home'
-import Classific from '../pages/classific'
-import Shopping from '../pages/shopping'
 import Allorder from '../pages/allorder'
 import Payment from '../pages/payment'
 import Pdelivery from '../pages/pdelivery'
@@ -27,10 +27,13 @@ import DetailsComment from '../components/details/details_comment'
 import Denglu from '../pages/denglu'
 import Denglutwo from '../pages/denglutwo'
 import Register from '../pages/register'
-import Mine from '../pages/mine'
+
 import Carshop from '../pages/carshop'
 import Fenlei from '../pages/fenlei'
 import Hequlife from '../pages/Hequlife'
+import Xqy from '../pages/xqy'
+import Ddyvs from '../pages/ddyvs'
+
 import ContainerContent from '../components/index/containercontent'
 
 
@@ -47,16 +50,6 @@ export default new Router({
       path: '/home',
       name: 'Home',
       component: Home
-    },
-    {
-      path: '/classific',
-      name: 'Classific',
-      component: Classific
-    },
-    {
-      path: '/shopping',
-      name: 'Shopping',
-      component: Shopping
     },
     {
       path: '/my_mine',
@@ -102,16 +95,7 @@ export default new Router({
       name: 'Hequlife',
       component: Hequlife
     },
-    {
-      path: '/index',
-      name: 'Index',
-      component: Index
-    },
-    {
-      path: '/mine',
-      name: 'Mine',
-      component: Mine
-    },
+   
     {
       path: '/carshop',
       name: 'Carshop',
@@ -122,6 +106,13 @@ export default new Router({
       name: 'Fenlei',
       component: Fenlei
     },
+    { path: '/xqy/:id',
+    name: 'Xqy',
+    component: Xqy},
+    { path: '/ddyvs',
+    name: 'Ddyvs',
+    component: Ddyvs
+  },
     {
       path: '/denglu',
       name: '/Denglu',
@@ -136,11 +127,6 @@ export default new Router({
       path: '/register',
       name: '/Register',
       component: Register
-    },
-    {
-      path: '/shopping',
-      name: 'Shopping',
-      component: Shopping
     },
     {
       path: '/lundetails',
@@ -208,11 +194,21 @@ export default new Router({
       component: DetailsComment
     },
     {
+      path: '/hequxq/:id',
+      name: 'Hequxq',
+      component: Hequxq
+    },
+    {
+      path: '/hqsh',
+      name: 'Hqsh',
+      component: Hqsh
+    },
+    {
       path: '/containercontent/:id',
       name: 'ContainerContent',
       component: ContainerContent
     },
-    {path:'/*',redirect:"/index"},
+    // {path:'/*',redirect:"/index"},
 
 
   ],

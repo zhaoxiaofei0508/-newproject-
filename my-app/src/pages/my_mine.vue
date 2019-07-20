@@ -31,7 +31,7 @@
                 <Indexlist v-for="(v,i) in arrMylike" :key="i" :ShopImg="v.imgurl" :ShopTitle="v.title" :ShopDetails="v.p" :ShopPrice="v.span" class="like2"></Indexlist>
             </div>
         </div>
-        
+        <Fuvs></Fuvs>
     </div>
 </template>
 <script>
@@ -40,13 +40,15 @@ import My from '../components/order/my'
 import Mine_activity from '../components/mine_activity/mine_activity'
 import Tool from '../components/tool/tool'
 import Indexlist from '../components/index/indexlist'
+import Fuvs from "../components/fuvs"
 export default {
      components:{
          Mineitem,
          My,
          Mine_activity,
          Tool,
-         Indexlist
+         Indexlist,
+         Fuvs
      },
       data(){
         return{
