@@ -2,11 +2,15 @@
     <div class="box">
         <h3>盒马鲜生西安兰岛店 实时热搜</h3>
         <div class="xia">
-            <Slistitem v-for="(v,i) in arrSearch1" :key="i" :kind="v.kind" :Tolink="v.href" @click="fun(v.id)"></Slistitem>
+            <router-link to="/searchdel">
+                <Slistitem v-for="(v,i) in arrSearch1" :key="i" :kind="v.kind" :Tolink="v.href" @click="fun(v.id)"></Slistitem>
+            </router-link>
         </div>
         <h3>新品•时令</h3>
         <div class="xia">
-            <Slistitem v-for="(v,i) in arrSearch2" :key="i" :kind="v.okind" :Tolink="v.href"></Slistitem>
+            <router-link to="/searchdel">
+                <Slistitem v-for="(v,i) in arrSearch2" :key="i" :kind="v.okind" :Tolink="v.href"></Slistitem>
+            </router-link>
         </div>
     </div>
 </template>

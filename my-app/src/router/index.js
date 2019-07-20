@@ -33,6 +33,7 @@ import Fenlei from '../pages/fenlei'
 import Hequlife from '../pages/Hequlife'
 import Xqy from '../pages/xqy'
 import Ddyvs from '../pages/ddyvs'
+import Searchdel from '../pages/searchdel'
 
 import ContainerContent from '../components/index/containercontent'
 
@@ -60,6 +61,11 @@ export default new Router({
       path: '/mysearch',
       name: 'Mysearch',
       component: Mysearch
+    },
+    {
+      path: '/searchdel',
+      name: 'Searchdel',
+      component: Searchdel
     },
     {
       path: '/allorder',
