@@ -35,6 +35,7 @@ import Xqy from '../pages/xqy'
 import Ddyvs from '../pages/ddyvs'
 
 import ContainerContent from '../components/index/containercontent'
+import Consult from '../pages/consult'
 
 
 Vue.use(Router)
@@ -208,7 +209,12 @@ export default new Router({
       name: 'ContainerContent',
       component: ContainerContent
     },
-    // {path:'/*',redirect:"/index"},
+    {
+      path: '/consult',
+      name: 'Consult',
+      component: Consult
+    },
+    {path:'/*',redirect:"/index"},
 
 
   ],
