@@ -3,7 +3,8 @@
     <div>
         <div class="head" v-show="showAbs">
             <router-link to="/my_set"><i class="el-icon-setting c_icon"></i></router-link>
-            <router-link to="/#"><i class="iconfont icon-kefu c_icon"></i></router-link>
+            <router-link to="/#">
+            <i class="iconfont icon-kefu c_icon"></i></router-link>
         </div>
          <div class="head2" v-show="!showAbs" :style="opacityStyle">
             <router-link to="/#"><i class="el-icon-setting c_icon"></i></router-link>
@@ -26,7 +27,9 @@
             <p>——猜你喜欢
                 <span>.EXPLORE——</span>
             </p>
-            <Tool></Tool>
+            <div class="like">
+                <Indexlist v-for="(v,i) in arrMylike" :key="i" :ShopImg="v.imgurl" :ShopTitle="v.title" :ShopDetails="v.p" :ShopPrice="v.span" class="like2"></Indexlist>
+            </div>
         </div>
         
     </div>
@@ -36,17 +39,20 @@ import Mineitem from '../components/mine/mineitem'
 import My from '../components/order/my'
 import Mine_activity from '../components/mine_activity/mine_activity'
 import Tool from '../components/tool/tool'
+import Indexlist from '../components/index/indexlist'
 export default {
      components:{
          Mineitem,
          My,
          Mine_activity,
-         Tool
+         Tool,
+         Indexlist
      },
       data(){
         return{
             arrActivity:[],
             arrMine:[],
+            arrMylike:[],
             showAbs:true,
             opacityStyle: {
                 opacity: 0
@@ -58,9 +64,10 @@ export default {
             url:"/link/cpydata",
             method:"get"
         }).then((ok)=>{
-            // console.log(ok.data.mine_activity);
+            // console.log(ok.data.my_like);
             this.arrActivity=ok.data.mine_activity;
-            this.arrMine=ok.data.myaccount[0]
+            this.arrMine=ok.data.myaccount[0];
+            this.arrMylike=ok.data.my_like
         })
     },
     methods: {
@@ -144,5 +151,18 @@ P{
 }
 span{
     color: #a6c1d4;
+}
+.like{
+    /* overflow: hidden; */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    
+}
+.like .like2{
+    width: 43%;
+    margin-left: 11px;
+    float: left;
 }
 </style>

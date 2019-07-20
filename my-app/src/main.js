@@ -5,14 +5,12 @@ import App from './App'
 import router from './router'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
-// import Ico from '../common/css/iconfont.css'
-// import Ico from './common/css/iconfont'
+import  '../src/common/css/iconfont.css';
 import 'swiper/dist/css/swiper.css';
 import axios from 'axios'
 Vue.prototype.axios = axios
 
 Vue.use(ElementUI);
-// Vue.use(Ico);
 require("./mock");
 
 Vue.config.productionTip = false
