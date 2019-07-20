@@ -31,7 +31,6 @@ import Register from '../pages/register'
 import Carshop from '../pages/carshop'
 import Fenlei from '../pages/fenlei'
 import Hequlife from '../pages/Hequlife'
-import Xqy from '../pages/xqy'
 import Ddyvs from '../pages/ddyvs'
 
 import ContainerContent from '../components/index/containercontent'
@@ -106,9 +105,7 @@ export default new Router({
       name: 'Fenlei',
       component: Fenlei
     },
-    { path: '/xqy/:id',
-    name: 'Xqy',
-    component: Xqy},
+
     { path: '/ddyvs',
     name: 'Ddyvs',
     component: Ddyvs
@@ -184,7 +181,7 @@ export default new Router({
       ]
     },
     {
-      path:'/details',
+      path:'/details/:id',
       name:'Details',
       component:Details
     },
