@@ -10,7 +10,8 @@ import 'swiper/dist/css/swiper.css';
 import axios from 'axios'
 import './assets/iconfont/iconfont.css'
 
-
+import { Picker } from 'mint-ui';
+Vue.component(Picker.name, Picker);
 
 Vue.prototype.axios = axios
 

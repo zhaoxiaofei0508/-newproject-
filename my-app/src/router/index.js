@@ -12,6 +12,9 @@ import Comment from '../pages/comment'
 import My_mine from '../pages/my_mine'
 import Mysearch from '../pages/mysearch'
 import My_set from '../pages/my_set'
+import Pay_set from '../pages/pay_set'
+import Myaddress from '../pages/myaddress'
+import Add_address from '../pages/add_address'
 import Lundetails from "../pages/lundetails"
 import List from '../pages/list'
 //1引入分类
@@ -211,7 +214,22 @@ export default new Router({
       name: 'ContainerContent',
       component: ContainerContent
     },
-    // {path:'/*',redirect:"/index"},
+    {
+      path: '/pay_set',
+      name: 'Pay_set',
+      component: Pay_set
+    },
+    {
+      path: '/myaddress',
+      name: 'Myaddress',
+      component: Myaddress
+    },
+    {
+      path: '/add_address',
+      name: 'Add_address',
+      component: Add_address
+    },
+    {path:'/*',redirect:"/index"},
 
 
   ],
