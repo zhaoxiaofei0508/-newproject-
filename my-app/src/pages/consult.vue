@@ -1,42 +1,43 @@
 <template>
-  <div
-    v-loading="loading"
-    element-loading-text="拼命加载中"
-    element-loading-spinner="el-icon-loading"
-    element-loading-background="rgba(0, 0, 0, 0.8)"
-    style="width: 100%;height:100%"
-  >
-    <div style="margin-bottom:1.2rem;">
-      <div class="consult_top">
-        <div style="display:flex;line-height:.8rem">
-          <img src="../../static/img/h-navf1.png" alt />
-          <span style="font-size:.3rem;font-weight:500;">同城小蜜</span>
+  <div>
+    <div style="width: 100%;height:100%">
+      <div style="margin-bottom:1.2rem;">
+        <div class="consult_top">
+          <div style="display:flex;line-height:.8rem">
+            <img src="../../static/img/h-navf1.png" alt />
+            <span style="font-size:.3rem;font-weight:500;">同城小蜜</span>
+          </div>
+          <div @click="shuaxin()" style="font-size:.28rem;margin:.3rem">刷新</div>
         </div>
-        <div @click="shuaxin()" style="font-size:.28rem;margin:.3rem">刷新</div>
+      </div>
+      <div>
+        <div class="consult_body" style="margin-bottom:1.3rem;">
+          <transition name="el-fade-in">
+            <div>
+              <img style="width:1rem;height:1rem;float:left" src="../../static/img/11.png" alt />
+              <div v-show="true" class="transition-box message">我是智能客服小鲜，有什么可以帮您的？</div>
+            </div>
+          </transition>
+          <br />
+          <div style="margin-bottom:1.6rem;" class="ul-box">
+            <ul class="duihua" v-for="(item,index) in message_array" :key="index">
+              <li class="message" :class="item.isMe ? 'meStyle':'youStyle'">
+                <img style="width:1rem;height:1rem" src="../../static/img/11.png" />
+                <p>{{item.mes}}</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="consult_bottom">
+          <textarea v-model="message"></textarea>
+          <button v-on:click="dealMessage">发送</button>
+        </div>
       </div>
     </div>
-    <div>
-      <div class="consult_body" style="margin-bottom:1.3rem;">
-        <transition name="el-fade-in">
-          <div>
-            <img style="width:1rem;height:1rem;float:left" src="../../static/img/11.png" alt />
-            <div v-show="true" class="transition-box message">我是智能客服小鲜，有什么可以帮您的？</div>
-          </div>
-        </transition>
-        <br />
-        <div style="margin-bottom:1.6rem;" class="ul-box">
-          <ul class="duihua" v-for="(item,index) in message_array" :key="index">
-            <li class="message" :class="item.isMe ? 'meStyle':'youStyle'">
-              <img style="width:1rem;height:1rem" src="../../static/img/11.png" />
-              <p>{{item.mes}}</p>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="consult_bottom">
-        <textarea v-model="message"></textarea>
-        <button v-on:click="dealMessage">发送</button>
-      </div>
+    <div class="modal" v-if="isModalShow">
+      
+      <p>LOADING</p>
+
     </div>
   </div>
 </template>
@@ -46,7 +47,8 @@ export default {
     return {
       message_array: [],
       message: "",
-      loading: false
+      loading: false,
+      isModalShow:false
     };
   },
   methods: {
@@ -95,10 +97,10 @@ export default {
 
     // 刷新
     shuaxin() {
-      this.loading = true;
+      this.isModalShow=true
       setTimeout(() => {
         this.message_array = [];
-        this.loading = false;
+        this.isModalShow = false;
         //  从本地获取所有历史记录
         //       let his = localStorage.getItem("history");
         //       if (his) {
@@ -199,5 +201,21 @@ export default {
   color: #00fff2;
   float: left;
   border-top-right-radius: 2rem;
+}
+.modal{
+  width: 100%;
+  height:100%;
+  background: rgba(0,0,0,.1);
+  position: fixed;
+  top:0;
+  left:0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal p{
+  text-align: center;
+  vertical-align: center;
+  font-size: .4rem;
 }
 </style>
