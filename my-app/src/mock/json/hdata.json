@@ -1,7 +1,7 @@
 [
     {
         "title":"新鲜水果",
-        "img":"../../../static/fruitimg/f1.png",
+        "img":"../../../static/indeximg/type1.png",
         "name":[
         {   "id":"f1",
             "title":"夏日狂欢",
@@ -481,7 +481,7 @@
     },
     {
         "title":"新鲜水果",
-        "img":"../../../static/fruitimg/f1.png",
+        "img":"../../../static/indeximg/type2.png",
         "name":[
             {   "id":"f1",
                 "title":"夏日狂欢",
@@ -958,5 +958,33 @@
     
                     ],
         "id":"g2"
+    },
+    {
+        "title":"新鲜水果",
+        "img":"../../../static/indeximg/type3.png",
+        
+        "id":"g3"
+
+    },
+    {
+        "title":"新鲜水果",
+        "img":"../../../static/indeximg/type4.png",
+        
+        "id":"g4"
+
+    },
+    {
+        "title":"新鲜水果",
+        "img":"../../../static/indeximg/type5.png",
+        
+        "id":"g5"
+
+    },
+    {
+        "title":"新鲜水果",
+        "img":"../../../static/indeximg/type6.png",
+        
+        "id":"g5"
+
     }
 ]

@@ -53,7 +53,7 @@ export default {
                 }).then((ok)=>{
                     console.log(ok);
                     if(ok.data){
-                       localStorage.lastname="1";
+                       localStorage.lastname=this.username;
                        console.log(ok.data)
                         // alert("登录成功！");
                         this.$router.push("/index");

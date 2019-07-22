@@ -104,7 +104,8 @@ export default {
 <style scoped>
 .dd{
 height:1.4rem;
-border-top:1px solid gray;
+
+border-top:1px solid rgb(236, 235, 235);
 bottom:0px;
 background:white;
 position:fixed;
@@ -117,6 +118,10 @@ z-index: 999;
     font-size:.3rem;
 
     }
-.cc p{color:gray;}
-.cc img{width:.9rem;}
+.cc p{
+  color:gray;}
+.cc img{
+  width:.65rem;
+  margin-top: .18rem;
+}
 </style>
