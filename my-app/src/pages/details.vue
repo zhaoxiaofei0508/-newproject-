@@ -9,7 +9,7 @@
       <!-- 名称价格 -->
       <div class="details_content" style="font-size:.24rem">
         <div style="width:80%">
-          <p style="font-size:.32rem;font-weight:600;">{{shopInfo.details_title}}{{shopInfo.scale}}g</p>
+          <p style="font-size:.32rem;font-weight:600;">{{shopInfo.details_title}}{{shopInfo.scale}}</p>
           <p style="color:gray">{{shopInfo.content}}</p>
           <p>
             <span style="color:red;font-size:.36rem;font-weight:600;">￥{{shopInfo.price}}</span>/
@@ -28,7 +28,7 @@
       </div>
       <el-row>
         <el-col :span="24">
-          <div class="grid-content bg-purple-dark details_time details_time1">现在下单，最快{{Time}}送达(免运费)</div>
+          <div class="details_time">现在下单，最快{{Time}}送达(免运费)</div>
         </el-col>
       </el-row>
       <!-- 选择 -->
@@ -42,14 +42,15 @@
           <!-- <img  :src="shopInfo.comment[0].img" alt /> -->
           <span>评论（{{shopInfo.comment.length}}）</span>
         </div>
-        <router-link to="/details_comment" >
-        <div style="color:gray;">查看全部评论 </div></router-link>
+        <router-link to="/details_comment">
+        <div style="color:gray;display:flex">查看全部评论<img style="width:.3rem;height:.3rem;padding:.25rem" src="../../static/img/right.png"></div>
+        </router-link>
         
       </div>
       <div v-for="(v,i) in shopInfo.comment" :key="i" style="margin-bottom:.1rem">
         <div class="details_time details_comment">
           
-          <span><img class="touxiang" :src="v.img" alt="">{{v.username}}</span>
+          <span style="display:flex"><img class="touxiang" :src="v.img" alt="">{{v.username}}</span>
           <span>{{v.time}}</span>
         </div>
         <div class="details_time details_comment">{{v.content}}</div>
@@ -79,6 +80,9 @@
         <img style="width:100%;" :src="v" alt />
       </div>
     </div>
+
+
+    <!-- <Indexlist></Indexlist> -->
     <!-- 加入购物车 -->
 
     <router-link :to="{path:'/carshop',query:{num:num,id:1}}">
@@ -94,12 +98,14 @@ import Banner from "../components/details/details_banner";
 import DetailsNav from "../components/details/details_nav";
 import data from "../mock/json/ldata.json";
 import DetailsCube from "../components/details/details_cube";
+// import Indexlist from '../components/index/indexlist'
 
 export default {
   components: {
     Banner,
     DetailsNav,
-    DetailsCube
+    DetailsCube,
+    // Indexlist
   },
   data() {
     return {
@@ -122,10 +128,19 @@ export default {
     getNum(num){
       this.num=num;
       console.log(num)
-    }
+    },
+   
   },
   created() {
     this.getTime();
+     //  this.axios({
+    //       url:"后端接口",//get发送数据方式2
+    //       method:"get"
+    //      // params:{id}get发送数据方式1
+    //   }).then((ok)=>{
+      // this.shopInfo=ok.data
+    //       console.log(ok)
+    //   })
   }
 };
 </script>
@@ -139,7 +154,7 @@ a {
   text-decoration: none;
 }
 .details_content {
-  margin: 0.1rem;
+  margin: 0.3rem;
   display: flex;
 }
 .details_content p {
@@ -153,7 +168,7 @@ a {
 }
 .details_time1 {
   text-align: center;
-  margin: 0.15rem;
+  /* margin: 0.15rem; */
 }
 .details_comment {
   display: flex;
@@ -167,6 +182,7 @@ a {
   display: inline-block;
   width:.5rem;
   height:.5rem;
+  margin:auto .1rem;
 }
 .shopp {
   width: 100%;
