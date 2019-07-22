@@ -22,7 +22,7 @@
                 <strong v-else @click="funb()">{{v.Lifearrcontent}}</strong>
                 <b @click="fun()" v-if="!bool" class="duo">全文</b>
             </div>
-            <div class="wfe">{{v.Lifearrspan}}</div>
+            <div class="z6">{{v.Lifearrspan}}</div>
             <div class="z5">
                 <div class="z4">
                 <span class="iconfont icon-fenxiang"></span>
@@ -129,6 +129,11 @@ export default {
     }
     .z5{
         height: 1rem;
+    }
+    .z6{
+        padding: 0 0.2rem;
+        font-size: 0.2rem;
+        color: #ccc;
     }
     .z1>img{
         width: 100%;

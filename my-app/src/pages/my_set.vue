@@ -8,7 +8,11 @@
         <div class="set">
             <Myset></Myset>
         </div>
+<<<<<<< HEAD
+        <router-link to="/index"><p  @click="funn()">退出当前账号</p></router-link>
+=======
         <router-link to="/index"><p>退出当前账号</p></router-link>
+>>>>>>> 55c479dcc58eac196cfdb6a3ea7cd9f1ddf35e9e
     </div>
 </template>
 <script>
@@ -22,7 +26,12 @@ export default {
     },
     beforeDestroy () {
         document.querySelector('body').removeAttribute('style')
-    }
+    },
+    methods: {
+        funn(){
+            localStorage.lastname="0";
+        }
+    },
 }
 </script>
 <style scoped>

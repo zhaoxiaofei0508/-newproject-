@@ -9,9 +9,6 @@ import  '../src/common/css/iconfont.css';
 import 'swiper/dist/css/swiper.css';
 import axios from 'axios'
 import './assets/iconfont/iconfont.css'
-
-
-
 Vue.prototype.axios = axios
 
 Vue.use(ElementUI);

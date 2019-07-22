@@ -27,6 +27,7 @@ import Ddyvs from '../pages/ddyvs'
 import Searchdel from '../pages/searchdel'
 
 import ContainerContent from '../components/index/containercontent'
+import Consult from '../pages/consult'
 
 
 Vue.use(Router)
@@ -103,8 +104,10 @@ export default new Router({
       name: 'Fenlei',
       component: Fenlei
     },
-
-    { path: '/ddyvs',
+    // { path: '/xqy/:id',
+    // name: 'Xqy',
+    // component: Xqy},
+    { path: '/ddyvs/:id',
     name: 'Ddyvs',
     component: Ddyvs
   },
@@ -157,6 +160,11 @@ export default new Router({
       path: '/containercontent/:id',
       name: 'ContainerContent',
       component: ContainerContent
+    },
+    {
+      path: '/consult',
+      name: 'Consult',
+      component: Consult
     },
     {path:'/*',redirect:"/index"},
 
