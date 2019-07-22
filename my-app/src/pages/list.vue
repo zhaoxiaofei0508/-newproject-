@@ -1,38 +1,43 @@
 <template>
     <div>
         <div class="list-top">
-        <Toplist :toparr="toparr"></Toplist>
-
-        </div>
-        <div class="list-bottom">
-        <router-view></router-view>
+        <Toplist ></Toplist>
 
         </div>
     </div>
 </template>
 <script>
-import Toplist from '../components/list/listtop/top'
+import Toplist from '../components/list/top'
+// import Hlistleft from '../components/list/h_listleft'
+// import Hlistright from '../components/list/h_listright'
 export default {
     data() {
         return {
             toparr:[]
         }
     },
-    components:{
-        Toplist
-
-    },
     created() {
+        
+        
         this.axios({
-                url:"/link/healer/hlist",//get发送数据方式
-                method:"get",
-                 //get发送数据方式
+            url:"/link/healer/hlist",
+            method:"get",
+            // params:{uname: this.tid}
             }).then((ok)=>{
                 this.toparr = ok.data;
-                // console.log(this.toparr)
-                
             })
+        
+            
+            
+        
     },
+    components:{
+        Toplist
+        // Hlistleft,
+        // Hlistright
+
+    },
+   
     
 }
 </script>
@@ -46,5 +51,16 @@ export default {
 }
 .list-bottom{
     /* margin-top: 1.3rem; */
+}
+.fruit-left{
+    float: left;
+}
+.fruit-right{
+    float: right;
+
+    height: 3rem;
+    width: 5.5rem;
+    background: aqua;
+
 }
 </style>

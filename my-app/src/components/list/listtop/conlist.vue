@@ -8,8 +8,8 @@
             <div class="wfddd">{{content}}</div>
             <div>
                 <div class="wfp">{{price}}</div>
-                <div class="wfl" @click=fun9()>
-                    <!-- <img src="../../../static/img/h-cart.png" alt=""> -->
+                <div class="wfl" @click="shpping()">
+                    <img src="../../../../static/img/h-cart.png" alt="">
                     </div>
             </div>
 
@@ -51,10 +51,12 @@ export default {
 .wfbbb{
     float: left;
     width: 60%;
+    border-bottom: 1px solid rgb(241, 241, 241);
+
 
 }
 .wfa1{
-    font-size: 0.4rem;
+    font-size: 0.3rem;
 }
 .wfddd{
     height: 0.4rem;
@@ -73,6 +75,8 @@ export default {
     width: 0.6rem;
     height: 0.6rem;
     float: right;
+    margin-top: -20px;
+
 }
 .wfl img{
     width: 100%;

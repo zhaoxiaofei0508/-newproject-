@@ -2,12 +2,12 @@
     <div class="f-box">
         
         <div class="fruit-left" >
-            <div v-for="(v,i) in fruitarr" :key="i" @click="fruit(v.id)">
+            <div v-for="(v,i) in fruitarr" :key="i">
             <Fruitlist :title="v.title"></Fruitlist>
             </div>
         </div>
         <div class="fruit-right">
-        <router-view></router-view>
+        <!-- <router-view></router-view> -->
             
         </div>
 
@@ -27,18 +27,18 @@ export default {
         Fruitlist
     },
     methods: {
-        fruit(id){
-             console.log(id)
-            if(id=="f1"){
-                this.$router.push("/list/fruit/summer");
-            }else if(id=="f2"){
-                this.$router.push("/list/fruit/turn");
-            }else if(id=="f3"){
-                this.$router.push("/list/fruit/season");
-            }else if(id=="f4"){
-                this.$router.push("/list/fruit/apricot");
-            }
-        }
+        // fruit(id){
+        //      console.log(id)
+        //     if(id=="f1"){
+        //         this.$router.push("/list/fruit/summer");
+        //     }else if(id=="f2"){
+        //         this.$router.push("/list/fruit/turn");
+        //     }else if(id=="f3"){
+        //         this.$router.push("/list/fruit/season");
+        //     }else if(id=="f4"){
+        //         this.$router.push("/list/fruit/apricot");
+        //     }
+        // }
     },
     created() {
         this.axios({
