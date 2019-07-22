@@ -3,13 +3,18 @@
         <div class="h-list-top">
             <div class="top-title">
                  <span>分类</span> 
-            <router-link to="/mysearch">
-            <img src="../../static/no_orderimg/search.png" alt=""></router-link>
+                  <router-link to="/mysearch">
+                    <div class="top-img">
+                    
+                        <img src="../../static/no_orderimg/h_sou.png" alt="">
+                    </div>
+
+                </router-link>
             </div>
 
         </div>
         <Fuvs></Fuvs>
-        <div>
+        <div class="h-list-coment">
             <div class="wfll" v-for="(v,i) in arrr"  :key="i" @click="listindex(v.id)">
                 <router-link :to="{path:'/list',query:{id:v.id,}}">
                 <div class="wfqq"><img :src="v.img" alt=""></div>
@@ -53,22 +58,32 @@ export default {
 <style scoped>
 
 .h-list-top{
+    position: fixed;
+    top: 0;
     width: 100%;
     height: 1.5rem;
     background: rgb(84, 200, 253);
 }
+.h-list-coment{
+    margin-top: 1.5rem;
+}
 .top-title span{
     display: inline-block;
-    width: 100%;
+    width: 90%;
     text-align: center;
     color: #fff;
     font-size: .4rem;
+    margin-left: .3rem;
 }
-.top-title a {
+.top-img{
+    width: 10%;
+
     /* display: inline-block; */
     float: right;
     margin-top: -1.1rem;
+    z-index: 1;
 }
+
  .wfoo{
     width: 100%;
     /* height: 1.6rem; */
