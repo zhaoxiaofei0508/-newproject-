@@ -1,10 +1,10 @@
 <template>
-  <div class="root grid-content bg-purple-dark details_time" style="margin-bottom:.15rem;" @click="isShow = true">
+  <div class="root details_time" style="margin-bottom:.15rem;" @click="isShow = true">
     <div class="rootnav">
       <p>
         已选择 {{shopInfo.details_title}}{{shopInfo.scale}}/{{shopInfo.company}}
       </p>
-      <p style="color:red;font-size:.3rem;font-weight:600">>></p>
+      <p style="color:red;font-size:.3rem;font-weight:600"><img style="width:.3rem;height:.3rem;margin-right:.1rem" src="../../../static/img/right.png"></p>
     </div>
     
 
@@ -35,7 +35,7 @@
       </div>
     </div>
   </div>
-</template>
+</template> 
 
 <script>
 export default {
