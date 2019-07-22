@@ -38,6 +38,7 @@
   </div>
 </template>
 <script>
+
 export default {
      data(){
 
@@ -77,7 +78,7 @@ export default {
                   },
 
              },
-      components:{Zivs},
+      // components:{Zivs},
 
     created(){
         

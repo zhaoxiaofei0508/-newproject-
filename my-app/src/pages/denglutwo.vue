@@ -52,11 +52,12 @@ export default {
                 params:{"userName":this.username,"userPassword":this.userpwd} //get发送数据方式
                 }).then((ok)=>{
                     console.log(ok);
-                    if(ok == 1){
+                    if(ok.data){
                        localStorage.lastname="1";
-                        alert("登录成功！");
+                       console.log(ok.data)
+                        // alert("登录成功！");
                         this.$router.push("/index");
-                    }else if(ok==0){
+                    }else{
                         alert("用户名或密码不正确，请重新登录！");
                     }
  
