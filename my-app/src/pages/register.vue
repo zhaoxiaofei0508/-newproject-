@@ -8,17 +8,21 @@
             <div class="wfaa">
                 <span class="wfbb">账户</span>
                 <input type="text" placeholder="请输入账户名" class="wfinput" v-model="username" @mouseleave="nameyz()">
+
             </div>
+            <div class="wftt">{{namea}}</div>
             <div class="wfaa">
                 <span class="wfbb">密码</span>
-                <input type="text" placeholder="请输入密码" class="wfinput" v-model="userpwd">
+                <input :type="obj ? 'password' :'text'" placeholder="请输入密码" class="wfinput" v-model="userpwd" @mouseleave="pwdyz()" maxlength="16"><img src="../../static/img/wf1.jpg" @click="faaa()" class="wfnn">
             </div>
+            <div class="wftt">{{pwdcuo}}</div>
             <div class="wfaa">
                 <span class="wfbb">邮箱</span>
-                <input type="text" placeholder="请输入邮箱地址" class="wfinput" v-model="useremail" @blur="fun2()">
+                <input type="text" placeholder="请输入邮箱地址" class="wfinput" v-model="useremail" @mouseleave="fun2()">
             </div>
+            <div class="wftt">{{emailcuo}}</div>
             <div class="wfaa">
-                <input type="text" placeholder="请输入验证码" class="wfinput" v-model="verify"><span class="wfmm"><button :disabled="btnboolll" @click="fun1()">
+                <input type="text" placeholder="请输入验证码" class="wfinput" v-model="verify"><span class="wfmm"><button :disabled="btnboolll" @click="fun1()" class="wfpp">
                     {{content}}</button></span>
             </div>
         </div>
@@ -43,6 +47,10 @@ export default {
             content: '发送验证码', 
             totalTime: 60,
             canClick: true,
+            obj:true,
+            namea:"",
+            emailcuo:'',
+            pwdcuo:'',
 
 
 
@@ -53,20 +61,41 @@ export default {
         fun(){
             this.$router.go(-1);
         },
+        pwdyz(){
+            var pwda=/^\S{,10}$/
+
+        },
         // 用户名是否存在验证
         nameyz(){
-               this.axios({
+                var nameb=/^\S{1,10}$/
+                if(nameb.test(this.username)==true){
+                this.namea="";
+                this.axios({
                 url:"http://39.97.247.47:8088/user/findByUserName",//get发送数据方式
                 method:"get",
                 params:{userName:this.username} //get发送数据方式
-            }).then((ok)=>{
-                console.log(ok)
-
+                }).then((ok)=>{
+                    console.log(ok)
                  if(ok.data==true){
-                        alert("用户名已存在！");
-                    }
-            })
+                       this.namea="用户名已存在！"
+                 }
+                })
+                    
+                }else{
+                    this.namea="用户名过长";
+                }  
         },
+        // 显示密码
+        faaa(){
+             if(this.obj==true){
+                 this.obj=false
+
+             }else if(this.obj==false){
+                 this.obj=true
+
+             }
+
+         },
     //    countDown () {
     //      if (!this.canClick) return  //改动的是这两行代码
     //     this.canClick = false
@@ -83,7 +112,7 @@ export default {
     //      },1000)
     // },
     //y
-
+        // 注册
         fun1(){
             this.btnboolll=true
             console.log(this.useremail)
@@ -97,14 +126,32 @@ export default {
             })
 
         },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     fun2(){
         var emaila=/^\d{3,}@\w{2,}\.(com|cn|net|com.cn)$/;
         if(emaila.test(this.useremail)==true){
+            this.emailcuo="";
             this.emailyzz="1";
             this.btnboolll=false
 
         }else{
-           this.useremail="邮箱格式错误";
+           this.emailcuo="邮箱格式错误";
            this.emailyzz="0";
            this.btnboolll=true
     
@@ -113,6 +160,7 @@ export default {
         // 用户注册
         adduser(){
             if(this.emailyz == this.verify){
+                this.emailcuo="";
                 var param=new URLSearchParams();
                 param.append({"username":this.username,"userpwd":this.userpwd,"useremail":this.useremail});
                     this.axios({
@@ -122,11 +170,11 @@ export default {
                     data:param
                 }).then((ok)=>{
                     console.log(ok);
-                    alert("注册成功，请登录！");
+                    this.emailcuo="注册成功请登录";
                     this.$router.push("/denglutwo");
                 })
             }else{
-                alert("验证码不正确！")
+                this.emailcuo="验证码不正确！"
 
             }
            
@@ -203,7 +251,7 @@ export default {
 }
 .wfinput{
     height: 0.6rem;
-    width: 70%;
+    width: 55%;
     border: none;
     font-size: 0.3rem;
 }
@@ -228,6 +276,21 @@ export default {
     display: inline-block;
     width: 29%;
     color:rgb(53, 51, 51);
+}
+.wfnn{
+    width: 0.8rem;
+    height: 0.8rem;
+    float: right;
+    margin-top:0.5rem;
+}
+.wfpp{
+
+    width: 2rem;
+    height: 0.5rem;
+}
+.wftt{
+    font-size: 0.4rem;
+    color: red ;
 }
 
 
