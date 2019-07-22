@@ -134,6 +134,7 @@ export default new Router({
       name: 'List',
       component: List,
     },
+  
     {
       path:'/details/:id',
       name:'Details',
