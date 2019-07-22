@@ -7,24 +7,28 @@
             </div>
             <div class="h-box">
                 <div class="h-list">
-                    <div v-for="(v,i) in toparr" :key="i" class="top-list" @click="listnav(v.id)">
+                    <div  v-for="(v,i) in FruitArr" :key="i" class="top-list" @click="listnav(v.id,i)">
+                        <span class="roll"  :style='v.id==id?"borderColor:red":""'></span>
                         <Toplist  :topimg='v.img' :toptitle="v.title" :imgid="v.id"></Toplist> 
                     </div>
                 </div>
             </div>
              <!-- <Toplist></Toplist> -->
-            <div class="hb">
-                <img src="../../../static/fruitimg/h-shopping.png" alt="">
-            </div>
+
             <div class="hc">
                 <img src="../../../static/fruitimg/h-shaer.png" alt="">
+            </div>
+            <div class="hb">
+                <router-link to="/mysearch">
+                <img src="../../../static/no_orderimg/search.png" alt="">
+                </router-link>
             </div>
         </div>
         
          <div class="list-bottom">
 
          <div class="fruit-left" >
-           <Hlistleft :Leftarr="fruitarr"></Hlistleft>
+           <Hlistleft  :Leftarr="fruitarr" :Reinghtarr="ReinghtArr" :Listbool="bool"></Hlistleft>
         </div>
         
 
@@ -38,8 +42,12 @@ import Hlistleft from './h_listleft'
 export default {
     data() {
         return {
+            id:"",
             toparr:"",
-            fruitarr:[]
+            fruitarr:[],
+            FruitArr:[],
+            ReinghtArr:[],
+            bool:true
         }
     },
     
@@ -48,22 +56,55 @@ export default {
         Hlistleft
     },
     created() {
-        this.axios({
-                url:"/link/healer/hlist",//get发送数据方式
+        this.id=this.$route.query.id
+        console.log(this.id)
+    },
+    mounted(){
+        let id=this.$route.query.id
+              this.axios({
+                url:"/link/healer/hdata",//get发送数据方式
                 method:"get",
+                //  params:{id:Left}
                  //get发送数据方式
-                //  params:{uname: this.tid}
             }).then((ok)=>{
-                this.toparr = ok.data;
-                // console.log(this.toparr)
-                
-            })
+                 this.FruitArr=ok.data;
+                var Arr=ok.data.filter((v,i)=>{
+                    if(v.id==id){
+                        return v
+                    }
+                });
+                 this.fruitarr=Arr[0].name
+                 
+                 var reinghtarr=Arr[0].name.filter((v,i)=>{
+                    if(v.id=="f1"){
+                        return v
+                    }
+                });
+                this.ReinghtArr=reinghtarr[0].special_offer
+                console.log(this.ReinghtArr)
+                })
+                 
+              
+       
+
     },
     methods: {
+        
         go(){
             this.$router.go(-1);
         },
-        listnav(id){
+        listnav(id,listi){
+            // -------------------------------点击变身
+            let Listdomarr=document.querySelectorAll(".roll")
+            for(let i=0;i<Listdomarr.length;i++){
+                if(i==listi){
+                    Listdomarr[i].style.borderColor="red"
+                }else{
+                     Listdomarr[i].style.borderColor=""
+                }
+                 
+            }
+            this.bool=true
             localStorage.Listid=id
               this.axios({
                 url:"/link/healer/hdata",//get发送数据方式
@@ -73,13 +114,16 @@ export default {
             }).then((ok)=>{
                 var Arr=ok.data.filter((v,i)=>{
                     if(v.id==id){
-                         console.log(v)
                         return v
                     }
                 });
-                console.log(Arr[0].name)
                 this.fruitarr=Arr[0].name
-                console.log(this.fruitarr)
+                 var reinghtarr=Arr[0].name.filter((v,i)=>{
+                    if(v.id=="f1"){
+                        return v
+                    }
+                });
+                this.ReinghtArr=reinghtarr[0].special_offer
             })
         }
     },
@@ -87,6 +131,14 @@ export default {
 }
 </script>
 <style scoped>
+.roll{
+    width: .82rem;
+    height:.82rem;
+    border:2px solid transparent;
+    position: absolute; 
+    border-radius: 50%;
+    top: 0;
+}
 .h-box{
     /* /* width: 100%; */
     /* height: 1rem;  */
@@ -107,6 +159,7 @@ export default {
     margin-top: .1rem;
     margin-left: 0.2rem;
     float: left;
+    position: relative;
 }
 .h-list{
     width: 12rem;

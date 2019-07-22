@@ -25,7 +25,7 @@ export default {
           method:"get"
         }).then((val)=>{
                this.obj=val.data.arr
-               console.log(val.data)
+              //  console.log(val.data)
               
                   // this.bool=false;
         })
@@ -42,10 +42,8 @@ export default {
 <style scoped>
 .dd{
 height:1.4rem;
-  
 border-top:1px solid gray;
 bottom:0px;
-
 background:white;
 position:fixed;
 width:100%;

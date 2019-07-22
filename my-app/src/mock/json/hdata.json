@@ -1,5 +1,7 @@
 [
     {
+        "title":"新鲜水果",
+        "img":"../../../static/fruitimg/f1.png",
         "name":[
         {   "id":"f1",
             "title":"夏日狂欢",
@@ -121,7 +123,7 @@
         },
          {
             "id":"f2",
-            "title":"热带风情",
+            "title":"热带风情11111",
             "banner-img":"../../../static/fruitimg/fruit-banner.png",
             "special_offer":[
                 {   "id":"1",
@@ -478,6 +480,8 @@
         "id":"g1"
     },
     {
+        "title":"新鲜水果",
+        "img":"../../../static/fruitimg/f1.png",
         "name":[
             {   "id":"f1",
                 "title":"夏日狂欢",

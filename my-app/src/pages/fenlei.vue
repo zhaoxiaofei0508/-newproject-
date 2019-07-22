@@ -4,8 +4,8 @@
         <div class="wfoo"></div>
         <Fuvs></Fuvs>
         <div>
-            <div class="wfll" v-for="(v,i) in arrr"  :key="i" >
-                <router-link :to="{path:'/list',query:{id:v.id}}">
+            <div class="wfll" v-for="(v,i) in arrr"  :key="i" @click="listindex(v.id)">
+                <router-link :to="{path:'/list',query:{id:v.id,}}">
                 <div class="wfqq"><img :src="v.img" alt=""></div>
                 <div class="wfww">{{v.title}}</div>
                 </router-link>
@@ -35,14 +35,18 @@ export default {
     },
     created(){
         this.axios({
-          url:"/link/healer/hlist",
+          url:"/link/healer/hdata",
           method:"get"
         }).then((ok)=>{
-            console.log(ok.data)
               this.arrr=ok.data
         })
-
-    }
+    },
+    methods: {
+        listindex(abc){
+            console.log(abc)
+             localStorage.Listid=abc
+        }
+    },
 }
 </script>
 <style scoped>
