@@ -6,7 +6,7 @@
                 <span class="wfbb">账户</span><input type="text" placeholder="请输入账户名" class="wfinput" v-model="username">
             </div>
             <div class="wfaa">
-                <span class="wfbb">登录密码</span><input type="text" placeholder="请输入密码" class="wfinput" v-model="userpwd">
+                <span class="wfbb">登录密码</span><input :type="obj ? 'password' :'text'" placeholder="请输入密码" class="wfinput" v-model="userpwd"><img src="../../static/img/wf1.jpg" @click="faaa()">
             </div>
         </div>
         <div class="wfdd">
@@ -32,6 +32,7 @@ export default {
             btnbool:true,
             username:'',
             userpwd:'',
+            obj:true,
             
         }
     },
@@ -62,6 +63,16 @@ export default {
  
                 })
          
+         },
+         faaa(){
+             if(this.obj==true){
+                 this.obj=false
+
+             }else if(this.obj==false){
+                 this.obj=true
+
+             }
+
          }
     },
     watch:{
@@ -99,7 +110,7 @@ export default {
 }
 .wfinput{
     height: 0.6rem;
-    width: 70%;
+    width: 60%;
     border: none;
     font-size: 0.3rem;
 }
@@ -150,6 +161,14 @@ export default {
     height: 0.6rem;
      border-radius: 0.1rem;
      line-height: 0.6rem;
+}
+.wfaa img{
+    width: 0.8rem;
+    height: 0.8rem;
+    float: right;
+    margin-top:0.5rem;
+    
+
 }
 
 
