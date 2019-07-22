@@ -104,7 +104,7 @@ export default {
               instance.confirmButtonLoading = true;
               instance.confirmButtonText = '支付中...';
               setTimeout(() => {
-            this.$router.push("/pdelivery")
+            // this.$router.push("/pdelivery")
                 done();
                 setTimeout(() => {
                   instance.confirmButtonLoading = false;
@@ -113,7 +113,7 @@ export default {
               }, 3000);
               
             } else {
-              this.$router.push("/payment")
+              // this.$router.push("/payment")
               done()
             }
           }
@@ -132,6 +132,9 @@ export default {
 
 <style scoped>
 .btn{height:1.2rem;width:100%;border-top:1px solid gray;position:fixed;bottom:0rem;background:white;line-height:1.2rem;padding-left:15px;}
+
+
+
 
 </style>
 </style>
