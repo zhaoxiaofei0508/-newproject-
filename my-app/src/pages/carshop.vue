@@ -64,7 +64,7 @@ export default {
         //  arr:[],
          allChecked:true,
         allprice:0,
-         checked:true,
+         checked:false,
       
   
 
@@ -98,7 +98,7 @@ export default {
                  this.bool=true
                 
             }else{
-                this.bool=true
+                this.bool=false
             }
             
               this.obj=val.data.arr
