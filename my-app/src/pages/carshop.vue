@@ -98,7 +98,7 @@ export default {
                  this.bool=true
                 
             }else{
-                this.bool=false
+                this.bool=true
             }
             
               this.obj=val.data.arr

@@ -17,7 +17,7 @@
         <div class="zxf3">
             <div class="zxf4">
                 <img src="../../static/img/h16.png">
-                <h3>[38条]兰岛盒小胖</h3>
+                <h3>[38条]盒马兰岛盒</h3>
                 <p>兰岛盒小胖邀请td738152340加入群聊</p>
                 <span><i>正在进行</i>冬枣测评,快来围观~</span>
             </div>

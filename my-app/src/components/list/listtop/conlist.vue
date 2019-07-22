@@ -54,7 +54,7 @@ export default {
 
 }
 .wfa1{
-    font-size: 0.4rem;
+    font-size: 0.3rem;
 }
 .wfddd{
     height: 0.4rem;

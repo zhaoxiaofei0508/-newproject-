@@ -1,6 +1,6 @@
 <template>
     <div>  
-<div class="h-top-top"><Top></Top></div>
+<div class="h-top-top"><Indexhead></Indexhead></div>
           
 
           <div>
@@ -46,7 +46,7 @@
     </div>
 </template>
 <script>
-import Top from "../components/topbar"
+import Indexhead from "../components/mysearch/indexhead"
 import Fuvs from "../components/fuvs"
 import Container from '../components/index/container'
 import IndexType from '../components/index/indextype'
@@ -59,7 +59,7 @@ export default {
       IndexSup,
       IndexTwoList,
       Fuvs,
-      Top
+      Indexhead
   },
   data () {
     return {
