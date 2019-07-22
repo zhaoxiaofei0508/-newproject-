@@ -72,18 +72,18 @@ export default {
         }).then((val)=>{
            
             //    console.log(val.data.arr)
-            if(val.data.arr==""){
-                 this.bool=true
+            // if(val.data.arr==""){
+            //      this.bool=true
                 
-            }else{
-                this.bool=false
-            }
+            // }else{
+            //     this.bool=false
+            // }
             
               this.obj=val.data.arr
                   // this.bool=false;
         })
 
-        
+           this.$route.params.id
      },
     methods: {
       open() {

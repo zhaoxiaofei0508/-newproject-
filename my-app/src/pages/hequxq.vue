@@ -95,10 +95,6 @@ export default {
                     return v
                 }
             })   
-        //     console.log(this.getdas)
-        
-        //    console.log(this.hequ)
-           
         })
     },
    
