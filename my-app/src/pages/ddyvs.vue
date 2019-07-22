@@ -46,7 +46,7 @@
                  <div style="height:1.2rem"></div>
 <!-- 底部 -->
            <div   class="btn">
-            <span style="font-size:.7rem">合计</span>&nbsp;<span style="font-size:.7rem">:￥0</span>   <input type="button" value="提交订单" style="height:1.2rem;width:2rem;
+            <span style="font-size:.7rem">合计</span>&nbsp;<span style="font-size:.7rem">:￥0</span>   <input type="button" value="提交订单"  @click="open()" style="height:1.2rem;width:2rem;
            border:none;outline:none;position:absolute;top:0px;right:15px;font-size:.3rem;background:#74C0FF;">
 
         </div>
@@ -72,19 +72,59 @@ export default {
         }).then((val)=>{
            
             //    console.log(val.data.arr)
-            if(val.data.arr==""){
-                 this.bool=true
+            // if(val.data.arr==""){
+            //      this.bool=true
                 
-            }else{
-                this.bool=false
-            }
+            // }else{
+            //     this.bool=false
+            // }
             
               this.obj=val.data.arr
                   // this.bool=false;
         })
 
-        
+           this.$route.params.id
      },
+    methods: {
+      open() {
+        const h = this.$createElement;
+        this.$msgbox({
+          title: '确认支付',
+          message: h('p', null, [
+            h('span', null, '合计 '),
+            h('i', { style: 'color: teal' }, 'VNode'),
+            h('p', null, '支付方式 : 微信 支付宝 银行卡'),
+          ]),
+          showCancelButton: true,
+          confirmButtonText: '支付',
+       
+
+          beforeClose: (action, instance, done) => {
+            if (action === 'confirm') {
+              instance.confirmButtonLoading = true;
+              instance.confirmButtonText = '支付中...';
+              setTimeout(() => {
+            this.$router.push("/pdelivery")
+                done();
+                setTimeout(() => {
+                  instance.confirmButtonLoading = false;
+                }, 300);
+                 
+              }, 3000);
+              
+            } else {
+              this.$router.push("/payment")
+              done()
+            }
+          }
+        }).then(action => {
+          this.$message({
+            type: 'info',
+            message: '支付成功'
+          });
+        });
+      }
+    }
    
     
 }
@@ -92,5 +132,6 @@ export default {
 
 <style scoped>
 .btn{height:1.2rem;width:100%;border-top:1px solid gray;position:fixed;bottom:0rem;background:white;line-height:1.2rem;padding-left:15px;}
+
 </style>
 </style>

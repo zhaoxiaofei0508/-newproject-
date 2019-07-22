@@ -104,7 +104,9 @@ export default new Router({
       name: 'Fenlei',
       component: Fenlei
     },
-
+    // { path: '/xqy/:id',
+    // name: 'Xqy',
+    // component: Xqy},
     { path: '/ddyvs',
     name: 'Ddyvs',
     component: Ddyvs
