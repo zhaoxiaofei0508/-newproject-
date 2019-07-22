@@ -38,6 +38,7 @@
   </div>
 </template>
 <script>
+
 export default {
      data(){
 
@@ -76,11 +77,24 @@ export default {
                    }
                   },
 
-    }
-}
+             },
+      // components:{Zivs},
 
-
-    
+    created(){
+        
+        this.axios({
+          url:"/link/data",
+          method:"get"
+        }).then((val)=>{
+               this.obj=val.data.arr
+              //  console.log(val.data)
+              
+                  // this.bool=false;
+        })
+        //  this.obj=this.$route.params.id
+    },   
+            }
+  
  
 
 
@@ -90,10 +104,9 @@ export default {
 <style scoped>
 .dd{
 height:1.4rem;
-  
-border-top:1px solid gray;
-bottom:0px;
 
+border-top:1px solid rgb(236, 235, 235);
+bottom:0px;
 background:white;
 position:fixed;
 width:100%;
@@ -105,6 +118,10 @@ z-index: 999;
     font-size:.3rem;
 
     }
-.cc p{color:gray;}
-.cc img{width:.9rem;}
+.cc p{
+  color:gray;}
+.cc img{
+  width:.65rem;
+  margin-top: .18rem;
+}
 </style>

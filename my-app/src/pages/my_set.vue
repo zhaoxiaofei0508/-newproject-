@@ -9,7 +9,6 @@
             <Myset></Myset>
         </div>
         <router-link to="/index"><p  @click="funn()">退出当前账号</p></router-link>
-    
     </div>
 </template>
 <script>
