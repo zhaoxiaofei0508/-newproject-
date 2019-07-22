@@ -38,7 +38,7 @@
 
            <div   class="btn">
            <input type="checkbox" v-model="allChecked" @click="handleChecked()" >   <span style="font-size:.8rem">合计</span>&nbsp;<span style="font-size:.5rem">:￥{{allprice}}</span>   <input type="button" value="结算" style="height:1.2rem;width:2rem;background:#74C0FF;font-size:14px;
-           border:none;outline:none;position:absolute;top:0px;right:0px;" @click=funk()>
+           border:none;outline:none;position:absolute;top:0px;right:0px;" @click="funk(goodid)">
 
                      </div>
                 <!-- <Jsk></Jsk>   -->
@@ -200,17 +200,16 @@ export default {
 
 
 
-       funk(){
-                 var abb=this.newarr;
+       funk(num){
+                
                 
               
-               console.log(abb)
-              this.$router.push("/ddyvs");
-                this.axios({
-                        url:"http://localhost:3009/get?uname="+abb,
-                        method:"get",
+                this.$router.push("/ddyvs/"+num)
+                // this.axios({
+                //         url:"http://localhost:3009/get?uname="+abb,
+                //         method:"get",
                    
-                        })
+                //         })
                         
                 
          

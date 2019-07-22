@@ -8,7 +8,7 @@
         <div class="set">
             <Myset></Myset>
         </div>
-        <router-link to="/denglu"><p>退出当前账号</p></router-link>
+        <router-link to="/index"><p  @click="funn()">退出当前账号</p></router-link>
     </div>
 </template>
 <script>
@@ -22,7 +22,12 @@ export default {
     },
     beforeDestroy () {
         document.querySelector('body').removeAttribute('style')
-    }
+    },
+    methods: {
+        funn(){
+            localStorage.lastname="0";
+        }
+    },
 }
 </script>
 <style scoped>

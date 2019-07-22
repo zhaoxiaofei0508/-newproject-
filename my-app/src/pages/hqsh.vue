@@ -60,6 +60,7 @@ export default {
             // console.log(ok.data.hqsh)      
            this.newarr=ok.data.hqsh
         })
+
     },
 }
 </script>

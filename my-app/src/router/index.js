@@ -56,16 +56,7 @@ export default new Router({
       name: 'My_mine',
       component: My_mine
     },
-    {
-      path: '/mysearch',
-      name: 'Mysearch',
-      component: Mysearch
-    },
-    {
-      path: '/allorder',
-      name: 'Allorder',
-      component: Allorder
-    },
+ 
     {
       path: '/payment',
       name: 'Payment',
@@ -109,7 +100,7 @@ export default new Router({
     { path: '/xqy/:id',
     name: 'Xqy',
     component: Xqy},
-    { path: '/ddyvs',
+    { path: '/ddyvs/:id',
     name: 'Ddyvs',
     component: Ddyvs
   },
@@ -208,7 +199,7 @@ export default new Router({
       name: 'ContainerContent',
       component: ContainerContent
     },
-    // {path:'/*',redirect:"/index"},
+    {path:'/*',redirect:"/index"},
 
 
   ],
