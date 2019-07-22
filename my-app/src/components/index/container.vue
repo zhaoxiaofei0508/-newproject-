@@ -24,7 +24,7 @@ export default {
   },
   methods: {
     fun(a){
-      this.$router.push("/containercontent/"+a)
+      this.$router.push("/lundetails")
     }
   },
   mounted(){
