@@ -50,7 +50,7 @@ export default {
             this.$router.go(-1);
         },
         funyyza(){
-            this.$router.push("/Shopping")
+            this.$router.push("/carshop")
         },
         funyyzb(){
             
