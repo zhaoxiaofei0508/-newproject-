@@ -16,7 +16,7 @@ export default {
                 {title:"0元吃水果",url:"../../../static/no_orderimg/img/6.png",linkTo:"/#"},
                 {title:"邀请有礼",url:"../../../static/no_orderimg/img/7.png",linkTo:"/#"},
                 {title:"盒马门店",url:"../../../static/no_orderimg/img/8.png",linkTo:"/#"},
-                {title:"客服小蜜",url:"../../../static/no_orderimg/img/9.png",linkTo:"/#"},
+                {title:"客服小蜜",url:"../../../static/no_orderimg/img/9.png",linkTo:"/consult"},
                 {title:"收藏",url:"../../../static/no_orderimg/img/10.png",linkTo:"/#"},
                 {title:"开发票",url:"../../../static/no_orderimg/img/11.png",linkTo:"/#"},
                 {title:"兑换优惠券",url:"../../../static/no_orderimg/img/12.png",linkTo:"/#"}

@@ -80,6 +80,9 @@
         <img style="width:100%;" :src="v" alt />
       </div>
     </div>
+
+
+    <!-- <Indexlist></Indexlist> -->
     <!-- 加入购物车 -->
 
     <router-link :to="{path:'/carshop',query:{num:num,id:1}}">
@@ -95,12 +98,14 @@ import Banner from "../components/details/details_banner";
 import DetailsNav from "../components/details/details_nav";
 import data from "../mock/json/ldata.json";
 import DetailsCube from "../components/details/details_cube";
+// import Indexlist from '../components/index/indexlist'
 
 export default {
   components: {
     Banner,
     DetailsNav,
-    DetailsCube
+    DetailsCube,
+    // Indexlist
   },
   data() {
     return {
