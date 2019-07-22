@@ -4,17 +4,23 @@
         
         <div class="fruit-left" >
             <div v-for="(v,i) in Leftarr" :key="i"  @click="listleft(v.id)">
-                <Fruitlist :title="v.title"></Fruitlist>
+                <Fruitlist :title="v.title" ></Fruitlist>
             </div>
         </div>
        
 
         <!-- 新鲜水果 -->
     </div>
-    <div class="fruit-right">
+        <!-- Click && Created-->
+        <div class="fruit-right" v-if="Listbool"> 
+            <Hlistright :Reinghtarr="Reinghtarr"></Hlistright>
+        </div>
+        <!-- List props -->
+        <div class="fruit-right" v-else> 
             <Hlistright :Reinghtarr="ReinghtArr"></Hlistright>
         </div>
     </div>
+    
 </template>
 <script>
 import Fruitlist from './listtop/fruitlist'
@@ -22,40 +28,25 @@ import Hlistright from './h_listright'
 export default {
     data() {
         return {
-            ReinghtArr:[]
-      
+            ReinghtArr:[],
         }
     },
     props:{
-        Leftarr:Array
+        Leftarr:Array,
+        Reinghtarr:Array,
+        Listbool:Boolean
     },
     components:{
         Fruitlist,
         Hlistright
     },
-    //  created(){
-    //     var Left=localStorage.Listid
-    //     this.axios({
-    //             url:"/link/healer/hdata",//get发送数据方式
-    //             method:"get",
-    //             //  params:{id:Left}
-    //              //get发送数据方式
-    //         }).then((ok)=>{
-    //             console.log(Left+"left")
-    //             var Arr=ok.data.filter((v,i)=>{
-    //                 if(v.id==Left){
-    //                      console.log(v)
-    //                     return v
-    //                 }
-    //             });
-    //             console.log(Arr[0].name)
-    //             this.fruitarr=Arr[0].name
-    //             console.log(this.fruitarr)
-    //         })
-    // },
+    created() {
+        
+    },
     methods: {
         listleft(id){
-            localStorage.LeftId=id
+            this.Listbool=false
+                localStorage.LeftId=id
             var listid=localStorage.Listid
             console.log(id)
             this.axios({
@@ -64,41 +55,35 @@ export default {
                 //  params:{id:Left}
                  //get发送数据方式
             }).then((ok)=>{
-                console.log(ok)
                 var listarr= ok.data.filter((v,i)=>{
                     if(v.id==listid){
-                        console.log(v)
                         return v
                     }
                 });
                 var reinghtarr=listarr[0].name.filter((v,i)=>{
                     if(v.id==id){
-                        console.log(v)
                         return v
                     }
                 });
                 this.ReinghtArr=reinghtarr[0].special_offer
-                console.log(reinghtarr[0].special_offer)
             })
 
         }
        
     },
-   
-    
-    
 }
 </script>
 <style scoped>
 .fruit-left{
     float: left;
+    background: rgb(248, 248, 248);
 }
 .fruit-right{
     float: right;
 
     height: 3rem;
     width: 5.5rem;
-    background: aqua;
+    /* background: aqua; */
 
 }
 

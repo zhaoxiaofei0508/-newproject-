@@ -107,7 +107,7 @@ export default new Router({
     // { path: '/xqy/:id',
     // name: 'Xqy',
     // component: Xqy},
-    { path: '/ddyvs/:id',
+    { path: '/ddyvs',
     name: 'Ddyvs',
     component: Ddyvs
   },

@@ -1,10 +1,10 @@
 <template>
 <div>
         <div class="h-top">
-            <div class="img2" :class="bor===id?'img1':''" @click="bor=id">
+            <div class="img2">
             <img :src="topimg" alt="">
             </div>
-            <div class="h-a">{{toptitle}}</div>
+            <div id="h-a">{{toptitle}}</div>
         </div>
 </div>
         
@@ -13,8 +13,6 @@
 export default {
     data() {
         return {
-            id:'',
-            bor:0
         }
     },
     props:{
@@ -23,13 +21,11 @@ export default {
         imgid:String
 
     },
-    extends:{
-       
+    created() {
     },
-    mounted() {
-        this.id =this.$route.query.id;
-        console.log(this.id);
-    },
+   methods: {
+   },
+   
       
 }
 </script>
@@ -45,25 +41,13 @@ img{
     width: 100%;
     height: 100%;
 }
-.img1{
-    width: .8rem;
-    height:.8rem;
-    border-radius: 50%;
-    /* background: red; */
-    border: 1px solid red;
-    overflow: hidden;
-}
+
 .img2{
     width: .8rem;
     height:.8rem;
     border-radius: 50%;
-    
-    /* background: red; */
-    border: '';
     overflow: hidden;
 }
-
-
 .h-top div{
     text-align: center;
     line-height: .2rem;
@@ -71,5 +55,7 @@ img{
     font-size: .2rem;
 
 }
-
+#h-a{
+    line-height: .5rem; 
+}
 </style>

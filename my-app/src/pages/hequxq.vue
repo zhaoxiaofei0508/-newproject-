@@ -95,10 +95,6 @@ export default {
                     return v
                 }
             })   
-        //     console.log(this.getdas)
-        
-        //    console.log(this.hequ)
-           
         })
     },
    
@@ -128,15 +124,16 @@ export default {
         height: 3rem;
     }
     .z1>img{
-        width: 100%;
+        width: 94%;
         height: 100%;
+        padding: 0 0.2rem;
     }
     .z1>span{
         font-size: 0.3rem;
         line-height: 0.5rem;
         display: inline-block;
         color: #494949;
-        /* height: 5rem; */
+        padding: 0 0.2rem;
     }
     .z1>strong{
         font-weight: 200;
@@ -147,10 +144,10 @@ export default {
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 5;
         overflow: hidden;
-        /* height: 7rem;  */
+        padding: 0 0.2rem;
     }
     .duo{
-        font-size: 0.4rem;
+        font-size: 0.38rem;
         display: inline-block;
         position: absolute;
         top:3.9rem;
@@ -166,10 +163,10 @@ export default {
     }
     .z2>img{
         width: 13%;
-        height: 50%;
+        height: 55%;
         border-radius: 50%;
         float: left;
-        padding: 0.3rem 0;
+        padding: 0.3rem 0.5rem;
     }
     .z2>div>span{
         display:block;
@@ -181,6 +178,7 @@ export default {
          display:block;
          color: red;
         padding: 0 1.5rem;
+        font-style: normal;
     }
     #z3{
         width: 100%;
