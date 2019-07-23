@@ -55,10 +55,17 @@ export default {
         funyyzb(){
             
             this.bool=true
+            // var mo=function(e){e.preventDefault();};
+            document.body.style.overflow='hidden';
+            // document.addEventListener("touchmove",mo,false);//禁止页面滑动
+
 
         },
         funyyzd(){
             this.bool =false
+            // var mo=function(e){e.preventDefault();};
+            document.body.style.overflow='';//出现滚动条
+            // document.removeEventListener("touchmove",mo,false);
         }
 
     },
@@ -157,7 +164,7 @@ p{
 
 #boxBig{
     width: 100%;
-    height: 100rem;
+    height: 30rem;
     position: absolute;
     top: 0;
     background-color:black;
