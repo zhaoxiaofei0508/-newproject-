@@ -13,7 +13,7 @@
                 <p>{{arr[2].title}}</p>    
       </div>
       <div class="cc" @click="fuun1()" :style=colorshopcar>
-                <i class="shopcarnum">1</i>
+                <i class="shopcarnum">2</i>
                 <span  class="iconfont icon-icontab_shop_sel" ></span>
                 <p>{{arr[3].title}}</p> 
       </div>

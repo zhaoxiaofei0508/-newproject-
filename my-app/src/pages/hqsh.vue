@@ -55,7 +55,7 @@ export default {
     data(){
         return {
             Colorqita:"color:black",
-            Colorhq:"color:blue",
+            Colorhq:"color:rgb(116, 192, 255)",
             newarr:[],
             time:0
         }
