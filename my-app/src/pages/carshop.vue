@@ -68,7 +68,7 @@ export default {
          checked:false,
         Colorqita:"color:black",
         Colorshopcar:"color:blue",
-         io:9
+         io:1
 
        
          
@@ -98,13 +98,13 @@ export default {
             //  this.io=this.$route.params.id
             // },
      mounted() {
-
+                 
         this.axios({
-          url:"http://39.97.247.47:8088/shop/findAll",
+        url:"http://39.97.247.47:9999/shop/loadByUserIdShowShop?userId=1",
           method:"get"
         }).then((val)=>{
-           
-            //    console.log(val.data.arr)
+      
+               console.log(val)
             if(val.data.arr==""){
                  this.bool=true
                 

@@ -39,18 +39,18 @@ export default {
     methods: {
         // 登录交互验证
         login(){
-            // var param=new URLSearchParams();
-            //     param.append({"username":this.username,"userpwd":this.userpwd});
-            //         this.axios({
-            //         url:"http://39.97.247.47:8088/user/findByUserNameByUserPassword",
-                   
-            //         method:"post",
-            //         // post发送数据的时候使用data属性
-            //         data:param
-             this.axios({
-                url:"http://39.97.247.47:8088/user/findByUserNameByUserPassword",//get发送数据方式
-                method:"get",
-                params:{"userName":this.username,"userPassword":this.userpwd} //get发送数据方式
+                var param=new URLSearchParams();
+                    param.append("userName",this.username);
+                    param.append("userPassword",this.userpwd);
+                    this.axios({
+                    url:"http://39.97.247.47:9999/user/findByUserNameByUserPassword",
+                    method:"post",
+                    // post发送数据的时候使用data属性
+                    data:param
+            //  this.axios({
+                // url:"http://39.97.247.47:9999/user/findByUserNameByUserPassword",//get发送数据方式
+                // method:"get",
+                // params:{"userName":this.username,"userPassword":this.userpwd} //get发送数据方式
                 }).then((ok)=>{
                     console.log(ok);
                     if(ok.data){
