@@ -2,7 +2,7 @@
     <div class="box">
         <div class="left">
             <img :src="newdata.img" alt="">
-            <p>用户名：{{newdata.title}}</p>
+            <p>用户名：{{username}}</p>
         </div>
         <div class="right">
             <i class="iconfont icon-saoyisao"></i>
@@ -15,10 +15,19 @@ export default {
     props:[
         // 接受父组件传过来的数据
         'newdata'
-    ]
+    ],
+    data() {
+        return {
+            username:""
+        }
+    },
+    created() {
+        this.username =localStorage.lastname;
+    },
 }
 </script>
 <style scoped>
+
 .box{
     width: 90%;
     height: 1.1rem;

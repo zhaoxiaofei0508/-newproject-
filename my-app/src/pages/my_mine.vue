@@ -31,7 +31,7 @@
                 <Indexlist v-for="(v,i) in arrMylike" :key="i" :ShopImg="v.imgurl" :ShopTitle="v.title" :ShopDetails="v.p" :ShopPrice="v.span" class="like2"></Indexlist>
             </div>
         </div>
-        <Fuvs></Fuvs>
+        <Fuvs :colorindex=Colorqita :colorfenlei=Colorqita :colorhq=Colorqita :colorshopcar=Colorqita :colormy=Colormy></Fuvs>
     </div>
 </template>
 <script>
@@ -48,7 +48,9 @@ export default {
          Mine_activity,
          Tool,
          Indexlist,
-         Fuvs
+         Fuvs,
+         Colorqita:"color:black",
+        Colormy:"color:blue",
      },
       data(){
         return{

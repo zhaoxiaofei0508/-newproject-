@@ -10,7 +10,7 @@
         <div class="zxf2">
             <i></i>
             <i></i>
-            <p>我的聊天·<span>CHATTING</span></p>
+            <p>我的聊天<span>CHATTING</span></p>
             <i></i>
             <i></i>
         </div>
@@ -40,7 +40,7 @@
         <div>
             <Hqsh :arr="newarr"></Hqsh>
         </div>
-        <Fuvs></Fuvs>
+        <Fuvs :colorindex=Colorqita :colorfenlei=Colorqita :colorhq=Colorhq :colorshopcar=Colorqita :colormy=Colorqita></Fuvs>
     </div>
 </template>
 <script>
@@ -54,6 +54,8 @@ export default {
     },
     data(){
         return {
+            Colorqita:"color:black",
+            Colorhq:"color:rgb(116, 192, 255)",
             newarr:[],
             time:0
         }
