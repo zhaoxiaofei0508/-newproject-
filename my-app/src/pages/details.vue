@@ -13,11 +13,11 @@
       <!-- 名称价格 -->
       <div class="details_content" style="font-size:.24rem">
         <div style="width:80%">
-          <p style="font-size:.32rem;font-weight:600;">{{shopInfo.details_title}}{{shopInfo.scale}}</p>
-          <p style="color:gray">{{shopInfo.content}}</p>
+          <p style="font-size:.32rem;font-weight:600;">{{shopInfo.productName}}{{shopInfo.productScale}}</p>
+          <p style="color:gray">{{shopInfo.productContent}}</p>
           <p>
-            <span style="color:red;font-size:.36rem;font-weight:600;">￥{{shopInfo.price}}</span>/
-            <span style="color:gray">{{shopInfo.company}}</span>
+            <span style="color:red;font-size:.36rem;font-weight:600;">￥{{shopInfo.productPrice}}</span>/
+            <span style="color:gray">{{shopInfo.productCompany}}</span>
           </p>
         </div>
         <div style="width:20%">
@@ -44,20 +44,20 @@
       <div class="details_time details_comment" style="border-bottom:1px solid black">
         <div>
           <!-- <img  :src="shopInfo.comment[0].img" alt /> -->
-          <span>评论（{{shopInfo.comment.length}}）</span>
+          <span>评论（{{shopInfo.productComment.length}}）</span>
         </div>
         <router-link to="/details_comment">
         <div style="color:gray;display:flex">查看全部评论<img style="width:.3rem;height:.3rem;padding:.25rem" src="../../static/img/right.png"></div>
         </router-link>
         
       </div>
-      <div v-for="(v,i) in shopInfo.comment" :key="i" style="margin-bottom:.1rem">
+      <div v-for="(v,i) in shopInfo.productComment" :key="i" style="margin-bottom:.1rem">
         <div class="details_time details_comment">
           
           <span style="display:flex"><img class="touxiang" :src="v.img" alt="">{{v.username}}</span>
-          <span>{{v.time}}</span>
+          <!-- <span>{{v.time}}</span> -->
         </div>
-        <div class="details_time details_comment">{{v.content}}</div>
+        <div class="details_time details_comment">{{v}}</div>
       </div>
     </div>
     <!-- 详情图 -->
@@ -69,18 +69,18 @@
       <div>
         <div class="details_time details_D">
           <span class="details_Dp">品牌</span>
-          <span>{{shopInfo.brand}}</span>
+          <span>{{shopInfo.productBrand}}</span>
         </div>
         <div class="details_time details_D">
           <span class="details_Dp">产地</span>
-          <span>{{shopInfo.place}}</span>
+          <span>{{shopInfo.productPlace}}</span>
         </div>
         <div class="details_time details_D">
           <span class="details_Dp">储存条件</span>
-          <span>{{shopInfo.Storage}}</span>
+          <span>{{shopInfo.productStorage}}</span>
         </div>
       </div>
-      <div v-for="(v,i) in shopInfo.details_images" :key="i" style="margin:auto .15rem">
+      <div v-for="(v,i) in shopInfo.productImages" :key="i" style="margin:auto .15rem">
         <img style="width:100%;" :src="v" alt />
       </div>
     </div>
@@ -101,7 +101,7 @@
 <script>
 import Banner from "../components/details/details_banner";
 import DetailsNav from "../components/details/details_nav";
-import data from "../mock/json/ldata.json";
+// import data from "../mock/json/ldata.json";
 import DetailsCube from "../components/details/details_cube";
 // import Indexlist from '../components/index/indexlist'
 // import Loading from "../components/hqsh2/loading"
@@ -117,9 +117,8 @@ export default {
   data() {
     return {
       Time: "",
-      shopInfo: data,
-      num:1,
-      // loading:"true"
+      shopInfo: {},
+      num:1
     };
   },
   methods: {
@@ -140,15 +139,16 @@ export default {
    
   },
   created() {
+   var id = this.$route.params.id
     this.getTime();
-     //  this.axios({
-    //       url:"后端接口",//get发送数据方式2
-    //       method:"get"
-    //      // params:{id}get发送数据方式1
-    //   }).then((ok)=>{
-      // this.shopInfo=ok.data
-    //       console.log(ok)
-    //   })
+      this.axios({
+          url:"http://39.97.247.47:9999/agricultureProduct/findBySubclassId",//get发送数据方式2
+          method:"get",
+        params:{"subclassId":id}//get发送数据方式1
+      }).then((ok)=>{
+      this.shopInfo=ok.data[0]
+          console.log(ok.data)
+      })
   }
 };
 </script>
