@@ -61,9 +61,30 @@ export default {
  
     data(){
         return{
-            obj:[]
+            obj:[],
+         
         }
     },
+
+
+    
+     created(){
+          var cid=this.$route.params.id
+          console.log(cid)
+          // 调接口代码
+
+            //  this.axios({
+            //             url:"http://localhost:3009/get?uname="+cid,
+            //             method:"get",
+              
+            //             }).then((val)=>{
+                          
+            //                 this.obj=val.data.arr
+            //           })
+
+                
+                  },
+    // 假数据
         mounted() {
 
         this.axios({
