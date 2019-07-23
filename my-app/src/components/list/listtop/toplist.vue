@@ -18,7 +18,7 @@ export default {
     props:{
         topimg:String,
         toptitle:String,
-        imgid:String
+        imgid:Number
 
     },
     created() {

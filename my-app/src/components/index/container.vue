@@ -56,4 +56,8 @@ export default {
         height: 3rem;
         margin-top:0.9rem;
     }
+.swiper-pagination{
+  height: 0;
+  top:90px;
+}
 </style>

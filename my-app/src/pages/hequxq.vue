@@ -12,7 +12,7 @@
             </div>
 
         <!-- 详情 -->
-    <div>
+    <div class="round1">
         <div class="zxf1">
             <img src="../../static/img/h1.png" alt="as">
             <span class="zxf3">{{getdas[0].title}}</span>
@@ -32,7 +32,9 @@
                 </div>
             </div>
             <!-- 评论详情 -->
-            <Hqxq :newgetdas="getdas"></Hqxq>
+            <div class="round">
+                <Hqxq :newgetdas="getdas"></Hqxq>
+            </div>   
         </div>
   
     </div>
@@ -101,20 +103,29 @@ export default {
 }
 </script>
 <style scoped>
-
+    .round{
+       padding: 0 0.3rem;
+       
+    }
  .zxf1{
         height: 1rem;
         line-height: 1rem;
-        margin: 0 0.5rem;
         margin-top: 1rem;
         display: flex;
         justify-content: space-around;
+        position: relative;
     }
     .zxf1>img{
         width: 0.5rem;
         height: 0.5rem;
         margin-top: 0.2rem;
     }
+    /* .zxf1>div{
+        height: 0.2rem;
+        width: 100%;
+        background-color: blue;
+        position: absolute;
+    } */
     .zxf3{
         font-size: 0.3rem;
         display: inline-block;
@@ -147,12 +158,12 @@ export default {
         padding: 0 0.2rem;
     }
     .duo{
-        font-size: 0.38rem;
+        font-size: 0.35rem;
         display: inline-block;
         position: absolute;
         top:3.9rem;
         right: 0.1rem;
-        color: aqua;
+        color: rgb(16, 139, 139);
     }
     .z2{
         width: 100%;
@@ -182,10 +193,10 @@ export default {
     }
     #z3{
         width: 100%;
-        height: 1rem;
+        height: 0.8rem;
         display: flex;
         justify-content: space-around;
-        line-height: 1rem;
+        line-height: 0.8rem;
         background-color: rgb(54, 114, 226);
         position: fixed;
         top: 0;
@@ -203,7 +214,7 @@ export default {
         width: 0.5rem;
         height: 0.5rem;
         display: inline-block;
-        margin-top: 0.3rem;
+        margin-top: 0.2rem;
     }
    
 </style>

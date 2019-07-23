@@ -28,10 +28,9 @@ export default {
 </script>
 <style scoped>
 .Indexlist{
-    width: 48%;
+    width: 47%;
     height: 5.05rem;
-    margin-right: 4%;
-    margin-top: 0.2rem;
+    margin:0.2rem 1.5% 0;
     float: left;
     background: white;
     border-radius: 0.2rem;
