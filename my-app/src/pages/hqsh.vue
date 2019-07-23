@@ -10,7 +10,7 @@
         <div class="zxf2">
             <i></i>
             <i></i>
-            <p>我的聊天·<span>CHATTING</span></p>
+            <p>我的聊天<span>CHATTING</span></p>
             <i></i>
             <i></i>
         </div>
