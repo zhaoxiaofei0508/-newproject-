@@ -13,7 +13,7 @@
             </div>
 
         </div>
-        <Fuvs></Fuvs>
+        <Fuvs :colorindex=Colorqita :colorfenlei=Colorfenlei :colorhq=Colorqita :colorshopcar=Colorqita :colormy=Colorqita></Fuvs>
         <div class="h-list-coment">
             <div class="wfll" v-for="(v,i) in arrr"  :key="i" @click="listindex(v.categoriesId)">
                 <router-link :to="{path:'/list',query:{id:v.categoriesId}}">
@@ -40,6 +40,8 @@ export default {
         },
        data(){
         return{
+            Colorfenlei:"color:blue",
+            Colorqita:"color:black",
             arrr:[]
         }
     },
