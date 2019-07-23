@@ -29,6 +29,7 @@ div{
 }
 a{
   text-decoration: none;
+  color:black;
 }
 /* html{
 	font-size: 26.67vw;

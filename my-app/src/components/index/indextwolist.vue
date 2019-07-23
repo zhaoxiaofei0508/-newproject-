@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div  class="SwiperContainer">
         <!---------------轮播图 -->
         <div class="swiper-Container">
             <div class="swiper-wrapper">
@@ -8,7 +8,7 @@
                 </div>
             </div>
          <!------------- 分页器 -->
-            <div class="swiper-pagination" ></div>
+            <div class="swiper-pagination" :style="Swiperstyle"></div>
         </div>
     </div>
 </template>
@@ -20,8 +20,7 @@ import IndexList from './indexlist'
 export default {
   data (){
     return {
-      searchBarFixed:true,
-      
+      Swiperstyle:"display:flex;top:0"
   }
   },
   components:{
@@ -29,10 +28,10 @@ export default {
   },
   props:{
     ContainerArr:Array,
+    docuTop:Number
   },
   mounted(){
     window.addEventListener('scroll', this.handleScroll);
-    let that=this
      new Swiper ('.swiper-Container', {
     loop: false,
     hashNavigation: true,
@@ -58,25 +57,21 @@ export default {
   },
   methods:{
     handleScroll () {
+      let DocuTop=this.docuTop-45
      let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-    scrollTop > 900 ? this.searchBarFixed = true : this.searchBarFixed = false;
-    
-   
+   scrollTop>DocuTop?this.Swiperstyle="display:flex;position:fixed;top:45px": this.Swiperstyle="display:flex;top:0";
   },
   }
 }
 
 </script>
 <style scoped>
- .swiper-container {
-     overflow: hidden;
-        width: 100%;
-    }
-.swiper-pagination{
-    display: flex;
-    top: 0;
+.SwiperContainer{
+  background-color: #f5f5f5;
 }
-.swiper-slide :nth-child(2n){
-  margin-right: 0;
+.swiper-container {
+    overflow: hidden;
+    width: 100%;
+    
 }
 </style>

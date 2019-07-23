@@ -75,7 +75,7 @@ export default {
                 method:"get",
                 params:{userName:this.username} //get发送数据方式
                 }).then((ok)=>{
-                    console.log(ok)
+                    // console.log(ok)
                  if(ok.data==true){
                        this.namea="用户名已存在！"
                  }
@@ -112,35 +112,31 @@ export default {
     //      },1000)
     // },
     //y
-        // 注册
+        // 邮箱验证
         fun1(){
             this.btnboolll=true
-            console.log(this.useremail)
-             this.axios({
-              url:"http://39.97.247.47:8088/user/findByUserNameAndUserEmail",//get发送数据方式
-                method:"get",
-                params:{userEmail:this.useremail},
+            //  this.axios({
+            //   url:"http://39.97.247.47:8088/user/sendVerifyCode",//get发送数据方式
+            //     method:"get",
+            //     params:{userEmail:this.useremail},
+            // }).then((ok)=>{
+            //     this.emailyz = ok
+            //     console.log(ok)
+            // })
+            
+            var param=new URLSearchParams();
+            param.append("email",this.useremail);
+                this.axios({
+                url:"http://39.97.247.47:8088/user/sendVerifyCode",
+                method:"post",
+            // post发送数据的时候使用data属性
+            data:param
             }).then((ok)=>{
-                this.emailyz = ok
                 console.log(ok)
+                this.emailyz = ok.data
             })
 
         },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     fun2(){
@@ -159,19 +155,28 @@ export default {
     },
         // 用户注册
         adduser(){
-            if(this.emailyz == this.verify){
+            // if(this.emailyz == this.verify){
+            if(true){
                 this.emailcuo="";
                 var param=new URLSearchParams();
-                param.append({"username":this.username,"userpwd":this.userpwd,"useremail":this.useremail});
+                    param.append("userName",this.username);
+                    param.append("userPassword",this.userpwd);
+                    param.append("userEmail",this.useremail);
                     this.axios({
-                    url:"http://localhost:3000/post",
+                    url:"http://39.97.247.47:8088/user/save",
                     method:"post",
                     // post发送数据的时候使用data属性
                     data:param
                 }).then((ok)=>{
-                    console.log(ok);
-                    this.emailcuo="注册成功请登录";
-                    this.$router.push("/denglutwo");
+                    // console.log(ok.data);
+                    if(ok.data){
+                        this.emailcuo="注册成功请登录";
+                         this.$router.push("/denglutwo");
+                    }else{
+                        this.emailcuo="注册失败，请重新注册";
+
+                    }
+                    
                 })
             }else{
                 this.emailcuo="验证码不正确！"
