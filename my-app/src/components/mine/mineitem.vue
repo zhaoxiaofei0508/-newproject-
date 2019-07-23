@@ -1,12 +1,17 @@
 <template>
-    <div class="box">
-        <div class="left">
-            <img :src="newdata.img" alt="">
-            <p>用户名：{{newdata.title}}</p>
+    <div class="big">
+        <div class="box">
+            <div class="left">
+                <router-link to="person"><img :src="newdata.img" alt=""></router-link>
+                <router-link to="alterusername"><p>用户名：{{newdata.title}}</p></router-link>
+            </div>
+            <div class="right">
+                <i class="iconfont icon-saoyisao"></i>
+                <i class="iconfont icon-ico"></i>
+            </div>
         </div>
-        <div class="right">
-            <i class="iconfont icon-saoyisao"></i>
-            <i class="iconfont icon-ico"></i>
+        <div class="bottom">
+            <p class="dp">我的账户：1111</p>
         </div>
     </div>
 </template>
@@ -19,15 +24,19 @@ export default {
 }
 </script>
 <style scoped>
-.box{
+.big{
     width: 90%;
-    height: 1.1rem;
+    height: 1.8rem;
+    border-bottom: 10px solid #10c6ff;
+    border-radius:5px;
     background-color: white;
     position: relative;
     left: .4rem;
     top: -27px;
-    border-bottom: 10px solid #10c6ff;
-    border-radius:5px;
+}
+.box{
+    width: 90%;
+    height: 1.1rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -47,5 +56,11 @@ p{
     font-size: .26rem; 
     color:#c9c9c9;
     margin-top: 15px;
+}
+.bottom{
+    margin-left: 10px;
+}
+.dp{
+    margin-top: 3px;
 }
 </style>
