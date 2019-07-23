@@ -3,7 +3,7 @@
     <div>
         <div class="head" v-show="showAbs">
             <router-link to="/my_set"><i class="el-icon-setting c_icon"></i></router-link>
-            <router-link to="/#">
+            <router-link to="/consult">
             <i class="iconfont icon-kefu c_icon"></i></router-link>
         </div>
          <div class="head2" v-show="!showAbs" :style="opacityStyle">

@@ -1,6 +1,6 @@
 <template>
     <div>
-       
+       <div class="box"></div>
         <div class="h-top">
             <div class="ha" @click="go()">
                 <img src="../../../static/fruitimg/h-navf1.png" alt="">
@@ -14,13 +14,14 @@
                 </div>
             </div>
              <!-- <Toplist></Toplist> -->
-
+           <router-link to="/carshop">
             <div class="hc">
-                <img src="../../../static/fruitimg/h-shaer.png" alt="">
+                <img src="../../../static/fruitimg/h-shopping.png" alt="">
             </div>
+             </router-link>
             <div class="hb">
                 <router-link to="/mysearch">
-                <img src="../../../static/no_orderimg/search.png" alt="">
+                <img src="../../../static/no_orderimg/h_search.png" alt="">
                 </router-link>
             </div>
         </div>
@@ -57,9 +58,6 @@ export default {
     },
     created() {
         this.id=this.$route.query.id
-        console.log(this.id)
-    },
-    mounted(){
         let id=this.$route.query.id
               this.axios({
                 url:"/link/healer/hdata",//get发送数据方式
@@ -83,10 +81,6 @@ export default {
                 this.ReinghtArr=reinghtarr[0].special_offer
                 console.log(this.ReinghtArr)
                 })
-                 
-              
-       
-
     },
     methods: {
         
@@ -94,6 +88,12 @@ export default {
             this.$router.go(-1);
         },
         listnav(id,listi){
+            let Listarr=document.querySelectorAll(".h-fruit")
+            console.log(Listarr)
+            for(let i=0;i<Listarr.length;i++){
+                Listarr[i].style.backgroundColor="#f8f7f7"
+            }
+            Listarr[0].style.backgroundColor="white"
             // -------------------------------点击变身
             let Listdomarr=document.querySelectorAll(".roll")
             for(let i=0;i<Listdomarr.length;i++){
@@ -131,24 +131,26 @@ export default {
 }
 </script>
 <style scoped>
+.box{
+    width: 100%;
+    height: 1.4rem;
+}
 .roll{
-    width: .82rem;
-    height:.82rem;
+    width: .8rem;
+    height:.8rem;
     border:2px solid transparent;
     position: absolute; 
     border-radius: 50%;
-    top: 0;
+    top: -.05rem;
 }
-.h-box{
-    /* /* width: 100%; */
-    /* height: 1rem;  */
+.h-top{
+    width: 100%;
+    height: 1.4rem;
+    background: #f8f7f7;
+    position: fixed;
+    top: 0;
 
 }
-/* .h-box{
-    position: fixed;
-    left: 0;
-    right: 0;
-} */
 .h-top img{
     width: .47rem;
     height: .42rem;
