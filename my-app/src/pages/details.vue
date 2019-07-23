@@ -1,4 +1,8 @@
 <template>
+<div>
+  <!-- <div v-if="loading">
+    <Loading></Loading>
+  </div> -->
   <div style="width: 100%">
     <div id="details_shop">
       <!-- nav -->
@@ -89,6 +93,7 @@
       <div class="shopp">加入购物车</div>
     </router-link>
   </div>
+  </div>
 </template> 
 
 
@@ -99,6 +104,7 @@ import DetailsNav from "../components/details/details_nav";
 // import data from "../mock/json/ldata.json";
 import DetailsCube from "../components/details/details_cube";
 // import Indexlist from '../components/index/indexlist'
+// import Loading from "../components/hqsh2/loading"
 
 export default {
   components: {
@@ -106,6 +112,7 @@ export default {
     DetailsNav,
     DetailsCube,
     // Indexlist
+    // Loading
   },
   data() {
     return {
