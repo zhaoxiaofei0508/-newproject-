@@ -12,8 +12,8 @@ export default {
     data(){
         return{
             arr:[
-                {title:"支付设置",calssname:"iconfont icon-zhifu",Tolink:"/#"},
-                {title:"收货地址",calssname:"iconfont icon-dizhi",Tolink:"/#"},
+                {title:"支付设置",calssname:"iconfont icon-zhifu",Tolink:"/pay_set"},
+                {title:"收货地址",calssname:"iconfont icon-dizhi",Tolink:"/myaddress"},
                 {title:"评价盒马",calssname:"iconfont icon-pingjia",Tolink:"/#"},
                 {title:"清除缓存",calssname:"el-icon-delete",Tolink:"/#"},
                 {title:"关于我们",calssname:"iconfont icon-guanyu",Tolink:"/#"},

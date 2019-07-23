@@ -15,6 +15,7 @@ export default {
 .h-fruit{
     width: 2rem;
     height: 1rem;
+    background: rgb(248, 248, 248);
     /* background: rosybrown; */
 }
 .h-fruit span{

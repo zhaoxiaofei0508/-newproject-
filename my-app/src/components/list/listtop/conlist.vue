@@ -45,25 +45,35 @@ export default {
     float: left;
 }
 .wfaaa img{
-    width: 100%;
-    height: 100%;
+    width: 90%;
+    height: 90%;
+    margin-top: .1rem;
+    margin-left: .1rem;
 }
 .wfbbb{
     float: left;
-    width: 60%;
+    width: 58%;
     border-bottom: 1px solid rgb(241, 241, 241);
+    margin-right: .1rem;
 
 
 }
 .wfa1{
+    width: 100%;
     font-size: 0.3rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .wfddd{
     height: 0.4rem;
     width: 100%;
+    white-space: nowrap;
     overflow: hidden;
-    font-size: 0.3rem;
+    text-overflow: ellipsis;
+    font-size: 0.25rem;
     color: #ccc;
+    margin-top: .12rem;
 }
 .wfp{
     font-size: 0.4rem;

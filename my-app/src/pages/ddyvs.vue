@@ -133,5 +133,8 @@ export default {
 <style scoped>
 .btn{height:1.2rem;width:100%;border-top:1px solid gray;position:fixed;bottom:0rem;background:white;line-height:1.2rem;padding-left:15px;}
 
+
+
+
 </style>
 </style>
