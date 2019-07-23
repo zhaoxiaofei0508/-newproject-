@@ -35,7 +35,7 @@
         <div>
             <Hqsh :arr="newarr"></Hqsh>
         </div>
-        <Fuvs></Fuvs>
+        <Fuvs :colorindex=Colorqita :colorfenlei=Colorqita :colorhq=Colorhq :colorshopcar=Colorqita :colormy=Colorqita></Fuvs>
     </div>
 </template>
 <script>
@@ -49,6 +49,8 @@ export default {
     },
     data(){
         return {
+            Colorqita:"color:black",
+            Colorhq:"color:blue",
             newarr:[]
         }
     },

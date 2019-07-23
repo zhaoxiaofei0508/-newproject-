@@ -31,18 +31,12 @@
       <IndexSup :SupContent="v.Supcontent" :SupTitle="v.Suptitle" :SupImg="v.Supimg" :Type="v.type" ></IndexSup>
     </div>
   </div>
-  <div class="Section">
   <!------------------------------------------------------------ 二级路由 ------------------------->
-    <div class="Twocontainer">
-      <IndexTwoList :ContainerArr="Containerarr1"></IndexTwoList>
-    </div>
-    
-
+  <div class="Twocontainer">
+      <IndexTwoList :ContainerArr="Containerarr1" :docuTop="DocuTop"></IndexTwoList>
   </div>
-  
 </div>
-
-         <Fuvs></Fuvs>
+         <Fuvs :colorindex=Colorindex :colorfenlei=Colorqita :colorhq=Colorqita :colorshopcar=Colorqita :colormy=Colorqita></Fuvs>
     </div>
 </template>
 <script>
@@ -63,6 +57,9 @@ export default {
   },
   data () {
     return {
+      Colorindex:"color:blue",
+      Colorqita:"color:black",
+      DocuTop:0,
         // 轮播图虚拟数据
         Containerarr:[
             {Containerimg:"../../static/indeximg/container.png",id:"11",Type:"龙虾"},
@@ -367,7 +364,14 @@ export default {
             ],
         }
   },
- 
+  mounted() {
+    window.addEventListener('scroll',this.DocuTopp);
+  },
+  methods: {
+    DocuTopp(){
+      this.DocuTop=document.querySelector('.Twocontainer').offsetTop
+    }
+  },
 }
 </script>
 <style scoped>

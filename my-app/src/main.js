@@ -9,7 +9,7 @@ import  '../src/common/css/iconfont.css';
 import 'swiper/dist/css/swiper.css';
 import axios from 'axios'
 import './assets/iconfont/iconfont.css'
-
+import  './assets/fuvsiconfont/iconfont.css';
 import { Picker } from 'mint-ui';
 Vue.component(Picker.name, Picker);
 

@@ -45,7 +45,7 @@
              
             </div>
             <div class="gg"></div>
-           <Fuvs></Fuvs>
+           <Fuvs :colorindex=Colorqita :colorfenlei=Colorqita :colorhq=Colorqita :colorshopcar=Colorshopcar :colormy=Colorqita></Fuvs>
 
         </div>
 </template>
@@ -65,7 +65,8 @@ export default {
          allChecked:true,
         allprice:0,
          checked:false,
-      
+        Colorqita:"color:black",
+        Colorshopcar:"color:blue",
   
 
     
