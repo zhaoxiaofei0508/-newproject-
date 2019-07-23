@@ -2,7 +2,7 @@
     <div>
         <div class="swiper-container">
 	<div class="swiper-wrapper">
-		<div v-for='(v,i) in shopInfo.images' :key="i" class="swiper-slide">
+		<div v-for='(v,i) in shopInfo.productImages' :key="i" class="swiper-slide">
 			<img class="img" :src="v">
 		</div>
 	</div>
@@ -36,6 +36,7 @@ export default {
 
 <style scoped>
  .img{
+     display: inline-block;
      width:100%;
      height: 6rem;
  }   
