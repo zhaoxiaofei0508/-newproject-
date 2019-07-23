@@ -167,7 +167,7 @@ export default new Router({
       component: Consult
     },
     {path:'/*',redirect:"/index"},
-
+    
 
   ],
 })
