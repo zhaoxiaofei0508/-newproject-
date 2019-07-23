@@ -6,7 +6,7 @@
                 <span class="wfbb">账户</span><input type="text" placeholder="请输入账户名" class="wfinput" v-model="username">
             </div>
             <div class="wfaa">
-                <span class="wfbb">登录密码</span><input :type="obj ? 'password' :'text'" placeholder="请输入密码" class="wfinput" v-model="userpwd"><img src="../../static/img/wf1.jpg" @click="faaa()">
+                <span class="wfbb">登录密码</span><input :type="obj ? 'password' :'text'" placeholder="请输入密码" class="wfinput" v-model="userpwd"><img src="../../static/img/wf1.png" @click="faaa()">
             </div>
         </div>
         <div class="wfdd">
@@ -54,7 +54,8 @@ export default {
                 }).then((ok)=>{
                     console.log(ok);
                     if(ok.data){
-                       localStorage.lastname=1;
+                    //    localStorage.lastname=1;
+                       localStorage.lastname=this.username;
                        console.log(ok.data)
                         // alert("登录成功！");
                         this.$router.push("/index");
