@@ -11,10 +11,15 @@ import axios from 'axios'
 import './assets/iconfont/iconfont.css'
 
 
+
 // 引入mint-ui
 import Mint from 'mint-ui';
 import 'mint-ui/lib/style.css'
 Vue.use(Mint);
+
+import './assets/star/iconfont.css'
+import  './assets/fuvsiconfont/iconfont.css';
+
 
 Vue.prototype.axios = axios
 

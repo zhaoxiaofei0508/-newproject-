@@ -1,5 +1,9 @@
 <template>
   <div>
+    <!-- 异步加载loading动图 -->
+    <!-- <div v-if="loading">
+      <Loading></Loading>
+    </div> -->
     <div style="width: 100%;height:100%">
       <div style="margin-bottom:1.2rem;">
         <div class="consult_top">
@@ -36,13 +40,17 @@
     </div>
     <div class="modal" v-if="isModalShow">
       
-      <p>LOADING</p>
+      <!-- <p>LOADING</p> -->
 
     </div>
   </div>
 </template>
 <script>
+// import Loading from "../components/hqsh2/loading"
 export default {
+  components:{
+    // Loading
+  },
   data() {
     return {
       message_array: [],

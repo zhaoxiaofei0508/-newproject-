@@ -113,7 +113,7 @@ export default new Router({
     // { path: '/xqy/:id',
     // name: 'Xqy',
     // component: Xqy},
-    { path: '/ddyvs',
+    { path: '/ddyvs/:id',
     name: 'Ddyvs',
     component: Ddyvs
   },
@@ -204,7 +204,7 @@ export default new Router({
       component: Signature
     },
     {path:'/*',redirect:"/index"},
-
+    
 
   ],
 })

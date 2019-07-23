@@ -31,18 +31,12 @@
       <IndexSup :SupContent="v.Supcontent" :SupTitle="v.Suptitle" :SupImg="v.Supimg" :Type="v.type" ></IndexSup>
     </div>
   </div>
-  <div class="Section">
   <!------------------------------------------------------------ 二级路由 ------------------------->
-    <div class="Twocontainer">
-      <IndexTwoList :ContainerArr="Containerarr1"></IndexTwoList>
-    </div>
-    
-
+  <div class="Twocontainer">
+      <IndexTwoList :ContainerArr="Containerarr1" :docuTop="DocuTop"></IndexTwoList>
   </div>
-  
 </div>
-
-         <Fuvs></Fuvs>
+         <Fuvs :colorindex=Colorindex :colorfenlei=Colorqita :colorhq=Colorqita :colorshopcar=Colorqita :colormy=Colorqita></Fuvs>
     </div>
 </template>
 <script>
@@ -61,8 +55,22 @@ export default {
       Fuvs,
       Indexhead
   },
+  // created() {
+
+  //           // 分类区数据
+  //          this.axios({
+  //             url:"http://39.97.247.47:8088/user/sendVerifyCode",//get发送数据方式
+  //               method:"get",
+
+  //           }).then((ok)=>{
+  //               this.Classifyarr = ok.data
+  //           })
+  // },
   data () {
     return {
+      Colorindex:"color:blue",
+      Colorqita:"color:black",
+      DocuTop:0,
         // 轮播图虚拟数据
         Containerarr:[
             {Containerimg:"../../static/indeximg/container.png",id:"11",Type:"龙虾"},
@@ -90,7 +98,8 @@ export default {
           {Classifyimg:"../../static/indeximg/type8.png",id:8,Classifytitle:"新鲜水果",type:"水果"},
           {Classifyimg:"../../static/indeximg/type9.png",id:8,Classifytitle:"新鲜水果",type:"水果"},
           {Classifyimg:"../../static/indeximg/type10.png",id:8,Classifytitle:"新鲜水果",type:"水果"},
-        ],
+        
+         ],
         // 超合算平价100外卖
         Suparr:[
           {Suptitle:"超合算",Supcontent:"【秒杀】玫瑰香葡萄16.9元",Supimg:"../../static/indeximg/sup1.png",type:"特价"},
@@ -367,7 +376,14 @@ export default {
             ],
         }
   },
- 
+  mounted() {
+    window.addEventListener('scroll',this.DocuTopp);
+  },
+  methods: {
+    DocuTopp(){
+      this.DocuTop=document.querySelector('.Twocontainer').offsetTop
+    }
+  },
 }
 </script>
 <style scoped>

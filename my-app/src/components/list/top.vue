@@ -1,26 +1,33 @@
 <template>
     <div>
-       
+       <div class="box"></div>
         <div class="h-top">
             <div class="ha" @click="go()">
                 <img src="../../../static/fruitimg/h-navf1.png" alt="">
             </div>
             <div class="h-box">
                 <div class="h-list">
-                    <div  v-for="(v,i) in FruitArr" :key="i" class="top-list" @click="listnav(v.id,i)">
-                        <span class="roll"  :style='v.id==id?"borderColor:red":""'></span>
-                        <Toplist  :topimg='v.img' :toptitle="v.title" :imgid="v.id"></Toplist> 
+                     <div  v-for="(v,i) in FruitArr" :key="i" class="top-list" @click="listnav(v.categoriesId,i)">
+                        <span class="roll"  :style='v.categoriesId==id?"borderColor:red":""'></span>
+                        <Toplist  :topimg='v.img' :toptitle="v.categoriesName" :imgid="v.categoriesId"></Toplist> 
                     </div>
+                    
+                    <!-- <div  v-for="(v,i) in FruitArr" :key="i" class="top-list" @click="listnav(v.id,i)">
+                        <Toplist  :topimg='v.img' :toptitle="v.title" :imgid="v.id"></Toplist> 
+                        <Toplist  :topimg='v.img' :toptitle="v.title" :imgid="v.id"></Toplist> 
+                    </div> -->
                 </div>
             </div>
              <!-- <Toplist></Toplist> -->
-
+           <router-link to="/carshop">
             <div class="hc">
-                <img src="../../../static/fruitimg/h-shaer.png" alt="">
+                <img src="../../../static/fruitimg/h-shopping.png" alt="">
+                 <i class="shopcarnum">2</i>
             </div>
+             </router-link>
             <div class="hb">
                 <router-link to="/mysearch">
-                <img src="../../../static/no_orderimg/search.png" alt="">
+                <img src="../../../static/no_orderimg/h_search.png" alt="">
                 </router-link>
             </div>
         </div>
@@ -47,7 +54,9 @@ export default {
             fruitarr:[],
             FruitArr:[],
             ReinghtArr:[],
-            bool:true
+            bool:true,
+            leftindexid:""
+            
         }
     },
     
@@ -57,36 +66,68 @@ export default {
     },
     created() {
         this.id=this.$route.query.id
-        console.log(this.id)
-    },
-    mounted(){
-        let id=this.$route.query.id
-              this.axios({
-                url:"/link/healer/hdata",//get发送数据方式
+        // let id=this.$route.query.id
+
+        // 请求头部列表
+         this.axios({
+                url:"http://39.97.247.47:9999/categories/findAll",//get发送数据方式
                 method:"get",
                 //  params:{id:Left}
                  //get发送数据方式
             }).then((ok)=>{
-                 this.FruitArr=ok.data;
-                var Arr=ok.data.filter((v,i)=>{
-                    if(v.id==id){
-                        return v
-                    }
-                });
-                 this.fruitarr=Arr[0].name
-                 
-                 var reinghtarr=Arr[0].name.filter((v,i)=>{
-                    if(v.id=="f1"){
-                        return v
-                    }
-                });
-                this.ReinghtArr=reinghtarr[0].special_offer
-                console.log(this.ReinghtArr)
-                })
-                 
-              
-       
+                //  console.log(ok)
+                this.FruitArr=ok.data
+            });
+                //left list
+                this.axios({
+                url:"http://39.97.247.47:9999/subclass/findBycategoriesId",//get发送数据方式
+                method:"get",
+                    params:{"categoriesId":this.id}
+                //get发送数据方式
+            }).then((ok)=>{
+                // console.log(ok)
+                this.fruitarr =ok.data;
 
+               this.leftindexid =  ok.data[0].subclassId
+                // console.log( this.leftindexid);
+                //right list content
+                    this.axios({
+                        url:"http://39.97.247.47:9999/agricultureProduct/findByCategoriesId",//get发送数据方式
+                        method:"get",
+                        params:{"categoriesId":this.leftindexid}
+                        //get发送数据方式
+                    }).then((ok)=>{
+                        // console.log(ok)
+                    this.ReinghtArr =ok.data;
+                    })
+               
+            })
+            
+                
+
+
+            //   this.axios({
+            //     url:"/link/healer/hdata",//get发送数据方式
+            //     method:"get",
+            //     //  params:{id:Left}
+            //      //get发送数据方式
+            // }).then((ok)=>{
+            //      this.FruitArr=ok.data;
+            //     var Arr=ok.data.filter((v,i)=>{
+            //         if(v.id==id){
+            //             return v
+            //         }
+            //     });
+            //      this.fruitarr=Arr[0].name
+                 
+            //      var reinghtarr=Arr[0].name.filter((v,i)=>{
+            //         if(v.id=="f1"){
+            //             return v
+            //         }
+            //     });
+            //     this.ReinghtArr=reinghtarr[0].special_offer
+            //     console.log(this.ReinghtArr)
+            //     })
     },
     methods: {
         
@@ -94,6 +135,14 @@ export default {
             this.$router.go(-1);
         },
         listnav(id,listi){
+            // console.log(id)
+
+            let Listarr=document.querySelectorAll(".h-fruit")
+            // console.log(Listarr)
+            for(let i=0;i<Listarr.length;i++){
+                Listarr[i].style.backgroundColor="#f8f7f7"
+            }
+            Listarr[0].style.backgroundColor="white"
             // -------------------------------点击变身
             let Listdomarr=document.querySelectorAll(".roll")
             for(let i=0;i<Listdomarr.length;i++){
@@ -106,49 +155,89 @@ export default {
             }
             this.bool=true
             localStorage.Listid=id
-              this.axios({
-                url:"/link/healer/hdata",//get发送数据方式
+            //left list
+                this.axios({
+                url:"http://39.97.247.47:9999/subclass/findBycategoriesId",//get发送数据方式
                 method:"get",
-                //  params:{id:Left}
-                 //get发送数据方式
+                    params:{"categoriesId":id}
+                //get发送数据方式
             }).then((ok)=>{
-                var Arr=ok.data.filter((v,i)=>{
-                    if(v.id==id){
-                        return v
-                    }
-                });
-                this.fruitarr=Arr[0].name
-                 var reinghtarr=Arr[0].name.filter((v,i)=>{
-                    if(v.id=="f1"){
-                        return v
-                    }
-                });
-                this.ReinghtArr=reinghtarr[0].special_offer
-            })
+                // console.log(ok)
+                this.fruitarr =ok.data;
+               this.leftindexid =  ok.data[0].subclassId
+                // console.log( this.leftindexid);
+                //right list content
+                    this.axios({
+                        url:"http://39.97.247.47:9999/agricultureProduct/findByCategoriesId",//get发送数据方式
+                        method:"get",
+                        params:{"categoriesId":this.leftindexid}
+                        //get发送数据方式
+                    }).then((ok)=>{
+                        // console.log(ok)
+                    this.ReinghtArr =ok.data;
+                    })
+               
+                 })
+            
+
+
+
+                //  this.axios({
+                //     url:"http://39.97.247.47:8088/subclass/findBycategoriesId",//get发送数据方式
+                //     method:"get",
+                //      params:{"categoriesId":id}
+                //     //get发送数据方式
+                // }).then((ok)=>{
+                //    this.ReinghtArr =ok.data;
+                // })
+            //   this.axios({
+            //     url:"/link/healer/hdata",//get发送数据方式
+            //     method:"get",
+            //     //  params:{id:Left}
+            //      //get发送数据方式
+            // }).then((ok)=>{
+            //     var Arr=ok.data.filter((v,i)=>{
+            //         if(v.id==id){
+            //             return v
+            //         }
+            //     });
+            //     this.fruitarr=Arr[0].name
+            //      var reinghtarr=Arr[0].name.filter((v,i)=>{
+            //         if(v.id=="f1"){
+            //             return v
+            //         }
+            //     });
+            //     this.ReinghtArr=reinghtarr[0].special_offer
+            // })
         }
     },
     
 }
 </script>
 <style scoped>
+.box{
+    width: 100%;
+    height: 1.4rem;
+    
+}
 .roll{
-    width: .82rem;
-    height:.82rem;
+    width: .8rem;
+    height:.8rem;
     border:2px solid transparent;
     position: absolute; 
     border-radius: 50%;
-    top: 0;
+    top: -.05rem;
 }
-.h-box{
-    /* /* width: 100%; */
-    /* height: 1rem;  */
+.h-top{
+    width: 100%;
+    height: 1.4rem;
+    background: #f8f7f7;
+    position: fixed;
+    top: 0;
+    border-bottom:1px solid rgb(235, 235, 235);
+
 
 }
-/* .h-box{
-    position: fixed;
-    left: 0;
-    right: 0;
-} */
 .h-top img{
     width: .47rem;
     height: .42rem;
@@ -197,5 +286,17 @@ export default {
 .hb img{
     vertical-align: middle;
 }
-
+.shopcarnum{
+  width: 0.3rem;
+  height: 0.3rem;
+  position: absolute;
+  top: .4rem;
+  right: 0.08rem;
+  border-radius: 50%;
+  font-size: 12px;
+  background: red;
+  color:white;
+  font-style: normal;
+  text-align: center;
+}
 </style>

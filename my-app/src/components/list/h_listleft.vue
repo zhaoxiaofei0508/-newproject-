@@ -3,8 +3,8 @@
     <div class="f-box">
         
         <div class="fruit-left" >
-            <div v-for="(v,i) in Leftarr" :key="i"  @click="listleft(v.id)">
-                <Fruitlist :title="v.title" ></Fruitlist>
+            <div v-for="(v,i) in Leftarr" :style='v.subclassId==1?"backgroundColor:white":""'  :key="i" @click="listleft(v.subclassId,i)" class="h-fruit">
+                    <span>{{v.subclassName}}</span>
             </div>
         </div>
        
@@ -23,12 +23,14 @@
     
 </template>
 <script>
-import Fruitlist from './listtop/fruitlist'
 import Hlistright from './h_listright'
 export default {
     data() {
         return {
             ReinghtArr:[],
+            // back:{
+            //     backgroundColor:"bule"
+            // }
         }
     },
     props:{
@@ -37,36 +39,64 @@ export default {
         Listbool:Boolean
     },
     components:{
-        Fruitlist,
         Hlistright
     },
-    created() {
-        
+    mounted(){
+        let listdomarr=document.querySelectorAll(".h-fruit")
+        console.log(listdomarr)
+        listdomarr[0].style.backgroundColor=" "
+    
+              
+                 
+          
     },
     methods: {
-        listleft(id){
+        listleft(id,n){
+            let Listdomarr1=document.querySelectorAll(".h-fruit")
+            for(let i=0;i<Listdomarr1.length;i++){
+                if(i==n){
+                    Listdomarr1[i].style.backgroundColor="white"
+                }else{
+                     Listdomarr1[i].style.backgroundColor="#f8f7f7"
+                }
+            }
+
+            //  this.back="";
             this.Listbool=false
                 localStorage.LeftId=id
             var listid=localStorage.Listid
-            console.log(id)
+
+            //right list content
             this.axios({
-                url:"/link/healer/hdata",//get发送数据方式
+                url:"http://39.97.247.47:9999/agricultureProduct/findByCategoriesId",//get发送数据方式
                 method:"get",
-                //  params:{id:Left}
-                 //get发送数据方式
+                params:{"categoriesId":id}
+                //get发送数据方式
             }).then((ok)=>{
-                var listarr= ok.data.filter((v,i)=>{
-                    if(v.id==listid){
-                        return v
-                    }
-                });
-                var reinghtarr=listarr[0].name.filter((v,i)=>{
-                    if(v.id==id){
-                        return v
-                    }
-                });
-                this.ReinghtArr=reinghtarr[0].special_offer
+                // console.log(ok)
+            this.ReinghtArr =ok.data;
             })
+
+
+            // console.log(id)
+            // this.axios({
+            //     url:"/link/healer/hdata",//get发送数据方式
+            //     method:"get",
+            //     //  params:{id:Left}
+            //      //get发送数据方式
+            // }).then((ok)=>{
+            //     var listarr= ok.data.filter((v,i)=>{
+            //         if(v.id==listid){
+            //             return v
+            //         }
+            //     });
+            //     var reinghtarr=listarr[0].name.filter((v,i)=>{
+            //         if(v.id==id){
+            //             return v
+            //         }
+            //     });
+            //     this.ReinghtArr=reinghtarr[0].special_offer
+            // })
 
         }
        
@@ -75,16 +105,37 @@ export default {
 </script>
 <style scoped>
 .fruit-left{
+    height: 100%;
     float: left;
-    background: rgb(248, 248, 248);
+    position: fixed;
+    left: 0;
+    top: 1.43rem;
+    
 }
 .fruit-right{
     float: right;
-
-    height: 3rem;
     width: 5.5rem;
     /* background: aqua; */
 
 }
+/* .fruit-left div:first-child{
+    background: #fff;
+    
 
+} */
+.h-fruit{
+    width: 2rem;
+    height: 1rem;
+    background-color:#f8f7f7;
+    /* background: rosybrown; */
+}
+.h-fruit span{
+    display: block;
+    font-size: 12px;
+    color: #000;
+    text-align: center;
+    line-height: 1rem;
+    
+    
+}
 </style>

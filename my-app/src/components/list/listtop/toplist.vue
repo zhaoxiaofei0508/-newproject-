@@ -18,7 +18,7 @@ export default {
     props:{
         topimg:String,
         toptitle:String,
-        imgid:String
+        imgid:Number
 
     },
     created() {
@@ -53,6 +53,8 @@ img{
     line-height: .2rem;
     color: gray;
     font-size: .2rem;
+    /* margin-top: .04rem; */
+    margin-left: .015rem;
 
 }
 #h-a{

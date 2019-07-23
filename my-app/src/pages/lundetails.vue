@@ -4,6 +4,7 @@
         <Lunmiddle  :img="lunmiddle.imgurl" ></Lunmiddle>
         
         <Shiyanzhong :good="goods" :color="lunmiddle.color" :title="lundetailstop.title"></Shiyanzhong>
+        <DetailsNav></DetailsNav>
         <Shiyanzhong :good="goods" :color="lunmiddle.color" :title="lundetailstop.title"></Shiyanzhong>
         <Shiyanzhong :good="goods" :color="lunmiddle.color" :title="lundetailstop.title"></Shiyanzhong>
         <Shiyanzhong :good="goods" :color="lunmiddle.color" :title="lundetailstop.title"></Shiyanzhong>
@@ -20,7 +21,7 @@
 import LunBoTop from "../components/lunbo/lunBoTop"
 import Lunmiddle from "../components/lunbo/lunmiddle"
 import Shiyanzhong from "../components/lunbo/shiyanzhong"
-
+import DetailsNav from "../components/lunbo/detailsNav"
 export default {
     data(){
         return {
@@ -34,7 +35,7 @@ export default {
         LunBoTop,
         Lunmiddle,
         Shiyanzhong,
-    
+        DetailsNav
         
     },
    
