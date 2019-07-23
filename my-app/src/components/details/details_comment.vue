@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="ly007">
     <div style="position: fixed;top:0;width:100%; font-weight:600">
       <div class="details_commentNav">
         <img @click="return_nav()" src="../../../static/img/h-navf1.png" alt />
@@ -41,6 +41,9 @@ export default {
 * {
   margin: 0;
   padding: 0;
+}
+.ly007{
+  box-shadow: 2px 3px 10px rgb(223, 47, 76); 
 }
 .details_commentNav {
   display: flex;

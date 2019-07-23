@@ -64,7 +64,16 @@ export default {
             let  date=new Date();
             let a= date.getHours(); //获取当前小时数(0-23)
             let b=  date.getMinutes(); //获取当前分钟数(0-59)
-            let c=  date.getSeconds();
+            let c=  date.getSeconds();   
+            if(a<10){
+                a="0"+a
+            }
+            if(b<10){
+                b="0"+b
+            }
+            if(c<10){
+                c="0"+c
+            }
             that.time=a+":"+b+":"+c;
         },1000)
         this.axios({

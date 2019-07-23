@@ -15,7 +15,16 @@
                 <img v-for="(v,i) in v.Lifearrimgarr" :key="i" :src="v.img1" alt="">
             </div>
             <div class="wf5">
-                <p>{{v.Lifearrxing1}}</p>
+                <div style="display:flex">
+                    <p>价格接受程度：</p><Xing :starcal="v.Lifearrid+'a'" :starnum="v.Lifearrxing1"></Xing>
+                </div>
+                <div style="display:flex">
+                    <p>价格接受程度：</p><Xing :starcal="v.Lifearrid+'b'" :starnum="v.Lifearrxing2"></Xing>
+                </div>
+                <div style="display:flex">
+                    <p>推荐亲友意愿：</p><Xing :starcal="v.Lifearrid+'c'" :starnum="v.Lifearrxing3"></Xing>
+                </div>
+                
             </div>
             <div class="z1">        
                 <strong class="shengluehao" @click="fun(i)" style="-webkit-line-clamp:3;-webkit-box-orient:vertical;">{{v.Lifearrcontent}}</strong>
@@ -25,7 +34,7 @@
             <div class="z5">
                 <div class="z4">
                 <span class="iconfont icon-fenxiang" @click="funa()"></span>
-                <span class="iconfont icon-dianzan" ></span>
+                <span class="iconfont icon-dianzan" @click="funb(i)"><i>13</i></span>
                 <span class="iconfont icon-liuyan"></span>
                 </div>
             </div>
@@ -35,7 +44,11 @@
 </template>
 
 <script>
+import Xing from "./xing"
 export default {
+    components:{
+        Xing
+    },
     props:{
         newgetdas:Array
     },
@@ -59,9 +72,15 @@ export default {
                     
                 }
         },
-        funa(){
+       funb(index){
+           let dianArr=document.querySelectorAll(".icon-dianzan")
+           dianArr[index].style.color="red"
+           dianArr[index].style.fontWeight=600
+           if(dianArr[index].firstChild.innerHTML<0){
+
+           }
            
-        }
+       }
     }
 
 }
@@ -127,8 +146,8 @@ export default {
         height: 1.5rem;
         font-size: 0.3rem;
     }
-    .wf5>p{
-        width: 50%;
+    .wf5>div>p{
+        width: 40%;
         padding: 0 0.4rem;
         color: black;
     }
@@ -177,12 +196,25 @@ export default {
         padding: 0 0.35rem;
     }
     .duo1{
-        font-size: 0.25rem;
+        font-size: 0.28rem;
         display: inline-block;
         position: absolute;
         margin-top: 0rem;
-        right: 0.1rem;
-        color: aqua;
+        right: 0.5rem;
+        color: rgb(36, 187, 16);
         margin-right: 0.2rem;
+        font-weight: 5000;
+    }
+    .icon-dianzan{
+        position: relative;
+    }
+    .icon-dianzan>i{
+        position: absolute;
+        font-size: 0.1rem;
+        font-style: normal;
+        width: 0.1rem;
+        height: 0.1rem;
+        border-radius: 50%;
+        background-color: yellow;
     }
 </style>
