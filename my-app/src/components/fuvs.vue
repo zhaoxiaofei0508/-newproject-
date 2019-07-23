@@ -54,26 +54,27 @@ export default {
                   },
                 fuun(){
                    var a=localStorage.lastname;
-                   if(a=="1"){
-                     this.$router.push("/hqsh")
-                   }else{
+                   if(a=="0"){
                      this.$router.push("/denglu")
+                   }else{
+                     this.$router.push("/hqsh")
                    }
                   },
                   fuun1(){
                    var a=localStorage.lastname;
-                   if(a=="1"){
-                     this.$router.push("/carshop")
-                   }else{
+                   if(a=="0"){
                      this.$router.push("/denglu")
+                   }else{
+                     this.$router.push("/carshop")
                    }
                   },
                    fuun2(){
                    var a=localStorage.lastname;
-                   if(a=="1"){
-                     this.$router.push("/my_mine")
-                   }else{
+                   if(a=="0"){
                      this.$router.push("/denglu")
+                   }else{
+                     this.$router.push("/my_mine")
+
                    }
                   },
 
