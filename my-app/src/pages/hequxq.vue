@@ -111,7 +111,7 @@ export default {
         let that=this
         setTimeout(function(){
             that.loading=false//loading
-        },1000)
+        },5000)
         this.axios({
             url:"/link/zxf/data",
             method: "get",
