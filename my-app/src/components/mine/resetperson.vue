@@ -8,13 +8,14 @@
             <div class="head" @click="actionSheet">
                 <p class="left">头像</p>
                 <p class="right">
-                    <img :src="userInfo.avatar" class="img1" @click.stop="uploadHeadImg"/>
+                    <img :src="userInfo.avatar" class="img1"/>
                     <!-- <img :src="newdata.img" alt="" class="img1 hiddenInput" @change="handleFile"> -->
                     <img src="../../../static/img/right.png" alt="" class="img2">
                 </p>
             </div>
             <div class="head">
                 <!-- 文件上传 -->
+                 <!-- <input type="file" @change="getFile($event)" class="hiddenInput" v-show="boolimg"> -->
                 <input type="file" accept="image/*" @change="handleFile" class="hiddenInput" v-show="boolimg"/>
             </div>
             <div class="head">
@@ -26,7 +27,8 @@
             <div class="head" @click="resetname">
                 <p>昵称</p>
                 <div class="right">
-                    <p>{{newdata.title}}</p>
+                    <input type="text" v-model="oal" class="oinput">
+                    <!-- <p id="pp">{{newdata.title}}</p> -->
                     <img src="../../../static/img/right.png" alt="" class="img2">
                 </div>
                 
@@ -61,6 +63,7 @@ export default {
     return {
         boolimg:false,
         sig:"",
+        oal:"",
         // 初始图片
         userInfo: {
         avatar: '../../../static/no_orderimg/14.jpg'
@@ -127,11 +130,12 @@ export default {
                     localStorage.setItem("fileresult_1", result);
                 }
             catch (e) {
-                console.log("Storage failed: " + e);
+                // console.log("Storage failed: " + e);
             }
             
             reader.readAsDataURL(file)
         },
+    
     },
     beforeCreate () {
         document.querySelector('body').setAttribute('style', 'background-color:#f4f4f4')
@@ -140,8 +144,11 @@ export default {
         document.querySelector('body').removeAttribute('style')
     },
     mounted() {
+        // 个性签名
         this.sig=localStorage.getItem("signature")
-        
+        // 昵称
+        this.oal=localStorage.getItem("alterusername")
+        // console.log(this.userInfo.avatar)
     },
 }
 </script>

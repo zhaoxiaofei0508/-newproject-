@@ -1,7 +1,7 @@
 <template>
     <div>
        <div class="ohead">
-            <router-link to="/my_set"><span>&lt;</span></router-link>
+            <span @click="fun()">&lt;</span>
             <h3>我的地址</h3>
             <router-link to="/add_address"><span class="span">新增地址</span></router-link>
         </div>
@@ -22,7 +22,12 @@ import No_address from '../components/order/no_address'
 export default {
     components:{
         No_address,
-        // bool:true
+       
+    },
+    methods: {
+        fun(){
+            this.$router.go(-1)
+        }
     },
     //   name: 'address',
 

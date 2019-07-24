@@ -67,7 +67,7 @@ export default {
         allprice:0,
          checked:false,
         Colorqita:"color:black",
-        Colorshopcar:"color:blue",
+        Colorshopcar:"color:blue", 
          io:9
 
        

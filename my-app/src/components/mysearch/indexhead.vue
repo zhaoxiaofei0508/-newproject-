@@ -78,7 +78,7 @@ input{
 }
 .oimg{
     position: absolute;
-    left: 24%;
+    left: 26%;
     top: 29%;
     width: .5rem;
 }

@@ -1,14 +1,18 @@
 <template>
     <div>
         <div class="ohead">
-            <router-link to="/myaddress"><span>&lt;</span></router-link>
+          <span @click="fun()">&lt;</span>
             <h3>新增收货地址</h3>
         </div>
     </div>
 </template>
 <script>
 export default {
-    
+    methods: {
+        fun(){
+            this.$router.go(-1)
+        }
+    },
 }
 </script>
 <style scoped>
