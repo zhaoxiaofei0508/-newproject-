@@ -2,7 +2,7 @@
   <div style="width:100%;height:100%">
     <div class="map_search">
       <p>
-        <input type="text" v-model="addressMap" id="search" />
+        <input type="text" v-model="addressMap" id="search" placeholder="请输入地址" />
       </p>
     </div>
     <div id="container"></div>
@@ -139,11 +139,17 @@ body,
 }
 #container {
   width: 100%;
-  height: 90%;
+  height: 92%;
+}
+#search{
+   width: 100%;
+  height: 0.6rem;
+  margin:.1rem .2rem;
+  border:.01rem solid gray;
 }
 .map_search {
   width: 100%;
-  height: 10%;
+  height: 6%;
 }
 .map_search p {
   display: flex;
@@ -151,10 +157,7 @@ body,
   height: 0.7rem;
   margin: auto;
 }
-.map_search input {
-  width: 5rem;
-  height: 0.6rem;
-}
+
 button {
   display: inline-block;
   width: 1rem;
