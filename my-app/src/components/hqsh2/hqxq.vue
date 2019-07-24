@@ -1,6 +1,6 @@
 <template>
     <div>
-         <div v-for="(v,i) in newgetdas[0].Lifearr" :key="i">
+         <div v-for="(v,i) in newgetdas[0].Lifearr" :key="i" class="all">
             <div class="f1">
                 <div id="wf1"><img :src="v.Lifearrimgurl" alt=""></div>
                 <div class="wf2">
@@ -15,7 +15,16 @@
                 <img v-for="(v,i) in v.Lifearrimgarr" :key="i" :src="v.img1" alt="">
             </div>
             <div class="wf5">
-                <p>{{v.Lifearrxing1}}</p>
+                <div style="display:flex">
+                    <p>价格接受程度：</p><Xing :starcal="v.Lifearrid+'a'" :starnum="v.Lifearrxing1"></Xing>
+                </div>
+                <div style="display:flex">
+                    <p>价格接受程度：</p><Xing :starcal="v.Lifearrid+'b'" :starnum="v.Lifearrxing2"></Xing>
+                </div>
+                <div style="display:flex">
+                    <p>推荐亲友意愿：</p><Xing :starcal="v.Lifearrid+'c'" :starnum="v.Lifearrxing3"></Xing>
+                </div>
+                
             </div>
             <div class="z1">        
                 <strong class="shengluehao" @click="fun(i)" style="-webkit-line-clamp:3;-webkit-box-orient:vertical;">{{v.Lifearrcontent}}</strong>
@@ -25,7 +34,7 @@
             <div class="z5">
                 <div class="z4">
                 <span class="iconfont icon-fenxiang" @click="funa()"></span>
-                <span class="iconfont icon-dianzan" ></span>
+                <span class="iconfont icon-dianzan" @click="funb(i)"><i>13</i></span>
                 <span class="iconfont icon-liuyan"></span>
                 </div>
             </div>
@@ -35,7 +44,11 @@
 </template>
 
 <script>
+import Xing from "./xing"
 export default {
+    components:{
+        Xing
+    },
     props:{
         newgetdas:Array
     },
@@ -59,9 +72,15 @@ export default {
                     
                 }
         },
-        funa(){
+       funb(index){
+           let dianArr=document.querySelectorAll(".icon-dianzan")
+           dianArr[index].style.color="red"
+           dianArr[index].style.fontWeight=600
+           if(dianArr[index].firstChild.innerHTML<0){
+
+           }
            
-        }
+       }
     }
 
 }
@@ -69,18 +88,26 @@ export default {
 </script>
 
 <style scoped>
+    .all{
+
+        border-radius: 0.2rem;
+        margin: 0.2rem 0 ;
+        box-shadow: 2px 3px 10px rgb(223, 47, 76);
+    }
     .f1{
         width: 100%;
         overflow: hidden;
-        margin-top: 1rem;
+        margin-top: 0.5rem;
+        height: 1rem;
     }
     #wf1{
         float: left;
-        width: 1rem;
-        height:1rem ;
+        width: 0.8rem;
+        height:0.8rem ;
         border-radius: 50%;
         overflow: hidden;
         margin-left: 0.4rem;
+        margin-top: 0.1rem;
     }
     #wf1>img{
         width: 100%;
@@ -100,7 +127,8 @@ export default {
     .wf3{
         float: right;
         font-size: 0.5rem; 
-        color: #ccc; 
+        color: #ccc;
+        margin-right: 0.3rem; 
     }
     .wf4{
         width: 100%;
@@ -118,9 +146,10 @@ export default {
         height: 1.5rem;
         font-size: 0.3rem;
     }
-    .wf5>p{
-        width: 49%;
+    .wf5>div>p{
+        width: 40%;
         padding: 0 0.4rem;
+        color: black;
     }
 
     .wfe{
@@ -143,7 +172,7 @@ export default {
     .z6{
         padding: 0 0.35rem;
         font-size: 0.2rem;
-        color: #ccc;
+        color: rgb(197, 114, 114);
     }
     .z1>img{
         width: 100%;
@@ -153,26 +182,39 @@ export default {
         font-size: 0.3rem;
         line-height: 0.5rem;
         display: inline-block;
-        color: #494949;
+        color: #1d1b1b;
         padding: 0 0.2rem;
         /* height: 5rem; */
     }
     .z1>strong{
         font-weight: 200;
         font-size: 0.3rem;
-        color: #494949;
+        color: #1d1b1b;
         line-height: 0.5rem;
         display: -webkit-box; 
         overflow: hidden;
         padding: 0 0.35rem;
     }
     .duo1{
-        font-size: 0.3rem;
+        font-size: 0.28rem;
         display: inline-block;
         position: absolute;
         margin-top: 0rem;
-        right: 0.1rem;
-        color: aqua;
+        right: 0.5rem;
+        color: rgb(36, 187, 16);
         margin-right: 0.2rem;
+        font-weight: 5000;
+    }
+    .icon-dianzan{
+        position: relative;
+    }
+    .icon-dianzan>i{
+        position: absolute;
+        font-size: 0.1rem;
+        font-style: normal;
+        width: 0.1rem;
+        height: 0.1rem;
+        border-radius: 50%;
+        background-color: yellow;
     }
 </style>

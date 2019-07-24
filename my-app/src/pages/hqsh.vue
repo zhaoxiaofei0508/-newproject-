@@ -10,19 +10,24 @@
         <div class="zxf2">
             <i></i>
             <i></i>
-            <p>我的聊天·<span>CHATTING</span></p>
+            <p>我的聊天<span>CHATTING</span></p>
             <i></i>
             <i></i>
         </div>
         <div class="zxf3">
             <div class="zxf4">
-                <img src="../../static/img/h16.png">
-                <h3>[38条]盒马兰岛盒</h3>
-                <p>兰岛盒小胖邀请td738152340加入群聊</p>
-                <span><i>正在进行</i>冬枣测评,快来围观~</span>
+                <div class="f4l">
+                    <img src="../../static/img/h16.png">
+                </div>
+                <div class="f4r">
+                    <h3>[38条]盒马兰岛盒</h3>
+                    <p>兰岛盒小胖邀请td738152340加入群聊</p>
+                    <i>正在进行</i><em>冬枣测评,快来围观~</em>
+                </div>
+               
             </div>
             <div class="zxf5"> 
-                <span>20:37</span>  
+                <span>{{time}}</span>  
             </div>
         </div>
         <div class="zxf6">
@@ -35,7 +40,7 @@
         <div>
             <Hqsh :arr="newarr"></Hqsh>
         </div>
-        <Fuvs></Fuvs>
+        <Fuvs :colorindex=Colorqita :colorfenlei=Colorqita :colorhq=Colorhq :colorshopcar=Colorqita :colormy=Colorqita></Fuvs>
     </div>
 </template>
 <script>
@@ -49,10 +54,30 @@ export default {
     },
     data(){
         return {
-            newarr:[]
+            Colorqita:"color:black",
+            Colorhq:"color:rgb(116, 192, 255)",
+            newarr:[],
+            time:0
         }
     },
     created() {
+        let that=this
+        setInterval(function(){
+            let  date=new Date();
+            let a= date.getHours(); //获取当前小时数(0-23)
+            let b=  date.getMinutes(); //获取当前分钟数(0-59)
+            let c=  date.getSeconds();   
+            if(a<10){
+                a="0"+a
+            }
+            if(b<10){
+                b="0"+b
+            }
+            if(c<10){
+                c="0"+c
+            }
+            that.time=a+":"+b+":"+c;
+        },1000)
         this.axios({
             url:"/link/zxf/data",
             method: "get",
@@ -88,7 +113,7 @@ export default {
         background-color: #f6f6f6;
         margin-top: 0.8rem;
     }
-    .zxf1 p{
+    .zxf1>p{
         font-size: 0.3rem;
         width: 3rem;
         height: 0.8rem;
@@ -126,57 +151,66 @@ export default {
     }
     .zxf3{
         height: 1.5rem;
-        float: left;
-        width: 90%;
-        margin: 0 0.3rem;
+        /* float: left; */
+        display: flex;
+        width: 100%;
     }
     .zxf4{
-
-        float: left;
+        display: flex;
         width: 70%;
-        margin-top: 6%;
-        border-radius: 0.2rem;
     }
-    .zxf4>img{
-        float: left;
+    .f4l{
+        width: 20%;
+    }
+    .f4l>img{
+        margin-top: 0.2rem;
+    }
+    .f4r{
+        width: 80%;
+        margin-top: 0.2rem;
+    }
+    .f4r em{
+        color: rgb(39, 180, 223);
+        font-size: 0.1rem;
+        font-style: normal;
+    }
+    .zxf4 .f4l img{
         width: 0.8rem;
         height: 0.8rem;
     }
-    .zxf4>h3{
-        float: left;
+    .zxf4 .f4r h3{
         font-size: 0.1rem;
     }
-    .zxf4>p{
-        
+    .zxf4 .f4r p{
+        height: 0.3rem;
+        line-height: 0.3rem;
+        font-size: 0.2rem;
+        overflow: hidden;
+    }
+    .zxf4 {
+
         font-size: 0.1rem;
     }
-    .zxf4>i{
-        font-size: 0.1rem;
-        
-    }
-    .zxf4>span{
-        color: rgb(39, 180, 223);
-        float: left;
-        font-size: 0.1rem;
-    }
-    .zxf4>span>i{
-        /* width: 0.5rem; */
+    .zxf4 .f4r  i{
+
         background-color: rgb(54, 114, 226);
         color: #f6f6f6;
         border-radius: 3px;
+        font-style: normal;
+        font-size: 0.18rem;
+        height: 0.2rem;
+        line-height: 0.2rem;
     }
     .zxf5{
-        margin-top: 6%;
-        width: 1rem;
-        float: right;
+        width: 30%;
         text-align: center;
-        padding: 0 0.3rem;
+        /* padding: 0 0.3rem; */
     }
     .zxf5 span{
-        right: 0;
-        float: left;
+        right: 0; 
         font-size: 0.3rem;
         height: 0.8rem;
+        /* line-height: 0.8rem; */
     }
     .zxf5 img{
         width: 0.4rem;

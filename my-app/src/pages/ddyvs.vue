@@ -3,9 +3,9 @@
          <div style="background:white;font-size:.6rem;text-align:center;padding:10px 0;border-bottom:1px solid #E0DDDD" class="ssvs">
              确认订单
          </div>
-          <div style="font-size:.3rem;padding:10px 15px;">
+          <div style="font-size:.3rem;padding:10px 15px;" @click="funl()">
 
-                <strong> 请选择收货地址    </strong>       <span style="float:right">></span>
+                <strong > 请选择收货地址    </strong>       <span style="float:right">></span>
           </div>   
 
            <div style="height:.3rem;background:#E8E8E8"></div> 
@@ -61,9 +61,34 @@ export default {
  
     data(){
         return{
-            obj:[]
+            obj:[],
+            apq:1
+         
         }
     },
+
+
+    
+     created(){
+          var cid=this.$route.params.id
+          console.log(cid)
+
+
+
+          // 调接口真正代码
+
+            //  this.axios({
+            //             url:"http://localhost:3009/get?uname="+cid,
+            //             method:"get",
+              
+            //             }).then((val)=>{
+                          
+            //                 this.obj=val.data.arr
+            //           })
+
+                
+                  },
+    // 假数据
         mounted() {
 
         this.axios({
@@ -88,15 +113,21 @@ export default {
     methods: {
       open() {
         const h = this.$createElement;
+        var abv=this.apq
         this.$msgbox({
           title: '确认支付',
           message: h('p', null, [
             h('span', null, '合计 '),
-            h('i', { style: 'color: teal' }, 'VNode'),
+            h('i', { style: 'color: teal' }, abv),
             h('p', null, '支付方式 : 微信 支付宝 银行卡'),
           ]),
           showCancelButton: true,
           confirmButtonText: '支付',
+
+
+
+
+
        
 
           beforeClose: (action, instance, done) => {
@@ -123,7 +154,11 @@ export default {
             message: '支付成功'
           });
         });
-      }
+      },
+    funl(){
+
+        this.$router.push("/myaddress")
+    }
     }
    
     

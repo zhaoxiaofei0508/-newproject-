@@ -17,19 +17,7 @@ export default {
         }
     },
     created() {
-        
-        
-        this.axios({
-            url:"/link/healer/hlist",
-            method:"get",
-            // params:{uname: this.tid}
-            }).then((ok)=>{
-                this.toparr = ok.data;
-            })
-        
-            
-            
-        
+   
     },
     components:{
         Toplist
