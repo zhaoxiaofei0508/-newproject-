@@ -8,7 +8,7 @@
       <div style="margin-bottom:1.2rem;">
         <div class="consult_top">
           <div style="display:flex;line-height:.8rem">
-            <img src="../../static/img/h-navf1.png" alt />
+            <img @click="toGoMY()" src="../../static/img/h-navf1.png" alt />
             <span style="font-size:.3rem;font-weight:500;">同城小蜜</span>
           </div>
           <div @click="shuaxin()" style="font-size:.28rem;margin:.3rem">刷新</div>
@@ -72,6 +72,9 @@ export default {
         his.push(history);
       }
       localStorage.setItem("history", JSON.stringify(his)); //把更新后的历史记录存回去
+    },
+    toGoMY(){
+      this.$router.go(-1)
     },
     dealMessage: function() {
       if (!this.message == "") {
