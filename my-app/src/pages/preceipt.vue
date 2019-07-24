@@ -14,7 +14,7 @@ import No_order from '../components/order/no_order'
 export default {
     data(){
         return{
-            bool:false
+            bool:true
         }
     },
     components:{

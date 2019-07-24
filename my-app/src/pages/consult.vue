@@ -1,9 +1,5 @@
 <template>
   <div>
-    <!-- 异步加载loading动图 -->
-    <!-- <div v-if="loading">
-      <Loading></Loading>
-    </div> -->
     <div style="width: 100%;height:100%">
       <div style="margin-bottom:1.2rem;">
         <div class="consult_top">
@@ -15,13 +11,13 @@
         </div>
       </div>
       <div>
+        <p class="History" @click="History()">— — 点击加载历史记录 — —</p>
         <div class="consult_body" style="margin-bottom:1.3rem;">
-          <transition name="el-fade-in">
-            <div>
-              <img style="width:1rem;height:1rem;float:left" src="../../static/img/11.png" alt />
-              <div v-show="true" class="transition-box message">我是智能客服小鲜，有什么可以帮您的？</div>
-            </div>
-          </transition>
+          <div>
+            <img style="width:1rem;height:1rem;float:left" src="../../static/img/11.png" alt />
+            <div v-show="true" class="transition-box message">我是智能客服小鲜，有什么可以帮您的？</div>
+          </div>
+
           <br />
           <div style="margin-bottom:1.6rem;" class="ul-box">
             <ul class="duihua" v-for="(item,index) in message_array" :key="index">
@@ -39,24 +35,21 @@
       </div>
     </div>
     <div class="modal" v-if="isModalShow">
-      
-      <!-- <p>LOADING</p> -->
-
+      <p>LOADING</p>
     </div>
   </div>
 </template>
 <script>
-// import Loading from "../components/hqsh2/loading"
 export default {
-  components:{
-    // Loading
+  components: {
+  
   },
   data() {
     return {
       message_array: [],
       message: "",
       loading: false,
-      isModalShow:false
+      isModalShow: false
     };
   },
   methods: {
@@ -73,8 +66,8 @@ export default {
       }
       localStorage.setItem("history", JSON.stringify(his)); //把更新后的历史记录存回去
     },
-    toGoMY(){
-      this.$router.go(-1)
+    toGoMY() {
+      this.$router.go(-1);
     },
     dealMessage: function() {
       if (!this.message == "") {
@@ -108,16 +101,21 @@ export default {
 
     // 刷新
     shuaxin() {
-      this.isModalShow=true
+      this.isModalShow = true;
       setTimeout(() => {
         this.message_array = [];
         this.isModalShow = false;
-        //  从本地获取所有历史记录
-        //       let his = localStorage.getItem("history");
-        //       if (his) {
-        //         this.message_array = JSON.parse(his); //
-        //         this.loading = false;
       }, 1000);
+    },
+    History() {
+      setTimeout(() => {
+        // let that=this
+        let his = localStorage.getItem("history");
+        if (his) {
+          this.message_array = JSON.parse(his); //
+          // this.loading = false;
+        }
+      }, 2000);
     }
   },
 
@@ -136,6 +134,7 @@ export default {
   display: flex;
   justify-content: space-between;
   background: white;
+  box-shadow:0px 3px 10px rgb(31, 219, 210);
 }
 .consult_top img {
   width: 0.4rem;
@@ -200,6 +199,8 @@ export default {
   width: 20%;
   height: 0.8rem;
   margin-right: 0.2rem;
+  background: #b6e7e5;
+  border: transparent;
 }
 .transition-box {
   font-size: 0.28rem;
@@ -213,20 +214,32 @@ export default {
   float: left;
   border-top-right-radius: 2rem;
 }
-.modal{
+.modal {
   width: 100%;
-  height:100%;
-  background: rgba(0,0,0,.1);
+  height: 100%;
+  /* background: rgba(0, 0, 0, 0.1); */
   position: fixed;
-  top:0;
-  left:0;
+  top: 0;
+  left: 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  background: url('../../static/img/loading.gif') no-repeat;
+  background-size: 100% 65%;
+  opacity: .8;
 }
-.modal p{
+.modal p {
   text-align: center;
   vertical-align: center;
-  font-size: .4rem;
+  font-size: 0.4rem;
 }
+.History {
+  width: 90%;
+  height: 0.5rem;
+  font-size: 0.3rem;
+  text-align: center;
+  color: gray;
+  padding:.15rem;
+}
+
 </style>

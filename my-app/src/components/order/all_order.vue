@@ -1,6 +1,6 @@
 <template>
     <div class="box">
-        <div v-for="(v,i) in newdata" :key="i">
+        <div v-for="(v,i) in newdata" :key="i" @click="jump()">
             <div class="top">
                 <p>订单号：{{v.number}}</p>
                 <span>{{v.status.succeed}}</span>
@@ -9,7 +9,7 @@
                 <img :src="v.img" alt="">
                 <!-- <img src="../../../static/no_orderimg/no_order.png" alt=""> -->
                 <div class="sum">
-                    <span class="allNum">共件商品</span>
+                    <span class="allNum">共  件商品</span>
                     <b>&gt;</b>
                 </div>
             </div>
@@ -45,6 +45,9 @@ export default {
         fun(i){
             // splice((index,len,[item]))删除
             this.newdata.splice(i,1);
+        },
+        jump(){
+            this.$router.push("/orderdetail")
         }
     },
     mounted(){
