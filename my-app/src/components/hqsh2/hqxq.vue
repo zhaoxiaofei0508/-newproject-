@@ -76,9 +76,7 @@ export default {
            let dianArr=document.querySelectorAll(".icon-dianzan")
            dianArr[index].style.color="red"
            dianArr[index].style.fontWeight=600
-           if(dianArr[index].firstChild.innerHTML<0){
-
-           }
+           dianArr[index].firstChild.innerHTML++
            
        }
     }
@@ -215,6 +213,6 @@ export default {
         width: 0.1rem;
         height: 0.1rem;
         border-radius: 50%;
-        background-color: yellow;
+        /* background-color: yellow; */
     }
 </style>

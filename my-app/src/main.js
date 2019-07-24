@@ -10,8 +10,6 @@ import 'swiper/dist/css/swiper.css';
 import axios from 'axios'
 import './assets/iconfont/iconfont.css'
 
-
-
 // 引入mint-ui
 import Mint from 'mint-ui';
 import 'mint-ui/lib/style.css'
