@@ -33,10 +33,12 @@ export default {
     methods: {
        shpping(product){
            var num  = 1
-        //    console.log(product);
-         this.$router.push({num:1,id:product}) 
-        //  this.$router.push("/carshop/"+num+"/"+product)
 
+
+           
+        // //    console.log(product);
+        //  this.$route.push({num:1,id:product}) 
+        // //  this.$route.push("/carshop/"+num+"/"+product)     
        }
     },
     
