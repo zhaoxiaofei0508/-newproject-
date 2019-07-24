@@ -2,7 +2,7 @@
 
         <div>
               <Top></Top> 
-              <div class="ssvs"></div> 
+            
             <div class="lol" v-if="bool">
             
             <img src="../../static/img/11.png">
@@ -23,11 +23,12 @@
            
     
              <input type="checkbox" v-model="v.checked" @click="fung()" >    
-             <img :src="v.img">
-             <span>￥{{v.price}}</span>
-             <span>{{v.title}}</span>
+             <img :src="v.shopImg">
+             <span>￥{{v.shopPrice}}</span>
+             <span>{{v.shopTitle}}</span>
              <span></span>
-             <input type="button" value="-"  @click="funb(i)"><input type="text" :value="v.num"><input type="button" value="+" @click="funa(i)">
+
+             <input type="button" value="-"  @click="funb(i)"><input type="text" :value="v.shopNum"><input type="button" value="+" @click="funa(i)">
              <p style="font-size:.3rem;" @click="del(i)">删除</p>
             
             </div>
@@ -38,14 +39,14 @@
 
            <div   class="btn">
            <input type="checkbox" v-model="allChecked" @click="handleChecked()" >   <span style="font-size:.8rem">合计</span>&nbsp;<span style="font-size:.5rem">:￥{{allprice}}</span>   <input type="button" value="结算" style="height:1.2rem;width:2rem;background:#74C0FF;font-size:14px;
-           border:none;outline:none;position:absolute;top:0px;right:0px;" @click="funk()">
+           border:none;outline:none;position:absolute;top:0px;right:0px;" @click="funk(io)">
 
                      </div>
                 <!-- <Jsk></Jsk>   -->
              
             </div>
             <div class="gg"></div>
-           <Fuvs></Fuvs>
+           <Fuvs :colorindex=Colorqita :colorfenlei=Colorqita :colorhq=Colorqita :colorshopcar=Colorshopcar :colormy=Colorqita></Fuvs>
 
         </div>
 </template>
@@ -65,12 +66,19 @@ export default {
          allChecked:true,
         allprice:0,
          checked:false,
+        Colorqita:"color:black",
+        Colorshopcar:"color:blue",
+         io:9
+
+       
+         
       
   
 
     
          }
      },
+     
    computed:{                     
                 newarr(){
                       var demoarr=this.obj.filter((v,i)=>{
@@ -86,10 +94,13 @@ export default {
                 
               
             },
+            // created(){
+            //  this.io=this.$route.params.id
+            // },
      mounted() {
 
         this.axios({
-          url:"/line/date",
+          url:"http://39.97.247.47:8088/shop/findAll",
           method:"get"
         }).then((val)=>{
            
@@ -101,12 +112,24 @@ export default {
                 this.bool=false
             }
             
-              this.obj=val.data.arr
+              this.obj=val.data
+              console.log(val.data)
                   // this.bool=false;
         })
 
         
      },
+
+    //  数据更新时发送数据到后台
+    //  updated() {
+    //                   var aoo=this.newarr
+    //                  this.axios({
+    //                     url:"http://localhost:3009/get?uname="+aoo,
+    //                     method:"get",
+              
+    //                     })  
+                    
+    //  },
    
        
         
@@ -128,11 +151,19 @@ export default {
            funb(i){
            
           
-            this.obj[i].num--
+         
+              if ( this.obj[i].num<=0){
+            alert('受不了啦，宝贝不能再减少啦')
+             this.obj[i].num=0;
+          }else {
+             this.obj[i].num-=1;
+          }
+
            
 						this.hh();
           
        },
+       
        func(i){
          
        },
@@ -160,7 +191,10 @@ export default {
               
 						this.hh();
             
-					}
+          }
+          
+
+          
 				} else {  //取消全选
 					for(var i = 0; i < this.obj.length; i++) {
                         var item = this.obj[i];
@@ -170,9 +204,9 @@ export default {
 				}
 				this.allChecked = !this.allChecked;
  
-                
-				
-            },
+      	
+               
+			      },
 
           
          
@@ -200,19 +234,19 @@ export default {
 
 
 
-       funk(){
+       funk(num){
                 
-                
-              
-                this.$router.push("/ddyvs")
-                // this.axios({
-                //         url:"http://localhost:3009/get?uname="+abb,
-                //         method:"get",
+                    var abb=this.newarr
                    
-                //         })
-                        
-                
-         
+             
+                 this.$router.push("/ddyvs/"+num)
+                this.axios({
+                        url:"http://localhost:3009/get?uname="+abb,
+                        method:"get",
+              
+                        })
+                             console.log(abb)
+
        }
 
      }
@@ -225,7 +259,7 @@ export default {
 .lol img{width:3rem}
 .ol{font-size:.1rem}
 img{width:2rem;vertical-align:middle}
-.ssvs{height:1.6rem}
+.ssvs{height:1.6rem;}
 .zjvs{height:1.3rem;background:hsla(0, 0%, 19%, 0.08);margin-top:.3rem;font-size:12px;display:flex;justify-content:center;align-items:center}
 .ffvs{text-align:center;margin-top:20px;padding:.4rem 0}
 .ffvs span{font-size:.4rem;}

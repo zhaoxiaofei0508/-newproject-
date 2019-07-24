@@ -2,7 +2,7 @@
     <div class="box">
         <router-link to="/mysearch"><Sheader></Sheader></router-link>
         <div class="describe">
-            <Indexlist class="des2"  v-for="(v,i) in arr" :key="i" :ShopImg="v.imgurl" :ShopTitle="v.title" :ShopDetails="v.p" :ShopPrice="v.span"></Indexlist>
+            <Indexlist class="des2"  v-for="(v,i) in arr" :key="i" :ShopImg="v.imgurl" :ShopTitle="v.productName" :ShopDetails="v.productContent" :ShopPrice="v.productPrice"></Indexlist>
         </div>
     </div>
 </template>
@@ -20,13 +20,23 @@ export default {
         }
     },
     created() {
-        this.axios({
-            url:"/link/cpydata",
-            method:"get"
+        var search= this.$route.params.search
+           this.axios({
+            url:"http://39.97.247.47:9999/agricultureProduct/findLike",
+            method:"get",
+            params:{"productName":search} 
         }).then((ok)=>{
-            // console.log(ok.data.my_like);
-            this.arr=ok.data.my_like;
+            // console.log(ok.data);
+            this.arr=ok.data
+            
         })
+        // this.axios({
+        //     url:"/link/cpydata",
+        //     method:"get"
+        // }).then((ok)=>{
+        //     // console.log(ok.data.my_like);
+        //     this.arr=ok.data.my_like;
+        // })
     },
      beforeCreate () {
         document.querySelector('body').setAttribute('style', 'background-color:#f4f4f4')

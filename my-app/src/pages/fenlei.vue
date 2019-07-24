@@ -13,12 +13,16 @@
             </div>
 
         </div>
-        <Fuvs></Fuvs>
+        <Fuvs :colorindex=Colorqita :colorfenlei=Colorfenlei :colorhq=Colorqita :colorshopcar=Colorqita :colormy=Colorqita></Fuvs>
         <div class="h-list-coment">
-            <div class="wfll" v-for="(v,i) in arrr"  :key="i" @click="listindex(v.id)">
-                <router-link :to="{path:'/list',query:{id:v.id,}}">
-                <div class="wfqq"><img :src="v.img" alt=""></div>
-                <div class="wfww">{{v.title}}</div>
+            <div class="wfll" v-for="(v,i) in arrr"  :key="i" @click="listindex(v.categoriesId)">
+                <router-link :to="{path:'/list',query:{id:v.categoriesId}}">
+                 <!-- // 模拟数据 -->
+                <!-- <div class="wfqq"><img :src="v.img" alt=""></div>
+                <div class="wfww">{{v.title}}</div> -->
+                 <!-- // 后台数据 -->
+                 <div class="wfqq"><img :src="v.img" alt=""></div>
+                <div class="wfww">{{v.categoriesName}}</div>
                 </router-link>
             </div>
         </div>
@@ -36,14 +40,27 @@ export default {
         },
        data(){
         return{
+            Colorfenlei:"color:blue",
+            Colorqita:"color:black",
             arrr:[]
         }
     },
     created(){
-        this.axios({
-          url:"/link/healer/hdata",
+        // 模拟数据
+        // this.axios({
+        //   url:"/link/healer/hdata",
+        //   method:"get"
+        // }).then((ok)=>{
+        //       this.arrr=ok.data
+        // })
+
+
+        // 后台数据
+         this.axios({
+          url:"http://39.97.247.47:9999/categories/findAll",
           method:"get"
         }).then((ok)=>{
+            console.log(ok)
               this.arrr=ok.data
         })
     },

@@ -3,8 +3,8 @@
     <div class="f-box">
         
         <div class="fruit-left" >
-            <div v-for="(v,i) in Leftarr" :style='v.id=="f1"?"backgroundColor:white":""'  :key="i" @click="listleft(v.id,i)" class="h-fruit">
-                    <span>{{v.title}}</span>
+            <div v-for="(v,i) in Leftarr" :style='v.subclassId==1?"backgroundColor:white":""'  :key="i" @click="listleft(v.subclassId,i)" class="h-fruit">
+                    <span>{{v.subclassName}}</span>
             </div>
         </div>
        
@@ -65,25 +65,38 @@ export default {
             this.Listbool=false
                 localStorage.LeftId=id
             var listid=localStorage.Listid
-            console.log(id)
+
+            //right list content
             this.axios({
-                url:"/link/healer/hdata",//get发送数据方式
+                url:"http://39.97.247.47:9999/agricultureProduct/findByCategoriesId",//get发送数据方式
                 method:"get",
-                //  params:{id:Left}
-                 //get发送数据方式
+                params:{"categoriesId":id}
+                //get发送数据方式
             }).then((ok)=>{
-                var listarr= ok.data.filter((v,i)=>{
-                    if(v.id==listid){
-                        return v
-                    }
-                });
-                var reinghtarr=listarr[0].name.filter((v,i)=>{
-                    if(v.id==id){
-                        return v
-                    }
-                });
-                this.ReinghtArr=reinghtarr[0].special_offer
+                // console.log(ok)
+            this.ReinghtArr =ok.data;
             })
+
+
+            // console.log(id)
+            // this.axios({
+            //     url:"/link/healer/hdata",//get发送数据方式
+            //     method:"get",
+            //     //  params:{id:Left}
+            //      //get发送数据方式
+            // }).then((ok)=>{
+            //     var listarr= ok.data.filter((v,i)=>{
+            //         if(v.id==listid){
+            //             return v
+            //         }
+            //     });
+            //     var reinghtarr=listarr[0].name.filter((v,i)=>{
+            //         if(v.id==id){
+            //             return v
+            //         }
+            //     });
+            //     this.ReinghtArr=reinghtarr[0].special_offer
+            // })
 
         }
        
@@ -96,7 +109,7 @@ export default {
     float: left;
     position: fixed;
     left: 0;
-    top: 1.5rem;
+    top: 1.43rem;
     
 }
 .fruit-right{

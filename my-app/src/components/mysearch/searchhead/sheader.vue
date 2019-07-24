@@ -14,6 +14,7 @@
             </div>
             <strong id="demo"></strong>
         </div>
+        
     </div>
 </template>
 <script>
@@ -38,6 +39,7 @@ export default {
                 let o = document.getElementById("myInput").value
                 document.getElementById("demo").innerHTML =o; 
             }
+             this.$router.push("/searchdel/"+this.id_input)
         },
         del(){
             this.ohistory=false
