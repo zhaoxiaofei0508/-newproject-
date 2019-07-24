@@ -15,7 +15,7 @@
 export default {
     methods: {
         go(){
-            this.$router.push("/add_address")
+            this.$router.push("/myaddress")
         },
         fun(){
             this.$router.push("/mysearch")

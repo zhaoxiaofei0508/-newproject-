@@ -36,6 +36,7 @@ import ContainerContent from '../components/index/containercontent'
 import Consult from '../pages/consult'
 import Zhanghu from '../pages/zhanghu'
 import Orderdetail from '../pages/orderdetail'
+import Map from '../pages/map'
 
 
 Vue.use(Router)
@@ -189,6 +190,11 @@ export default new Router({
       path: '/consult',
       name: 'Consult',
       component: Consult
+    },
+    {
+      path: '/map',
+      name: 'Map',
+      component: Map
     },
     {
       path: '/person',

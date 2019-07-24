@@ -44,6 +44,7 @@ div{
     border-radius: 4px;
     margin: 0.14rem 0 0 0.14rem ;
     float: left;
+    box-shadow: 4px 4px 10px black;
 }
 li{
     font-size: 10px;

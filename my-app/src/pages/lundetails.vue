@@ -1,33 +1,40 @@
 <template>
-    <div class="box">
-        <LunBoTop :text="lundetailstop.title" :feixing="lundetailstop.imgurla" :shopping1="lundetailstop.imgurlb"></LunBoTop>
-        <Lunmiddle  :img="lunmiddle.imgurl" ></Lunmiddle>
-        
-        <Shiyanzhong :good="goods" :color="lunmiddle.color" :title="lundetailstop.title"></Shiyanzhong>
-        <DetailsNav></DetailsNav>
-        <Shiyanzhong :good="goods" :color="lunmiddle.color" :title="lundetailstop.title"></Shiyanzhong>
-        <Shiyanzhong :good="goods" :color="lunmiddle.color" :title="lundetailstop.title"></Shiyanzhong>
-        <Shiyanzhong :good="goods" :color="lunmiddle.color" :title="lundetailstop.title"></Shiyanzhong>
-        <Shiyanzhong :good="goods" :color="lunmiddle.color" :title="lundetailstop.title"></Shiyanzhong>
-        <Shiyanzhong :good="goods" :color="lunmiddle.color" :title="lundetailstop.title"></Shiyanzhong>
-        <Shiyanzhong :good="goods" :color="lunmiddle.color" :title="lundetailstop.title"></Shiyanzhong>
-        <Shiyanzhong :good="goods" :color="lunmiddle.color" :title="lundetailstop.title"></Shiyanzhong>
-        <Shiyanzhong :good="goods" :color="lunmiddle.color" :title="lundetailstop.title"></Shiyanzhong>
-        <Shiyanzhong :good="goods" :color="lunmiddle.color" :title="lundetailstop.title"></Shiyanzhong>
-        <Shiyanzhong :good="goods" :color="lunmiddle.color" :title="lundetailstop.title"></Shiyanzhong>
+    <div>
+        <Loading v-if="bool"></Loading>
+        <div class="box" v-else>
+            <LunBoTop :text="lundetailstop.title" :feixing="lundetailstop.imgurla" :shopping1="lundetailstop.imgurlb"></LunBoTop>
+            <Lunmiddle  :img="lunmiddle.imgurl" ></Lunmiddle>
+            
+            <Shiyanzhong :good="goods" :color="lunmiddle.color" :title="lundetailstop.title"></Shiyanzhong>
+            <DetailsNav></DetailsNav>
+            <Shiyanzhong :good="goods" :color="lunmiddle.color" :title="lundetailstop.title"></Shiyanzhong>
+            <Shiyanzhong :good="goods" :color="lunmiddle.color" :title="lundetailstop.title"></Shiyanzhong>
+            <Shiyanzhong :good="goods" :color="lunmiddle.color" :title="lundetailstop.title"></Shiyanzhong>
+            <Shiyanzhong :good="goods" :color="lunmiddle.color" :title="lundetailstop.title"></Shiyanzhong>
+            <Shiyanzhong :good="goods" :color="lunmiddle.color" :title="lundetailstop.title"></Shiyanzhong>
+            <Shiyanzhong :good="goods" :color="lunmiddle.color" :title="lundetailstop.title"></Shiyanzhong>
+            <Shiyanzhong :good="goods" :color="lunmiddle.color" :title="lundetailstop.title"></Shiyanzhong>
+            <Shiyanzhong :good="goods" :color="lunmiddle.color" :title="lundetailstop.title"></Shiyanzhong>
+            <Shiyanzhong :good="goods" :color="lunmiddle.color" :title="lundetailstop.title"></Shiyanzhong>
+            <Shiyanzhong :good="goods" :color="lunmiddle.color" :title="lundetailstop.title"></Shiyanzhong>
     </div>
+    </div>
+   
 </template>
 <script>
 import LunBoTop from "../components/lunbo/lunBoTop"
 import Lunmiddle from "../components/lunbo/lunmiddle"
 import Shiyanzhong from "../components/lunbo/shiyanzhong"
 import DetailsNav from "../components/lunbo/detailsNav"
+import Loading from "../components/hqsh2/loading"
+
 export default {
     data(){
         return {
             lundetailstop:[],
             lunmiddle:[],
             goods:[],
+            bool:true
             
         }
     },
@@ -35,11 +42,16 @@ export default {
         LunBoTop,
         Lunmiddle,
         Shiyanzhong,
-        DetailsNav
+        DetailsNav,
+        Loading
         
     },
    
     created(){
+        setTimeout(()=>{
+            this.bool=false
+
+        },1000)
         this.axios({
             url:"/lun/details", 
             method:"get",   
@@ -49,6 +61,7 @@ export default {
             this.goods=ok.data.xiaRi[2].goods
             
         })
+
     }
    
    

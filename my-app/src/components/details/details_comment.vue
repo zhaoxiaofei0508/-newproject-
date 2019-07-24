@@ -6,35 +6,56 @@
         <span>商品评价</span>
       </div>
       <div class="details_commentNavBottom">
-        <img :src="shopInfo.images[0]" alt />
-        <span>{{shopInfo.details_title}}{{shopInfo.scale}}</span>
+        <!-- <img :src="shopInfo.productImages[0]" alt /> -->
+        <span>{{shopInfo.productName}} 规格：￥{{shopInfo.productPrice}}/{{shopInfo.productCompany}}</span>
       </div>
     </div>
     <!-- //评价详情 -->
     <div style="margin-top:2.8rem">
-     <div v-for="(v,i) in shopInfo.comment" :key="i"  class="pingjia">
+     <div v-for="(v,i) in comment" :key="i"  class="pingjia">
         <div class="commentBottom">
-          <span>{{v.username}}</span>
+          <span>{{v.userName}}</span>
           <span>{{v.time}}</span>
         </div>
-        <div style="margin-top:.2rem">{{v.content}}</div>
+        <div style="margin-top:.2rem">{{v.commentDetails}}</div>
       </div>
       </div>
   </div>
 </template>
 <script>
-import data from "../../mock/json/ldata.json";
+// import data from "../../mock/json/ldata.json";
 export default {
   data() {
     return {
-      shopInfo: data
+      shopInfo:{},
+      comment:{}
     };
   },
   methods: {
     return_nav() {
       this.$router.go(-1);
-    }
-  }
+    },
+    
+  },
+  created() {
+     var id = this.$route.query.id
+    this.axios({
+          url:"http://39.97.247.47:9999/agricultureProduct/findBySubclassId",//get发送数据方式2
+          method:"get",
+        params:{"subclassId":id}//get发送数据方式1
+      }).then((ok)=>{
+      this.shopInfo=ok.data[0]
+          console.log(ok.data)
+      }),
+    this.axios({
+          url:"http://39.97.247.47:9999/agricultureProduct/common",//get发送数据方式2
+          method:"get",
+        params:{"pid":id}//get发送数据方式1
+      }).then((ok)=>{
+      this.comment=ok.data
+          console.log(ok.data)
+      })
+  },
 };
 </script>
 <style scoped>
@@ -65,6 +86,7 @@ export default {
 .details_commentNavBottom{
     font-size:.28rem;
     margin:.2rem;
+    
 }
 .details_commentNavBottom img{
     width:1rem;
@@ -78,5 +100,6 @@ export default {
     font-size:.28rem;
     padding:.15rem;
     border-top:.15rem solid gainsboro;
+    box-shadow: 2px 3px 10px rgb(223, 47, 76);
 }
 </style>

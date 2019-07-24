@@ -1,7 +1,7 @@
 <template>
     <div>
        <div class="ohead">
-            <span @click="fun()">&lt;</span>
+            <p @click="togotop()"><img src="../../static/img/h11.png" alt /></p>
             <h3>我的地址</h3>
             <router-link to="/add_address"><span class="span">新增地址</span></router-link>
         </div>
@@ -26,6 +26,11 @@ export default {
     },
     methods: {
         fun(){
+            this.$router.go(-1)
+        }
+    },
+    methods: {
+        togotop(){
             this.$router.go(-1)
         }
     },
@@ -209,9 +214,9 @@ export default {
 <style scoped>
 .ohead{
     width: 100%;
-    height: .81rem;
+    height: .8rem;
     display: flex;
-    flex-direction: row;
+    /* flex-direction: row; */
     justify-content: space-around;
     align-items: center;
     border-bottom: 1px solid #dedede;
@@ -225,10 +230,18 @@ span{
 h3{
     font-size: .34rem;
     color: #050505;
-    line-height: .81rem;
+    line-height: .8rem;
 }
 .span{
     margin-right: 10px;
     font-size: 16px;
+     color: #3b9ada;
+     line-height: .81rem;
+}
+.ohead img {
+  /* float: left; */
+  /* margin: 0.15rem 0.1rem; */
+  width: 0.5rem;
+  height: 0.5rem;
 }
 </style>
