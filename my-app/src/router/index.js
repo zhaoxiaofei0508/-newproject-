@@ -15,6 +15,9 @@ import My_set from '../pages/my_set'
 import Pay_set from '../pages/pay_set'
 import Myaddress from '../pages/myaddress'
 import Add_address from '../pages/add_address'
+import Person from '../pages/person'
+import Alterusername from '../pages/alterusername'
+import Signature from '../pages/signature'
 import Lundetails from "../pages/lundetails"
 import List from '../pages/list'
 import Details from '../pages/details'
@@ -31,6 +34,7 @@ import Searchdel from '../pages/searchdel'
 
 import ContainerContent from '../components/index/containercontent'
 import Consult from '../pages/consult'
+import Map from '../pages/map'
 
 
 Vue.use(Router)
@@ -58,7 +62,7 @@ export default new Router({
       component: Mysearch
     },
     {
-      path: '/searchdel',
+      path: '/searchdel/:search',
       name: 'Searchdel',
       component: Searchdel
     },
@@ -184,6 +188,26 @@ export default new Router({
       path: '/consult',
       name: 'Consult',
       component: Consult
+    },
+    {
+      path: '/map',
+      name: 'Map',
+      component: Map
+    },
+    {
+      path: '/person',
+      name: 'Person',
+      component: Person
+    },
+    {
+      path: '/alterusername',
+      name: 'Alterusername',
+      component: Alterusername
+    },
+    {
+      path: '/signature',
+      name: 'Signature',
+      component: Signature
     },
     {path:'/*',redirect:"/index"},
     

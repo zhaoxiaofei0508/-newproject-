@@ -9,7 +9,7 @@
             <h3>请设置支付密码</h3>
             <br>
             <div style="width: 0;height: 0;overflow: hidden">{{pawssword}}</div>
-            <div class="pawIput" @click.stop="inputPaw">
+            <div class="pawIput">
                 <div><input type="text" v-if="pawssword.length>0" v-model="fresh"></div>
                 <div><input type="text" v-if="pawssword.length>1" v-model="fresh"></div>
                 <div><input type="text" v-if="pawssword.length>2" v-model="fresh"></div>
@@ -57,6 +57,7 @@
   </div>
 </template>
 <script>
+import { MessageBox } from 'mint-ui'
 export default {
     data() {
         return {
@@ -76,10 +77,14 @@ export default {
             this.pawssword = this.pawssword.substring(0,this.pawssword.length-1);
         }, 
         wan(){
-            if(this.pawssword!=""){
-                this.$router.push("/my_set");
+            if(this.pawssword!=""&& this.pawssword.length>5){
+                MessageBox.alert('操作成功').then(action => {
+                    this.$router.push("/my_set");
+                });
             }else{
-                alert("请先设置密码！")
+                MessageBox.alert('请先设置密码').then(action => {
+                    this.$router.push("/pay_set");
+                });
             }
         }
     },
@@ -119,12 +124,12 @@ h3{
 }
 .pawIput{
     display: flex;
-    border: 1px solid rgb(239,239,239);
+    border: 1px solid #dedede;
     border-left:0 ;
 }
 .pawIput div{
     flex: 1;
-    border-left:1px solid rgb(239,239,239);
+    border-left:1px solid #dedede;
     height: 45px;
     display: -webkit-flex;
     -ms-flex-align: center;

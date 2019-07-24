@@ -44,20 +44,20 @@
       <div class="details_time details_comment" style="border-bottom:1px solid black">
         <div>
           <!-- <img  :src="shopInfo.comment[0].img" alt /> -->
-          <span>评论（{{shopInfo.productComment.length}}）</span>
+          <span>评论（{{comment.length}}）</span>
         </div>
-        <router-link to="/details_comment">
+        <router-link :to="{path:'/details_comment',query:{id:1}}">
         <div style="color:gray;display:flex">查看全部评论<img style="width:.3rem;height:.3rem;padding:.25rem" src="../../static/img/right.png"></div>
         </router-link>
         
       </div>
-      <div v-for="(v,i) in shopInfo.productComment" :key="i" style="margin-bottom:.1rem">
+      <div v-for="(v,i) in comment" :key="i" style="margin-bottom:.1rem">
         <div class="details_time details_comment">
           
-          <span style="display:flex"><img class="touxiang" :src="v.img" alt="">{{v.username}}</span>
+          <span style="display:flex"><img class="touxiang" :src="v.img" alt="">{{v.userName}}</span>
           <!-- <span>{{v.time}}</span> -->
         </div>
-        <div class="details_time details_comment">{{v}}</div>
+        <div class="details_time details_comment">{{v.commentDetails}}</div>
       </div>
     </div>
     <!-- 详情图 -->
@@ -80,8 +80,8 @@
           <span>{{shopInfo.productStorage}}</span>
         </div>
       </div>
-      <div v-for="(v,i) in shopInfo.productImages" :key="i" style="margin:auto .15rem">
-        <img style="width:100%;" :src="v" alt />
+      <div v-for="(v,i) in shopInfo.productDetailsImages" :key="i" style="width:100%;height:6rem;border:.01rem solid gray;margin:0 .15rem">
+        <img style="width:100%;height:100%;" :src="v" alt />
       </div>
     </div>
 
@@ -118,7 +118,8 @@ export default {
     return {
       Time: "",
       shopInfo: {},
-      num:1
+      num:1,
+      comment:{}
     };
   },
   methods: {
@@ -147,6 +148,14 @@ export default {
         params:{"subclassId":id}//get发送数据方式1
       }).then((ok)=>{
       this.shopInfo=ok.data[0]
+          console.log(ok.data)
+      })
+      this.axios({
+          url:"http://39.97.247.47:9999/agricultureProduct/common",//get发送数据方式2
+          method:"get",
+        params:{"pid":id}//get发送数据方式1
+      }).then((ok)=>{
+      this.comment=ok.data
           console.log(ok.data)
       })
   }
