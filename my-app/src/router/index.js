@@ -29,8 +29,10 @@ import Hequlife from '../pages/Hequlife'
 import Ddyvs from '../pages/ddyvs'
 import Searchdel from '../pages/searchdel'
 
+
 import ContainerContent from '../components/index/containercontent'
 import Consult from '../pages/consult'
+
 
 
 Vue.use(Router)
