@@ -40,7 +40,7 @@
     <!-- 分享 -->      
 </div>
 <div v-show="boola" id="zhezhao">
-        <div id="boxBig" ></div>
+        <div id="boxBig" @click="fund()"></div>
         <div id="boxa"> 
             <div id="box1a">
                 <div><img src="../../static/img/weia.png"><p>微信</p></div>
@@ -92,6 +92,10 @@ export default {
         func(){
             this.boola=true   
             document.body.style.overflow='hidden';
+        },
+        fund(){
+            this.boola =false 
+            document.body.style.overflow='';//出现滚动条  
         },
         funyyzd(){
             this.boola =false
