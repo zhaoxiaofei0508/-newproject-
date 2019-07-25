@@ -35,6 +35,7 @@ import Searchdel from '../pages/searchdel'
 import ContainerContent from '../components/index/containercontent'
 import Consult from '../pages/consult'
 import Map from '../pages/map'
+import Cs from '../pages/cs'
 
 
 Vue.use(Router)
@@ -46,6 +47,11 @@ export default new Router({
       name: 'Index',
       component: Index
     },  
+     {
+      path: '/cs',
+      name: 'Cs',
+      component: Cs
+    }, 
     {
       path: '/home',
       name: 'Home',
