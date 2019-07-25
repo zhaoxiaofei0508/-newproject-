@@ -5,6 +5,7 @@
             <LunBoTop :text="lundetailstop.title" :feixing="lundetailstop.imgurla" :shopping1="lundetailstop.imgurlb"></LunBoTop>
             <Lunmiddle  :img="lunmiddle.imgurl" ></Lunmiddle>
             <Video :imgurl="video[0].imgurl"></Video>
+            <Shiyanzhong :good="goods"  :title="lundetailstop.title"></Shiyanzhong>
             <DetailsNav></DetailsNav>
             <Shiyanzhong :good="goods"  :title="lundetailstop.title"></Shiyanzhong>
             <Video :imgurl="video[1].imgurl"></Video>
