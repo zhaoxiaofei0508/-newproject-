@@ -75,7 +75,7 @@ export default {
                 method:"get",
                 params:{userName:this.username} //get发送数据方式
                 }).then((ok)=>{
-                    // console.log(ok)
+                    console.log(ok)
                  if(ok.data==true){
                        this.namea="用户名已存在！"
                  }
