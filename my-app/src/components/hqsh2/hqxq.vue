@@ -7,8 +7,12 @@
                     <div class="f3">{{v.Lifearrname}}</div>
                     <div class="f4">{{v.Lifearryuefen}}</div>
                 </div>
-                <div class="wf3">
-                        <div>...</div>
+                <div class="wf3" @click="funcc(i)">
+                    <div>...</div>
+                </div>
+                 <div class="jubao" style="display:none">
+                    <span></span>   
+                    <div class="ju">举报</div>
                 </div>
             </div>
             <div class="wf4">
@@ -55,6 +59,7 @@ export default {
     data(){
         return{    
             bool:true,
+            // jubao1:false
         }
     },
     methods:{
@@ -76,10 +81,17 @@ export default {
            let dianArr=document.querySelectorAll(".icon-dianzan")
            dianArr[index].style.color="red"
            dianArr[index].style.fontWeight=600
-           if(dianArr[index].firstChild.innerHTML<0){
-
-           }
+           dianArr[index].firstChild.innerHTML++
            
+       },
+       funcc(index){
+            let jubao1=document.querySelectorAll(".jubao")
+                // console.log(index)
+            if(jubao1[index].style.display=="none"){
+                jubao1[index].style.display="block"
+            }else{
+                jubao1[index].style.display="none"
+            }
        }
     }
 
@@ -93,6 +105,34 @@ export default {
         border-radius: 0.2rem;
         margin: 0.2rem 0 ;
         box-shadow: 2px 3px 10px rgb(223, 47, 76);
+        position: relative;
+    }
+    .jubao{
+        position: absolute;
+        top:0.3rem;
+        right: 0.2rem;
+        width:1.5rem;
+    }
+    .ju{
+        width: 0.8rem;
+        height: 0.5rem;
+        position: absolute;
+        background-color: rgb(175, 149, 138);
+        top:0.4rem;
+        font-size: 0.1rem;
+        text-align: center;
+        line-height: 0.5rem;
+        right: 0.1rem;
+        color: aliceblue;
+    }
+    .jubao>span{
+        width: 0;
+        height: 0;
+        border: 6px solid transparent;
+        border-bottom-color: rgba(138, 138, 122, 0.925);
+        position: absolute;
+        top:0.2rem;
+        right: 0.1rem;
     }
     .f1{
         width: 100%;
@@ -107,7 +147,7 @@ export default {
         border-radius: 50%;
         overflow: hidden;
         margin-left: 0.4rem;
-        margin-top: 0.1rem;
+        margin-top: 0.2rem;
     }
     #wf1>img{
         width: 100%;
@@ -144,12 +184,16 @@ export default {
     }
     .wf5{
         height: 1.5rem;
-        font-size: 0.3rem;
+        font-size: 0.2rem;
+        margin: 0 0.4rem;
     }
     .wf5>div>p{
-        width: 40%;
-        padding: 0 0.4rem;
+        width: 30%;
+        /* padding: 0 0.3rem; */
         color: black;
+    }
+    .wf5>div{
+        margin: 0.15rem 0;
     }
 
     .wfe{
@@ -215,6 +259,6 @@ export default {
         width: 0.1rem;
         height: 0.1rem;
         border-radius: 50%;
-        background-color: yellow;
+        /* background-color: yellow; */
     }
 </style>

@@ -40,7 +40,7 @@
     <!-- 分享 -->      
 </div>
 <div v-show="boola" id="zhezhao">
-        <div id="boxBig" ></div>
+        <div id="boxBig" @click="fund()"></div>
         <div id="boxa"> 
             <div id="box1a">
                 <div><img src="../../static/img/weia.png"><p>微信</p></div>
@@ -72,7 +72,7 @@ export default {
             ida:"",
             bool:false,
             getdas:"",
-            loading:"true",
+            loading: true,
             boola:false,
         }
     },
@@ -93,6 +93,10 @@ export default {
             this.boola=true   
             document.body.style.overflow='hidden';
         },
+        fund(){
+            this.boola =false 
+            document.body.style.overflow='';//出现滚动条  
+        },
         funyyzd(){
             this.boola =false
             document.body.style.overflow='';//出现滚动条
@@ -112,13 +116,13 @@ export default {
         setTimeout(function(){
             that.loading=false//loading
         },1000)
+
         this.axios({
             url:"/link/zxf/data",
             method: "get",
         }).then((ok)=>{
             // console.log(ok)
             this.ida=this.$route.params.id; 
-            
             this.hequ=ok.data.hqsh
             this.getdas = this.hequ.filter((v,i)=>{
                 if(this.ida==v.id){
