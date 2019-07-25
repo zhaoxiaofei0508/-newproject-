@@ -72,7 +72,7 @@ export default {
             ida:"",
             bool:false,
             getdas:"",
-            loading:"true",
+            loading: true,
             boola:false,
         }
     },
@@ -115,14 +115,14 @@ export default {
         let that=this
         setTimeout(function(){
             that.loading=false//loading
-        },5000)
+        },1000)
+
         this.axios({
             url:"/link/zxf/data",
             method: "get",
         }).then((ok)=>{
             // console.log(ok)
             this.ida=this.$route.params.id; 
-            
             this.hequ=ok.data.hqsh
             this.getdas = this.hequ.filter((v,i)=>{
                 if(this.ida==v.id){

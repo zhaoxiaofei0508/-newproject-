@@ -317,7 +317,10 @@
                 "clost":"交易关闭"
             },
             "img":"../../../static/indeximg/list2.png",
-            "price":"25"
+            "price":"25",
+            "num":"2",
+            "orderLogistics": "宝宝丫,你都没买",
+            "sta":"1"
         },
         {
             "id":"03002",
@@ -328,7 +331,10 @@
                 "clost":"交易关闭"
             },
             "img":"../../../static/no_orderimg/qiandao.png",
-            "price":"25"
+            "price":"25",
+            "num":"3",
+            "orderLogistics": "路上",
+            "sta":"1"
         }
     ]
 }

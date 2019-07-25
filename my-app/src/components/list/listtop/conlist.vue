@@ -1,16 +1,22 @@
 <template>
     <div class="wf">
         <div class="wfaaa">
+     
             <img :src="imgurl" alt="">
+
         </div>
         <div class="wfbbb">
             <div class="wfa1">{{title}}</div>
             <div class="wfddd">{{content}}</div>
             <div>
                 <div class="wfp">{{price}}</div>
-                <div class="wfl" @click.stop="shpping(product)">
+                <div class="ball-container">
+                    
+                </div>
+                <div class="wfl" @click.stop="shpping(product,$event)">
                     <img src="../../../../static/img/h-cart.png" alt="">
-                    </div>
+                </div>
+
             </div>
 
         </div>
@@ -22,6 +28,11 @@
 <script>
 
 export default {
+    data() {
+        return {
+          
+        }
+    },
     props:{
         title:String,
         content:String,
@@ -31,20 +42,25 @@ export default {
 
     },
     methods: {
-       shpping(product){
+
+       shpping(product,el){
+
            var num  = 1
 
 
-           
-        // //    console.log(product);
-        //  this.$route.push({num:1,id:product}) 
-        // //  this.$route.push("/carshop/"+num+"/"+product)     
+      
        }
+
+   
     },
     
 }
 </script>
 <style scoped>
+
+.fade{
+    opacity:0;
+}
 .wf{
     height: 2rem;
     margin-top: .2rem;

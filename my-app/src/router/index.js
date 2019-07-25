@@ -38,6 +38,7 @@ import Consult from '../pages/consult'
 import Zhanghu from '../pages/zhanghu'
 import Orderdetail from '../pages/orderdetail'
 import Map from '../pages/map'
+import Cs from '../pages/cs'
 
 
 
@@ -50,6 +51,11 @@ export default new Router({
       name: 'Index',
       component: Index
     },  
+     {
+      path: '/cs',
+      name: 'Cs',
+      component: Cs
+    }, 
     {
       path: '/home',
       name: 'Home',
@@ -219,7 +225,7 @@ export default new Router({
       component: Zhanghu
     },
     {
-      path: '/orderdetail',
+      path: '/orderdetail/:sel',
       name: 'Orderdetail',
       component: Orderdetail
     },
