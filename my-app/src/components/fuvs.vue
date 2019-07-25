@@ -13,7 +13,7 @@
                 <p>{{arr[2].title}}</p>    
       </div>
       <div class="cc" @click="fuun1()" :style=colorshopcar>
-                <i class="shopcarnum">2</i>
+                <i class="shopcarnum">{{newVal}}</i>
                 <span  class="iconfont icon-icontab_shop_sel" ></span>
                 <p>{{arr[3].title}}</p> 
       </div>
@@ -29,6 +29,7 @@ export default {
      data(){
 
             return{
+              newVal:0,
                   arr:[
                         {"title":"首页","img":"../../../static/img/6.png","link":"/index"},
                         {"title":"分类","img":"../../../static/img/7.png","link":"/fenlei"},
@@ -80,6 +81,7 @@ export default {
 
              },
     created(){
+      this.newVal = 1
         this.axios({
           url:"/link/data",
           method:"get"
@@ -90,10 +92,15 @@ export default {
                   // this.bool=false;
         })
         //  this.obj=this.$route.params.id
-    },   
+    },  
+    mounted(){
+      sessionStorage.setItem('watchStorage', 0)
+       window.addEventListener('setItem', ()=> {
+	              this.newVal++
+            })
     }
+}
 </script>
-
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .dd{
@@ -120,6 +127,7 @@ z-index: 999;
   font-size:.24rem;
   }
 .cc .iconfont{
+  font-size: .65rem;
   width:.65rem;
   font-size: 28px;
   margin-top: .18rem;
