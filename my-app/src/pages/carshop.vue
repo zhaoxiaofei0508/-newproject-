@@ -106,7 +106,7 @@ export default {
            
             //    console.log(val.data.arr)
             if(val.data.arr==""){
-                 this.bool=true
+                 this.bool=false
                 
             }else{
                 this.bool=false

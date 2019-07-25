@@ -1,7 +1,7 @@
 <template>
 <div>
     <div class="wf1 wf0">
-        <div class="wf2" @click="funcc"><img src="../../static/img/h-navf1.png"></div>
+        <div class="wf2" @click="funabc"><img src="../../static/img/h-navf1.png"></div>
         <div class="wf3">更改密码</div>
     </div>
     <div>
@@ -184,9 +184,8 @@ export default {
         }
     },
      methods: {
-        funcc(){
+        funabc(){
             this.$router.go(-1)
-
         },
         onclicknum(nums) {
             if (this.pawssword.length < 6) {
