@@ -1,8 +1,8 @@
 <template>
   <div>
-    <Top></Top>
-
-    <div class="lol" v-if="bool">
+    <div style="height:1.5rem;background:rgb(116, 192, 255);position:absolute;top:0;width:100%;text-align:center;font-size:.rem;line-height:1.5rem;color:white">购物车</div>
+    <div style="height:1.5rem"></div>
+    <div class="lol" v-if="bool" >
       <img src="../../static/img/11.png" />
       <p>购物车无商品</p>
       <br />
@@ -52,12 +52,12 @@
         </div>
       </div>
  
-      <div class="kkvs"></div>
+      <!-- <div class="kkvs"></div> -->
 
       <div class="btn">
         <input type="checkbox" v-model="allChecked" @click="handleChecked()" style="width:.4rem;height:.4rem;margin:.41rem .15rem" />
         <span style="font-size:.4rem;">合计: </span>
-        <span style="font-size:.4rem"> ￥{{allprice}}</span>
+        <span style="font-size:.4rem;color:red"> ￥{{allprice}}</span>
         <input
           type="button"
           value="结算"
@@ -69,7 +69,8 @@
       {{newarr}}
       <!-- <Jsk></Jsk>   -->
     </div>
-    <div class="gg" style="height:2.6rem"></div>
+    <div style="height:3rem"></div>
+    <!-- <div class="gg" style="height:2.6rem"></div> -->
     <Fuvs
       :colorindex="Colorqita"
       :colorfenlei="Colorqita"
@@ -82,20 +83,20 @@
 <script>
 import Liebiao from "../components/liebiaovs";
 import Fuvs from "../components/fuvs";
-import Top from "../components/topbar";
+
 // import Jsk from "../components/jsk"
 
 export default {
-  components: { Fuvs, Top, Liebiao },
+  components: { Fuvs,  Liebiao },
   data() {
     return {
       obj: [],
       bool: true,
       goodid: [],
       //  arr:[],
-      allChecked: true,
+      allChecked:false,
       allprice: 0,
-      checked: false,
+      // checked: false,
       Colorqita: "color:black",
       Colorshopcar: "color:blue",
       io: []
@@ -115,70 +116,7 @@ export default {
   //   }
   // },
 
-  computed:{
-       newarr(){
-         for(var i=0;i<this.obj.length;i++){
-           if(this.obj[i].checked){
-             if (this.goodid.indexOf(this.obj[i].shopId) == -1) {
-                      this.goodid.push(this.obj[i].shopId)
-                  }
-            //  this.goodid.push(this.obj[i].shopId)
-
-           }else{
-               this.goodid.splice(i, 1);
-           }
-         }  
-         return this.goodid
-       }
-    
-  },
-  created(){
-    this.io=localStorage["userid"]
- 
-  },
-  // 发送用户id渲染页面
-  mounted() {
-         var ann=this.io
-    this.axios({
-           
-      url:"http://39.97.247.47:9999/shop/loadByUserIdShowShop?userId="+ann,
-      // url: "/line/date",
-      method: "get"
-    }).then(val => {
-      // console.log(val);
-      if (val.data== "") {
-        this.bool = true;
-      } else {
-        this.bool = false;
-      }
-
-      this.obj = val.data;
-      console.log(this.obj)
-      // console.log(val.data);
-      // this.bool=false;
-    });
-  },
-
-
-  
-
-  //  数据更新时发送数据到后台
-  //  updated() {
-  //                 //   var aoo=this.newarr
-  //                 //  this.axios({
-  //                 //     url:"http://localhost:3009/get?uname="+aoo,
-  //                 //     method:"get",
-
-  //                 //     })
-
-
-                  
-
-  //  },
-
-  // console.log(this.abb)
-
-  methods: {
+          methods: {
     // 修改时发送数据到后台
     funa(i) {
       this.obj[i].shopNum++;
@@ -249,24 +187,31 @@ export default {
       this.hh();
     },
 
-    handleChecked(item) {
+
+
+
+
+  handleChecked() {
       //全选
       if (this.allChecked == false) {
         for (var i = 0; i < this.obj.length; i++) {
-          var item = this.obj[i];
-          item.checked = true;
-
+          var v = this.obj[i];
+          v.checked = true;
+     this.obj[i].shopNum=1
           this.hh();
+         
         }
       } else {
         //取消全选
         for (var i = 0; i < this.obj.length; i++) {
-          var item = this.obj[i];
-          item.checked = false;
+          var v = this.obj[i];
+          v.checked = false;
+          this.obj[i].shopNum=0
         }
         this.hh();
       }
       this.allChecked = !this.allChecked;
+
     },
 
     hh: function() {
@@ -298,18 +243,105 @@ export default {
       // });
       // console.log(abb);
     }
-  }
+  },
+
+
+
+  
+ 
+  computed:{
+       newarr(){
+         for(var i=0;i<this.obj.length;i++){
+           if(this.obj[i].checked){
+             if (this.goodid.indexOf(this.obj[i].shopId) == -1) {
+                      this.goodid.push(this.obj[i].shopId)
+                  }
+            //  this.goodid.push(this.obj[i].shopId)
+
+           }
+          //  else if(this.allChecked == true){
+          //     if (this.goodid.indexOf(this.obj[i].shopId) == -1) {
+          //             this.goodid.push(this.obj[i].shopId)
+          //         }
+          //  }
+          //  else if(this.allChecked==false){
+          //     {
+          //             this.goodid=[]
+          //         }
+          //  }
+           else{
+               this.goodid.splice(i, 1);
+           }
+         }  
+         return this.goodid
+       }
+    
+  },
+
+  
+  created(){
+    this.io=localStorage["userid"]
+ 
+  },
+  // 发送用户id渲染页面
+  mounted() {
+         var ann=this.io
+    this.axios({
+           
+      url:"http://39.97.247.47:9999/shop/loadByUserIdShowShop?userId="+ann,
+      // url: "/line/date",
+      method: "get"
+    }).then(val => {
+      // console.log(val);
+      if (val.data== "") {
+        this.bool = true;
+      } else {
+        this.bool = false;
+      }
+
+      this.obj = val.data;
+      console.log(this.obj)
+      // console.log(val.data);
+      // this.bool=false;
+    });
+  },
+
+
+  
+
+  //  数据更新时发送数据到后台
+  //  updated() {
+  //                 //   var aoo=this.newarr
+  //                 //  this.axios({
+  //                 //     url:"http://localhost:3009/get?uname="+aoo,
+  //                 //     method:"get",
+
+  //                 //     })
+
+
+                  
+
+  //  },
+
+  // console.log(this.abb)
+
+ 
 };
 </script>
 <style scoped>
 .lol{
   z-index: 5;
   font-size:.6rem;
+  overflow: hidden;
+  text-align:center
+
+
 }
 .shopBody{
   font-size: 0.3rem;
   padding:.15rem;
-  background: rgb(233, 157, 169);
+  background: white;
+  margin-bottom:10px;
 }
 .shopbox{
   display: flex;
@@ -344,6 +376,7 @@ export default {
 .shopBodyreightlll{
   width: 80%
 }
+
 .shopBodyreightrrr{
    width: 20%;
   display:flex;
@@ -359,6 +392,7 @@ export default {
   background: white;
   bottom: 1.3rem;
 }
+img{width:5rem}
 html,
 body {
   background: gray;
