@@ -7,14 +7,14 @@
         </div>
         <!-- <p v-else>待配送</p> -->
         <div v-else> 
-            <All_order :data="arrOrder"></All_order>
+            <Successfully :data="arrOrder"></Successfully>
         </div>
     </div>
 </template>
 <script>
 import Order from '../components/order/order'
 import No_order from '../components/order/no_order'
-import All_order from '../components/order/all_order'
+import Successfully from '../components/order/successfully'
 export default {
     data(){
         return{
@@ -25,7 +25,7 @@ export default {
     components:{
         Order,
         No_order,
-        All_order
+        Successfully
     },
      mounted() {
         this.axios({

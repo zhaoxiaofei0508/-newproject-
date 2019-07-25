@@ -7,8 +7,9 @@
             <img src="../../../static/no_orderimg/search.png" alt="" class="oimg">
         </div>
         <!-- </router-link> -->
-            <img src="../../../static/img/11.png" alt="" class="oimg2">
-            <!-- <img :src="arr" alt="" class="oimg2"> -->
+            <!-- <img src="../../../static/img/11.png" alt="" class="oimg2"> -->
+            <p v-show="bool" @click="login()">请登录哦！</p>
+            <img :src="arr1" alt="" class="oimg2" v-show="!bool">
     </div>
 </template>
 <script>
@@ -19,26 +20,36 @@ export default {
         },
         fun(){
             this.$router.push("/mysearch")
-        } 
+        },
+        login(){
+            this.$router.push("/denglu")
+        }
     },
     data(){
         return {
-            // arr:"../../../static/img/11.png"
-            arr:[]
+            arr1:"../../../static/no_orderimg/loginsuccessfully.png",
+            arr:[],
+            bool:true,
+            username:"",
         }
     },
     created() {
     // var search= this.$route.params.search
-        // this.axios({
-        //     url:"http://39.97.247.47:9999/agricultureProduct/findLike",
-        //     method:"get",
-        //     // params:{"productName":search} 
-        //     }).then((ok)=>{
-        //         // console.log(ok.data);
-        //         this.arr=ok.data
+        this.axios({
+            url:"http://39.97.247.47:9999/user/findByUserNameByUserPassword",
+            method:"post",
+            // params:{"productName":search} 
+            }).then((ok)=>{
+                // console.log(ok.data);
+                // this.arr=ok.data
+                if(localStorage.lastname==0){
+                    this.bool=true;
+                }else{
+                    this.bool=false
+                }
                 
-        // })
-
+        })
+        
 
         
         // this.axios({
@@ -74,13 +85,12 @@ input{
     border-radius: 20px;
     border:none;
     outline: none;
-    padding-left:.8rem;
+    padding-left:.9rem;
 }
 .oimg{
-    position: absolute;
-    left: 26%;
-    top: 29%;
-    width: .5rem;
+    position: relative;
+    left: -3.6rem;
+    width: .4rem;
 }
 .oimg2{
     width: .7rem;
@@ -90,6 +100,10 @@ i{
     font-size: .5rem;
     color:beige;
     margin-right: 10px;
+}
+p{
+    font-size: .26rem;
+    color:darkslategray;
 }
 
 </style>

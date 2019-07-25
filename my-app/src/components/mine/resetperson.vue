@@ -206,10 +206,14 @@ i{
 input{
     border:0;
     outline: none;
+    text-align: right;
+    color: darkgrey;
 }
 textarea{
     border:0;
     outline: none;
     resize: none;
+    text-align: right;
+    color: darkgrey;
 }
 </style>
