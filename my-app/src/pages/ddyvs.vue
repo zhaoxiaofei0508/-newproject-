@@ -50,6 +50,9 @@
            border:none;outline:none;position:absolute;top:0px;right:15px;font-size:.3rem;background:#74C0FF;">
 
         </div>
+
+
+  
        
     </div>
 </template>
@@ -62,7 +65,8 @@ export default {
     data(){
         return{
             obj:[],
-            apq:1
+            apq:1,
+          
          
         }
     },

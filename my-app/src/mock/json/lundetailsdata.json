@@ -10,30 +10,28 @@
                 {"imgurl":"../../../../static/img/banner.png","color":"#00bdf7"}
             ]
         },
-       
         {"goods":
             [
-                {"imgurl":"../../../../static/img/a1.png","title":"小龙虾神鲜桶（麻辣）","outprice":"100","price":"90.00","car":"../../../../static/img/a2.png"},
-                {"imgurl":"../../../../static/img/a1.png","title":"小龙虾神鲜桶（麻辣）","outprice":"100","price":"90.00","car":"../../../../static/img/a2.png"},
-                {"imgurl":"../../../../static/img/a1.png","title":"小龙虾神鲜桶（麻辣）","outprice":"100","price":"90.00","car":"../../../../static/img/a2.png"},
-                {"imgurl":"../../../../static/img/a1.png","title":"小龙虾神鲜桶（麻辣）","outprice":"100","price":"90.00","car":"../../../../static/img/a2.png"},
-                {"imgurl":"../../../../static/img/a1.png","title":"小龙虾神鲜桶（麻辣）","outprice":"100","price":"90.00","car":"../../../../static/img/a2.png"},
-                {"imgurl":"../../../../static/img/a1.png","title":"小龙虾神鲜桶（麻辣）","outprice":"100","price":"90.00","car":"../../../../static/img/a2.png"},
-                {"imgurl":"../../../../static/img/a1.png","title":"小龙虾神鲜桶（麻辣）","outprice":"100","price":"90.00","car":"../../../../static/img/a2.png"},
-                {"imgurl":"../../../../static/img/a1.png","title":"小龙虾神鲜桶（麻辣）","outprice":"100","price":"90.00","car":"../../../../static/img/a2.png"},
-                {"imgurl":"../../../../static/img/a1.png","title":"小龙虾神鲜桶（麻辣）","outprice":"100","price":"90.00","car":"../../../../static/img/a2.png"},
-                {"imgurl":"../../../../static/img/a1.png","title":"小龙虾神鲜桶（麻辣）","outprice":"100","price":"90.00","car":"../../../../static/img/a2.png"},
-                {"imgurl":"../../../../static/img/a1.png","title":"小龙虾神鲜桶（麻辣）","outprice":"100","price":"90.00","car":"../../../../static/img/a2.png"},
-                {"imgurl":"../../../../static/img/a1.png","title":"小龙虾神鲜桶（麻辣）","outprice":"100","price":"90.00","car":"../../../../static/img/a2.png"},
-                {"imgurl":"../../../../static/img/a1.png","title":"小龙虾神鲜桶（麻辣）","outprice":"100","price":"90.00","car":"../../../../static/img/a2.png"},
-                {"imgurl":"../../../../static/img/a1.png","title":"小龙虾神鲜桶（麻辣）","outprice":"100","price":"90.00","car":"../../../../static/img/a2.png"},
-                {"imgurl":"../../../../static/img/a1.png","title":"小龙虾神鲜桶（麻辣）","outprice":"100","price":"90.00","car":"../../../../static/img/a2.png"},
-                {"imgurl":"../../../../static/img/a1.png","title":"小龙虾神鲜桶（麻辣）","outprice":"100","price":"90.00","car":"../../../../static/img/a2.png"},
-                {"imgurl":"../../../../static/img/a1.png","title":"小龙虾神鲜桶（麻辣）","outprice":"100","price":"90.00","car":"../../../../static/img/a2.png"},
-                {"imgurl":"../../../../static/img/a1.png","title":"小龙虾神鲜桶（麻辣）","outprice":"100","price":"90.00","car":"../../../../static/img/a2.png"},
-                {"imgurl":"../../../../static/img/a1.png","title":"小龙虾神鲜桶（麻辣）","outprice":"100","price":"90.00","car":"../../../../static/img/a2.png"},
-                {"imgurl":"../../../../static/img/a1.png","title":"小龙虾神鲜桶（麻辣）","outprice":"100","price":"90.00","car":"../../../../static/img/a2.png"}
-
+                {"imgurl":"../../../../static/img/a1.png","title":"小龙虾神鲜桶（麻辣）","tejia":"特价","num":1,"outprice":"100","price":"90.00","type":"/份","car":"../../../../static/img/a2.png"},
+                {"imgurl":"../../../../static/img/yyz1.png","title":"鲍鱼 21-24头/500g","tejia":"每满15件减14.95元","num":1,"outprice":"100","price":"2.99","type":"/只","car":"../../../../static/img/a2.png"},
+                {"imgurl":"../../../../static/img/yyz2.gif","title":"鲜活南美白虾（基围虾）","num":0,"outprice":"100","price":"39.90","type":"/500g","car":"../../../../static/img/a2.png"},
+                {"imgurl":"../../../../static/img/yyz3.gif","title":"活面包蟹","tejia":"特价","num":1,"outprice":"99.00","price":"88.00","type":"/只","car":"../../../../static/img/a2.png"},
+                {"imgurl":"../../../../static/img/yyz4.gif","title":"泰国金枕榴莲","tejia":"特价","num":1,"outprice":"25.90","price":"19.90","type":"/500g","car":"../../../../static/img/a2.png"},
+                {"imgurl":"../../../../static/img/yyz5.gif","title":"大荔冬枣 400g","tejia":"特价","num":1,"outprice":"29.90","price":"19.90","type":"/盒","car":"../../../../static/img/a2.png"},
+                {"imgurl":"../../../../static/img/yyz6.gif","title":"进口车厘子450g","tejia":"特价","num":1,"outprice":"69.90","price":"49.90","type":"/份","car":"../../../../static/img/a2.png"},
+                {"imgurl":"../../../../static/img/yyz7.gif","title":"澳洲牛腱肉 1Kg","tejia":"特价","num":1,"outprice":"78.00","price":"58.90","type":"/袋/","car":"../../../../static/img/a2.png"},
+                {"imgurl":"../../../../static/img/yyz8.gif","title":"纽蓝地牛肉卷 300g/盒","tejia":"买一赠一","num":1,"outprice":"59.00","price":"39.80","type":"/盒","car":"../../../../static/img/a2.png"},
+                {"imgurl":"../../../../static/img/yyz4.gif","title":"泰国金枕榴莲","tejia":"特价","num":1,"outprice":"25.90","price":"19.90","type":"/500g","car":"../../../../static/img/a2.png"},
+                {"imgurl":"../../../../static/img/yyz5.gif","title":"大荔冬枣 400g","tejia":"特价","num":1,"outprice":"29.90","price":"19.90","type":"/盒","car":"../../../../static/img/a2.png"},
+                {"imgurl":"../../../../static/img/yyz6.gif","title":"进口车厘子450g","tejia":"特价","num":1,"outprice":"69.90","price":"49.90","type":"/份","car":"../../../../static/img/a2.png"},
+                {"imgurl":"../../../../static/img/yyz7.gif","title":"澳洲牛腱肉 1Kg","tejia":"特价","num":1,"outprice":"78.00","price":"58.90","type":"/袋","car":"../../../../static/img/a2.png"},
+                {"imgurl":"../../../../static/img/yyz8.gif","title":"纽蓝地牛肉卷 300g/盒","tejia":"买一赠一","num":1,"outprice":"59.00","price":"39.80","type":"/盒","car":"../../../../static/img/a2.png"},
+                {"imgurl":"../../../../static/img/a1.png","title":"小龙虾神鲜桶（麻辣）","tejia":"特价","num":1,"outprice":"100","price":"90.00","type":"/份","car":"../../../../static/img/a2.png"},
+                {"imgurl":"../../../../static/img/yyz1.png","title":"鲍鱼 21-24头/500g","tejia":"每满15件减14.95元","num":1,"outprice":"100","price":"2.99","type":"/只","car":"../../../../static/img/a2.png"},
+                {"imgurl":"../../../../static/img/yyz2.gif","title":"鲜活南美白虾（基围虾）","num":0,"outprice":"100","price":"39.90","type":"/500g","car":"../../../../static/img/a2.png"},
+                {"imgurl":"../../../../static/img/yyz3.gif","title":"活面包蟹","tejia":"特价","num":1,"outprice":"99","price":"88.00","type":"/只","car":"../../../../static/img/a2.png"}
+               
+                
             ]
 
         }

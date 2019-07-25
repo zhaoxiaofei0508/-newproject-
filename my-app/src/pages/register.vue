@@ -71,7 +71,7 @@ export default {
                 if(nameb.test(this.username)==true){
                 this.namea="";
                 this.axios({
-                url:"http://39.97.247.47:8088/user/findByUserName",//get发送数据方式
+                url:"http://39.97.247.47:9999/user/findByUserName",//get发送数据方式
                 method:"get",
                 params:{userName:this.username} //get发送数据方式
                 }).then((ok)=>{
@@ -127,8 +127,9 @@ export default {
             var param=new URLSearchParams();
             param.append("email",this.useremail);
                 this.axios({
-                url:"http://39.97.247.47:8088/user/sendVerifyCode",
+                url:"http://39.97.247.47:9999/user/sendVerifyCode",
                 method:"post",
+                params:{userEmail:this.useremail},
             // post发送数据的时候使用data属性
             data:param
             }).then((ok)=>{
@@ -163,7 +164,7 @@ export default {
                     param.append("userPassword",this.userpwd);
                     param.append("userEmail",this.useremail);
                     this.axios({
-                    url:"http://39.97.247.47:8088/user/save",
+                    url:"http://39.97.247.47:9999/user/save",
                     method:"post",
                     // post发送数据的时候使用data属性
                     data:param
