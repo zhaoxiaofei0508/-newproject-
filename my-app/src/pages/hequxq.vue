@@ -3,16 +3,16 @@
     <div v-if="loading">
         <Loading ></Loading>
     </div>
-    <div v-else >
+    <div v-else>
         <!-- nav -->
             <div id="z3">
                 <span @click="fun1()">&lt;</span>
                 <p>{{getdas[0].title}}</p>
-                <img src="../../static/img/h14.png">
+                <img src="../../static/img/h14.png" @click="func()">
             </div>
 
         <!-- 详情 -->
-    <div class="round1">
+    <div>
         <div class="zxf1">
             <img src="../../static/img/h1.png" alt="as">
             <span class="zxf3">{{getdas[0].title}}</span>
@@ -21,7 +21,7 @@
         <div class="z1">
             <span v-if="bool" @click="funa()">{{getdas[0].content}}</span>
             <strong v-else @click="funb()">{{getdas[0].content}}</strong>
-            <b @click="fun()" v-if="!bool" class="duo">全文</b>
+            <b @click="fun()" v-if="!bool" class="duo">查看全文</b>
             <img :src="getdas[0].imgurl" alt="">
             <!-- 购买详情 -->
             <div class="z2" @click="funz(getdas[0].Tuijianid)">
@@ -36,10 +36,25 @@
                 <Hqxq :newgetdas="getdas"></Hqxq>
             </div>   
         </div>
-  
     </div>
-        
+    <!-- 分享 -->      
 </div>
+<div v-show="boola" id="zhezhao">
+        <div id="boxBig" @click="fund()"></div>
+        <div id="boxa"> 
+            <div id="box1a">
+                <div><img src="../../static/img/weia.png"><p>微信</p></div>
+                <div><img src="../../static/img/weib.png"><p>朋友圈</p></div>
+                <div><img src="../../static/img/weic.png" ><p>盒口令</p></div>
+                <div><img src="../../static/img/qq.png" ><p>QQ</p></div>
+            </div>
+            <div id="box2a">
+                <div><img src="../../static/img/weibo.png"><p>微博</p></div>
+                <div class="diva"><img src="../../static/img/feiding.png"><p>钉钉</p></div>
+            </div>
+            <p id="box3" @click="funyyzd()">取消</p>
+        </div>
+    </div>
 </div>   
 
 </template>
@@ -57,7 +72,8 @@ export default {
             ida:"",
             bool:false,
             getdas:"",
-            loading:"true"
+            loading:"true",
+            boola:false,
         }
     },
     methods:{
@@ -73,24 +89,40 @@ export default {
         funb(){
             this.bool=true;
         },
-
+        func(){
+            this.boola=true   
+            document.body.style.overflow='hidden';
+        },
+        fund(){
+            this.boola =false 
+            document.body.style.overflow='';//出现滚动条  
+        },
+        funyyzd(){
+            this.boola =false
+            document.body.style.overflow='';//出现滚动条
+            },
         funz(id){
             this.axios({
                 url:"",
                 method: "get",
             })
-            this.$router.push("/details")
-        }
+            this.$router.push("/details/"+id)
+        },
+        
     },
 
     created(){
+        let that=this
+        setTimeout(function(){
+            that.loading=false//loading
+        },5000)
         this.axios({
             url:"/link/zxf/data",
             method: "get",
         }).then((ok)=>{
             // console.log(ok)
             this.ida=this.$route.params.id; 
-            this.loading=false//loading
+            
             this.hequ=ok.data.hqsh
             this.getdas = this.hequ.filter((v,i)=>{
                 if(this.ida==v.id){
@@ -120,12 +152,6 @@ export default {
         height: 0.5rem;
         margin-top: 0.2rem;
     }
-    /* .zxf1>div{
-        height: 0.2rem;
-        width: 100%;
-        background-color: blue;
-        position: absolute;
-    } */
     .zxf3{
         font-size: 0.3rem;
         display: inline-block;
@@ -161,9 +187,9 @@ export default {
         font-size: 0.35rem;
         display: inline-block;
         position: absolute;
-        top:3.9rem;
-        right: 0.1rem;
-        color: rgb(16, 139, 139);
+        top:4.3rem;
+        right: 0.3rem;
+        color: rgb(89, 230, 61);
     }
     .z2{
         width: 100%;
@@ -200,15 +226,18 @@ export default {
         background-color: rgb(54, 114, 226);
         position: fixed;
         top: 0;
-        z-index: 9999;
+        z-index: 9;
     }
     #z3>span{
         color: aliceblue;
         font-size: 0.5rem;
     }
     #z3>p{
+        
         font-size: 0.3rem;
-        color: aliceblue;   
+        color: aliceblue; 
+        /* line-height: 0.8rem;
+        height: 0.8rem;   */
     }
     #z3>img{
         width: 0.5rem;
@@ -216,5 +245,61 @@ export default {
         display: inline-block;
         margin-top: 0.2rem;
     }
-   
+    #boxBig{
+    width: 100%;
+    height: 100rem;
+    position: absolute;
+    top: 0;
+    background-color:black;
+    z-index: 10;
+    opacity: 0.6;
+}
+ #boxa{
+    width: 100%;
+    height: 5rem;
+    position: fixed;
+    bottom:0;
+    background-color: #fff;
+    z-index: 20;
+    
+}
+#box1a{
+    width: 80%;
+    height: 38%;
+    margin: 0 0.7rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+#box2a{
+    width: 80%;
+    height: 38%;
+     margin: 0 0.7rem;
+     display: flex;
+}
+#box2a div{
+    margin-left: 0.3rem;
+}
+#box2a>.diva{
+    margin-left: 0.72rem;
+} 
+img{
+    width: 0.8rem;
+    height: 0.8rem;
+    margin-top: 0.4rem;
+}
+#boxa p{
+    font-size:14px;
+    color:black;
+    text-align: center;
+    margin-top: -0.26rem;
+}
+#box3{
+    width: 100%;
+    height: 20%;
+    border-top:1px solid #afafaf;
+    line-height: 1.2rem;
+    font-size: 18px;
+    margin-top: 0;
+}
 </style>

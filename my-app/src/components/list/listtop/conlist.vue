@@ -8,7 +8,7 @@
             <div class="wfddd">{{content}}</div>
             <div>
                 <div class="wfp">{{price}}</div>
-                <div class="wfl" @click="shpping()">
+                <div class="wfl" @click.stop="shpping(product)">
                     <img src="../../../../static/img/h-cart.png" alt="">
                     </div>
             </div>
@@ -26,11 +26,20 @@ export default {
         title:String,
         content:String,
         price:String,
-        imgurl:String
+        imgurl:String,
+        product:Number
 
     },
     methods: {
-       
+       shpping(product){
+           var num  = 1
+
+
+           
+        // //    console.log(product);
+        //  this.$route.push({num:1,id:product}) 
+        // //  this.$route.push("/carshop/"+num+"/"+product)     
+       }
     },
     
 }
@@ -38,6 +47,7 @@ export default {
 <style scoped>
 .wf{
     height: 2rem;
+    margin-top: .2rem;
 }
 .wfaaa{
     width: 40%;
@@ -55,6 +65,7 @@ export default {
     width: 58%;
     border-bottom: 1px solid rgb(241, 241, 241);
     margin-right: .1rem;
+    padding-bottom: .4rem;
 
 
 }
@@ -76,10 +87,11 @@ export default {
     margin-top: .12rem;
 }
 .wfp{
-    font-size: 0.4rem;
+    font-size: 0.28rem;
     color: red;
     float: left;
     margin-top:0.2rem;
+
 }
 .wfl{
     width: 0.6rem;
@@ -91,5 +103,7 @@ export default {
 .wfl img{
     width: 100%;
     height: 100%;
+    z-index: 11;
+
 }
 </style>

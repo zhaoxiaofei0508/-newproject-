@@ -56,6 +56,17 @@ export default {
       Fuvs,
       Indexhead
   },
+  // created() {
+
+  //           // 分类区数据
+  //          this.axios({
+  //             url:"http://39.97.247.47:8088/user/sendVerifyCode",//get发送数据方式
+  //               method:"get",
+
+  //           }).then((ok)=>{
+  //               this.Classifyarr = ok.data
+  //           })
+  // },
   data () {
     return {
       Colorindex:"color:#09bffe;box-shadow:0px 2px 6px #666;",
@@ -88,7 +99,8 @@ export default {
           {Classifyimg:"../../static/indeximg/type8.png",id:8,Classifytitle:"新鲜水果",type:"水果"},
           {Classifyimg:"../../static/indeximg/type9.png",id:8,Classifytitle:"新鲜水果",type:"水果"},
           {Classifyimg:"../../static/indeximg/type10.png",id:8,Classifytitle:"新鲜水果",type:"水果"},
-        ],
+        
+         ],
         // 超合算平价100外卖
         Suparr:[
           {Suptitle:"超合算",Supcontent:"【秒杀】玫瑰香葡萄16.9元",Supimg:"../../static/indeximg/sup1.png",type:"特价"},

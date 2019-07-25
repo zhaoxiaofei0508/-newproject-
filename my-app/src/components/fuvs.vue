@@ -129,6 +129,7 @@ z-index: 999;
 .cc .iconfont{
   font-size: .65rem;
   width:.65rem;
+  font-size: 28px;
   margin-top: .18rem;
 }
 .shopcarnum{

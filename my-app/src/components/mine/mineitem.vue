@@ -1,14 +1,22 @@
 <template>
-    <div class="box">
-        <div class="left">
-            <img :src="newdata.img" alt="">
-            <p>用户名：{{username}}</p>
+
+    <div class="big">
+        <div class="box">
+            <div class="left">
+                <router-link to="person"><img :src="newdata.img" alt=""></router-link>
+                <!-- <router-link to="person"><img :src="userimg" alt=""></router-link> -->
+                <p>用户名：{{username}}</p>
+            </div>
+            <div class="right">
+                <i class="iconfont icon-saoyisao"></i>
+                <i class="iconfont icon-ico"></i>
+            </div>
         </div>
-        <div class="right">
-            <i class="iconfont icon-saoyisao"></i>
-            <i class="iconfont icon-ico"></i>
+        <div class="bottom">
+            <p class="dp" @click="fun22()">昵称：{{alterusername}}</p>
+            <p class="dp" @click="fun()">我的账户：1111</p>
         </div>
-    </div>
+</div>
 </template>
 <script>
 export default {
@@ -16,27 +24,45 @@ export default {
         // 接受父组件传过来的数据
         'newdata'
     ],
+    methods: {
+        fun(){
+            this.$router.push("/zhanghu")
+        },
+        fun22(){
+            this.$router.push("/alterusername")
+        }
+    },
     data() {
         return {
-            username:""
+            username:"",
+            alterusername:"",
+            userimg:""
         }
     },
     created() {
         this.username =localStorage.lastname;
+        this.alterusername =localStorage.alterusername;
+
+        // this.userimg =localStorage.filename_1;
+        // console.log(this.userimg)
     },
 }
 </script>
 <style scoped>
 
-.box{
-    width: 90%;
-    height: 1.1rem;
+.big{
+      width: 90%;
+    height: 1.8rem;
+    border-bottom: 10px solid #10c6ff;
+    border-radius:5px;
     background-color: white;
     position: relative;
     left: .4rem;
     top: -27px;
-    border-bottom: 10px solid #10c6ff;
-    border-radius:5px;
+}
+.box{
+    width: 90%;
+    height: 1.1rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -56,5 +82,13 @@ p{
     font-size: .26rem; 
     color:#c9c9c9;
     margin-top: 15px;
+}
+.bottom{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.dp{
+    margin-top: .2rem;
 }
 </style>

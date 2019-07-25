@@ -7,8 +7,8 @@
             <i class="iconfont icon-kefu c_icon"></i></router-link>
         </div>
          <div class="head2" v-show="!showAbs" :style="opacityStyle">
-            <router-link to="/#"><i class="el-icon-setting c_icon"></i></router-link>
-            <router-link to="/#"><i class="iconfont icon-kefu c_icon"></i></router-link>
+            <router-link to="/my_set"><i class="el-icon-setting c_icon"></i></router-link>
+            <router-link to="/consult"><i class="iconfont icon-kefu c_icon"></i></router-link>
         </div>
         <div class="top">
             <div>
