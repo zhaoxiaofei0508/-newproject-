@@ -129,8 +129,9 @@ export default {
             //     console.log(this.ReinghtArr)
             //     })
     },
+       
     methods: {
-        
+      
         go(){
             this.$router.go(-1);
         },
@@ -151,7 +152,6 @@ export default {
                 }else{
                      Listdomarr[i].style.borderColor=""
                 }
-                 
             }
             this.bool=true
             localStorage.Listid=id

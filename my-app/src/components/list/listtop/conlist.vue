@@ -42,7 +42,6 @@ export default {
 
     },
     methods: {
-
        shpping(product,el){
 
            var num  = 1
