@@ -1,7 +1,7 @@
 <template>
 <div>
     <div class="wf1 wf0">
-        <div class="wf2" @click="funcc"><img src="../../static/img/h-navf1.png"></div>
+        <div class="wf2" @click="funabc"><img src="../../static/img/h-navf1.png"></div>
         <div class="wf3">更改密码</div>
     </div>
     <div>
@@ -43,27 +43,27 @@
         <div><input type="text" v-if="pawssword.length>4" v-model="fresh"></div>
         <div><input type="text" v-if="pawssword.length>5" v-model="fresh"></div>
         </div>
-        <table border="1px" cellspacing="0" cellpadding="0" align="center" width="80%">
+        <table cellspacing="0" cellpadding="0" align="center" width="80%">
             <tr>
                 <!-- click.stop阻止点击事件继续传播 -->
-                <td @click.stop="onclicknum(1)">1</td>
-                <td @click.stop="onclicknum(2)">2</td>
-                <td @click.stop="onclicknum(3)"> 3 </td>
+                <td class="anniu1" @click.stop="onclicknuma(1,0)">1</td>
+                <td class="anniu1" @click.stop="onclicknuma(2,1)">2</td>
+                <td class="anniu1" @click.stop="onclicknuma(3,2)"> 3 </td>
             </tr>
             <tr>
-                <td @click.stop="onclicknum(4)">4</td>
-                <td @click.stop="onclicknum(5)"> 5 </td>
-                <td @click.stop="onclicknum(6)"> 6</td>
+                <td class="anniu1" @click.stop="onclicknuma(4,3)">4</td>
+                <td class="anniu1" @click.stop="onclicknuma(5,4)"> 5 </td>
+                <td class="anniu1" @click.stop="onclicknuma(6,5)"> 6</td>
             </tr>
             <tr>
-                <td @click.stop="onclicknum(7)">7</td>
-                <td @click.stop="onclicknum(8)">8</td>
-                <td @click.stop="onclicknum(9)">9</td>
+                <td class="anniu1" @click.stop="onclicknuma(7,6)">7</td>
+                <td class="anniu1" @click.stop="onclicknuma(8,7)">8</td>
+                <td class="anniu1" @click.stop="onclicknuma(9,8)">9</td>
             </tr>
             <tr>
                 <td ></td>
-                <td @click.stop="onclicknum(0)">0</td>
-                <td @click.stop="onclickclear()">
+                <td class="anniu1" @click.stop="onclicknuma(0,9)">0</td>
+                <td class="anniu1" @click.stop="onclickcleara(10)">
                     <div>X</div>
                 </td>
             </tr>
@@ -84,27 +84,27 @@
         <div><input type="text" v-if="pawssword.length>4" v-model="fresh"></div>
         <div><input type="text" v-if="pawssword.length>5" v-model="fresh"></div>
         </div>
-        <table border="1px" cellspacing="0" cellpadding="0" align="center" width="80%">
+        <table cellspacing="0" cellpadding="0" align="center" width="80%">
             <tr>
                 <!-- click.stop阻止点击事件继续传播 -->
-                <td @click.stop="onclicknum(1)">1</td>
-                <td @click.stop="onclicknum(2)">2</td>
-                <td @click.stop="onclicknum(3)"> 3 </td>
+                <td class="anniu2" @click.stop="onclicknumb(1,0)">1</td>
+                <td class="anniu2" @click.stop="onclicknumb(2,1)">2</td>
+                <td class="anniu2" @click.stop="onclicknumb(3,2)"> 3 </td>
             </tr>
             <tr>
-                <td @click.stop="onclicknum(4)">4</td>
-                <td @click.stop="onclicknum(5)"> 5 </td>
-                <td @click.stop="onclicknum(6)"> 6</td>
+                <td class="anniu2" @click.stop="onclicknumb(4,3)">4</td>
+                <td class="anniu2" @click.stop="onclicknumb(5,4)"> 5 </td>
+                <td class="anniu2" @click.stop="onclicknumb(6,5)"> 6</td>
             </tr>
             <tr>
-                <td @click.stop="onclicknum(7)">7</td>
-                <td @click.stop="onclicknum(8)">8</td>
-                <td @click.stop="onclicknum(9)">9</td>
+                <td class="anniu2" @click.stop="onclicknumb(7,6)">7</td>
+                <td class="anniu2" @click.stop="onclicknumb(8,7)">8</td>
+                <td class="anniu2" @click.stop="onclicknumb(9,8)">9</td>
             </tr>
             <tr>
                 <td ></td>
-                <td @click.stop="onclicknum(0)">0</td>
-                <td @click.stop="onclickclear()">
+                <td class="anniu2" @click.stop="onclicknumb(0,9)">0</td>
+                <td class="anniu2" @click.stop="onclickclearb(10)">
                     <div>X</div>
                 </td>
             </tr>
@@ -125,27 +125,27 @@
         <div><input type="text" v-if="pawssword.length>4" v-model="fresh"></div>
         <div><input type="text" v-if="pawssword.length>5" v-model="fresh"></div>
         </div>
-        <table border="1px" cellspacing="0" cellpadding="0" align="center" width="80%">
+        <table  cellspacing="0" cellpadding="0" align="center" width="80%">
             <tr>
                 <!-- click.stop阻止点击事件继续传播 -->
-                <td @click.stop="onclicknum(1)">1</td>
-                <td @click.stop="onclicknum(2)">2</td>
-                <td @click.stop="onclicknum(3)"> 3 </td>
+                <td class="anniu3" @click.stop="onclicknumc(1,0)">1</td>
+                <td class="anniu3" @click.stop="onclicknumc(2,1)">2</td>
+                <td class="anniu3" @click.stop="onclicknumc(3,2)"> 3 </td>
             </tr>
             <tr>
-                <td @click.stop="onclicknum(4)">4</td>
-                <td @click.stop="onclicknum(5)"> 5 </td>
-                <td @click.stop="onclicknum(6)"> 6</td>
+                <td class="anniu3" @click.stop="onclicknumc(4,3)">4</td>
+                <td class="anniu3" @click.stop="onclicknumc(5,4)"> 5 </td>
+                <td class="anniu3" @click.stop="onclicknumc(6,5)"> 6</td>
             </tr>
             <tr>
-                <td @click.stop="onclicknum(7)">7</td>
-                <td @click.stop="onclicknum(8)">8</td>
-                <td @click.stop="onclicknum(9)">9</td>
+                <td class="anniu3" @click.stop="onclicknumc(7,6)">7</td>
+                <td class="anniu3" @click.stop="onclicknumc(8,7)">8</td>
+                <td class="anniu3" @click.stop="onclicknumc(9,8)">9</td>
             </tr>
             <tr>
                 <td ></td>
-                <td @click.stop="onclicknum(0)">0</td>
-                <td @click.stop="onclickclear()">
+                <td class="anniu3" @click.stop="onclicknumc(0,9)">0</td>
+                <td class="anniu3" @click.stop="onclickclearc(10)">
                     <div>X</div>
                 </td>
             </tr>
@@ -176,7 +176,7 @@ export default {
             b:"",
             c:"",
             d:"",
-            all:"",
+            all:"请输入密码",
             l:"",
             ll:"",
             lll:"",
@@ -184,19 +184,71 @@ export default {
         }
     },
      methods: {
-        funcc(){
+        funabc(){
             this.$router.go(-1)
-
         },
-        onclicknum(nums) {
+        onclicknuma(nums,index) {
+            let anniu1arr=document.querySelectorAll(".anniu1")
+            anniu1arr[index].style.boxShadow="red 6px 6px 6px"
+            anniu1arr[index].style.backgroundColor="#fff"
+             anniu1arr[index].style. borderRadius="50%" 
+
+            setTimeout(function(){
+                anniu1arr[index].style.boxShadow=""
+                anniu1arr[index].style.backgroundColor=""
+            },500)
             if (this.pawssword.length < 6) {
                 this.pawssword = this.pawssword + nums;
                 console.log(this.pawssword)
             }
         },
-        onclickclear() {
+        onclickcleara(index) {
+            let anniu1arr=document.querySelectorAll(".anniu1")
+            anniu1arr[index].style.boxShadow="red 6px 6px 6px"
+            setTimeout(function(){
+                anniu1arr[index].style.boxShadow=""
+            },500)
+            this.pawssword = this.pawssword.substring(0,this.pawssword.length-1);
+        },
+         onclicknumb(nums,index) {
+            let anniu1arr=document.querySelectorAll(".anniu2")
+            anniu1arr[index].style.boxShadow="red 6px 6px 6px"
+            setTimeout(function(){
+                anniu1arr[index].style.boxShadow=""
+            },500)
+            if (this.pawssword.length < 6) {
+                this.pawssword = this.pawssword + nums;
+                console.log(this.pawssword)
+            }
+        },
+        onclickclearb(index) {
+            let anniu1arr=document.querySelectorAll(".anniu2")
+            anniu1arr[index].style.boxShadow="red 6px 6px 6px"
+            setTimeout(function(){
+                anniu1arr[index].style.boxShadow=""
+            },500)
             this.pawssword = this.pawssword.substring(0,this.pawssword.length-1);
         }, 
+        onclicknumc(nums,index) {
+            let anniu1arr=document.querySelectorAll(".anniu3")
+            anniu1arr[index].style.boxShadow="red 6px 6px 6px"
+            setTimeout(function(){
+                anniu1arr[index].style.boxShadow=""
+            },500)
+            if (this.pawssword.length < 6) {
+                this.pawssword = this.pawssword + nums;
+                console.log(this.pawssword)
+            }
+        },
+        onclickclearc(index) {
+            let anniu1arr=document.querySelectorAll(".anniu3")
+            anniu1arr[index].style.boxShadow="red 6px 6px 6px"
+            setTimeout(function(){
+                anniu1arr[index].style.boxShadow=""
+            },500)
+            this.pawssword = this.pawssword.substring(0,this.pawssword.length-1);
+        }, 
+
         wan(){
             if(this.pawssword.length<5){
                 this.all="请输入正确密码" 
@@ -205,7 +257,7 @@ export default {
                  this.wf=false;
                  this.pawssword="" ;
                  this.l="******"
-                this.all="";
+                this.all="请输入密码";
             }
         },
         wan1(){
@@ -216,7 +268,7 @@ export default {
                  this.wf1=false;
                  this.pawssword="";
                  this.ll="******"
-                 this.all=""
+                 this.all="请输入密码"
             }
         },
         wan2(){
@@ -227,24 +279,24 @@ export default {
                  this.wf2=false;
                  this.pawssword="" ;
                  this.lll="******"
-                  this.all=""
+                  this.all="请输入密码"
             }
         },
 
         fun9(){
              this.wf=false;
              this.pawssword="";
-             this.all=""
+             this.all="请输入密码"
         },
         fun91(){
              this.wf1=false;
              this.pawssword="";
-             this.all=""
+             this.all="请输入密码"
         },
         fun92(){
              this.wf2=false;
              this.pawssword="";
-             this.all=""
+             this.all="请输入密码"
         },
         funa(){
             this.wf=true;
@@ -282,16 +334,13 @@ export default {
         },
         fun10(){
             if(this.a!=""&&this.b!=""&& this.c!=""&&this.b==this.c){
-            
                     var param=new URLSearchParams();
                     param.append("a",this.a);
                     param.append("b",this.b);
                     this.axios({
                     url:"http://39.97.247.47:9999/user/save",
                     method:"post",
-    
                     data:param
-            
                 }).then((ok)=>{
                     console.log(ok);
                     if(ok.data){
@@ -301,9 +350,6 @@ export default {
                     }
  
                 })
-         
-
-                
             }else if(this.a!=""&&this.b!=""&& this.c!=""&&this.b!=this.c){
                this.d="两次密码输入不同"
             }else if(this.a==""&&this.b!=""&& this.c!=""&&this.b!=this.c){
@@ -311,9 +357,6 @@ export default {
             }
 
         },
-
-
-
     },
     created() {
 
@@ -328,6 +371,10 @@ export default {
     display: flex;
     border: 1px solid black;
     border-left:0 ;
+   
+}
+.wf20{
+    margin-top:4rem;
 }
 .pawIput div{
     flex: 1;
@@ -336,6 +383,7 @@ export default {
     display: -webkit-flex;
     -ms-flex-align: center;
     align-items: center;
+   
 }
 .pawIput input{
     display: inline-block;
@@ -349,7 +397,10 @@ table{
     text-align: center;
     margin-top: 1rem;
     color: gray;
-    border-color: gray;
+}
+table tr td{
+    
+    
 }
 .wf20{
     font-size: 0.4rem;
@@ -370,10 +421,11 @@ table{
 }
 .wf66{
 width: 100%;
-height: 10rem;
+height: 100%;
     position:fixed;
     bottom: 0;
     background-color: #ccc;
+    opacity: 0.95;
 }
 .wf1{
     height: 1rem;

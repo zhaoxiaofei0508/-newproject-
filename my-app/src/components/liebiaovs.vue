@@ -33,6 +33,6 @@ export default {
 
 
 <style scoped>
-.lpl{display:inline-block;margin:10px 5px;}
+.lpl{display:inline-block;}
 </style>
 
