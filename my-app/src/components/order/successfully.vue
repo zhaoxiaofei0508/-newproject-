@@ -1,28 +1,29 @@
 <template>
     <div class="box">
-        <div v-for="(v,i) in newdata" :key="i" @click="jump()">
-            <div class="top">
-                <p>订单号：{{v.number}}</p>
+        <div v-for="(v,i) in newdata" :key="i" >
+            <div class="top" @click="jump(v.number)">
+                <p >订单号：{{v.number}}</p>
                 <span>{{v.status.succeed}}</span>
             </div>
-            <div class="des">
+            <div class="des" @click="jump(v.number)">
                 <img :src="v.img" alt="">
                 <!-- <img src="../../../static/no_orderimg/no_order.png" alt=""> -->
                 <div class="sum">
-                    <span class="allNum">共  件商品</span>
+                    <span class="allNum">共{{v.num}} 件商品</span>
                     <b>&gt;</b>
                 </div>
             </div>
             <div class="to">
+                <p class="total">单价：<span class="price">￥{{v.price}}</span></p>
                 <p class="total">合计：<span class="price">￥{{v.price}}</span></p>
             </div>
             
             <div class="all">
-                <p class="order" @click="fun(i)">删除订单</p>
-                <p class="order">晒单分享</p>
+                <p class="order" @click="fun()" >查看物流</p>
+                <p v-show="bool">{{v.orderLogistics}}</p>
                 <router-link to="/index"><p class="order last">再来一单</p></router-link>
             </div>
-        </div>        
+        </div>         
     </div>
 </template>
 <script>
@@ -33,7 +34,8 @@ export default {
     data(){
         return {
             // newdata:this.data,
-            // bool:true,
+            bool:false,
+
         }
     },
     computed:{
@@ -42,12 +44,13 @@ export default {
         }
     },
     methods: {
-        fun(i){
-            // splice((index,len,[item]))删除
-            this.newdata.splice(i,1);
+        fun(){
+            this.bool=!this.bool;
         },
-        jump(){
-            this.$router.push("/orderdetail")
+        jump(text){
+            // this.$router.push("/orderdetail")
+            // console.log(text)
+            this.$router.push("/orderdetail/"+text)
         }
     },
     mounted(){
@@ -104,9 +107,10 @@ b{
 }
 .to{
     height: .9rem;
+    display: flex;
+    justify-content: space-between;
 }
 .total{
-    float: right;
     height: .9rem;
     line-height: .9rem;
 }

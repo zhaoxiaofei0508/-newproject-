@@ -30,7 +30,8 @@ export default {
    },
 }
 </script>
-
 <style  scoped>
-    
+    .icon-xingxing{
+        font-size: 0.1rem;
+    }
 </style>

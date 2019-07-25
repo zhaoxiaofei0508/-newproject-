@@ -17,7 +17,7 @@ export default {
         Slist
     }
 }
-</script>
+</script> 
 <style scoped>
 
 </style>

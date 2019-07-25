@@ -7,14 +7,14 @@
         </div>
         <!-- <p v-else>代付款</p> -->
         <div v-else>
-            <All_order :data="arrOrder"></All_order>
+            <Stay :data="arrOrder"></Stay>
         </div>
     </div>
 </template>
 <script>
 import Order from '../components/order/order'
 import No_order from '../components/order/no_order'
-import All_order from '../components/order/all_order'
+import Stay from '../components/order/stay'
 export default {
     data(){
         return{
@@ -25,12 +25,13 @@ export default {
     components:{
         Order,
         No_order,
-        All_order
+        Stay
     },
     mounted() {
         this.axios({
             url:"/link/cpydata",
             method:"get"
+            
         }).then((ok)=>{
             this.arrOrder=ok.data.my_order;
             this.bool=false;
