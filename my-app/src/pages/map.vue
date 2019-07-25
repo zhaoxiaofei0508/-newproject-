@@ -157,7 +157,6 @@ body,
   height: 0.7rem;
   margin: auto;
 }
-
 button {
   display: inline-block;
   width: 1rem;

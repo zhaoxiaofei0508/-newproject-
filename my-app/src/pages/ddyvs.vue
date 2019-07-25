@@ -75,7 +75,7 @@ export default {
     
      created(){
           var cid=this.$route.params.id
-          console.log(cid)
+          console.log( cid)
 
 
 
@@ -141,6 +141,7 @@ export default {
               setTimeout(() => {
             this.$router.push("/pdelivery")
                 done();
+                
                 setTimeout(() => {
                   instance.confirmButtonLoading = false;
                 }, 300);

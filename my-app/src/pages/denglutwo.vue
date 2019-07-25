@@ -39,7 +39,7 @@ export default {
     methods: {
         // 登录交互验证
         login(){
-                 var param=new URLSearchParams();
+                var param=new URLSearchParams();
                     param.append("userName",this.username);
                     param.append("userPassword",this.userpwd);
                     this.axios({
@@ -48,16 +48,15 @@ export default {
                     // post发送数据的时候使用data属性
                     data:param
             //  this.axios({
-            //     url:"http://39.97.247.47:9999/user/findByUserNameByUserPassword",//get发送数据方式
-            //     method:"get",
-            //     params:{"userName":this.username,"userPassword":this.userpwd} //get发送数据方式
+                // url:"http://39.97.247.47:9999/user/findByUserNameByUserPassword",//get发送数据方式
+                // method:"get",
+                // params:{"userName":this.username,"userPassword":this.userpwd} //get发送数据方式
                 }).then((ok)=>{
                     console.log(ok);
                     if(ok.data){
                     //  localStorage.lastname=1;
                        localStorage.lastname=this.username;
                        localStorage.userid=1;
-                       localStorage.my_shopping=1;
                        console.log(ok.data)
                         // alert("登录成功！");
                         this.$router.push("/index");
