@@ -55,7 +55,7 @@ export default {
     data(){
         return {
             Colorqita:"color:black",
-            Colorhq:"color:rgb(116, 192, 255)",
+            Colorhq:"color:#09bffe;box-shadow:0px 2px 6px #666;",
             newarr:[],
             time:0
         }
@@ -161,6 +161,7 @@ export default {
     }
     .f4l{
         width: 20%;
+        margin-left: 0.4rem;
     }
     .f4l>img{
         margin-top: 0.2rem;
@@ -204,13 +205,13 @@ export default {
     .zxf5{
         width: 30%;
         text-align: center;
-        /* padding: 0 0.3rem; */
+        line-height: 0.8rem;
     }
     .zxf5 span{
         right: 0; 
         font-size: 0.3rem;
         height: 0.8rem;
-        /* line-height: 0.8rem; */
+
     }
     .zxf5 img{
         width: 0.4rem;
