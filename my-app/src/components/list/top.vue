@@ -22,6 +22,7 @@
            <router-link to="/carshop">
             <div class="hc">
                 <img src="../../../static/fruitimg/h-shopping.png" alt="">
+                 <i class="shopcarnum">2</i>
             </div>
              </router-link>
             <div class="hb">
@@ -285,5 +286,17 @@ export default {
 .hb img{
     vertical-align: middle;
 }
-
+.shopcarnum{
+  width: 0.3rem;
+  height: 0.3rem;
+  position: absolute;
+  top: .4rem;
+  right: 0.08rem;
+  border-radius: 50%;
+  font-size: 12px;
+  background: red;
+  color:white;
+  font-style: normal;
+  text-align: center;
+}
 </style>

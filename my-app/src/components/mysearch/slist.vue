@@ -1,16 +1,14 @@
 <template>
     <div class="box">
         <h3>盒马鲜生西安兰岛店 实时热搜</h3>
-        <div class="xia">
-            <router-link to="/searchdel">
-                <Slistitem v-for="(v,i) in arrSearch1" :key="i" :kind="v.kind" :Tolink="v.href" @click="fun(v.id)"></Slistitem>
-            </router-link>
+        <div class="xia" >
+                <Slistitem v-for="(v,i) in newarr" :key="i" :kind="v.kind" ></Slistitem>
         </div>
         <h3>新品•时令</h3>
-        <div class="xia">
-            <router-link to="/searchdel">
-                <Slistitem v-for="(v,i) in arrSearch2" :key="i" :kind="v.okind" :Tolink="v.href"></Slistitem>
-            </router-link>
+        <div class="xia" >
+            <!-- <router-link to="/searchdel"> -->
+                <Slistitem v-for="(v,i) in arrSearch2" :key="i" :kind="v.okind"></Slistitem>
+            <!-- </router-link> -->
         </div>
     </div>
 </template>
@@ -38,12 +36,23 @@ export default {
             this.arrSearch1=ok.data.my_search1
             this.arrSearch2=ok.data.my_search2
         })
+
+        //  this.axios({
+        //     url:"http://39.97.247.47:9999/agricultureProduct/findLike",
+        //     method:"get",
+        //     //  params:{productName:} 
+        // }).then((ok)=>{
+        //     console.log(ok.data);
+        //     this.arrSearch1=ok.data
+        //     this.arrSearch2=ok.data
+        // })
+
     },
-    methods: {
-        fun(a){
-            this.$router.push("/containercontent/"+a)
+    computed: {
+        newarr(){
+            return this.arrSearch1.slice(0, 8)
         }
-    },
+    },  
 }
 </script>
 <style scoped>

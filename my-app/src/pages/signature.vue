@@ -16,7 +16,7 @@ import { MessageBox } from 'mint-ui'
 export default {
     data(){
         return{
-            desc:"",
+            desc:"", 
             txtVal:0
         }
     },
@@ -30,7 +30,7 @@ export default {
          fun2(){
             //  点击完成
              this.$router.go(-1);
-             console.log(this.desc)
+            //  console.log(this.desc)
              localStorage.setItem("signature",this.desc);
          },
          funinput(){

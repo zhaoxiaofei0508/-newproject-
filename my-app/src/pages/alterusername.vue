@@ -35,6 +35,8 @@ export default {
             //  点击完成
              this.$router.go(-1);
             //  console.log(this.desc)
+             localStorage.setItem("alterusername",this.desc);
+            //  console.log(this.desc)
             //  this.axios({
             //     url:"",//get发送数据方式
             //     method:"get",

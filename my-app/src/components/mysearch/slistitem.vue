@@ -1,12 +1,20 @@
 <template>
-    <router-link :to="Tolink"><p>{{kind}}</p></router-link>
+    <!-- <router-link :to="Tolink"> -->
+        <p @click="fun()">{{kind}}</p>
+    <!-- </router-link> -->
 </template>
 <script>
 export default {
     props:{
         kind:String,
-        Tolink:String
-    }
+        // Tolink:String
+    },
+    methods: {
+        fun(){
+            this.$router.push("/searchdel/"+this.kind)
+            // console.log(22)
+        }
+    },
 }
 </script>
 <style scoped>
@@ -29,6 +37,8 @@ p{
     line-height: .7rem;
     border-radius: 20px;
     color: black;
+    float: left;
+    margin:3px 3px;
 
 }
 </style>

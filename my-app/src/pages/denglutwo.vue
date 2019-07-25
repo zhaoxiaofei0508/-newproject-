@@ -56,6 +56,8 @@ export default {
                     if(ok.data){
                     //    localStorage.lastname=1;
                        localStorage.lastname=this.username;
+                       localStorage.userid=1;
+                       localStorage.my_shopping=1;
                        console.log(ok.data)
                         // alert("登录成功！");
                         this.$router.push("/index");
