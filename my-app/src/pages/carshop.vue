@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div style="height:1.5rem;background:rgb(116, 192, 255);position:absolute;top:0;width:100%;text-align:center;font-size:.rem;line-height:1.5rem;color:white">购物车</div>
+    <div style="height:1.5rem;background:rgb(116, 192, 255);position:absolute;top:0;width:100%;text-align:center;font-size:.5rem;line-height:1.5rem;color:white">购物车</div>
     <div style="height:1.5rem"></div>
-    <div class="lol" v-if="bool" >
+    <div class="lol" v-if="bool" style="font-size:.3rem">
       <img src="../../static/img/11.png" />
       <p>购物车无商品</p>
       <br />
@@ -40,7 +40,7 @@
               <input type="button" value="-" @click="funb(i)" />
             </div>
               <div>
-                 <input type="text" :value="v.shopNum" style="background:white;text-align:center" @blur="funr(i)"/>
+                 <input type="text" v-model="v.shopNum" style="background:white;text-align:center" @blur="funr(i)"/>
               </div>
                <div>
                  <input type="button" value="+" @click="funa(i)" />
@@ -99,7 +99,8 @@ export default {
       // checked: false,
       Colorqita: "color:black",
       Colorshopcar: "color:blue",
-      io: []
+      io: [],
+      numk:[]
     };
   },
 
@@ -122,22 +123,8 @@ export default {
       this.obj[i].shopNum++;
     
       console.log(this.obj[i])
-                   var parmers=new URLSearchParams();   
-                  parmers.append("shop",this.obj[i])
-                  console.log(typeof this.obj[i])
-                this.axios({
-      url:"http://10.12.156.130:9999/shop/loadByShopIdUpdateShop",
-      // url: "/line/date",
-      data:parmers,
-      method: "post"
-    }).then(val => {
-      // console.log(val);
- 
-      console.log(val)
-      // console.log(val.data);
-      // this.bool=false;
-    });
-
+              
+     this.funbb(this.obj[i])
 
       this.hh();
     },
@@ -149,15 +136,42 @@ export default {
         this.obj[i].shopNum -= 1;
       }
 
+      this.funbb(this.obj[i])
+
       this.hh();
     },
 
   //  input框失去焦点事件
      funr(i){
-                   
-                this.obj[i]
+                  //  this.obj[i].shopNum
+             this.funbb(this.obj[i])
           
       
+    },
+    funbb(a){
+
+                     var parmers={"shopId":a.shopId,
+                                "shopImg":a.shopImg,
+                                 "shopNum":a.shopNum,
+                                  "shopPrice":a.shopPrice,
+                                   "shopTitle":a.shopTitle
+                   
+                   }
+
+
+                                 this.axios({
+      url:"http://39.97.247.47:9999/shop/loadByShopIdUpdateShop",
+      // url: "/line/date",
+      data:parmers,
+      method: "post"
+    }).then(val => {
+      // console.log(val);
+ 
+      console.log(val)
+      // console.log(val.data);
+      // this.bool=false;
+    });
+
     },
     
 
@@ -216,14 +230,17 @@ export default {
 
     hh: function() {
       var price = 0;
+      var numb=0;
       var obj = this.obj;
       for (var i = 0; i < obj.length; i++) {
         if (obj[i].checked) {
           price += obj[i].shopNum * obj[i].shopPrice;
-          // numb += list[i].num;
+          numb +=this.obj[i].shopNum;
         }
       }
       this.allprice = price;
+      localStorage.numd=numb;
+ 
       // this.num = numb;
     },
     // radios: function(index) {
