@@ -49,11 +49,11 @@ export default {
          Tool,
          Indexlist,
          Fuvs,
-         Colorqita:"color:black",
-        Colormy:"color:blue",
      },
       data(){
         return{
+            Colorqita:"color:black",
+            Colormy:"color:#09bffe;box-shadow:0px 2px 6px #666;",
             arrActivity:[],
             arrMine:[],
             arrMylike:[],
