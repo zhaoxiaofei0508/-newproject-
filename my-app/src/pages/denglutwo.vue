@@ -54,7 +54,7 @@ export default {
                 }).then((ok)=>{
                     console.log(ok);
                     if(ok.data){
-                    //    localStorage.lastname=1;
+                    //  localStorage.lastname=1;
                        localStorage.lastname=this.username;
                        localStorage.userid=1;
                        localStorage.my_shopping=1;
