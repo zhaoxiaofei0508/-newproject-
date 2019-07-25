@@ -15,7 +15,7 @@
 export default {
     methods: {
         go(){
-            this.$router.push("/add_address")
+            this.$router.push("/myaddress")
         },
         fun(){
             this.$router.push("/mysearch")
@@ -78,7 +78,7 @@ input{
 }
 .oimg{
     position: absolute;
-    left: 24%;
+    left: 26%;
     top: 29%;
     width: .5rem;
 }

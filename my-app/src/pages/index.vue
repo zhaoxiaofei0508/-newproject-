@@ -35,9 +35,10 @@
   <div class="Twocontainer">
       <IndexTwoList :ContainerArr="Containerarr1" :docuTop="DocuTop"></IndexTwoList>
   </div>
+  </div>
+  <!----------------------------------------------------------- 底部导航 -------------------------->
+    <Fuvs :colorindex=Colorindex :colorfenlei=Colorqita :colorhq=Colorqita :colorshopcar=Colorqita :colormy=Colorqita></Fuvs>
 </div>
-         <Fuvs :colorindex=Colorindex :colorfenlei=Colorqita :colorhq=Colorqita :colorshopcar=Colorqita :colormy=Colorqita></Fuvs>
-    </div>
 </template>
 <script>
 import Indexhead from "../components/mysearch/indexhead"
@@ -68,7 +69,7 @@ export default {
   // },
   data () {
     return {
-      Colorindex:"color:blue",
+      Colorindex:"color:#09bffe;box-shadow:0px 2px 6px #666;",
       Colorqita:"color:black",
       DocuTop:0,
         // 轮播图虚拟数据
@@ -379,9 +380,12 @@ export default {
   mounted() {
     window.addEventListener('scroll',this.DocuTopp);
   },
+  destroyed () {
+  window.removeEventListener('scroll', this.DocuTopp)
+  },
   methods: {
     DocuTopp(){
-      this.DocuTop=document.querySelector('.Twocontainer').offsetTop
+      this.DocuTop=document.querySelector('.Twocontainer').offsetTop;
     }
   },
 }

@@ -32,10 +32,14 @@ import Hequlife from '../pages/Hequlife'
 import Ddyvs from '../pages/ddyvs'
 import Searchdel from '../pages/searchdel'
 
+
 import ContainerContent from '../components/index/containercontent'
 import Consult from '../pages/consult'
+import Zhanghu from '../pages/zhanghu'
+import Orderdetail from '../pages/orderdetail'
 import Map from '../pages/map'
 import Cs from '../pages/cs'
+
 
 
 Vue.use(Router)
@@ -214,6 +218,16 @@ export default new Router({
       path: '/signature',
       name: 'Signature',
       component: Signature
+    },
+    {
+      path: '/zhanghu',
+      name: 'Zhanghu',
+      component: Zhanghu
+    },
+    {
+      path: '/orderdetail',
+      name: 'Orderdetail',
+      component: Orderdetail
     },
     {path:'/*',redirect:"/index"},
     

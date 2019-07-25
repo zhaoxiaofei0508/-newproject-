@@ -40,7 +40,7 @@ export default {
         },
        data(){
         return{
-            Colorfenlei:"color:blue",
+            Colorfenlei:"color:#09bffe;box-shadow:0px 2px 6px #666;",
             Colorqita:"color:black",
             arrr:[]
         }

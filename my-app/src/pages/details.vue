@@ -6,9 +6,9 @@
   <div style="width: 100%">
     <div id="details_shop">
       <!-- nav -->
-      <DetailsNav></DetailsNav>
+        <DetailsNav></DetailsNav>
       <!-- banner -->
-      <Banner :data="shopInfo"></Banner>
+        <Banner :data="shopInfo"></Banner>
 
       <!-- 名称价格 -->
       <div class="details_content" style="font-size:.24rem">
@@ -32,15 +32,15 @@
       </div>
       <el-row>
         <el-col :span="24">
-          <div class="details_time">现在下单，最快{{Time}}送达(免运费)</div>
+          <div class="details_time" style="padding:0 .15rem">现在下单，最快{{Time}}送达(免运费)</div>
         </el-col>
       </el-row>
       <!-- 选择 -->
 
-      <DetailsCube :data="shopInfo" :getNum="getNum"></DetailsCube>
+       <DetailsCube :data="shopInfo" :getNum="getNum"></DetailsCube>
     </div>
     <!-- 评价 -->
-    <div style="height:2.5rem;overflow:hidden" id="details_comment">
+      <div style="height:2.5rem;overflow:hidden" id="details_comment">
       <div class="details_time details_comment" style="border-bottom:1px solid black">
         <div>
           <!-- <img  :src="shopInfo.comment[0].img" alt /> -->
@@ -57,7 +57,7 @@
           <span style="display:flex"><img class="touxiang" :src="v.img" alt="">{{v.userName}}</span>
           <!-- <span>{{v.time}}</span> -->
         </div>
-        <div class="details_time details_comment">{{v.commentDetails}}</div>
+        <div class="details_time details_comment" style="padding:0 .15rem">{{v.commentDetails}}</div>
       </div>
     </div>
     <!-- 详情图 -->

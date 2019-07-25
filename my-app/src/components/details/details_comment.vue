@@ -86,6 +86,7 @@ export default {
 .details_commentNavBottom{
     font-size:.28rem;
     margin:.2rem;
+    
 }
 .details_commentNavBottom img{
     width:1rem;
@@ -99,5 +100,6 @@ export default {
     font-size:.28rem;
     padding:.15rem;
     border-top:.15rem solid gainsboro;
+    box-shadow: 2px 3px 10px rgb(223, 47, 76);
 }
 </style>

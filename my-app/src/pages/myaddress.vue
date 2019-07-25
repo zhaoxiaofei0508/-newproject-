@@ -22,7 +22,12 @@ import No_address from '../components/order/no_address'
 export default {
     components:{
         No_address,
-        // bool:true
+       
+    },
+    methods: {
+        fun(){
+            this.$router.go(-1)
+        }
     },
     methods: {
         togotop(){

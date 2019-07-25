@@ -1,28 +1,47 @@
 <template>
-    <div class="pwdpush-box">
-        <div class="ohead">
-            <router-link to="/my_set"><span>&lt;</span></router-link>
-            <h3>支付密码设置</h3>
-        </div>
-        <!-- 设置密码 -->
-        <div class="pawss">
-            <h3>请设置支付密码</h3>
-            <br>
-            <div style="width: 0;height: 0;overflow: hidden">{{pawssword}}</div>
-            <div class="pawIput">
-                <div><input type="text" v-if="pawssword.length>0" v-model="fresh"></div>
-                <div><input type="text" v-if="pawssword.length>1" v-model="fresh"></div>
-                <div><input type="text" v-if="pawssword.length>2" v-model="fresh"></div>
-                <div><input type="text" v-if="pawssword.length>3" v-model="fresh"></div>
-                <div><input type="text" v-if="pawssword.length>4" v-model="fresh"></div>
-                <div><input type="text" v-if="pawssword.length>5" v-model="fresh"></div>
-                <!-- <div><em v-if="pawssword.length>0" ></em></div>
-                <div><em v-if="pawssword.length>1" ></em></div>
-                <div><em v-if="pawssword.length>2" ></em></div>
-                <div><em v-if="pawssword.length>3" ></em></div>
-                <div><em v-if="pawssword.length>4" ></em></div>
-                <div><em v-if="pawssword.length>5" ></em></div> -->
+<div>
+    <div class="wf1 wf0">
+        <div class="wf2" @click="funcc"><img src="../../static/img/h-navf1.png"></div>
+        <div class="wf3">更改密码</div>
+    </div>
+    <div>
+        <div class="wf5">
+            <div>原密码</div>
+            <div class="wf6">
+                <div class="wf7" @click="funa()">{{l}}</div>
+                <div @click="funaa()"><img src="../../static/img/wf1.png"></div>
             </div>
+
+        </div>
+        <div class="wf5">
+            <div>更改密码</div>
+            <div class="wf6">
+                <div class="wf7" @click="funb()">{{ll}}</div>
+                <div  @click="funbb()"><img src="../../static/img/wf1.png"></div>
+            </div>
+            
+
+        </div >
+        <div class="wf5">
+            <div>确认更改密码</div>
+            <div class="wf6">
+                <div class="wf7" @click="func()">{{lll}}</div>
+                <div  @click="funcc()"><img src="../../static/img/wf1.png" ></div>
+            </div>
+
+        </div>
+    </div>
+    
+    <div v-show=wf class="wf66">
+        <div class="wf20">{{all}}</div>
+        <div style="width: 0;height: 0;overflow: hidden">{{pawssword}}</div>
+        <div class="pawIput">
+        <div><input type="text" v-if="pawssword.length>0" v-model="fresh"></div>
+        <div><input type="text" v-if="pawssword.length>1" v-model="fresh"></div>
+        <div><input type="text" v-if="pawssword.length>2" v-model="fresh"></div>
+        <div><input type="text" v-if="pawssword.length>3" v-model="fresh"></div>
+        <div><input type="text" v-if="pawssword.length>4" v-model="fresh"></div>
+        <div><input type="text" v-if="pawssword.length>5" v-model="fresh"></div>
         </div>
         <table border="1px" cellspacing="0" cellpadding="0" align="center" width="80%">
             <tr>
@@ -45,91 +64,274 @@
                 <td ></td>
                 <td @click.stop="onclicknum(0)">0</td>
                 <td @click.stop="onclickclear()">
-                    <em class="el-icon-close"></em>
+                    <div>X</div>
                 </td>
             </tr>
-
         </table>
-        <button class="fresh" @click="wan()" :disabled="bool">完成</button>
-        <!-- <span v-show="paybool">请先设置支付密码</span> -->
-        <div>
+        <div class="wf21">
+        <div class="wf22" @click="fun9()">取消</div>
+        <div class="wf23" @click="wan()">确认</div>
+        </div>
     </div>
-  </div>
+    <div v-show=wf1 class="wf66">
+        <div class="wf20">{{all}}</div>
+        <div style="width: 0;height: 0;overflow: hidden">{{pawssword}}</div>
+        <div class="pawIput">
+        <div><input type="text" v-if="pawssword.length>0" v-model="fresh"></div>
+        <div><input type="text" v-if="pawssword.length>1" v-model="fresh"></div>
+        <div><input type="text" v-if="pawssword.length>2" v-model="fresh"></div>
+        <div><input type="text" v-if="pawssword.length>3" v-model="fresh"></div>
+        <div><input type="text" v-if="pawssword.length>4" v-model="fresh"></div>
+        <div><input type="text" v-if="pawssword.length>5" v-model="fresh"></div>
+        </div>
+        <table border="1px" cellspacing="0" cellpadding="0" align="center" width="80%">
+            <tr>
+                <!-- click.stop阻止点击事件继续传播 -->
+                <td @click.stop="onclicknum(1)">1</td>
+                <td @click.stop="onclicknum(2)">2</td>
+                <td @click.stop="onclicknum(3)"> 3 </td>
+            </tr>
+            <tr>
+                <td @click.stop="onclicknum(4)">4</td>
+                <td @click.stop="onclicknum(5)"> 5 </td>
+                <td @click.stop="onclicknum(6)"> 6</td>
+            </tr>
+            <tr>
+                <td @click.stop="onclicknum(7)">7</td>
+                <td @click.stop="onclicknum(8)">8</td>
+                <td @click.stop="onclicknum(9)">9</td>
+            </tr>
+            <tr>
+                <td ></td>
+                <td @click.stop="onclicknum(0)">0</td>
+                <td @click.stop="onclickclear()">
+                    <div>X</div>
+                </td>
+            </tr>
+        </table>
+        <div class="wf21">
+        <div class="wf22" @click="fun91()">取消</div>
+        <div class="wf23" @click="wan1()">确认</div>
+        </div>
+    </div>
+    <div v-show=wf2 class="wf66">
+        <div class="wf20">{{all}}</div>
+        <div style="width: 0;height: 0;overflow: hidden">{{pawssword}}</div>
+        <div class="pawIput">
+        <div><input type="text" v-if="pawssword.length>0" v-model="fresh"></div>
+        <div><input type="text" v-if="pawssword.length>1" v-model="fresh"></div>
+        <div><input type="text" v-if="pawssword.length>2" v-model="fresh"></div>
+        <div><input type="text" v-if="pawssword.length>3" v-model="fresh"></div>
+        <div><input type="text" v-if="pawssword.length>4" v-model="fresh"></div>
+        <div><input type="text" v-if="pawssword.length>5" v-model="fresh"></div>
+        </div>
+        <table border="1px" cellspacing="0" cellpadding="0" align="center" width="80%">
+            <tr>
+                <!-- click.stop阻止点击事件继续传播 -->
+                <td @click.stop="onclicknum(1)">1</td>
+                <td @click.stop="onclicknum(2)">2</td>
+                <td @click.stop="onclicknum(3)"> 3 </td>
+            </tr>
+            <tr>
+                <td @click.stop="onclicknum(4)">4</td>
+                <td @click.stop="onclicknum(5)"> 5 </td>
+                <td @click.stop="onclicknum(6)"> 6</td>
+            </tr>
+            <tr>
+                <td @click.stop="onclicknum(7)">7</td>
+                <td @click.stop="onclicknum(8)">8</td>
+                <td @click.stop="onclicknum(9)">9</td>
+            </tr>
+            <tr>
+                <td ></td>
+                <td @click.stop="onclicknum(0)">0</td>
+                <td @click.stop="onclickclear()">
+                    <div>X</div>
+                </td>
+            </tr>
+        </table>
+        <div class="wf21">
+        <div class="wf22" @click="fun92()">取消</div>
+        <div class="wf23" @click="wan2()">确认</div>
+        </div>
+    </div>
+    <div class="wfnn">
+    <div @click="fun10()" class="wf111">确认</div>
+    </div>
+    <div>{{d}}</div>
+</div>
 </template>
+
 <script>
-import { MessageBox } from 'mint-ui'
 export default {
     data() {
         return {
             pawssword:'',
             bool:false,
-            fresh:""
+            fresh:"",
+            wf:false,
+            wf1:false,
+            wf2:false,
+            a:"",
+            b:"",
+            c:"",
+            d:"",
+            all:"",
+            l:"",
+            ll:"",
+            lll:"",
+
         }
     },
-    
-    methods: {
+     methods: {
+        funcc(){
+            this.$router.go(-1)
+
+        },
         onclicknum(nums) {
             if (this.pawssword.length < 6) {
                 this.pawssword = this.pawssword + nums;
+                console.log(this.pawssword)
             }
         },
         onclickclear() {
             this.pawssword = this.pawssword.substring(0,this.pawssword.length-1);
         }, 
         wan(){
-            if(this.pawssword!=""&& this.pawssword.length>5){
-                MessageBox.alert('操作成功').then(action => {
-                    this.$router.push("/my_set");
-                });
+            if(this.pawssword.length<5){
+                this.all="请输入正确密码" 
             }else{
-                MessageBox.alert('请先设置密码').then(action => {
-                    this.$router.push("/pay_set");
-                });
+                 this.a=this.pawssword;
+                 this.wf=false;
+                 this.pawssword="" ;
+                 this.l="******"
+                this.all="";
             }
-        }
+        },
+        wan1(){
+            if(this.pawssword.length<6){
+                this.all="请输入正确密码" 
+            }else{
+                 this.b=this.pawssword;
+                 this.wf1=false;
+                 this.pawssword="";
+                 this.ll="******"
+                 this.all=""
+            }
+        },
+        wan2(){
+            if(this.pawssword.length<6){
+                this.all="请输入正确密码" 
+            }else{
+                 this.c=this.pawssword;
+                 this.wf2=false;
+                 this.pawssword="" ;
+                 this.lll="******"
+                  this.all=""
+            }
+        },
+
+        fun9(){
+             this.wf=false;
+             this.pawssword="";
+             this.all=""
+        },
+        fun91(){
+             this.wf1=false;
+             this.pawssword="";
+             this.all=""
+        },
+        fun92(){
+             this.wf2=false;
+             this.pawssword="";
+             this.all=""
+        },
+        funa(){
+            this.wf=true;
+        },
+        funaa(){
+            if(this.l=="******"){
+                this.l=this.a
+            }else if(this.l==""){
+            }else{
+                this.l="******"
+            }
+        },
+        funb(){
+            this.wf1=true;
+        },
+        funbb(){
+            if(this.ll=="******"){
+                this.ll=this.b
+            }else if(this.ll==""){
+            }else{
+                this.ll="******"
+            }
+        },
+
+        func(){
+            this.wf2=true;
+        },
+        funcc(){
+            if(this.lll=="******"){
+                this.lll=this.c
+            }else if(this.lll==""){
+            }else{
+                this.lll="******"
+            }
+        },
+        fun10(){
+            if(this.a!=""&&this.b!=""&& this.c!=""&&this.b==this.c){
+            
+                    var param=new URLSearchParams();
+                    param.append("a",this.a);
+                    param.append("b",this.b);
+                    this.axios({
+                    url:"http://39.97.247.47:9999/user/save",
+                    method:"post",
+    
+                    data:param
+            
+                }).then((ok)=>{
+                    console.log(ok);
+                    if(ok.data){
+                        this.$router.push("/index");
+                    }else{
+                        
+                    }
+ 
+                })
+         
+
+                
+            }else if(this.a!=""&&this.b!=""&& this.c!=""&&this.b!=this.c){
+               this.d="两次密码输入不同"
+            }else if(this.a==""&&this.b!=""&& this.c!=""&&this.b!=this.c){
+                this.d="请输入原密码"
+            }
+
+        },
+
+
+
     },
-    watch: {
-        // fresh(){
-        //     if(this.pawssword!=""){
-        //         this.bool=false
-        //     }else{
-        //         this.bool=true
-        //     }
-        // }
-    },
-    mounted() {
-        // console.log(this.pawssword)
-    },
+    created() {
+
+        
+            }
 }
 </script>
+
 <style scoped>
-.ohead{
-    width: 100%;
-    height: .81rem;
-    border-bottom: 1px solid #dedede;
-    background-color: white;
-}
-span{
-    float: left;
-    font-size: .5rem;
-    color: #3b9ada;
-    margin-left: 10px;
-}
-h3{
-    float: left;
-    font-size: .34rem;
-    color: #050505;
-    line-height: .81rem;
-    margin-left: 2.7rem;
-}
+
 .pawIput{
     display: flex;
-    border: 1px solid #dedede;
+    border: 1px solid black;
     border-left:0 ;
 }
 .pawIput div{
     flex: 1;
-    border-left:1px solid #dedede;
+    border-left:1px solid black;
     height: 45px;
     display: -webkit-flex;
     -ms-flex-align: center;
@@ -149,19 +351,82 @@ table{
     color: gray;
     border-color: gray;
 }
-.el-icon-close{
-    font-size: .48rem;
-}
-.fresh{
-    width:100%;
+.wf20{
+    font-size: 0.4rem;
     text-align: center;
-    margin-top: 20px;
-     float: right;
-    width: 2rem;
-    background:  #3b9ada;
-    font-size: 16px;
-    color: azure;
-    font-weight: 900;
-    border: none;
 }
+.wf21{
+    font-size: 0.6rem;
+    width: 100%;
+    height: 1rem;
+}
+.wf22{
+    float: left;
+    margin-left: 1rem;
+}
+.wf23{
+    float: right;
+    margin-right: 1rem;
+}
+.wf66{
+width: 100%;
+height: 10rem;
+    position:fixed;
+    bottom: 0;
+    background-color: #ccc;
+}
+.wf1{
+    height: 1rem;
+    width: 100%;
+    font-size: 0.4rem;
+    position: relative;
+}
+.wf2{
+    width: 0.7rem;
+    height: 0.7rem;
+    margin-top: 0.2rem;
+    margin-left: 0.2rem;
+    position: absolute;
+}
+.wf2 img{
+    width: 100%;
+    height: 100%;
+}
+.wf3{
+    width: 100%;
+   text-align: center;
+    line-height: 1rem;
+    color:#fff;
+}
+.wf0{
+    background-color:rgb(0, 132, 255);
+}
+.wf5{
+    font-size: 0.4rem;
+}
+.wf5 img{
+    width: 0.8rem;
+    height:0.8rem;
+}
+.wf6{
+    width: 100%;
+    height: 1rem;
+    background: radial-gradient(circle at 50px 50px, rgb(27, 218, 10), rgb(7, 72, 194));
+}
+.wf6 div{
+    float: left;
+}
+.wf7{
+    width: 50%;
+    height: 0.8rem;
+    line-height: 0.8rem;
+    border: 1px solid red;
+    margin-top:0.1rem
+    
+}
+.wfnn{
+    width: 100%;
+    text-align: center;
+}
+
 </style>
