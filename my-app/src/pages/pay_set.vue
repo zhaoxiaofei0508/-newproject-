@@ -176,7 +176,7 @@ export default {
             b:"",
             c:"",
             d:"",
-            all:"",
+            all:"请输入密码",
             l:"",
             ll:"",
             lll:"",
@@ -204,7 +204,7 @@ export default {
                  this.wf=false;
                  this.pawssword="" ;
                  this.l="******"
-                this.all="";
+                this.all="请输入密码";
             }
         },
         wan1(){
@@ -215,7 +215,7 @@ export default {
                  this.wf1=false;
                  this.pawssword="";
                  this.ll="******"
-                 this.all=""
+                 this.all="请输入密码"
             }
         },
         wan2(){
@@ -226,24 +226,24 @@ export default {
                  this.wf2=false;
                  this.pawssword="" ;
                  this.lll="******"
-                  this.all=""
+                  this.all="请输入密码"
             }
         },
 
         fun9(){
              this.wf=false;
              this.pawssword="";
-             this.all=""
+             this.all="请输入密码"
         },
         fun91(){
              this.wf1=false;
              this.pawssword="";
-             this.all=""
+             this.all="请输入密码"
         },
         fun92(){
              this.wf2=false;
              this.pawssword="";
-             this.all=""
+             this.all="请输入密码"
         },
         funa(){
             this.wf=true;
@@ -327,6 +327,10 @@ export default {
     display: flex;
     border: 1px solid black;
     border-left:0 ;
+   
+}
+.wf20{
+    margin-top:4rem;
 }
 .pawIput div{
     flex: 1;
@@ -369,10 +373,11 @@ table{
 }
 .wf66{
 width: 100%;
-height: 10rem;
+height: 100%;
     position:fixed;
     bottom: 0;
     background-color: #ccc;
+    opacity: 0.95;
 }
 .wf1{
     height: 1rem;
