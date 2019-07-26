@@ -5,9 +5,9 @@
             <h3>我的地址</h3>
             <router-link to="/add_address"><span class="span">新增地址</span></router-link>
         </div>
-        <!-- <div>
+        <div v-if="bool">
             <No_address></No_address>
-        </div> -->
+        </div>
         <!-- <div>
             <mt-picker :slots="addressSlots" class="picker" 
             @change="onAddressChange" :visible-item-count="5" ></mt-picker >
@@ -19,10 +19,11 @@
             <span class="h_name">{{v.userName}}</span><span class="h_phone">{{v.userPhone}}</span>
         </div> -->
 
-        <div class="address_box">
-            <div class="address" v-for="(v,i) in addressarr" :key="i" @click="address(v.id)">
+        <div class="address_box" v-else>
+            <div class="address" v-for="(v,i) in addressarr" :key="i" @click="address(v.addressId)">
                 <p class="useradd">{{v.userAddress}}</p>
-                <span class="h_name">{{v.userName}}</span><span class="h_phone">{{v.userPhone}}</span>
+                <span class="h_name">{{v.userName}}</span><span class="h_phone">1{{v.userPhone}}</span>
+                <span class="del" @click.stop="del(v.addressId)">删除</span>
             </div>
         </div>
     </div>
@@ -31,18 +32,24 @@
 import No_address from '../components/order/no_address'
 // import s from '../../static/json/address.json'
 export default {
+    data() {
+        return {
+            bool:true
+        }
+    },
     components:{
         No_address,
-        addressarr:[]
+        addressarr:{}
     },
     created() {
-         var userid  = localStorage.userid;
+        var userid  = localStorage.userid;
         this.axios({
                 url:"http://39.97.247.47:9999/address/selectaddress",//get发送数据方式
                 method:"get",
-                params:{"id":userid} //get发送数据方式
+                params:{"userId":userid} //get发送数据方式
                 }).then((ok)=>{
                     console.log(ok.data)
+                    this.bool = false
                     this.addressarr = ok.data
                 })
     },
@@ -53,13 +60,21 @@ export default {
         address(addressid){
             this.$router.push("/ddyvs/"+addressid)
 
-        }
-    },
-    methods: {
-        togotop(){
+        }, togotop(){
             this.$router.push("/carshop")
+        },
+        del(addressid){
+             this.axios({
+                url:"http://39.97.247.47:9999/address/selectaddress",//get发送数据方式
+                method:"delete",
+                params:{"id":addressid} //get发送数据方式
+                }).then((ok)=>{
+                    console.log(ok.data)
+                    
+                })
         }
     },
+   
 }
 </script>
 <style scoped>
@@ -73,7 +88,7 @@ export default {
     height: 1.2rem;
     background: #fff;
     border-bottom: 1px solid rgb(248, 248, 248);
-    padding-left: .2rem;
+    padding-left: .4rem;
 }
 .address p{
     padding-top: .1rem;
@@ -90,21 +105,10 @@ export default {
 .h_phone{
     margin-left: .5rem;
 }
-/* .useradd{
-    width: 100%;
-    height: 2rem;
-    background: blue;
+.del{
+    float: right;
+    padding-right: .9rem;
 }
-.h_name{
-    width: 2rem;
-    height: 1rem;
-    background: #3b9ada;
-}
-.h_phone{
-    width: 3rem;
-    height: 1rem;
-    background: darkgrey;
-} */
 .ohead{
     width: 100%;
     height: .8rem;
