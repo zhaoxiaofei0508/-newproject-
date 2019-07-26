@@ -150,7 +150,7 @@ export default {
         width: 8px;
         height: 8px;
         border-radius: 50%;
-        background: #09bffe;
+        background: red;
         position:absolute;
         top:0.12rem;
         left:0.13rem;

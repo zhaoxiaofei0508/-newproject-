@@ -14,6 +14,7 @@
                 </p>
             </div>
             <div class="head">
+                
                 <!-- 文件上传 -->
                  <!-- <input type="file" @change="getFile($event)" class="hiddenInput" v-show="boolimg"> -->
                 <input type="file" accept="image/*" @change="handleFile" class="hiddenInput" v-show="boolimg"/>

@@ -1,7 +1,9 @@
 <template>
   <div class="root details_time" style="margin-bottom:.15rem;" @click="isShow = true">
     <div class="rootnav">
-      <p>
+      <p style="overflow: hidden;
+text-overflow:ellipsis;
+white-space: nowrap;">
         已选择 {{syncData.productName}} ({{syncData.productScale}}/{{syncData.productCompany}})
       </p>
       <p style="color:red;font-size:.3rem;font-weight:600"><img style="width:.3rem;height:.3rem;margin-right:.1rem" src="../../../static/img/right.png"></p>

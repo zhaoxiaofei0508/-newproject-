@@ -6,15 +6,22 @@
         <span>商品评价</span>
       </div>
       <div class="details_commentNavBottom">
-        <!-- <img :src="shopInfo.productImages[0]" alt /> -->
-        <span>{{shopInfo.productName}} 规格：￥{{shopInfo.productPrice}}/{{shopInfo.productCompany}}</span>
+        <img :src="shopInfo.agriculturePictureList[0].pictureUrl" alt />
+        <div>
+            <span >{{shopInfo.productName}}</span><br>
+        <span>规格：￥{{shopInfo.productPrice}}/{{shopInfo.productCompany}}</span>
+        </div>
+        
       </div>
     </div>
     <!-- //评价详情 -->
     <div style="margin-top:2.8rem">
      <div v-for="(v,i) in comment" :key="i"  class="pingjia">
-        <div class="commentBottom">
-          <span>{{v.userName}}</span>
+        <div class="commentBottom">  
+          <div>
+            <img style="display:inline-block" src="../../../static/img/h5.png" alt="">
+            <span>{{v.userName}}</span>
+          </div>
           <span>{{v.time}}</span>
         </div>
         <div style="margin-top:.2rem">{{v.commentDetails}}</div>
@@ -40,11 +47,11 @@ export default {
   created() {
      var id = this.$route.query.id
     this.axios({
-          url:"http://39.97.247.47:9999/agricultureProduct/findBySubclassId",//get发送数据方式2
+          url:"http://39.97.247.47:9999/agricultureProduct/one",//get发送数据方式2
           method:"get",
-        params:{"subclassId":id}//get发送数据方式1
+        params:{"id":id}//get发送数据方式1
       }).then((ok)=>{
-      this.shopInfo=ok.data[0]
+      this.shopInfo=ok.data
           console.log(ok.data)
       }),
     this.axios({
@@ -86,6 +93,7 @@ export default {
 .details_commentNavBottom{
     font-size:.28rem;
     margin:.2rem;
+    display: flex;
     
 }
 .details_commentNavBottom img{
