@@ -24,7 +24,7 @@
             <b @click="fun()" v-if="!bool" class="duo">查看全文</b>
             <img :src="getdas[0].imgurl" alt="">
             <!-- 购买详情 -->
-            <div class="z2" @click="funz(getdas[0].Tuijianid)">
+            <div class="z2" @click="funz(getdas[0].tuijianid)">
                 <img :src="getdas[0].imgurl">
                 <div>
                     <span>{{getdas[0].tuijianxiangqing}}</span>
@@ -114,6 +114,7 @@ export default {
     },
 
     created(){
+        let xqid=this.$route.params.id
         let that=this
         setTimeout(function(){
             that.loading=false//loading
@@ -122,11 +123,10 @@ export default {
         this.axios({
            url:"http://39.97.247.47:9999/findByid",
             method: "get",
-            params:{"id":1},
+            params:{"id":xqid},
         }).then((ok)=>{
-            console.log(ok)
+            // console.log(ok)
             this.getdas = ok.data
-
             // this.ida=this.$route.params.id; 
             // this.hequ=ok.data.hqsh
             // this.getdas = this.hequ.filter((v,i)=>{
@@ -138,12 +138,11 @@ export default {
          this.axios({
            url:"http://39.97.247.47:9999/findBylid",
             method: "get",
-            params:{"lid":1},
+            params:{lid:xqid},
         }).then((ok)=>{
-            console.log(ok)
+            // console.log(ok)
             this.getarr = ok.data
         })
-        // getarr
     },
    
 }
@@ -171,9 +170,9 @@ export default {
         display: inline-block;
         margin: 0 
     } 
-    .z1{
+    /* .z1{
         height: 3rem;
-    }
+    } */
     .z1>img{
         width: 94%;
         height: 100%;

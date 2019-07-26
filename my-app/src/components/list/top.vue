@@ -1,5 +1,9 @@
 <template>
-    <div>
+        <div>
+            <div v-if="loading">
+                <Loading ></Loading>
+            </div>
+        <div v-else>
        <div class="box"></div>
         <div class="h-top">
             <div class="ha" @click="go()">
@@ -42,8 +46,10 @@
         </div>
         
     </div>
+    </div>
 </template>
 <script>
+import Loading from "../hqsh2/loading"
 import Toplist from './listtop/toplist'
 import Hlistleft from './h_listleft'
 export default {
@@ -56,19 +62,21 @@ export default {
             FruitArr:[],
             ReinghtArr:[],
             bool:true,
-            leftindexid:""
+            leftindexid:"",
+            loading: true
+
             
         }
     },
     
     components:{
         Toplist,
-        Hlistleft
+        Hlistleft,
+        Loading
     },
     created() {
         this.id=this.$route.query.id
         // let id=this.$route.query.id
-
         // 请求头部列表
          this.axios({
                 url:"http://39.97.247.47:9999/categories/findAll",//get发送数据方式
@@ -76,6 +84,7 @@ export default {
                 //  params:{id:Left}
                  //get发送数据方式
             }).then((ok)=>{
+            this.loading=false
                 //  console.log(ok)
                 this.FruitArr=ok.data
             });

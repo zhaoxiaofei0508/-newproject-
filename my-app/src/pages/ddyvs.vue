@@ -17,8 +17,8 @@
 
           <div style="background:rgb(232, 232, 232);margin:15px 10px;padding:15px 10px;height:2rem" v-for="(v,i) in obj" :key="i">
                <img :src="v.shopImg" style="width:1rem">
-               <ul style="float:right;font-size:.3rem;padding-right:1.5rem;">
-                    
+               <ul style="float:right;font-size:.2rem; word-wrap: break-word;width:4rem;padding-right:1rem">
+               
                      <li>商品名称:{{v.shopTitle}}</li>
                      <li>数量:{{v.shopNum}}</li>
                      <li>单价:￥{{v.shopPrice}}</li>
@@ -46,7 +46,7 @@
                  <div style="height:1.2rem"></div>
 <!-- 底部 -->
            <div   class="btn">
-            <span style="font-size:.7rem">合计</span>&nbsp;<span style="font-size:.7rem">:￥0</span>   <input type="button" value="提交订单"  @click="open()" style="height:1.2rem;width:2rem;
+            <span style="font-size:.4rem">合计</span>&nbsp;<span style="font-size:.4rem;color:red">:￥0</span>   <input type="button" value="提交订单"  @click="open()" style="height:1.2rem;width:2rem;
            border:none;outline:none;position:absolute;top:0px;right:15px;font-size:.3rem;background:#74C0FF;">
 
         </div>
@@ -94,7 +94,17 @@ export default {
                             this.obj=val.data
                       })
 
-                
+                  
+
+                // 生成订单
+             
+
+
+
+
+
+
+
                   },
     // 假数据
         // mounted() {
@@ -167,7 +177,9 @@ export default {
     funl(){
 
         this.$router.push("/myaddress")
-    }
+    },
+
+   
     }
    
     

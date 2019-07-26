@@ -1,7 +1,7 @@
 <template>
     <div>
         <div v-for="(v,i) in Reinghtarr" :key="i" @click="details(v.productId)">
-            <Conlist :title="v.productName" :content="v.productContent" :price="v.productPrice" :imgurl="v.images" :product ="v.productId"></Conlist>
+            <Conlist :title="v.productName" :content="v.productContent" :price="v.productPrice" :imgurl="v.productDetailsImages" :product ="v.productId"></Conlist>
         </div>
     </div>
 </template>

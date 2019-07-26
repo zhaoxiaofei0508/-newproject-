@@ -1,40 +1,53 @@
 <template>
-    <div>  
-<div class="h-top-top"><Indexhead></Indexhead></div>
-          
-
-          <div>
-  <!--------------------------------------------------------- 轮播图 --------------------------->
-  <div>
-        <Container :ContainerArr="Containerarr"></Container>
-  </div>
-  <!--------------------------------------------------------- vip区 ---------------------------->
-  <div class="Vip"  @click="Vip(Viparr[0].Type)">
-      <img style="width:100%;display:block;" :src="Viparr[0].VipImg">
-  </div>
-  <div class="Section">
-  <!------------------------------------------------------- 食品分类 ---------------------------->
-      <div class="classify">
-        <div v-for="(v,i) in Classifyarr" :key="i" @click="classify(v.id)">
-          <IndexType :ClassifyImg=v.Classifyimg :ClassifyTitle=v.Classifytitle></IndexType>
+<div>  
+        <div class="h-top-top">
+          <Indexhead></Indexhead>
         </div>
-      </div>
-  <!-------------------------------------------------------- 新人专区 ---------------------------->
-      <div class="newpeople" @click="Numans(Numansarr[0].Type)">
-        <img style="width:100%;display:block;" :src="Numansarr[0].NumansImg" >
-      </div>
-
-  </div>
-  <!------------------------------------------------------ 超合算平价100外卖 ---------------------->
-  <div class="Sup">
-    <div   v-for="(v,i) in Suparr" :key="i" >
-      <IndexSup :SupContent="v.Supcontent" :SupTitle="v.Suptitle" :SupImg="v.Supimg" :Type="v.type" ></IndexSup>
+  <div>
+    <!--------------------------------------------------------- 轮播图 --------------------------->
+    <div class="containerclass">
+          <!-- 模拟数据 -->
+          <!-- <Container :ContainerArr="Containerarr"></Container> -->
+          <!-- 后台数据 -->
+          <div v-if="Containerbool">
+            <img style="width:100%;height:3rem;" src="../../static/indeximg/timg.gif">
+          </div>
+          <div v-else>
+            <Container :ContainerArr="afterContainerarr"></Container>
+          </div>
     </div>
-  </div>
-  <!------------------------------------------------------------ 二级路由 ------------------------->
-  <div class="Twocontainer">
-      <IndexTwoList :ContainerArr="Containerarr1" :docuTop="DocuTop"></IndexTwoList>
-  </div>
+    <!--------------------------------------------------------- vip区 ---------------------------->
+    <div class="Vip"  @click="Vip(Viparr[0].Type)">
+        <img style="width:100%;display:block;" :src="Viparr[0].VipImg">
+    </div>
+    <div class="Section">
+    <!------------------------------------------------------- 食品分类 ---------------------------->
+        <div class="classify">
+          <!-- 模拟数据 -->
+          <!-- <div v-for="(v,i) in Classifyarr" :key="i" @click="classify(v.id)">
+            <IndexType :ClassifyImg=v.Classifyimg :ClassifyTitle=v.Classifytitle></IndexType>
+          </div> -->
+          <!-- 后台数据 -->
+          <div v-for="(v,i) in afterClassifyarr" :key="i" @click="classify(v.categoriesId)">
+            <IndexType :ClassifyImg=v.Classifyimg :ClassifyTitle=v.categoriesName></IndexType>
+          </div>
+        </div>
+    <!-------------------------------------------------------- 新人专区 ---------------------------->
+        <div class="newpeople" @click="Numans(Numansarr[0].Type)">
+          <img style="width:100%;display:block;" :src="Numansarr[0].NumansImg" >
+        </div>
+
+    </div>
+    <!------------------------------------------------------ 超合算平价100外卖 ---------------------->
+    <div class="Sup">
+      <div   v-for="(v,i) in Suparr" :key="i" >
+        <IndexSup :SupContent="v.Supcontent" :SupTitle="v.Suptitle" :SupImg="v.Supimg" :Type="v.type" ></IndexSup>
+      </div>
+    </div>
+    <!------------------------------------------------------------ 二级路由 ------------------------->
+    <div class="Twocontainer">
+        <IndexTwoList :ContainerArr="Containerarr1" :docuTop="DocuTop"></IndexTwoList>
+    </div>
   </div>
   <!----------------------------------------------------------- 底部导航 -------------------------->
     <Fuvs :colorindex=Colorindex :colorfenlei=Colorqita :colorhq=Colorqita :colorshopcar=Colorqita :colormy=Colorqita></Fuvs>
@@ -56,20 +69,12 @@ export default {
       Fuvs,
       Indexhead
   },
-  // created() {
-
-  //           // 分类区数据
-  //          this.axios({
-  //             url:"http://39.97.247.47:8088/user/sendVerifyCode",//get发送数据方式
-  //               method:"get",
-
-  //           }).then((ok)=>{
-  //               this.Classifyarr = ok.data
-  //           })
-  // },
   data () {
     return {
-      Colorindex:"color:#09bffe;box-shadow:0px 2px 6px #666;",
+      Containerbool:true,
+      afterClassifyarr:[],
+      afterContainerarr:[],
+      Colorindex:"color:#09bffe;",
       Colorqita:"color:black",
       DocuTop:0,
         // 轮播图虚拟数据
@@ -115,49 +120,49 @@ export default {
                 imgurl:"../../static/indeximg/list2.png",
                 title:"盒马 厄瓜多尔白虾30",
                 p:"来自白虾的故乡，南美洲",
-                span:"￥39.9",
+                span:39.9,
                 id:"0002"
               },
               {
                 imgurl:"../../static/indeximg/list2.png",
                 title:"盒马 厄瓜多尔白虾30",
                 p:"来自白虾的故乡，南美洲",
-                span:"￥39.9",
+                span:39.9,
                 id:"0003",
               },
               {
                 imgurl:"../../static/indeximg/list1.png",
                 title:"百香果6个装",
                 p:"仿佛可以闻到百种果子香",
-                span:"￥88.8",
+                span:88.8,
                 id:"0001",
               },
               {
                 imgurl:"../../static/indeximg/list2.png",
                 title:"盒马 厄瓜多尔白虾30",
                 p:"来自白虾的故乡，南美洲",
-                span:"￥39.9",
+                span:39.9,
                 id:"0004",
               },
               {
                 imgurl:"../../static/indeximg/list1.png",
                 title:"百香果6个装",
                 p:"仿佛可以闻到百种果子香",
-                span:"￥88.8",
+                span:88.8,
                 id:"0005",
               },
               {
                 imgurl:"../../static/indeximg/list2.png",
                 title:"盒马 厄瓜多尔白虾30",
                 p:"来自白虾的故乡，南美洲",
-                span:"￥39.9",
+                span:39.9,
                 id:"0006",
               },
               {
                 imgurl:"../../static/indeximg/list2.png",
                 title:"盒马 厄瓜多尔白虾30",
                 p:"来自白虾的故乡，南美洲",
-                span:"￥39.9",
+                span:39.9,
                 id:"0022",
               }],
               id:"001",
@@ -168,21 +173,21 @@ export default {
                 imgurl:"../../static/indeximg/list2.png",
                 title:"盒马 厄瓜多尔白虾30",
                 p:"来自白虾的故乡，南美洲",
-                span:"￥39.9",
+                span:39.9,
                 id:"0007"
               },
               {
                 imgurl:"../../static/indeximg/list1.png",
                 title:"百香果6个装",
                 p:"仿佛可以闻到百种果子香",
-                span:"￥88.8",
+                span:88.8,
                 id:"0008"
               },
               {
                 imgurl:"../../static/indeximg/list2.png",
                 title:"盒马 厄瓜多尔白虾30",
                 p:"来自白虾的故乡，南美洲",
-                span:"￥39.9",
+                span:39.9,
                 id:"0009",
 
               },
@@ -190,28 +195,28 @@ export default {
                 imgurl:"../../static/indeximg/list1.png",
                 title:"百香果6个装",
                 p:"仿佛可以闻到百种果子香",
-                span:"￥88.8",
+                span:88.8,
                 id:"0010",
               },
               {
                 imgurl:"../../static/indeximg/list2.png",
                 title:"盒马 厄瓜多尔白虾30",
                 p:"来自白虾的故乡，南美洲",
-                span:"￥39.9",
+                span:39.9,
                 id:"0011",
               },
               {
                 imgurl:"../../static/indeximg/list1.png",
                 title:"百香果6个装",
                 p:"仿佛可以闻到百种果子香",
-                span:"￥88.8",
+                span:88.8,
                 id:"0012",
               },
               {
                 imgurl:"../../static/indeximg/list2.png",
                 title:"盒马 厄瓜多尔白虾30",
                 p:"来自白虾的故乡，南美洲",
-                span:"￥39.9",
+                span:39.9,
                 id:"0013",
               }],
               id:"002",
@@ -222,49 +227,49 @@ export default {
                 imgurl:"../../static/indeximg/list1.png",
                 title:"百香果6个装",
                 p:"仿佛可以闻到百种果子香",
-                span:"￥88.8",
+                span:88.8,
                 id:"0014",
               },
               {
                 imgurl:"../../static/indeximg/list2.png",
                 title:"盒马 厄瓜多尔白虾30",
                 p:"来自白虾的故乡，南美洲",
-                span:"￥39.9",
+                span:39.9,
                 id:"0015",
               },
               {
                 imgurl:"../../static/indeximg/list1.png",
                 title:"百香果6个装",
                 p:"仿佛可以闻到百种果子香",
-                span:"￥88.8",
+                span:88.8,
                 id:"0016",
               },
               {
                 imgurl:"../../static/indeximg/list2.png",
                 title:"盒马 厄瓜多尔白虾30",
                 p:"来自白虾的故乡，南美洲",
-                span:"￥39.9",
+                span:39.9,
                 id:"0017",
               },
               {
                 imgurl:"../../static/indeximg/list1.png",
                 title:"百香果6个装",
                 p:"仿佛可以闻到百种果子香",
-                span:"￥88.8",
+                span:88.8,
                 id:"0018",
               },
               {
                 imgurl:"../../static/indeximg/list2.png",
                 title:"盒马 厄瓜多尔白虾30",
                 p:"来自白虾的故乡，南美洲",
-                span:"￥39.9",
+                span:39.9,
                 id:"0019",
               },
               {
                 imgurl:"../../static/indeximg/list2.png",
                 title:"盒马 厄瓜多尔白虾30",
                 p:"来自白虾的故乡，南美洲",
-                span:"￥39.9",
+                span:39.9,
                 id:"0020",
               }],
               id:"003",
@@ -275,49 +280,49 @@ export default {
                 imgurl:"../../static/indeximg/list2.png",
                 title:"盒马 厄瓜多尔白虾30",
                 p:"来自白虾的故乡，南美洲",
-                span:"￥39.9",
+                span:39.9,
                 id:"0021",
               },
               {
                 imgurl:"../../static/indeximg/list1.png",
                 title:"百香果6个装",
                 p:"仿佛可以闻到百种果子香",
-                span:"￥88.8",
+                span:88.8,
                 id:"0026",
               },
               {
                 imgurl:"../../static/indeximg/list2.png",
                 title:"盒马 厄瓜多尔白虾30",
                 p:"来自白虾的故乡，南美洲",
-                span:"￥39.9",
+                span:39.9,
                 id:"0023",
               },
               {
                 imgurl:"../../static/indeximg/list1.png",
                 title:"百香果6个装",
                 p:"仿佛可以闻到百种果子香",
-                span:"￥88.8",
+                span:88.8,
                 id:"0024",
               },
               {
                 imgurl:"../../static/indeximg/list2.png",
                 title:"盒马 厄瓜多尔白虾30",
                 p:"来自白虾的故乡，南美洲",
-                span:"￥39.9",
+                span:39.9,
                 id:"0025",
               },
               {
                 imgurl:"../../static/indeximg/list2.png",
                 title:"盒马 厄瓜多尔白虾30",
                 p:"来自白虾的故乡，南美洲",
-                span:"￥39.9",
+                span:39.9,
                 id:"0027",
               },
               {
                 imgurl:"../../static/indeximg/list2.png",
                 title:"盒马 厄瓜多尔白虾30",
                 p:"来自白虾的故乡，南美洲",
-                span:"￥39.9",
+                span:39.9,
                 id:"0028",
               }],
               id:"004",
@@ -327,55 +332,72 @@ export default {
                 imgurl:"../../static/indeximg/list1.png",
                 title:"百香果6个装",
                 p:"仿佛可以闻到百种果子香",
-                span:"￥88.8",
+                span:88.8,
                 id:"0029",
               },
               {
                 imgurl:"../../static/indeximg/list2.png",
                 title:"盒马 厄瓜多尔白虾30",
                 p:"来自白虾的故乡，南美洲",
-                span:"￥39.9",
+                span:39.9,
                 id:"0030",
               },
               {
                 imgurl:"../../static/indeximg/list2.png",
                 title:"盒马 厄瓜多尔白虾30",
                 p:"来自白虾的故乡，南美洲",
-                span:"￥39.9",
+                span:39.9,
                 id:"0031",
               },
               {
                 imgurl:"../../static/indeximg/list1.png",
                 title:"百香果6个装",
                 p:"仿佛可以闻到百种果子香",
-                span:"￥88.8",
+                span:88.8,
                 id:"0032",
               },
               {
                 imgurl:"../../static/indeximg/list2.png",
                 title:"盒马 厄瓜多尔白虾30",
                 p:"来自白虾的故乡，南美洲",
-                span:"￥39.9",
+                span:39.9,
                 id:"0033",
               },
               {
                 imgurl:"../../static/indeximg/list2.png",
                 title:"盒马 厄瓜多尔白虾30",
                 p:"来自白虾的故乡，南美洲",
-                span:"￥39.9",
+                span:39.9,
                 id:"0034",
               },
               {
                 imgurl:"../../static/indeximg/list2.png",
                 title:"盒马 厄瓜多尔白虾30",
                 p:"来自白虾的故乡，南美洲",
-                span:"￥39.9",
+                span:39.9,
                 id:"0035",
               }],
               id:"005",
               Type:"人气"}
             ],
         }
+  },
+  created() {
+    // 轮播图后台数据
+    this.axios({
+            url:"http://39.97.247.47:9999//carousel/findAll",
+            method:"get"
+        }).then((ok)=>{
+          this.Containerbool=false
+          this.afterContainerarr=ok.data
+        })
+    // 分类区数据
+    this.axios({
+      url:"http://39.97.247.47:9999//categories/findAll",//get发送数据方式
+        method:"get",
+    }).then((ok)=>{
+        this.afterClassifyarr= ok.data
+    })
   },
   mounted() {
     window.addEventListener('scroll',this.DocuTopp);
@@ -386,11 +408,18 @@ export default {
   methods: {
     DocuTopp(){
       this.DocuTop=document.querySelector('.Twocontainer').offsetTop;
+    },
+    classify(index){
+      this.$router.push("/list/?id="+index)
     }
   },
 }
 </script>
 <style scoped>
+.containerclass{
+  margin-top:0.9rem;
+  height: 3rem;
+}
 .Section{
   padding: 0 0.12rem;
   background-color: #f5f5f5;

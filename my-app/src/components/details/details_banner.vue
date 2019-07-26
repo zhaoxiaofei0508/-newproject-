@@ -46,4 +46,7 @@ new Swiper(".swiper-container", {
   width: 100%;
   height: 6rem;
 }
+.swiper-container{
+  margin-top:.8rem;
+}
 </style>
