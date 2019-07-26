@@ -90,7 +90,7 @@
     <!-- 加入购物车 -->
 
     <router-link :to="{path:'/carshop',query:{num:num,id:1}}">
-      <div class="shopp">加入购物车</div>
+      <div class="shopp" >加入购物车</div>
     </router-link>
   </div>
   </div>
@@ -137,7 +137,7 @@ export default {
       this.num=num;
       console.log(num)
     },
-   
+
   },
   created() {
    var id = this.$route.params.id

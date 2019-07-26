@@ -17,6 +17,7 @@
             </span>
             <router-link to="/carshop">
               <span>
+                <router-link to="/carshop"></router-link>
                 <img class="close" src="../../../static/img/h-shopping.png" alt />
               </span>
             </router-link>
