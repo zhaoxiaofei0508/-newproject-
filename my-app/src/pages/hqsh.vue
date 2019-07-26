@@ -48,6 +48,16 @@ import Hqsh from "../components/hqsh2/hqsh"
 import Fuvs from "../components/fuvs"
 
 export default {
+    beforeRouteEnter (to, from, next) {
+    let ls = localStorage;
+    if(Number(ls.getItem("lastname"))){
+        // console.log(ls.getItem("lastname"))
+        next()
+    }else{
+        next("/denglu")
+    }
+},
+
     components:{
         Hqsh,
         Fuvs
@@ -79,11 +89,11 @@ export default {
             that.time=a+":"+b+":"+c;
         },1000)
         this.axios({
-            url:"/link/zxf/data",
+            url:"http://39.97.247.47:9999//findAll",
             method: "get",
         }).then((ok)=>{ 
-            // console.log(ok.data.hqsh)      
-           this.newarr=ok.data.hqsh
+            // console.log(ok.data)     
+           this.newarr=ok.data
         })
 
     },

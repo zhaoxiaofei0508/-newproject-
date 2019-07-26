@@ -42,6 +42,15 @@ import Tool from '../components/tool/tool'
 import Indexlist from '../components/index/indexlist'
 import Fuvs from "../components/fuvs"
 export default {
+    beforeRouteEnter (to, from, next) {
+    let ls = localStorage;
+    if(Number(ls.getItem("lastname"))){
+        // console.log(ls.getItem("lastname"))
+        next()
+    }else{
+        next("/denglu")
+    }
+},
      components:{
          Mineitem,
          My,
