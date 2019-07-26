@@ -5,15 +5,26 @@
             <h3>我的地址</h3>
             <router-link to="/add_address"><span class="span">新增地址</span></router-link>
         </div>
-        <div>
+        <!-- <div>
             <No_address></No_address>
-        </div>
+        </div> -->
         <!-- <div>
             <mt-picker :slots="addressSlots" class="picker" 
             @change="onAddressChange" :visible-item-count="5" ></mt-picker >
             <mt-picker :slots="streetSlots" ref="picker" class="picker" @change="onStreetChange" :visible-item-count="5" ></mt-picker >
             上门服务地址:{{ addressProvince }} {{ addressCity }}
         </div> -->
+        <!-- <div v-for="(v,i) in addressarr" :key="i" class="address">
+            <h3 class="useradd">{{v.userAddress}}</h3>
+            <span class="h_name">{{v.userName}}</span><span class="h_phone">{{v.userPhone}}</span>
+        </div> -->
+
+        <div class="address_box">
+            <div class="address" v-for="(v,i) in addressarr" :key="i" @click="address(v.id)">
+                <p class="useradd">{{v.userAddress}}</p>
+                <span class="h_name">{{v.userName}}</span><span class="h_phone">{{v.userPhone}}</span>
+            </div>
+        </div>
     </div>
 </template>
 <script>
@@ -22,196 +33,78 @@ import No_address from '../components/order/no_address'
 export default {
     components:{
         No_address,
-       
+        addressarr:[]
+    },
+    created() {
+         var userid  = localStorage.userid;
+        this.axios({
+                url:"http://39.97.247.47:9999/address/selectaddress",//get发送数据方式
+                method:"get",
+                params:{"id":userid} //get发送数据方式
+                }).then((ok)=>{
+                    console.log(ok.data)
+                    this.addressarr = ok.data
+                })
     },
     methods: {
         fun(){
             this.$router.go(-1)
+        },
+        address(addressid){
+            this.$router.push("/ddyvs/"+addressid)
+
         }
     },
     methods: {
         togotop(){
-            this.$router.go(-1)
+            this.$router.push("/carshop")
         }
     },
-    //   name: 'address',
-
-//   data () {
-
-//    return {
-
-//     companyName:'',
-
-//     addressSlots: [
-
-//      {
-
-//       flex: 1,
-
-//       defaultIndex: 1,
-
-//       values: Object.keys(s),
-
-//       className: 'slot1',
-
-//       textAlign: 'center'
-
-//      }, {
-
-//       pider: true,
-
-//       content: '-',
-
-//       className: 'slot2'
-
-//      }, {
-
-//       flex: 1,
-
-//       values: [],
-
-//       className: 'slot3',
-
-//       textAlign: 'center'
-
-//      }, {
-
-//       pider: true,
-
-//       content: '-',
-
-//       className: 'slot4'
-
-//      }, {
-
-//       flex: 1,
-
-//       values: [],
-
-//       className: 'slot5',
-
-//       textAlign: 'center'
-
-//      }
-
-//     ],
-
-//     streetSlots: [
-
-//      {
-
-//       flex: 1,
-
-//       values: [],
-
-//       className: 'slot1',
-
-//       textAlign: 'center'
-
-//      }
-
-//     ],
-
-//     addressProvince: '省',
-
-//     addressCity: '市',
-
-//     addressXian: '区',
-
-//     addressStreet: '街道',
-
-     
-
-//    }
-
-//   },
-
-//   methods: {
-
-    
-
-//    onAddressChange(picker, values) {
-
-//     let sheng = Object.keys(s);
-
-//     let shi = Object.keys(s[values[0]]);
-
- 
-
-// 　　　　　　let index=shi.indexOf(values[1])
-
-// 　　　　　　let xian = s[values[0]][shi[index]];
-
-// 　　　　　this.xianObj = xian;
-
-//     picker.setSlotValues(1, shi);
-
-//     this.addressProvince = values[0];
-
-//     this.addressCity = values[1];
-
-//     this.addressXian = values[2];
-
-//     picker.setSlotValues(2, Object.keys(xian));
-
-//    },
-
-//    onStreetChange(picker, values){
-
-//     this.addressStreet = values[0]
-
-//    },
-
-   
-
-   
-
-//   },
-
-//   watch: {
-
-//    'addressXian': {
-
-//     handler(val, oval){
-
-//      let street = this.xianObj[this.addressXian]
-
-//      this.streetSlots[0].values = street
-
-//     }
-
-//    }
-
-//   },
-
-//   created(){
-
-    
-
-//   },
-
-//   mounted(){
-
-//    this.$nextTick(() => {
-
-//     setTimeout(() => {//这个是一个初始化默认值的一个技巧
-
-//      this.addressSlots[0].defaultIndex = 0;
-
-//     }, 100);
-
-//    });
-
- 
-
- 
-
- 
-
-//   }
 }
 </script>
 <style scoped>
+.address_box{
+    background: rgb(248, 248, 248);
+    padding-top: .2rem;
+    
+}
+.address{
+    width: 100%;
+    height: 1.2rem;
+    background: #fff;
+    border-bottom: 1px solid rgb(248, 248, 248);
+    padding-left: .2rem;
+}
+.address p{
+    padding-top: .1rem;
+    font-size: .3rem;
+
+
+}
+.address span{
+    padding-top: .1rem;
+    font-size: .3rem;
+    color: rgb(172, 172, 172);
+
+}
+.h_phone{
+    margin-left: .5rem;
+}
+/* .useradd{
+    width: 100%;
+    height: 2rem;
+    background: blue;
+}
+.h_name{
+    width: 2rem;
+    height: 1rem;
+    background: #3b9ada;
+}
+.h_phone{
+    width: 3rem;
+    height: 1rem;
+    background: darkgrey;
+} */
 .ohead{
     width: 100%;
     height: .8rem;
@@ -244,4 +137,5 @@ h3{
   width: 0.5rem;
   height: 0.5rem;
 }
+
 </style>

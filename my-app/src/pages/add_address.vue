@@ -12,7 +12,7 @@
           <div id="container">
             <li>
               <span>收货地址</span>
-              <p>{{address}}</p>
+              <p :value="Map">{{transAddress}}</p>
             </li>
           </div>
         </router-link>
@@ -42,17 +42,24 @@ export default {
     return {
       map: null,
       mapData: {},
-      houseNumber:'',
-      Contacts: '',
-      ContactsPhone: '',
-      address:''
+      houseNumber: "",
+      Contacts: "",
+      ContactsPhone: "",
+      address: "",
+      Map: ""
     };
   },
-  mounted(){
-      let {address} = this.$route.query
-      if(address){
-this.address = address
-      }
+  activated() {
+    let { address } = this.$route.query;
+    if (address) {
+      this.address = address;
+    }
+  },
+  computed: {
+    transAddress() {
+      let { address } = this.$route.query;
+      return address || '';
+    }
   },
   methods: {
     // 查看位置
@@ -67,21 +74,25 @@ this.address = address
       this.$router.push("/map");
     },
     baocun() {
-    //   this.axios({
-    //     url: " ", //get发送数据方式
-    //     method: "get",
-    //     params: {
-    //       houseNumber: this.houseNumber,
-    //       Contacts: this.Contacts,
-    //       ContactsPhone: this.ContactsPhone
-    //     } //get发送数据方式
-    //   }).then(ok => {
-    //     console.log(ok);
-    //     if (ok.data) {
-    //       console.log(ok.data);
-    //       this.$router.push("/myaddress");
-    //     }
-    //   });
+      var NowMap = this.Map + this.houseNumber;
+      var userId=localStorage.userid
+      console.log(this.Map);
+      this.axios({
+        url: "http://39.97.247.47:9999//address/selectaddress", //get发送数据方式
+        method: "put",
+        params: {
+          userAddress: NowMap,
+          userId:userId,
+           userName:this.Contacts,
+          userPhone: this.ContactsPhone
+        } //get发送数据方式
+      }).then(ok => {
+        console.log(ok);
+        if (ok.data) {
+          console.log(ok.data);
+          this.$router.push("/myaddress");
+        }
+      });
     }
   }
 };

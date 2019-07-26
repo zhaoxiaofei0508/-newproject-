@@ -1,11 +1,11 @@
 <template>
     <div>
-         <div v-for="(v,i) in newgetdas[0].Lifearr" :key="i" class="all">
+         <div v-for="(v,i) in newgetdas" :key="i" class="all">
             <div class="f1">
-                <div id="wf1"><img :src="v.Lifearrimgurl" alt=""></div>
+                <div id="wf1"><img :src="v.lifearrimgurl" alt=""></div>
                 <div class="wf2">
-                    <div class="f3">{{v.Lifearrname}}</div>
-                    <div class="f4">{{v.Lifearryuefen}}</div>
+                    <div class="f3">{{v.lifearrname}}</div>
+                    <div class="f4">{{v.lifearryuefen}}</div>
                 </div>
                 <div class="wf3" @click="funcc(i)">
                     <div>...</div>
@@ -16,33 +16,35 @@
                 </div>
             </div>
             <div class="wf4">
-                <img v-for="(v,i) in v.Lifearrimgarr" :key="i" :src="v.img1" alt="">
+                <!-- <img v-for="(v,i) in v.lifearrimgarr" :key="i" :src="v.img1" alt=""> -->
+                <img  :src="v.lifearrimgarr2" alt=""><img  :src="v.lifearrimgarr2" alt="">
+                <img  :src="v.lifearrimgarr3" alt=""><img  :src="v.lifearrimgarr4" alt="">
+                <img  :src="v.lifearrimgarr5" alt=""><img  :src="v.lifearrimgarr6" alt="">
             </div>
             <div class="wf5">
                 <div style="display:flex">
-                    <p>价格接受程度：</p><Xing :starcal="v.Lifearrid+'a'" :starnum="v.Lifearrxing1"></Xing>
+                    <p>价格接受程度：</p><Xing :starcal="v.lifearrid+'a'" :starnum="v.lifearrxing1"></Xing>
                 </div>
                 <div style="display:flex">
-                    <p>价格接受程度：</p><Xing :starcal="v.Lifearrid+'b'" :starnum="v.Lifearrxing2"></Xing>
+                    <p>价格接受程度：</p><Xing :starcal="v.lifearrid+'b'" :starnum="v.lifearrxing2"></Xing>
                 </div>
                 <div style="display:flex">
-                    <p>推荐亲友意愿：</p><Xing :starcal="v.Lifearrid+'c'" :starnum="v.Lifearrxing3"></Xing>
+                    <p>推荐亲友意愿：</p><Xing :starcal="v.lifearrid+'c'" :starnum="v.lifearrxing3"></Xing>
                 </div>
                 
             </div>
             <div class="z1">        
-                <strong class="shengluehao" @click="fun(i)" style="-webkit-line-clamp:3;-webkit-box-orient:vertical;">{{v.Lifearrcontent}}</strong>
+                <strong class="shengluehao" @click="fun(i)" style="-webkit-line-clamp:3;-webkit-box-orient:vertical;">{{v.lifearrcontent}}</strong>
                 <b  @click="fun(i)"  class="duo1">查看全文</b>   
             </div>
-            <div class="z6">{{v.Lifearrspan}}</div>
+            <div class="z6">{{v.lifearrspan}}</div>
             <div class="z5">
                 <div class="z4">
                 <span class="iconfont icon-fenxiang" @click="funa()"></span>
-                <span class="iconfont icon-dianzan" @click="funb(i)"><i>13</i></span>
+                <span class="iconfont icon-dianzan" @click="funb(i)"><i>89</i></span>
                 <span class="iconfont icon-liuyan"></span>
                 </div>
             </div>
-            
         </div>
     </div>
 </template>
@@ -188,7 +190,7 @@ export default {
         margin: 0 0.4rem;
     }
     .wf5>div>p{
-        width: 30%;
+        /* width: 30%; */
         /* padding: 0 0.3rem; */
         color: black;
     }
@@ -244,7 +246,7 @@ export default {
         display: inline-block;
         position: absolute;
         margin-top: 0rem;
-        right: 0.5rem;
+        right: 0.2rem;
         color: rgb(36, 187, 16);
         margin-right: 0.2rem;
         font-weight: 5000;
@@ -259,6 +261,5 @@ export default {
         width: 0.1rem;
         height: 0.1rem;
         border-radius: 50%;
-        /* background-color: yellow; */
     }
 </style>

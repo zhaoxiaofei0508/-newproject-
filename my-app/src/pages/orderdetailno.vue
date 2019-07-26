@@ -6,9 +6,7 @@
             <router-link to="/consult"> <b class="iconfont icon-kefu c_icon"></b></router-link>
         </div>
         <div class="static">
-            <p>已支付</p>
-            <!-- <p v-if="static='1'">待付款</p>
-            <p v-else>待配送</p> -->
+            <p>未支付</p>
             <img src="../../static/no_orderimg/orderdetail.png" alt="">
         </div>
         <div class="Box">
@@ -42,7 +40,7 @@
         </div>
         <div class="last">
             ——猜你喜欢
-                <span class="Span">.EXPLORE——</span>
+                <span class="span">.EXPLORE——</span>
         </div>
         <div class="like">
             <Indexlist v-for="(v,i) in arrMylike" :key="i" :ShopImg="v.imgurl" :ShopTitle="v.title" :ShopDetails="v.p" :ShopPrice="v.span" class="like2"></Indexlist>
@@ -56,7 +54,7 @@ export default {
     data(){
         return{
             arrbool:"",
-            arrOrder:[],
+            arrOrderno:[],
             arrMylike:[],
         }
     },
@@ -69,7 +67,7 @@ export default {
             this.$router.go(-1)
         }
     },
-    created(){
+    mounted() {
         var osel= this.$route.params.sel
         console.log(osel)
         // var ostatic=this.$route.params.ostatic
@@ -78,8 +76,9 @@ export default {
             method:"get",
             params:{oId:osel}
         }).then((ok)=>{
-            this.arrOrder=ok.data;
-            console.log(ok)
+            console.log(ok);
+            
+            this.arrOrderno=ok.data;
             this.arrMylike=ok.data.my_like
         })
     },
@@ -215,7 +214,7 @@ i{
     text-align: center;
     line-height: .6rem;
 }
-.Span{
+.span{
     color: #a6c1d4;
     font-size: .26rem;
 }

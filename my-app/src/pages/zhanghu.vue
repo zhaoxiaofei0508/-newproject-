@@ -116,18 +116,20 @@ export default {
             if(this.pawssword.length<6){
                 this.all="密码错误" 
             }else{
+                this.all=""
                 this.axios({
                 url:"",//get发送数据方式
                 method:"get",
 
 
-                params:{"pawssword":this.pawssword,"chongzhi":this.chongzhi,"userid":"a"} //get发送数据方式
+                params:{"pawssword":this.pawssword,"chongzhi":this.chongzhi,"userId":"a"} //get发送数据方式
                 }).then((ok)=>{
                     console.log(ok);
                     if(ok.data){
                        console.log(ok.data)
                        this.yuan+=this.chongzhi
                         this.$router.push("/zhanghu");
+                         this.all=""
                     }else{
                        this.all="密码错误" 
                        this.$router.push("/zhanghu");
