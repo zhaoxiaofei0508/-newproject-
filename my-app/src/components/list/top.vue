@@ -22,7 +22,7 @@
            <router-link to="/carshop">
             <div class="hc">
                 <img src="../../../static/fruitimg/h-shopping.png" alt="">
-                 <i class="shopcarnum">2</i>
+                 <i class="shopcarnum">{{shopcarnum}}</i>
             </div>
              </router-link>
             <div class="hb">
@@ -49,6 +49,7 @@ import Hlistleft from './h_listleft'
 export default {
     data() {
         return {
+            shopcarnum:0,
             id:"",
             toparr:"",
             fruitarr:[],
@@ -128,6 +129,13 @@ export default {
             //     this.ReinghtArr=reinghtarr[0].special_offer
             //     console.log(this.ReinghtArr)
             //     })
+    },
+    mounted(){
+        // 给个变量获取存在本地存储的购物车物品总数
+        sessionStorage.setItem('watchStorage', 0)
+        window.addEventListener('setItem', ()=> {
+	              this.shopcarnum++
+            })
     },
     methods: {
         

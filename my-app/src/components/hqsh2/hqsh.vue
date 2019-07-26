@@ -7,7 +7,7 @@
                 <span>{{v.title}}</span>
                 </div>
                 <div class="f1">
-                <img :src="v.imgurl">
+                    <img :src="v.imgurl">
                 </div>
             </div> 
         </div> 
@@ -18,6 +18,7 @@ export default {
     props:{
         arr:Array
     },
+   
     methods: {
         fun(id){
             this.$router.push("/hequxq/"+id)

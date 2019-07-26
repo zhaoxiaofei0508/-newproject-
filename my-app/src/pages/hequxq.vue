@@ -27,13 +27,13 @@
             <div class="z2" @click="funz(getdas[0].Tuijianid)">
                 <img :src="getdas[0].imgurl">
                 <div>
-                    <span>{{getdas[0].Tuijianxiangqing}}</span>
-                    <i>{{getdas[0].Tuijianjiaqian}}</i>
+                    <span>{{getdas[0].tuijianxiangqing}}</span>
+                    <i>{{getdas[0].tuijianjiaqian}}</i>
                 </div>
-            </div>
+                </div>
             <!-- 评论详情 -->
             <div class="round">
-                <Hqxq :newgetdas="getdas"></Hqxq>
+                <Hqxq :newgetdas="getarr"></Hqxq>
             </div>   
         </div>
     </div>
@@ -69,11 +69,12 @@ export default {
     data(){
         return{
             hequ:[],
-            ida:"",
+            // ida:"",
             bool:false,
             getdas:"",
             loading: true,
             boola:false,
+            getarr:[]
         }
     },
     methods:{
@@ -102,11 +103,12 @@ export default {
             document.body.style.overflow='';//出现滚动条
             },
         funz(id){
-            this.axios({
-                url:"",
-                method: "get",
-            })
+            // this.axios({
+            //     url:"",
+            //     method: "get",
+            // })
             this.$router.push("/details/"+id)
+            
         },
         
     },
@@ -118,18 +120,30 @@ export default {
         },1000)
 
         this.axios({
-            url:"/link/zxf/data",
+           url:"http://39.97.247.47:9999/findByid",
             method: "get",
+            params:{"id":1},
         }).then((ok)=>{
-            // console.log(ok)
-            this.ida=this.$route.params.id; 
-            this.hequ=ok.data.hqsh
-            this.getdas = this.hequ.filter((v,i)=>{
-                if(this.ida==v.id){
-                    return v
-                }
-            })   
+            console.log(ok)
+            this.getdas = ok.data
+
+            // this.ida=this.$route.params.id; 
+            // this.hequ=ok.data.hqsh
+            // this.getdas = this.hequ.filter((v,i)=>{
+            //     if(this.ida==v.id){
+            //         return v
+            //     }
+            // })   
         })
+         this.axios({
+           url:"http://39.97.247.47:9999/findBylid",
+            method: "get",
+            params:{"lid":1},
+        }).then((ok)=>{
+            console.log(ok)
+            this.getarr = ok.data
+        })
+        // getarr
     },
    
 }
@@ -184,7 +198,7 @@ export default {
         padding: 0 0.2rem;
     }
     .duo{
-        font-size: 0.35rem;
+        font-size: 0.33rem;
         display: inline-block;
         position: absolute;
         top:4.3rem;
@@ -192,18 +206,51 @@ export default {
         color: rgb(89, 230, 61);
     }
     .z2{
-        width: 100%;
+        /* width: 100%; */
         height: 1.5rem;
         overflow: hidden;
-        padding: 0 0.2rem;
+        margin: 0 0.2rem;
+        background: rgb(172, 124, 124);
         box-sizing: border-box;
+        box-shadow: 2px 3px 10px rgb(31, 170, 212);
+        border-radius: 0.5rem;
+        animation: myfirst 5s linear 1s infinite alternate;
+        /* Firefox: */
+        -moz-animation: myfirst 5s linear 1s infinite alternate;
+        /* Safari 和 Chrome: */
+        -webkit-animation: myfirst 5s linear 1s infinite alternate;
+        /* Opera: */
+        -o-animation: myfirst 5s linear 1s infinite alternate;
+    }
+    @keyframes myfirst
+    {
+    from {background: rgb(206, 89, 109);}
+    to {background: yellow;}
+    }
+
+    @-moz-keyframes myfirst /* Firefox */
+    {
+    from {background: rgb(206, 89, 109);}
+    to {background: yellow;}
+    }
+
+    @-webkit-keyframes myfirst /* Safari 和 Chrome */
+    {
+    from {background: rgb(206, 89, 109);}
+    to {background: yellow;}
+    }
+
+    @-o-keyframes myfirst /* Opera */
+    {
+    from {background: rgb(206, 89, 109);}
+    to {background: yellow;}
     }
     .z2>img{
         width: 13%;
         height: 55%;
         border-radius: 50%;
         float: left;
-        padding: 0.3rem 0.5rem;
+        padding: 0 0.5rem;
     }
     .z2>div>span{
         display:block;

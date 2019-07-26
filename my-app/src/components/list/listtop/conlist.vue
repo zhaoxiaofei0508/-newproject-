@@ -44,14 +44,11 @@ export default {
     methods: {
 
        shpping(product,el){
-
-           var num  = 1
-
-
-      
+           
+            let num=sessionStorage.getItem('watchStorage');
+            num++;
+            this.resetSetItem('watchStorage',num);
        }
-
-   
     },
     
 }
