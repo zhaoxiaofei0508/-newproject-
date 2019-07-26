@@ -1,8 +1,9 @@
 <template>
   <div style="width:100%;height:100%">
     <div class="map_search">
-      <p>
+      <p class="search-box">
         <input type="text" v-model="addressMap" id="search" placeholder="请输入地址" />
+        <span id="sure" @click="transData">确定</span>
       </p>
     </div>
     <div id="container"></div>
@@ -18,8 +19,7 @@ export default {
       center: [108, 34],
       addressMap: "",
       searchInstance: null,
-      searchEvent: null,
-      choosenId:''
+      searchEvent: null
     };
   },
   mounted() {
@@ -27,6 +27,14 @@ export default {
   },
 
   methods: {
+    transData() {
+      this.$router.push({
+        path: "/add_address",
+        query: {
+          address:document.querySelector("#search").value
+        }
+      });
+    },
     makeAMarker() {
       return new AMap.Marker({
         position: new AMap.LngLat(this.center[0], this.center[1]),
@@ -54,38 +62,41 @@ export default {
           let marker = that.makeAMarker();
           that.map.add(marker);
 
-          that.map.plugin(["AMap.Autocomplete", "AMap.PlaceSearch"], function() {
-            var autoOptions = {
-              // 城市，默认全国
-              // 使用联想输入的input的id
-              input: "search"
-            };
-            var autocomplete = new AMap.Autocomplete(autoOptions);
+          that.map.plugin(
+            ["AMap.Autocomplete", "AMap.PlaceSearch"],
+            function() {
+              var autoOptions = {
+                // 城市，默认全国
+                // 使用联想输入的input的id
+                input: "search"
+              };
+              var autocomplete = new AMap.Autocomplete(autoOptions);
 
-            var placeSearch = new AMap.PlaceSearch({
-              map: that.map
-            });
-            AMap.event.addListener(autocomplete, "select", function(e) {
-              //TODO 针对选中的poi实现自己的功能
-              placeSearch.search(e.poi.name);
-            });
-            AMap.event.addListener(placeSearch, "markerClick", function(e) {
-              //TODO 针对选中的poi实现自己的功能
-              
-              let address = e.data.cityname + e.data.adname + e.data.address
-        
-              if(e.id === that.choosenId){
-                    that.$router.push({
-                        path:'/add_address',
-                        query:{
-                            address
-                        }
-                    })
-              }else{
-              that.choosenId = e.id
-              }
-            });
-          });
+              var placeSearch = new AMap.PlaceSearch({
+                map: that.map
+              });
+              AMap.event.addListener(autocomplete, "select", function(e) {
+                //TODO 针对选中的poi实现自己的功能
+                placeSearch.search(e.poi.name);
+              });
+              AMap.event.addListener(placeSearch, "markerClick", function(e) {
+                //TODO 针对选中的poi实现自己的功能
+
+                let address = e.data.cityname + e.data.adname + e.data.address;
+
+                if (e.id === that.choosenId) {
+                  that.$router.push({
+                    path: "/add_address",
+                    query: {
+                      address
+                    }
+                  });
+                } else {
+                  that.choosenId = e.id;
+                }
+              });
+            }
+          );
 
           that.map.plugin("AMap.Geolocation", function() {
             var geolocation = new AMap.Geolocation({
@@ -115,6 +126,8 @@ export default {
               that.map.remove(marker);
               that.map.add(that.makeAMarker());
               console.log(data);
+              this.addressMap = data.formattedAddress;
+              document.querySelector("#search").value = this.addressMap;
             }
 
             function onError(data) {
@@ -126,8 +139,7 @@ export default {
           console.log("地图加载失败", e);
         }
       );
-    },
-    
+    }
   }
 };
 </script>
@@ -141,11 +153,18 @@ body,
   width: 100%;
   height: 92%;
 }
-#search{
-   width: 100%;
+#sure {
+  font-size: 0.3rem;
+  height: 0.45rem;
+  margin-top: 0.17rem;
+  display: inline-block;
+  border: 1px solid #ccc;
+}
+#search {
+  width: 85%;
   height: 0.6rem;
-  margin:.1rem .2rem;
-  border:.01rem solid gray;
+  margin: 0.1rem 0.2rem;
+  border: 0.01rem solid gray;
 }
 .map_search {
   width: 100%;
