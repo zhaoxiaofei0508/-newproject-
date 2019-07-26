@@ -87,15 +87,6 @@ import Fuvs from "../components/fuvs";
 // import Jsk from "../components/jsk"
 
 export default {
-  beforeRouteEnter (to, from, next) {
-    let ls = localStorage;
-    if(Number(ls.getItem("lastname"))){
-        // console.log(ls.getItem("lastname"))
-        next()
-    }else{
-        next("/denglu")
-    }
-},
   components: { Fuvs,  Liebiao },
   data() {
     return {

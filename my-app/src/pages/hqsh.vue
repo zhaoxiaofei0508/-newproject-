@@ -48,15 +48,6 @@ import Hqsh from "../components/hqsh2/hqsh"
 import Fuvs from "../components/fuvs"
 
 export default {
-    beforeRouteEnter (to, from, next) {
-    let ls = localStorage;
-    if(Number(ls.getItem("lastname"))){
-        // console.log(ls.getItem("lastname"))
-        next()
-    }else{
-        next("/denglu")
-    }
-},
 
     components:{
         Hqsh,
