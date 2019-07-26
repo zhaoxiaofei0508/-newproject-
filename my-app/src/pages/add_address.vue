@@ -75,13 +75,15 @@ export default {
     },
     baocun() {
       var NowMap = this.Map + this.houseNumber;
+      var userId=localStorage.userid
       console.log(this.Map);
       this.axios({
         url: "http://39.97.247.47:9999//address/selectaddress", //get发送数据方式
         method: "put",
         params: {
           userAddress: NowMap,
-          userId: this.Contacts,
+          userId:userId,
+           userName:this.Contacts,
           userPhone: this.ContactsPhone
         } //get发送数据方式
       }).then(ok => {

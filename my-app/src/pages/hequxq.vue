@@ -24,7 +24,7 @@
             <b @click="fun()" v-if="!bool" class="duo">查看全文</b>
             <img :src="getdas[0].imgurl" alt="">
             <!-- 购买详情 -->
-            <div class="z2" @click="funz(getdas[0].Tuijianid)">
+            <div class="z2" @click="funz(getdas[0].tuijianid)">
                 <img :src="getdas[0].imgurl">
                 <div>
                     <span>{{getdas[0].tuijianxiangqing}}</span>
@@ -126,7 +126,6 @@ export default {
         }).then((ok)=>{
             console.log(ok)
             this.getdas = ok.data
-
             // this.ida=this.$route.params.id; 
             // this.hequ=ok.data.hqsh
             // this.getdas = this.hequ.filter((v,i)=>{
