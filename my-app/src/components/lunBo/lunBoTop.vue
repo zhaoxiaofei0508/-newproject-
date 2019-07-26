@@ -164,7 +164,7 @@ p{
 
 #boxBig{
     width: 100%;
-    height: 30rem;
+    height: 100000rem;
     position: absolute;
     top: 0;
     background-color:black;
