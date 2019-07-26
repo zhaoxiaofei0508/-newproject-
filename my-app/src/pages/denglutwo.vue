@@ -53,15 +53,16 @@ export default {
                 // params:{"userName":this.username,"userPassword":this.userpwd} //get发送数据方式
                 }).then((ok)=>{
                     console.log(ok);
-                    if(ok.data){
-                    //  localStorage.lastname=1;
-                       localStorage.lastname=this.username;
-                       localStorage.userid=1;
-                       console.log(ok.data)
-                        // alert("登录成功！");
-                        this.$router.push("/index");
+                    if(ok.data==""){
+                         alert("用户名或密码不正确，请重新登录！");
                     }else{
-                        alert("用户名或密码不正确，请重新登录！");
+                    localStorage.lastname=ok.data.userName;
+                    localStorage.userid=ok.data.userId;
+                    localStorage.userimg=ok.data.userPicture;
+                   
+               
+                    // this.$router.push("/index");
+                       
                     }
  
                 })
