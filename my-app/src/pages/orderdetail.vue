@@ -1,4 +1,9 @@
 <template>
+<div>
+        <div v-show="bool">
+            <Loading></Loading>
+        </div>
+
     <div class="big">
         <div class="head">
             <span @click="fun()">&lt;</span>
@@ -7,62 +12,67 @@
         </div>
         <div class="static">
             <p>已支付</p>
-            <!-- <p v-if="static='1'">待付款</p>
-            <p v-else>待配送</p> -->
             <img src="../../static/no_orderimg/orderdetail.png" alt="">
         </div>
-        <div class="Box">
-            <div class="box1">
-                <img />
+            <div class="Box" v-for="(v,i) in arrOrder" :key="i">
+                <div class="box1">
+                    <img :src="v.photo"/>
+                </div>
+                <div class="box2">
+                    <h3>{{v.monicker}}</h3>
+                    <span>单价:&yen;{{v.price}}</span>
+                    <p>数量：{{v.number}}</p>
+                </div>
+                <div class="box3">
+                    <span>总价:&yen;{{v.price*v.number}}</span>
+                </div>
             </div>
-            <div class="box2">
-                <h3>详情</h3>
-                <span>单价:&yen;</span>
-                <p>数量:</p>
+            <div class="tall">
+                <i>应付金额合计</i>
+                <strong>￥{{sum}}</strong>
             </div>
-            <div class="box3">
-                <span>总价:&yen;</span>
+            <div class="tall">
+                <i>发票</i>
+                <i>订单完成后，可补开</i>
+            </div>
+            <div class="tall">
+                <i>下单时间</i>
+                <i>00000000</i>
+            </div>
+            <div class="tall">
+                <i>订单编号</i>
+                <i>{{orderid}}</i>
+                <!-- <i>{{arrOrder[0].oid}}</i> -->
+            </div>
+            <div class="last">
+                ——猜你喜欢
+                    <span class="Span">.EXPLORE——</span>
+            </div>
+            <div class="like">
+                <Indexlist v-for="(v,i) in arrMylike" :key="i" :ShopImg="v.imgurl" :ShopTitle="v.title" :ShopDetails="v.p" :ShopPrice="v.span" class="like2"></Indexlist>
             </div>
         </div>
-        <div class="tall">
-            <i>应付金额合计</i>
-            <strong>￥9999</strong>
-        </div>
-        <div class="tall">
-            <i>发票</i>
-            <i>订单完成后，可补开</i>
-        </div>
-        <div class="tall">
-            <i>下单时间</i>
-            <i>00000000</i>
-        </div>
-        <div class="tall">
-            <i>订单编号</i>
-            <i>11111</i>
-        </div>
-        <div class="last">
-            ——猜你喜欢
-                <span class="Span">.EXPLORE——</span>
-        </div>
-        <div class="like">
-            <Indexlist v-for="(v,i) in arrMylike" :key="i" :ShopImg="v.imgurl" :ShopTitle="v.title" :ShopDetails="v.p" :ShopPrice="v.span" class="like2"></Indexlist>
-        </div>
-    </div>
+</div>
 </template>
 <script>
 import Stay from '../components/order/stay'
 import Indexlist from '../components/index/indexlist'
+import Loading from '../components/mine/loading'
 export default {
     data(){
         return{
             arrbool:"",
             arrOrder:[],
             arrMylike:[],
+            orderid:"",
+            sum:0,
+            bool:true
         }
     },
     components:{
         Stay,
-        Indexlist
+        Indexlist,
+        Loading
     },
     methods: {
         fun(){
@@ -79,8 +89,28 @@ export default {
             params:{oId:osel}
         }).then((ok)=>{
             this.arrOrder=ok.data;
-            console.log(ok)
+            // console.log(ok.data)
+             // 计算订单总价
+            for(var i=0;i<this.arrOrder.length;i++){
+                 var pr=this.arrOrder[i].price
+                 var nu=this.arrOrder[i].number
+                 this.sum+=pr*nu;
+                 var or=this.arrOrder[i].oid
+            }
+            // 订单编号
+            this.orderid=or;
+            // console.log(this.sum);
+            // this.arrMylike=ok.data.my_like
+            this.bool=false;
+        })
+        // 猜你喜欢
+         this.axios({
+            url:"/link/cpydata",
+            method:"get"
+        }).then((ok)=>{
+            // console.log(ok.data.my_like);
             this.arrMylike=ok.data.my_like
+            this.bool=false;
         })
     },
 }
@@ -89,28 +119,24 @@ export default {
 .Box{
     width:100%;
     display:flex;
-    background:red;
 }
 .box1{
     display: flex;
     justify-content: center;
     align-items: center;
-    width:30%;
-    background:white;
+    width:20%;
 }
 .box1 img{
     display: block;
     width: 1rem;
     height:1rem ;
-    background: #0db6fb;
 }
 .box2{
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     padding:0.2rem 0.1rem; 
-    width:50%;
-    background:yellow;
+    width:60%;
 }
 .box2 h3{
     height:0.6rem;
@@ -118,6 +144,7 @@ export default {
     font-weight:100;
     font-size:0.3rem;
     overflow: hidden;
+    color:#b4b4b4;
 }
 .box2 span{
     display: block;
@@ -125,6 +152,8 @@ export default {
     line-height:0.4rem;
     font-size:0.3rem;
     overflow: hidden;
+    color:#b4b4b4;
+    margin-bottom: 10px;
 }
 .box2 p{
     margin: 0;
@@ -133,11 +162,10 @@ export default {
     line-height:0.4rem;
     font-size:0.3rem;
     overflow: hidden;
-    color: #0db6fb;
+    color:#b4b4b4;
 }
 .box3{
     width:20%;
-    background:red;
 }
 .box3 span{
     display: block;
