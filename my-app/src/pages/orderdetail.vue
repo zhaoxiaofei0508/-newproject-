@@ -6,11 +6,13 @@
             <router-link to="/consult"> <b class="iconfont icon-kefu c_icon"></b></router-link>
         </div>
         <div class="static">
-            <p>待付款</p>
+            <p>{{arrbool}}</p>
+            <!-- <p v-if="static='1'">待付款</p>
+            <p v-else>待配送</p> -->
             <img src="../../static/no_orderimg/orderdetail.png" alt="">
         </div>
         <div class="det">
-            <All_order :data="arrOrder"></All_order>
+            <Stay :data="arrOrder"></Stay>
         </div>
         <div class="tall">
             <i>应付金额合计</i>
@@ -26,7 +28,7 @@
         </div>
         <div class="tall">
             <i>订单编号</i>
-            <i>11111111111111</i>
+            <i>11111</i>
         </div>
         <div class="last">
             ——猜你喜欢
@@ -38,17 +40,18 @@
     </div>
 </template>
 <script>
-import All_order from '../components/order/all_order'
+import Stay from '../components/order/stay'
 import Indexlist from '../components/index/indexlist'
 export default {
     data(){
         return{
+            arrbool:"",
             arrOrder:[],
             arrMylike:[],
         }
     },
     components:{
-        All_order,
+        Stay,
         Indexlist
     },
     methods: {
@@ -57,13 +60,19 @@ export default {
         }
     },
     mounted() {
-        // var osel= this.$route.params.osel
+        var osel= this.$route.params.osel
+        // var ostatic=this.$route.params.ostatic
         this.axios({
             url:"/link/cpydata",
             method:"get",
-            // params:{"number":osel}
+            params:{"number":osel}
         }).then((ok)=>{
             this.arrOrder=ok.data.my_order;
+            if(ok.data.my_order[0].sta){
+                this.arrbool="已支付"
+            }else{
+                this.arrbool="待支付"
+            }
             this.arrMylike=ok.data.my_like
         })
     },

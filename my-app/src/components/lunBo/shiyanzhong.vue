@@ -3,18 +3,19 @@
         <Tubiao :title="title"></Tubiao>
         <div class="box2">
             <div class="box1">
-                <Good v-for="(v,i) in good" 
-                :key="i" :imgurl="v.imgurl" 
-                :title="v.title" 
-                :outprice="v.outprice" 
-                :price="v.price" 
-                :car="v.car" 
-                :type="v.type" 
-                :tejia="v.tejia" 
-                :border="v.num"></Good>
-
+                <div  v-for="(v,i) in good"  :key="i" @click="fun(v.itemsId)">
+                    <Good
+                        @click="fun(v.id)"
+                        :imgurl="v.imgurl" 
+                        :title="v.title" 
+                        :outprice="v.outprice" 
+                        :price="v.price" 
+                        :car="v.car" 
+                        :type="v.type" 
+                        :tejia="v.tejia" 
+                        :border="v.num"></Good>
+                </div>               
             </div>
-
         </div>  
     </div>
 </template>
@@ -34,19 +35,21 @@ export default {
         color:String,
         good:Array,
         title:String
+    }, 
+    methods: {
+        fun(id){
+           this.$router.push("/details/"+id)
+        }
     },
-    
-    
 }
 </script>
 <style scoped>
 .yyzbox{
-    /* border:1px solid black; */
     overflow: hidden;
 }
 .box1{
    width: 24.8rem;
-   height: 7rem;
+   height: 8.8rem;
   
 }
 .box2{

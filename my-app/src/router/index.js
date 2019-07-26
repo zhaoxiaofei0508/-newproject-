@@ -225,7 +225,7 @@ export default new Router({
       component: Zhanghu
     },
     {
-      path: '/orderdetail',
+      path: '/orderdetail/:sel',
       name: 'Orderdetail',
       component: Orderdetail
     },

@@ -80,8 +80,8 @@
           <span>{{shopInfo.productStorage}}</span>
         </div>
       </div>
-      <div v-for="(v,i) in shopInfo.productDetailsImages" :key="i" style="width:100%;height:6rem;border:.01rem solid gray;margin:0 .15rem">
-        <img style="width:100%;height:100%;" :src="v" alt />
+      <div v-for="(v,i) in shopInfo.agriculturePictureList" :key="i" style="width:100%;height:6rem;border:.01rem solid gray;margin:0 .15rem">
+        <img style="width:100%;height:100%;" :src="v.pictureUrl" alt />
       </div>
     </div>
 
@@ -89,9 +89,9 @@
     <!-- <Indexlist></Indexlist> -->
     <!-- 加入购物车 -->
 
-    <router-link :to="{path:'/carshop',query:{num:num,id:1}}">
-      <div class="shopp">加入购物车</div>
-    </router-link>
+    <!-- <router-link :to="{path:'/carshop',query:{num:num,id:1}}"> -->
+      <div class="shopp" @click="shop()">加入购物车</div>
+    <!-- </router-link> -->
   </div>
   </div>
 </template> 
@@ -137,17 +137,39 @@ export default {
       this.num=num;
       console.log(num)
     },
+    shop(){
+      var productid = this.$route.params.id
+       var userId = localStorage.userid;
+           console.log(userId);
+         var param=new URLSearchParams();
+            param.append("productId",productid);
+            param.append("num",this.num);
+            param.append("userId",userId);
+            this.axios({
+            url:"http://39.97.247.47:9999/shop/save",
+            method:"post",
+            // post发送数据的时候使用data属性
+            data:param
+        }).then((ok)=>{
+            // console.log(ok.data);
+            if(ok.data==0){
+                alert("失败")
+            }else{
+                alert("成功")
+            }
+                })
+    }
    
   },
   created() {
    var id = this.$route.params.id
     this.getTime();
       this.axios({
-          url:"http://39.97.247.47:9999/agricultureProduct/findBySubclassId",//get发送数据方式2
+          url:"http://39.97.247.47:9999/agricultureProduct/one",//get发送数据方式2
           method:"get",
-        params:{"subclassId":id}//get发送数据方式1
+        params:{"id":id}//get发送数据方式1
       }).then((ok)=>{
-      this.shopInfo=ok.data[0]
+      this.shopInfo=ok.data
           console.log(ok.data)
       })
       this.axios({
@@ -156,7 +178,7 @@ export default {
         params:{"pid":id}//get发送数据方式1
       }).then((ok)=>{
       this.comment=ok.data
-          console.log(ok.data)
+          // console.log(ok.data)
       })
   }
 };

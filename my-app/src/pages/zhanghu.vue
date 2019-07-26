@@ -68,7 +68,7 @@
 export default {
     data() {
         return {
-            yuan:"0.00",
+            yuan:0,
             pawssword:'',
             bool:false,
             fresh:"",
@@ -112,17 +112,21 @@ export default {
             this.pawssword = this.pawssword.substring(0,this.pawssword.length-1);
         }, 
         wan(){
+            let a=localStorage.userid
             if(this.pawssword.length<6){
                 this.all="密码错误" 
             }else{
                 this.axios({
                 url:"",//get发送数据方式
                 method:"get",
-                params:{"pawssword":this.pawssword,"chongzhi":this.chongzhi} //get发送数据方式
+
+
+                params:{"pawssword":this.pawssword,"chongzhi":this.chongzhi,"userid":"a"} //get发送数据方式
                 }).then((ok)=>{
                     console.log(ok);
                     if(ok.data){
                        console.log(ok.data)
+                       this.yuan+=this.chongzhi
                         this.$router.push("/zhanghu");
                     }else{
                        this.all="密码错误" 
@@ -134,18 +138,23 @@ export default {
         },
         fun9(){
              this.wf=false;
+             this.pawssword='';
+             this.all="请输入密码";
         }
     },
     created() {
+        let b=localStorage.userid
         this.axios({
+
                 url:"",//get发送数据方式
                 method:"get",
-                params:{"user":this.yonghuid} //get发送数据方式
+                params:{"userid":this.b} //get发送数据方式
                 }).then((ok)=>{
                     console.log(ok);
                     if(ok.data){
                        console.log(ok.data)
-                        this.$router.push("/zhanghu");
+                       this.yuan
+                        
                     }
  
                 })   
