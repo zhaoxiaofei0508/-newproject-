@@ -58,15 +58,16 @@ export default {
             this.lundetailstop=ok.data.xiaRi[0].lundetailstop[0]
             this.lunmiddle=ok.data.xiaRi[1].lunmiddle[0]
             this.video=ok.data.xiaRi[3].video
-            console.log(this.video[1]);
+            
 
         }),
         
          this.axios({
-            url:"http://39.96.64.85:8899/carousle/findAll", 
+            url:"http://39.97.247.47:9999/carousle/findAll", 
             method:"get",   
         }).then((ok)=>{
             this.goods=ok.data
+            console.log(ok);
             
         })
 

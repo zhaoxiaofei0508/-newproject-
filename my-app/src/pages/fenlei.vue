@@ -48,7 +48,7 @@ export default {
         },
        data(){
         return{
-            Colorfenlei:"color:#09bffe;box-shadow:0px 2px 6px #666;",
+            Colorfenlei:"color:#09bffe",
             Colorqita:"color:black",
             arrr:[],
             loading: true,

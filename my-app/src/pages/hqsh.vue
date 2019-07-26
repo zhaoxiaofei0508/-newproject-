@@ -48,6 +48,7 @@ import Hqsh from "../components/hqsh2/hqsh"
 import Fuvs from "../components/fuvs"
 
 export default {
+
     components:{
         Hqsh,
         Fuvs
@@ -55,7 +56,7 @@ export default {
     data(){
         return {
             Colorqita:"color:black",
-            Colorhq:"color:#09bffe;box-shadow:0px 2px 6px #666;",
+            Colorhq:"color:#09bffe",
             newarr:[],
             time:0
         }
@@ -79,11 +80,11 @@ export default {
             that.time=a+":"+b+":"+c;
         },1000)
         this.axios({
-            url:"/link/zxf/data",
+            url:"http://39.97.247.47:9999//findAll",
             method: "get",
         }).then((ok)=>{ 
-            // console.log(ok.data.hqsh)      
-           this.newarr=ok.data.hqsh
+            // console.log(ok.data)     
+           this.newarr=ok.data
         })
 
     },

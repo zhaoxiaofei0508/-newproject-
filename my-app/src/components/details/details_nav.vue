@@ -38,7 +38,7 @@ export default {
         { title: "评价", id: "details_comment" },
 
         { title: "详情", id: "details_d" },
-        { title: "推荐", id: "details_recommend" }
+        { title: "服务", id: "details_recommend" }
       ],
       detailsNum:0
     };

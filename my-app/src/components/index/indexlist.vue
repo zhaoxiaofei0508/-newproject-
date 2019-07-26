@@ -1,11 +1,13 @@
 <template>
-    <div class="Indexlist">
-        <img class="Indexlistimg" :src="ShopImg">
+    <div class="Indexlist" @click="shopcontent(shopId)">
+        <div class="Indexlistimg">
+            <img :src="ShopImg==null?'../../../static/indeximg/listtime.gif':ShopImg">
+        </div>
         <div class="IndexlistBox">
             <h1>{{ShopTitle}}</h1>
             <p>{{ShopDetails}}</p>
             <div class="Indexlistbox">
-                <span>{{ShopPrice}}</span>
+                <span>&yen;{{ShopPrice}}</span>
                 <i class="iconfont icon-gouwuche" @touchstart="touchstart" @click="shopcaradd(shopindex)"><span :class="shopclass" v-show="shopbool" class="smallbox"></span></i>
             </div>
         </div>
@@ -24,12 +26,16 @@ export default {
     props:{
         ShopImg:String,
         ShopTitle:String,
-        ShopPrice:String,
+        ShopPrice:Number,
         ShopDetails:String,
         shopindex:Number,
-        shopclass:String
+        shopclass:String,
+        shopId:Number
     },
     methods:{
+        shopcontent(index){
+            this.$router.push("/details/"+index)
+        },
         touchstart(e){
             this.x=e.targetTouches[0].clientX 
             this.y=e.targetTouches[0].clientY
@@ -105,9 +111,16 @@ export default {
 .IndexlistBox{
     padding: 0.14rem 0.2rem 5px;
 }
-.Indexlist .Indexlistimg{
+.Indexlistimg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+     width: 100%;
+     height: 3.5rem;
+}
+.Indexlistimg img{
     display: block;
-    width: 100%;
+   width: 100%;
 }
 .Indexlist h1{
     font-size: 0.20rem;
@@ -150,7 +163,7 @@ export default {
         width: 8px;
         height: 8px;
         border-radius: 50%;
-        background: #09bffe;
+        background: red;
         position:absolute;
         top:0.12rem;
         left:0.13rem;
