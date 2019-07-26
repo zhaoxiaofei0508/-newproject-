@@ -42,7 +42,15 @@
         <DetailsCube :data="shopInfo" :getNum="getNum"></DetailsCube>
       </div>
       <!-- 评价 -->
-      <div style="height:2.5rem;overflow:hidden" id="details_comment">
+        
+           <div
+          id="details_comment"
+          style="font-size:.25rem;text-align:center;font-weight:600;line-height:.8rem;margin:0 .2rem;"
+        >
+          <span>评价</span>
+          <span style="color:blue">EVALUATE</span>
+        </div>
+<div style="height:2.5rem;overflow:hidden">
         <div class="details_time details_comment" style="border-bottom:1px solid black">
           <div>
             <!-- <img  :src="shopInfo.comment[0].img" alt /> -->
@@ -66,6 +74,8 @@
           <div class="details_time details_comment" style="padding:0 .15rem">{{v.commentDetails}}</div>
         </div>
       </div>
+  
+      
       <!-- 详情图 -->
       <div>
         <div
