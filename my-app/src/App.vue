@@ -23,7 +23,9 @@ ul,li{
   list-style: none;
 
 }
-
+input{
+  outline: none;
+}
 div{
   margin: 0;
 	padding: 0;

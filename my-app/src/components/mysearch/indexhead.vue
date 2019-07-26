@@ -35,20 +35,20 @@ export default {
     },
     created() {
     // var search= this.$route.params.search
-        this.axios({
-            url:"http://39.97.247.47:9999/user/findByUserNameByUserPassword",
-            method:"post",
-            // params:{"productName":search} 
-            }).then((ok)=>{
-                // console.log(ok.data);
-                // this.arr=ok.data
-                if(localStorage.lastname==0){
-                    this.bool=true;
-                }else{
-                    this.bool=false
-                }
+        // this.axios({
+        //     url:"http://39.97.247.47:9999/user/findByUserNameByUserPassword",
+        //     method:"post",
+        //     // params:{"productName":search} 
+        //     }).then((ok)=>{
+        //         // console.log(ok.data);
+        //         // this.arr=ok.data
+        //         if(localStorage.lastname==0){
+        //             this.bool=true;
+        //         }else{
+        //             this.bool=false
+        //         }
                 
-        })
+        // })
         
 
         
