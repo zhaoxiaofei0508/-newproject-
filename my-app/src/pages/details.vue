@@ -89,9 +89,9 @@
     <!-- <Indexlist></Indexlist> -->
     <!-- 加入购物车 -->
 
-    <router-link :to="{path:'/carshop',query:{num:num,id:1}}">
-      <div class="shopp" >加入购物车</div>
-    </router-link>
+    <!-- <router-link :to="{path:'/carshop',query:{num:num,id:1}}"> -->
+      <div class="shopp" @click="shop()">加入购物车</div>
+    <!-- </router-link> -->
   </div>
   </div>
 </template> 
@@ -137,7 +137,29 @@ export default {
       this.num=num;
       console.log(num)
     },
-
+    shop(){
+      var productid = this.$route.params.id
+       var userId = localStorage.userid;
+           console.log(userId);
+         var param=new URLSearchParams();
+            param.append("productId",productid);
+            param.append("num",this.num);
+            param.append("userId",userId);
+            this.axios({
+            url:"http://39.97.247.47:9999/shop/save",
+            method:"post",
+            // post发送数据的时候使用data属性
+            data:param
+        }).then((ok)=>{
+            // console.log(ok.data);
+            if(ok.data==0){
+                alert("失败")
+            }else{
+                alert("成功")
+            }
+                })
+    }
+   
   },
   created() {
    var id = this.$route.params.id
