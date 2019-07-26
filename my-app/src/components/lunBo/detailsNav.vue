@@ -112,7 +112,7 @@ img{
 }
 #zhezhao{
     width: 100%;
-    height: 30rem;
+    height: 100000rem;
     position: absolute;
     top:0rem;
     background-color: black;

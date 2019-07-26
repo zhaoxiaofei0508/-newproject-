@@ -21,8 +21,6 @@ export default {
         imgid:Number
 
     },
-    created() {
-    },
    methods: {
    },
    
