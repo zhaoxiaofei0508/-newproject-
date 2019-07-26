@@ -8,7 +8,7 @@
             <p>{{ShopDetails}}</p>
             <div class="Indexlistbox">
                 <span>&yen;{{ShopPrice}}</span>
-                <i class="iconfont icon-gouwuche" @touchstart="touchstart" @click="shopcaradd(shopindex)"><span :class="shopclass" v-show="shopbool" class="smallbox"></span></i>
+                <i class="iconfont icon-gouwuche" @touchstart="touchstart" @click.stop="shopcaradd(shopId,shopindex)"><span :class="shopclass" v-show="shopbool" class="smallbox"></span></i>
             </div>
         </div>
     </div>
@@ -40,11 +40,29 @@ export default {
             this.x=e.targetTouches[0].clientX 
             this.y=e.targetTouches[0].clientY
         },
-        shopcaradd(i){
+        shopcaradd(id,i){
             this.shopbool=true
             let num=sessionStorage.getItem('watchStorage');
             num++;
             this.resetSetItem('watchStorage',num);
+             var userId = localStorage.userid;
+             let param=new URLSearchParams();
+            param.append("productId",id);
+            param.append("num",1);
+            param.append("userId",userId);
+            this.axios({
+            url:"http://39.97.247.47:9999/shop/save",
+            method:"post",
+            // post发送数据的时候使用data属性
+            data:param
+        }).then((ok)=>{
+            // console.log(ok.data);
+            if(ok.data==0){
+                alert("ok")
+            }
+                })
+
+
             let X=document.documentElement.clientWidth ||  document.body.clientWidth;  //可视窗口大小
             let Y=document.documentElement.clientHeight || document.body.clientHeight;
             let x=this.x           //鼠标位置

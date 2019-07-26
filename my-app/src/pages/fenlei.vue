@@ -25,7 +25,7 @@
                 <!-- <div class="wfqq"><img :src="v.img" alt=""></div>
                 <div class="wfww">{{v.title}}</div> -->
                  <!-- // 后台数据 -->
-                 <div class="wfqq"><img :src="v.img" alt=""></div>
+                 <div class="wfqq"><img :src="v.categoriesImage" alt=""></div>
                 <div class="wfww">{{v.categoriesName}}</div>
                 </router-link>
             </div>

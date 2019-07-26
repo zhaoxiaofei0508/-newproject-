@@ -29,7 +29,7 @@
           </div> -->
           <!-- 后台数据 -->
           <div v-for="(v,i) in afterClassifyarr" :key="i" @click="classify(v.categoriesId)">
-            <IndexType :ClassifyImg=v.Classifyimg :ClassifyTitle=v.categoriesName></IndexType>
+            <IndexType :ClassifyImg=v.categoriesImage :ClassifyTitle=v.categoriesName></IndexType>
           </div>
         </div>
     <!-------------------------------------------------------- 新人专区 ---------------------------->
