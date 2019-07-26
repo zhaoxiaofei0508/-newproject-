@@ -16,12 +16,12 @@
           </div>
 
           <div style="background:rgb(232, 232, 232);margin:15px 10px;padding:15px 10px;height:2rem" v-for="(v,i) in obj" :key="i">
-               <img :src="v.img" style="width:1.5rem">
-               <ul style="float:right;font-size:.4rem;padding-right:1.5rem;">
+               <img :src="v.shopImg" style="width:1rem">
+               <ul style="float:right;font-size:.3rem;padding-right:1.5rem;">
                     
-                     <li>商品名称:{{v.title}}</li>
-                     <li>数量:{{v.num}}</li>
-                     <li>单价:￥{{v.price}}</li>
+                     <li>商品名称:{{v.shopTitle}}</li>
+                     <li>数量:{{v.shopNum}}</li>
+                     <li>单价:￥{{v.shopPrice}}</li>
 
                </ul>
           </div>
@@ -77,28 +77,32 @@ export default {
           var cid=this.$route.params.id
           console.log( cid)
 
-
-
+                       var parmers=new URLSearchParams();   
+              
           // 调接口真正代码
 
-            //  this.axios({
-            //             url:"http://localhost:3009/get?uname="+cid,
-            //             method:"get",
-              
-            //             }).then((val)=>{
+                     
+                  parmers.append("Ids",cid)
+                  // console.log(typeof this.obj[i])
+                this.axios({
+                url:"http://39.97.247.47:9999/shop/loadByShopIdShowShop",
+                // url: "/line/date",
+                data:parmers,
+                method: "post"
+              }).then((val)=>{
                           
-            //                 this.obj=val.data.arr
-            //           })
+                            this.obj=val.data
+                      })
 
                 
                   },
     // 假数据
-        mounted() {
+        // mounted() {
 
-        this.axios({
-          url:"/line/date",
-          method:"get"
-        }).then((val)=>{
+        // this.axios({
+        //   url:"/line/date",
+        //   method:"get"
+        // }).then((val)=>{
            
             //    console.log(val.data.arr)
             // if(val.data.arr==""){
@@ -108,12 +112,12 @@ export default {
             //     this.bool=false
             // }
             
-              this.obj=val.data.arr
+              // this.obj=val.data.arr
                   // this.bool=false;
-        })
+    //     })
 
-           this.$route.params.id
-     },
+    //        this.$route.params.id
+    //  },
     methods: {
       open() {
         const h = this.$createElement;
