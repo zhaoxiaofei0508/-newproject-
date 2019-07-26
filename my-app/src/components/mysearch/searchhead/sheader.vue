@@ -2,7 +2,7 @@
     <div>
         <div class="box">
             <router-link to="/index"><span>&lt;</span></router-link>
-            <input type="text" placeholder="小龙虾" v-model="id_input" id="myInput" >
+            <input type="text" placeholder="小龙虾" v-model="id_input" id="myInput" @keydown="doAdd($event)">
             <img src="../../../../static/no_orderimg/search.png" alt="">
             <p v-show="bool" @click="fun()">X</p>
             <button @click="btn()">搜索</button>
@@ -32,18 +32,23 @@ export default {
             this.id_input=""
         },
         btn(){
-            if(this.id_input==""){
-                this.ohistory=false
-            }else{
-                this.ohistory=true
-                let o = document.getElementById("myInput").value
-                document.getElementById("demo").innerHTML =o; 
-            }
+            
              this.$router.push("/searchdel/"+this.id_input)
         },
         del(){
             this.ohistory=false
-        }
+        },
+         doAdd(e){
+            if(e.keyCode == 13){
+                if(this.id_input==""){
+                    this.ohistory=false
+                }else{
+                    this.ohistory=true
+                    let o = document.getElementById("myInput").value
+                    document.getElementById("demo").innerHTML =o; 
+                }
+            }
+        },
     },
 }
 </script>

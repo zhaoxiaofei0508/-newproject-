@@ -1,25 +1,26 @@
 <template>
     <div class="box">
         <div v-for="(v,i) in newdata" :key="i" >
-            <div class="top" @click="jump(v.number)">
-                <p >订单号：{{v.number}}</p>
-                <span>{{v.status.succeed}}</span>
+            <div class="top" @click="jump(v.orderId)">
+                <p >订单号：{{v.orderId}}</p>
+                <span>已支付</span>
             </div>
-            <div class="des" @click="jump(v.number)">
-                <img :src="v.img" alt="">
+            <div class="des" @click="jump(v.orderId)">
+                <img :src="v.orderProductPhoto" alt="">
+                <p>{{v.orderProductMonicker}}</p>
                 <!-- <img src="../../../static/no_orderimg/no_order.png" alt=""> -->
                 <div class="sum">
-                    <span class="allNum">共{{v.num}} 件商品</span>
+                    <span class="allNum">共{{v.orderProductNumber}}件商品</span>
                     <b>&gt;</b>
                 </div>
             </div>
             <div class="to">
-                <p class="total">单价：<span class="price">￥{{v.price}}</span></p>
-                <p class="total">合计：<span class="price">￥{{v.price}}</span></p>
+                <p class="total">单价：<span class="price">￥{{v.orderProductPrice}}</span></p>
+                <p class="total">合计：<span class="price">￥{{v.orderPrice}}</span></p>
             </div>
             
             <div class="all">
-                <p class="order" @click="fun()" >查看物流</p>
+                <p class="order">查看物流</p>
                 <p v-show="bool">{{v.orderLogistics}}</p>
                 <router-link to="/index"><p class="order last">再来一单</p></router-link>
             </div>
@@ -44,7 +45,7 @@ export default {
         }
     },
     methods: {
-        fun(){
+        fun(i){
             this.bool=!this.bool;
         },
         jump(text){

@@ -41,15 +41,17 @@ export default {
         product:Number
 
     },
-    methods: {
-       shpping(product){
+    methods: {    
+       shpping(product,el){
 
-           var num  = 1
+            let num=sessionStorage.getItem('watchStorage');
+            num++;
+            this.resetSetItem('watchStorage',num);
            var userId = localStorage.userid;
            console.log(userId);
          var param=new URLSearchParams();
             param.append("productId",product);
-            param.append("num",num);
+            param.append("num",1);
             param.append("userId",userId);
             this.axios({
             url:"http://39.97.247.47:9999/shop/save",

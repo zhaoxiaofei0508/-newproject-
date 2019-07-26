@@ -69,13 +69,15 @@ export default {
         avatar: '../../../static/no_orderimg/14.jpg'
         },
       // action sheet 选项内容
-      data: [{
-        name: '拍照',
-        method : this.getCamera	// 调用methods中的函数
-      }, {
-        name: '从相册中选择', 
-        method : this.getLibrary	// 调用methods中的函数
-      }],
+      data: [
+//         {
+//             name: '拍照',
+//             method : this.getCamera	// 调用methods中的函数
+//         },
+        {
+            name: '从相册中选择', 
+            method : this.getLibrary	// 调用methods中的函数
+        }],
       // action sheet 默认不显示，为false。操作sheetVisible可以控制显示与隐藏
       sheetVisible: false
     }
@@ -96,9 +98,9 @@ export default {
         	// 打开action sheet
           this.sheetVisible = true;
         },
-        getCamera: function(){
-          console.log("打开照相机")
-        },
+    //     getCamera: function(){
+    //       console.log("打开照相机")
+    //     },
         getLibrary: function(){
             console.log("打开相册");
             this.boolimg=true;
