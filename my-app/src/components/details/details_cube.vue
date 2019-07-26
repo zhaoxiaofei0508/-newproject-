@@ -1,8 +1,10 @@
 <template>
   <div class="root details_time" style="margin-bottom:.15rem;" @click="isShow = true">
     <div class="rootnav">
-      <p>
-        已选择 {{shopInfo.productName}} ({{shopInfo.productScale}}/{{shopInfo.productCompany}})
+      <p style="overflow: hidden;
+text-overflow:ellipsis;
+white-space: nowrap;">
+        已选择 {{syncData.productName}} ({{syncData.productScale}}/{{syncData.productCompany}})
       </p>
       <p style="color:red;font-size:.3rem;font-weight:600"><img style="width:.3rem;height:.3rem;margin-right:.1rem" src="../../../static/img/right.png"></p>
     </div>
@@ -11,22 +13,22 @@
     <div class="modal" v-if="isShow">
       <div class="root_coment">
         <div style="display:flex;">
-          <img :src="shopInfo.productImages" alt />
+          <img :src="syncData.agriculturePictureList[0].pictureUrl" alt />
           <div style="font-size:.26rem;">
-            <p>{{shopInfo.productName}}</p>
+            <p>{{syncData.productName}}</p>
             <p>
-              <span style="color:red;">￥{{shopInfo.productPrice}}</span>/
-              <span style="color:gray">{{shopInfo.productCompany}}</span>
+              <span style="color:red;">￥{{syncData.productPrice}}</span>/
+              <span style="color:gray">{{syncData.productCompany}}</span>
             </p>
           </div>
         </div>
         <p style="font-size:.4rem;color:gray;" @click="close">x</p>
       </div>
       <div class="root_coment">
-        <p>规格 {{shopInfo.productScale}}/{{shopInfo.productCompany}}</p>
+        <p>规格 {{syncData.productScale}}/{{syncData.productCompany}}</p>
       </div>
       <div>
-        <p>购买数量（{{shopInfo.productCompany}}</p>
+        <p>购买数量（{{syncData.productCompany}}</p>
         <div class="button_number">
           <button @click="jian()">-</button>
           <span class="details_number">{{number}}</span>
@@ -44,9 +46,13 @@ export default {
   data() {
     return {
       isShow: false,
-      shopInfo: this.data,
       number:1
     };
+  },
+  computed:{
+    syncData(){
+      return this.data
+    }
   },
   methods: {
     close(e) {

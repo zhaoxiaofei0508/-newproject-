@@ -1,5 +1,9 @@
 <template>
     <div>
+         <div v-if="loading">
+             <Loading ></Loading>
+        </div>
+    <div v-else>
         <div class="h-list-top">
             <div class="top-title">
                  <span>分类</span> 
@@ -28,21 +32,27 @@
         </div>
 
        
+         </div>
     </div>
 </template>
 <script>
 import Fuvs from "../components/fuvs"
  import Toplist from '../components/list/listtop/toplist'
+import Loading from "../components/hqsh2/loading"
+
 export default {
        components:{
            Fuvs,
-           Toplist
+           Toplist,
+           Loading
         },
        data(){
         return{
             Colorfenlei:"color:#09bffe",
             Colorqita:"color:black",
-            arrr:[]
+            arrr:[],
+            loading: true,
+
         }
     },
     created(){
@@ -60,6 +70,7 @@ export default {
           url:"http://39.97.247.47:9999/categories/findAll",
           method:"get"
         }).then((ok)=>{
+            this.loading=false
             console.log(ok)
               this.arrr=ok.data
         })

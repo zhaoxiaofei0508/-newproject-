@@ -18,7 +18,7 @@ export default {
         return {
             arr:[]
         }
-    },
+    }, 
     created() {
         var search= this.$route.params.search
            this.axios({

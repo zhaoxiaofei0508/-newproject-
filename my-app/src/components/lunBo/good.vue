@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div >
        <ul>
            <li id="bo"><img :src="imgurl"/></li>
            <li id="jieshao">{{title}}</li>
@@ -20,8 +20,8 @@ export default {
     props:{
         imgurl:String,
         title:String,
-        outprice:String,
-        price:String,
+        outprice:Number,
+        price:Number,
         car:String,
         type:String,
         tejia:String,
@@ -33,6 +33,12 @@ export default {
            transparent:"borderColor:transparent"
        }
    },
+    methods: {
+         fun(id){
+            this.$router.push("/details/"+id)
+            
+        }
+    },
   
 }
 </script>
@@ -41,18 +47,18 @@ div{
    width: 2.6rem;
     height: 3.8rem;
     background-color: #fff;
-    border-radius: 4px;
-    margin: 0.14rem 0 0 0.14rem ;
+    border-radius: 2px;
+    margin: 0.4rem 0 0 0.14rem ;
     float: left;
-    box-shadow: 4px 4px 10px black;
+    box-shadow: 2px 2px 4px black;
 }
 li{
     font-size: 10px;
 }
 #bo{
-    width: 2.2rem;
-    height: 1.5rem;
-    margin-top: 0.4rem;
+    width: 100%;
+    height: 1.8rem;
+    margin-top: 0rem;
 }
 #bo img{
     width: 100%;
@@ -70,6 +76,7 @@ li{
     margin: 0 auto;
     width: 2.4rem;
     height: 0.64rem;
+    font-family: FZYaoti;
 
 }
 .tejia{
@@ -77,6 +84,8 @@ li{
     height: 0.4rem;
     margin: 0 auto;
     color:red;
+    margin-top: 0.2rem;
+
     
 }
 .tejia span{
@@ -98,11 +107,11 @@ li{
     color:red;
 }
 .sp1{
-    font-size: 6px;
+    font-size: 10px;
 }
 .sp2{
     margin-left: -0.14rem;
-    font-size: 10px;
+    font-size: 16px;
 }
 .sp3{
     display: inline-block;

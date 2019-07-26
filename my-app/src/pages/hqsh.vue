@@ -48,6 +48,7 @@ import Hqsh from "../components/hqsh2/hqsh"
 import Fuvs from "../components/fuvs"
 
 export default {
+
     components:{
         Hqsh,
         Fuvs
@@ -79,11 +80,11 @@ export default {
             that.time=a+":"+b+":"+c;
         },1000)
         this.axios({
-            url:"/link/zxf/data",
+            url:"http://39.97.247.47:9999//findAll",
             method: "get",
         }).then((ok)=>{ 
-            // console.log(ok.data.hqsh)      
-           this.newarr=ok.data.hqsh
+            // console.log(ok.data)     
+           this.newarr=ok.data
         })
 
     },
@@ -161,6 +162,7 @@ export default {
     }
     .f4l{
         width: 20%;
+        margin-left: 0.4rem;
     }
     .f4l>img{
         margin-top: 0.2rem;
@@ -204,13 +206,13 @@ export default {
     .zxf5{
         width: 30%;
         text-align: center;
-        /* padding: 0 0.3rem; */
+        line-height: 0.8rem;
     }
     .zxf5 span{
         right: 0; 
         font-size: 0.3rem;
         height: 0.8rem;
-        /* line-height: 0.8rem; */
+
     }
     .zxf5 img{
         width: 0.4rem;

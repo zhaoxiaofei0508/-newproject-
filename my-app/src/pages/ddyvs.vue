@@ -16,12 +16,12 @@
           </div>
 
           <div style="background:rgb(232, 232, 232);margin:15px 10px;padding:15px 10px;height:2rem" v-for="(v,i) in obj" :key="i">
-               <img :src="v.img" style="width:1.5rem">
-               <ul style="float:right;font-size:.4rem;padding-right:1.5rem;">
-                    
-                     <li>商品名称:{{v.title}}</li>
-                     <li>数量:{{v.num}}</li>
-                     <li>单价:￥{{v.price}}</li>
+               <img :src="v.shopImg" style="width:1rem">
+               <ul style="float:right;font-size:.2rem; word-wrap: break-word;width:4rem;padding-right:1rem">
+               
+                     <li>商品名称:{{v.shopTitle}}</li>
+                     <li>数量:{{v.shopNum}}</li>
+                     <li>单价:￥{{v.shopPrice}}</li>
 
                </ul>
           </div>
@@ -46,10 +46,13 @@
                  <div style="height:1.2rem"></div>
 <!-- 底部 -->
            <div   class="btn">
-            <span style="font-size:.7rem">合计</span>&nbsp;<span style="font-size:.7rem">:￥0</span>   <input type="button" value="提交订单"  @click="open()" style="height:1.2rem;width:2rem;
+            <span style="font-size:.4rem">合计</span>&nbsp;<span style="font-size:.4rem;color:red">:￥0</span>   <input type="button" value="提交订单"  @click="open()" style="height:1.2rem;width:2rem;
            border:none;outline:none;position:absolute;top:0px;right:15px;font-size:.3rem;background:#74C0FF;">
 
         </div>
+
+
+  
        
     </div>
 </template>
@@ -62,7 +65,8 @@ export default {
     data(){
         return{
             obj:[],
-            apq:1
+            apq:1,
+          
          
         }
     },
@@ -71,30 +75,44 @@ export default {
     
      created(){
           var cid=this.$route.params.id
-          console.log(cid)
+          console.log( cid)
 
-
-
+                       var parmers=new URLSearchParams();   
+              
           // 调接口真正代码
 
-            //  this.axios({
-            //             url:"http://localhost:3009/get?uname="+cid,
-            //             method:"get",
-              
-            //             }).then((val)=>{
+                     
+                  parmers.append("Ids",cid)
+                  // console.log(typeof this.obj[i])
+                this.axios({
+                url:"http://39.97.247.47:9999/shop/loadByShopIdShowShop",
+                // url: "/line/date",
+                data:parmers,
+                method: "post"
+              }).then((val)=>{
                           
-            //                 this.obj=val.data.arr
-            //           })
+                            this.obj=val.data
+                      })
 
-                
+                  
+
+                // 生成订单
+             
+
+
+
+
+
+
+
                   },
     // 假数据
-        mounted() {
+        // mounted() {
 
-        this.axios({
-          url:"/line/date",
-          method:"get"
-        }).then((val)=>{
+        // this.axios({
+        //   url:"/line/date",
+        //   method:"get"
+        // }).then((val)=>{
            
             //    console.log(val.data.arr)
             // if(val.data.arr==""){
@@ -104,12 +122,12 @@ export default {
             //     this.bool=false
             // }
             
-              this.obj=val.data.arr
+              // this.obj=val.data.arr
                   // this.bool=false;
-        })
+    //     })
 
-           this.$route.params.id
-     },
+    //        this.$route.params.id
+    //  },
     methods: {
       open() {
         const h = this.$createElement;
@@ -137,6 +155,7 @@ export default {
               setTimeout(() => {
             this.$router.push("/pdelivery")
                 done();
+                
                 setTimeout(() => {
                   instance.confirmButtonLoading = false;
                 }, 300);
@@ -158,7 +177,9 @@ export default {
     funl(){
 
         this.$router.push("/myaddress")
-    }
+    },
+
+   
     }
    
     

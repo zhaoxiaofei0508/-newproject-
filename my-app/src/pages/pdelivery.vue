@@ -7,14 +7,14 @@
         </div>
         <!-- <p v-else>待配送</p> -->
         <div v-else> 
-            <All_order :data="arrOrder"></All_order>
+            <Successfully :data="arrOrder"></Successfully>
         </div>
     </div>
 </template>
 <script>
 import Order from '../components/order/order'
 import No_order from '../components/order/no_order'
-import All_order from '../components/order/all_order'
+import Successfully from '../components/order/successfully'
 export default {
     data(){
         return{
@@ -25,14 +25,25 @@ export default {
     components:{
         Order,
         No_order,
-        All_order
+        Successfully
     },
      mounted() {
         this.axios({
-            url:"/link/cpydata",
-            method:"get"
+            url:"http://39.97.247.47:9999//order/showAllOrderByuserId",
+            method:"get",
+            params:{userId:"666"}
         }).then((ok)=>{
-            this.arrOrder=ok.data.my_order;
+            let index=0
+            let arr=[]
+            ok.data.forEach((v,i)=>{
+                if(v.orderState==1){
+                    arr[index]=v;
+                     index++;
+                }
+                return arr
+            });
+            this.arrOrder=arr
+            console.log(this.arrOrder)
             this.bool=false;
         })
     },

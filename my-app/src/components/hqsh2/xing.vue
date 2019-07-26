@@ -15,7 +15,7 @@ export default {
        }
    },
    props:{
-       starnum:Number,
+       starnum:String,
        starcal:String
    },
    mounted() {
@@ -30,7 +30,8 @@ export default {
    },
 }
 </script>
-
 <style  scoped>
-    
+    .icon-xingxing{
+        font-size: 0.1rem;
+    }
 </style>

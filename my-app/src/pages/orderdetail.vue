@@ -6,11 +6,23 @@
             <router-link to="/consult"> <b class="iconfont icon-kefu c_icon"></b></router-link>
         </div>
         <div class="static">
-            <p>待付款</p>
+            <p>已支付</p>
+            <!-- <p v-if="static='1'">待付款</p>
+            <p v-else>待配送</p> -->
             <img src="../../static/no_orderimg/orderdetail.png" alt="">
         </div>
-        <div class="det">
-            <All_order :data="arrOrder"></All_order>
+        <div class="Box">
+            <div class="box1">
+                <img />
+            </div>
+            <div class="box2">
+                <h3>详情</h3>
+                <span>单价:&yen;</span>
+                <p>数量:</p>
+            </div>
+            <div class="box3">
+                <span>总价:&yen;</span>
+            </div>
         </div>
         <div class="tall">
             <i>应付金额合计</i>
@@ -26,11 +38,11 @@
         </div>
         <div class="tall">
             <i>订单编号</i>
-            <i>11111111111111</i>
+            <i>11111</i>
         </div>
         <div class="last">
             ——猜你喜欢
-                <span class="span">.EXPLORE——</span>
+                <span class="Span">.EXPLORE——</span>
         </div>
         <div class="like">
             <Indexlist v-for="(v,i) in arrMylike" :key="i" :ShopImg="v.imgurl" :ShopTitle="v.title" :ShopDetails="v.p" :ShopPrice="v.span" class="like2"></Indexlist>
@@ -38,17 +50,18 @@
     </div>
 </template>
 <script>
-import All_order from '../components/order/all_order'
+import Stay from '../components/order/stay'
 import Indexlist from '../components/index/indexlist'
 export default {
     data(){
         return{
+            arrbool:"",
             arrOrder:[],
             arrMylike:[],
         }
     },
     components:{
-        All_order,
+        Stay,
         Indexlist
     },
     methods: {
@@ -56,20 +69,83 @@ export default {
             this.$router.go(-1)
         }
     },
-    mounted() {
-        // var osel= this.$route.params.osel
+    created(){
+        var osel= this.$route.params.sel
+        console.log(osel)
+        // var ostatic=this.$route.params.ostatic
         this.axios({
-            url:"/link/cpydata",
+            url:"http://39.97.247.47:9999//order/findOrderProductByOId",
             method:"get",
-            // params:{"number":osel}
+            params:{oId:osel}
         }).then((ok)=>{
-            this.arrOrder=ok.data.my_order;
+            this.arrOrder=ok.data;
+            console.log(ok)
             this.arrMylike=ok.data.my_like
         })
     },
 }
 </script>
 <style scoped>
+.Box{
+    width:100%;
+    display:flex;
+    background:red;
+}
+.box1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:30%;
+    background:white;
+}
+.box1 img{
+    display: block;
+    width: 1rem;
+    height:1rem ;
+    background: #0db6fb;
+}
+.box2{
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    padding:0.2rem 0.1rem; 
+    width:50%;
+    background:yellow;
+}
+.box2 h3{
+    height:0.6rem;
+    line-height:0.3rem;
+    font-weight:100;
+    font-size:0.3rem;
+    overflow: hidden;
+}
+.box2 span{
+    display: block;
+    height:0.4rem;
+    line-height:0.4rem;
+    font-size:0.3rem;
+    overflow: hidden;
+}
+.box2 p{
+    margin: 0;
+    display: block;
+    height:0.4rem;
+    line-height:0.4rem;
+    font-size:0.3rem;
+    overflow: hidden;
+    color: #0db6fb;
+}
+.box3{
+    width:20%;
+    background:red;
+}
+.box3 span{
+    display: block;
+    height:1.4rem;
+    line-height:1.4rem;
+    font-size:0.3rem;
+    overflow: hidden;
+}
 .head{
     width: 100%;
     height: .81rem;
@@ -108,7 +184,7 @@ a{
     align-items: center;
     margin-top: .81rem;
 }
-img{
+.static img{
     float: right;
     height: 2.45rem;
 }
@@ -139,7 +215,7 @@ i{
     text-align: center;
     line-height: .6rem;
 }
-.span{
+.Span{
     color: #a6c1d4;
     font-size: .26rem;
 }
