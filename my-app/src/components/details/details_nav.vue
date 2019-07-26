@@ -17,8 +17,9 @@
             </span>
             <router-link to="/carshop">
               <span>
-                <router-link to="/carshop"></router-link>
-                <img class="close" src="../../../static/img/h-shopping.png" alt />
+                <img id="boxCardTop" class="close" src="../../../static/img/h-shopping.png" alt />
+                <p class="boxcard">{{detailsNum}}</p>
+                
               </span>
             </router-link>
           </div>
@@ -38,14 +39,30 @@ export default {
 
         { title: "详情", id: "details_d" },
         { title: "推荐", id: "details_recommend" }
-      ]
+      ],
+      detailsNum:0
     };
+    
   },
   methods: {
     close() {
       this.$router.go(-1);
     }
-  }
+  },
+  created() {
+    var userId=localStorage.userid
+  this.axios({
+    url:"http://39.97.247.47:9999/shop/loadByUserIdShowShop",
+    method:"get",
+    params:{"userId":userId}
+  }).then((ok)=>{
+    for(var i=0;i<=ok.data.length;i++){
+       this.detailsNum+=Number(ok.data[i].shopNum)
+       console.log(this.detailsNum)
+    }
+    
+  })
+  },
 };
 </script>
 <style scoped>
@@ -63,6 +80,7 @@ export default {
   position: fixed;
   z-index: 3;
   background: white;
+ 
 }
 .detailsNav a {
   color: gray;
@@ -79,5 +97,21 @@ export default {
 }
 .details_list p {
   margin: auto 0.25rem;
+}
+.boxcard{
+display:inline-block;
+border-radius: 50%;
+width:.3rem;
+height:.3rem;
+font-size:.16rem;
+background:red;
+color:white;
+text-align: center;
+position: relative;
+left:.4rem;
+bottom:.4rem;
+}
+#boxCardTop{
+  position:absolute;
 }
 </style>
