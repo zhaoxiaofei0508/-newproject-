@@ -13,7 +13,7 @@
                 <div class="h-list">
                      <div  v-for="(v,i) in FruitArr" :key="i" class="top-list" @click="listnav(v.categoriesId,i)">
                         <span class="roll"  :style='v.categoriesId==id?"borderColor:red":""'></span>
-                        <Toplist  :topimg='v.img' :toptitle="v.categoriesName" :imgid="v.categoriesId"></Toplist> 
+                        <Toplist  :topimg='v.categoriesImage' :toptitle="v.categoriesName" :imgid="v.categoriesId"></Toplist> 
                     </div>
                     
                     <!-- <div  v-for="(v,i) in FruitArr" :key="i" class="top-list" @click="listnav(v.id,i)">

@@ -25,7 +25,7 @@
                 <!-- <div class="wfqq"><img :src="v.img" alt=""></div>
                 <div class="wfww">{{v.title}}</div> -->
                  <!-- // 后台数据 -->
-                 <div class="wfqq"><img :src="v.img" alt=""></div>
+                 <div class="wfqq"><img :src="v.categoriesImage" alt=""></div>
                 <div class="wfww">{{v.categoriesName}}</div>
                 </router-link>
             </div>
@@ -48,7 +48,7 @@ export default {
         },
        data(){
         return{
-            Colorfenlei:"color:#09bffe;box-shadow:0px 2px 6px #666;",
+            Colorfenlei:"color:#09bffe",
             Colorqita:"color:black",
             arrr:[],
             loading: true,
