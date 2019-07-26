@@ -1,7 +1,7 @@
 <template>
   <div>
     <div style="height:1.5rem;background:rgb(116, 192, 255);position:absolute;top:0;width:100%;text-align:center;font-size:.5rem;line-height:1.5rem;color:white">购物车</div>
-    <div style="height:1.5rem"></div>
+    <div style="height:1.5rem;margin-bottom:.1rem"></div>
     <div class="lol" v-if="bool" style="font-size:.3rem">
       <img src="../../static/img/11.png" />
       <p>购物车无商品</p>
@@ -27,7 +27,7 @@
             <div style="width:40%;">
               <img :src="v.shopImg"  style="width:100%;"/>
             </div>
-            <div style="width:60%;"> 
+            <div style="width:60%;margin-left:5px;"> 
               <p>{{v.shopTitle}}</p>
               <p>
                  <span style="color:red">￥{{v.shopPrice}}</span>/份
@@ -66,7 +66,7 @@
           @click="funk()"
         />
       </div>
-      {{newarr}}
+      <!-- {{newa}} -->
       <!-- <Jsk></Jsk>   -->
     </div>
     <div style="height:3rem"></div>
@@ -100,7 +100,8 @@ export default {
       Colorqita: "color:black",
       Colorshopcar: "color:blue",
       io: [],
-      numk:[]
+      numk:[],
+  
     };
   },
 
@@ -122,11 +123,13 @@ export default {
     funa(i) {
       this.obj[i].shopNum++;
     
-      console.log(this.obj[i])
+      // console.log(this.obj[i])
               
      this.funbb(this.obj[i])
 
       this.hh();
+    
+       
     },
     funb(i) {
       if (this.obj[i].shopNum <= 0) {
@@ -211,7 +214,7 @@ export default {
         for (var i = 0; i < this.obj.length; i++) {
           var v = this.obj[i];
           v.checked = true;
-     this.obj[i].shopNum=1
+    //  this.obj[i].shopNum=1
           this.hh();
          
         }
@@ -250,15 +253,53 @@ export default {
     //             console.log(list[index].selected)
     //           },
 
+
+
+    //  发送生成订单
     funk() {
       var abb = this.newarr;
+      var ava = this.newacc 
+      var xdd =this.io
+      var vx="" 
+    //  console.log(typeof ava)
+      for(var i=0;i<ava.length;i++){             
+            var numbe=ava[i].shopNum
+            var pi=ava[i].shopId
+         
+               vx +=`{"number":${numbe},"pid":${pi}},`
+                      
+             
+      }
 
+      var str1 = vx.replace(/(^,*)|(,*$)/g, "");
+                 //var   rio=str1.replace("\"", "");
+    //  str1= JSON.parse(str1);
+    //  console.log(str1)
+           var  parmers={"orderProductListList":[
+               str1
+              ],
+              "userId":xdd     
+                   } 
+                   console.log(parmers)
+             
+
+    // ss= 
+      
       this.$router.push("/ddyvs/" + abb);
-      // this.axios({
-      //   url: "http://localhost:3009/get?uname=" + abb,
-      //   method: "get"
-      // });
-      // console.log(abb);
+
+                              this.axios({
+      url:"http://39.97.247.47:9999/order/saveOrder",
+      // url: "/line/date",
+      data:parmers,
+      method: "post"
+    }).then(val => {
+      // console.log(val);
+ 
+      console.log(val)
+      // console.log(val.data);
+      // this.bool=false;
+    });
+
     }
   },
 
@@ -267,7 +308,9 @@ export default {
   
  
   computed:{
-       newarr(){
+  
+
+          newarr(){
          for(var i=0;i<this.obj.length;i++){
            if(this.obj[i].checked){
              if (this.goodid.indexOf(this.obj[i].shopId) == -1) {
@@ -291,18 +334,30 @@ export default {
            }
          }  
          return this.goodid
-       }
+       },     
+       
+          newacc(){
+                      var demoarr=this.obj.filter((v,i)=>{
+                      if(v.checked){
+                          return v; 
+                    
+                      }
+                      }
+                      )
+                      return demoarr;
+                    
+                }
+       
     
   },
+       
 
   
   created(){
     this.io=localStorage["userid"]
- 
-  },
-  // 发送用户id渲染页面
-  mounted() {
-         var ann=this.io
+
+
+             var ann=this.io
     this.axios({
            
       url:"http://39.97.247.47:9999/shop/loadByUserIdShowShop?userId="+ann,
@@ -321,7 +376,10 @@ export default {
       // console.log(val.data);
       // this.bool=false;
     });
+ 
   },
+  // 发送用户id渲染页面
+ 
 
 
   
