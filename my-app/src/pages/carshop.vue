@@ -272,17 +272,27 @@ export default {
       }
 
       var str1 = vx.replace(/(^,*)|(,*$)/g, "");
-                 //var   rio=str1.replace("\"", "");
-    //  str1= JSON.parse(str1);
-    //  console.log(str1)
-           var  parmers={"orderProductListList":[
-               str1
-              ],
-              "userId":xdd     
-                   } 
-                   console.log(parmers)
-             
-
+           
+    // var str1= JSON.parse(str1);
+  
+           var  param={
+             orderProductReq:{
+               orderProductListList:[{
+                 "number":1,
+                 "pid":1
+               }],
+               "userId":1  
+             }
+           }
+          //  {"orderProductListList":[
+          //      {
+          //        "number":1,
+          //        "pid":1
+          //      }
+          //     ],
+          //     "userId":1     
+          //          } 
+                   console.log(param)
     // ss= 
       
       this.$router.push("/ddyvs/" + abb);
@@ -290,9 +300,9 @@ export default {
                               this.axios({
       url:"http://39.97.247.47:9999/order/saveOrder",
       // url: "/line/date",
-      data:parmers,
+      data:param,
       method: "post"
-    }).then(val => {
+    }).then((val) => {
       // console.log(val);
  
       console.log(val)
