@@ -260,66 +260,58 @@ export default {
       var abb = this.newarr;
       var ava = this.newacc 
       var xdd =this.io
-      var vx="" 
+      var vx = ''
+      // var vx="[" 
     //  console.log(typeof ava)
       for(var i=0;i<ava.length;i++){             
             var numbe=ava[i].shopNum
             var pi=ava[i].shopId
          
                vx +=`{"number":${numbe},"pid":${pi}},`
-                      
-             
+              //  vx +=`{"number":${numbe},"pid":${pi},`
+               
       }
-
-      var str1 = vx.replace(/(^,*)|(,*$)/g, "");
-           
-    // var str1= JSON.parse(str1);
-  
-           var  param={
-             orderProductReq:{
-               orderProductListList:[{
-                 "number":1,
-                 "pid":1
-               }],
-               "userId":1  
-             }
-           }
-          //  {"orderProductListList":[
-          //      {
-          //        "number":1,
-          //        "pid":1
-          //      }
-          //     ],
-          //     "userId":1     
-          //          } 
-                   console.log(param)
-    // ss= 
+      vx = '[' + vx.slice(0,-1) + ']'
+      // "]" 
       
-      this.$router.push("/ddyvs/" + abb);
+      // var jsonarr =JSON.parse(str1)
+      // {"number":12,"pid":74},{"number":3,"pid":75},{"number":1,"pid":77},{"number":2,"pid":78}
+      var jsonarr =JSON.parse(vx)
+      
+           console.log(jsonarr)
 
-                              this.axios({
+          var  param={"orderProductListList":
+            // str1
+                   jsonarr
+              //  {
+              //    "number":5,
+              //    "pid":1
+              //  },
+              //  {
+              //    "number":5,
+              //    "pid":2
+              //  }
+              
+              ,
+              "userId":1     
+           } 
+           console.log(param)
+      this.$router.push("/ddyvs/" + abb);
+       this.axios({
       url:"http://39.97.247.47:9999/order/saveOrder",
+      method: "post",
       // url: "/line/date",
-      data:param,
-      method: "post"
+      data:param
     }).then((val) => {
       // console.log(val);
- 
       console.log(val)
       // console.log(val.data);
       // this.bool=false;
     });
-
     }
   },
 
-
-
-  
- 
   computed:{
-  
-
           newarr(){
          for(var i=0;i<this.obj.length;i++){
            if(this.obj[i].checked){
@@ -365,9 +357,7 @@ export default {
   
   created(){
     this.io=localStorage["userid"]
-
-
-             var ann=this.io
+ var ann=this.io
     this.axios({
            
       url:"http://39.97.247.47:9999/shop/loadByUserIdShowShop?userId="+ann,
