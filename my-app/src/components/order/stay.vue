@@ -2,11 +2,12 @@
     <div class="box">
         <div v-for="(v,i) in newdata" :key="i" >
             <div class="top" @click="jump(v)">
-                <p >订单号：{{v.number}}</p>
-                <span>{{v.status.wait}}</span>
+                <p >订单号：{{v.orderId}}</p>
+                <span>待支付</span>
             </div>
             <div class="des" @click="jump(v)">
-                <img :src="v.img" alt="">
+                <img :src="v.orderProductPhoto" alt="">
+                <p>{{v.orderProductMonicker}}</p>
                 <!-- <img src="../../../static/no_orderimg/no_order.png" alt=""> -->
                 <div class="sum">
                     <span class="allNum">共 {{v.num}} 件商品</span>
@@ -14,8 +15,8 @@
                 </div>
             </div>
             <div class="to">
-                <p class="total">单价：<span class="price">￥{{v.price}}</span></p>
-                <p class="total">合计：<span class="price">￥{{v.price}}</span></p>
+                <p class="total">单价：<span class="price">￥{{v.orderProductPrice}}</span></p>
+                <p class="total">合计：<span class="price">￥{{v.orderPrice}}</span></p>
             </div>
             
             <div class="all">
@@ -50,7 +51,7 @@ export default {
         jump(text){
             // this.$router.push("/orderdetail")
             // console.log(text)
-            this.$router.push("/orderdetail/"+text.number)
+            this.$router.push("/orderdetailno/"+text.orderId)
         }
     },
     mounted(){

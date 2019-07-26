@@ -35,30 +35,27 @@ export default {
     },
     created() {
     // var search= this.$route.params.search
-        this.axios({
-            url:"http://39.97.247.47:9999/user/findByUserNameByUserPassword",
-            method:"post",
-            // params:{"productName":search} 
-            }).then((ok)=>{
-                // console.log(ok.data);
-                // this.arr=ok.data
-                if(localStorage.lastname==0){
-                    this.bool=true;
-                }else{
-                    this.bool=false
-                }
-                
-        })
-        
-
-        
         // this.axios({
-        //     url:"/link/cpydata",
-        //     method:"get"
-        // }).then((ok)=>{
-        //     // console.log(ok.data.my_like);
-        //     this.arr=ok.data.my_like;
+        //     url:"http://39.97.247.47:9999/user/findByUserNameByUserPassword",
+        //     method:"post",
+        //     // params:{"productName":search} 
+        //     }).then((ok)=>{
+        //         // console.log(ok.data);
+        //         // this.arr=ok.data
+        //         if(localStorage.lastname==0){
+        //             this.bool=true;
+        //         }else{
+        //             this.bool=false
+        //         }
+                
         // })
+        
+        if(localStorage.lastname==0){
+            this.bool=true; 
+        }else{
+            this.bool=false
+        }
+        
     },
 }
 </script>
@@ -104,6 +101,23 @@ i{
 p{
     font-size: .26rem;
     color:darkslategray;
+    animation: myfirst 2s infinite;
+    /* animation: shadow .7s linear infinite; */
+}
+/* @keyframes shadow {
+    0%, 100% {transform: scaleX(1);}
+    50% {transform: scaleX(1.2);}
+} */
+ @keyframes myfirst {
+    0% {
+        transform: translate(0px, 0px);
+    }
+    50% {
+        transform: translate(10px, 0px);
+    }
+    100% {
+        transform: translate(0px, 0px);
+    }
 }
 
 </style>

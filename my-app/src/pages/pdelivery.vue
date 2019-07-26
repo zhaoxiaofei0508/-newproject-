@@ -29,10 +29,21 @@ export default {
     },
      mounted() {
         this.axios({
-            url:"/link/cpydata",
-            method:"get"
+            url:"http://39.97.247.47:9999//order/showAllOrderByuserId",
+            method:"get",
+            params:{userId:"666"}
         }).then((ok)=>{
-            this.arrOrder=ok.data.my_order;
+            let index=0
+            let arr=[]
+            ok.data.forEach((v,i)=>{
+                if(v.orderState==1){
+                    arr[index]=v;
+                     index++;
+                }
+                return arr
+            });
+            this.arrOrder=arr
+            console.log(this.arrOrder)
             this.bool=false;
         })
     },
