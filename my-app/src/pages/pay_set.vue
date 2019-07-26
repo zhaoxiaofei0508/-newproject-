@@ -333,22 +333,34 @@ export default {
             }
         },
         fun10(){
+            let d=localStorage.userid;
             if(this.a!=""&&this.b!=""&& this.c!=""&&this.b==this.c){
-                    var param=new URLSearchParams();
-                    param.append("a",this.a);
-                    param.append("b",this.b);
-                    this.axios({
-                    url:"http://39.97.247.47:9999/user/save",
-                    method:"post",
-                    data:param
-                }).then((ok)=>{
-                    console.log(ok);
-                    if(ok.data){
-                        this.$router.push("/index");
-                    }else{
+                //     var param=new URLSearchParams();
+                //     param.append("a",this.a);
+                //     param.append("b",this.b);
+                //     param.append("c",1);
+
+                //     this.axios({
+                //     url:"http://10.12.156.25:8088/user/updatePassword",
+                //     method:"get",
+                //     data:param
+                // }).then((ok)=>{
+                //     console.log(param)
+                //     console.log(ok);
+                //     if(ok.data){
+                //         this.$router.push("/index");
+                //     }else{
                         
-                    }
+                //     }
  
+                // })
+                 this.axios({
+                url:"http://10.12.156.25:8088/user/updatePassWord",//get发送数据方式
+                method:"get",
+                params:{"a":this.a,"b":this.b,"c":1} //get发送数据方式
+                }).then((ok)=>{
+                    console.log(ok)
+                
                 })
             }else if(this.a!=""&&this.b!=""&& this.c!=""&&this.b!=this.c){
                this.d="两次密码输入不同"
