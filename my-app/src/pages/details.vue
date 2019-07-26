@@ -111,6 +111,16 @@
       <div class="shopp" @click="shop()">加入购物车</div>
       <!-- </router-link> -->
     </div>
+    <div>
+      <div
+          id="details_recommend"
+          style="font-size:.25rem;text-align:center;font-weight:600;line-height:.8rem;margin:0 .2rem;"
+        >
+          <span>服务</span>
+          <span style="color:blue">SERVICE</span>
+        </div>
+      <img style="width:100%;" src="http://pv4oyc2lb.bkt.clouddn.com/%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85%E9%A1%B5%E5%9B%BA%E5%AE%9A%E5%9B%BE.jpg" alt="">
+    </div>
 
     <!-- <Indexlist></Indexlist> -->
   </div>
