@@ -61,9 +61,6 @@ export default {
         }).then((ok)=>{
             // console.log(ok.data);
             if(ok.data==0){
-                alert("失败")
-            }else{
-                alert("成功")
             }
                 })
        }
