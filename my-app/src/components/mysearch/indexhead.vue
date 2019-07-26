@@ -16,7 +16,12 @@
 export default {
     methods: {
         go(){
-            this.$router.push("/myaddress")
+             var a=localStorage.lastname;
+                if(a=="0"){
+                    this.$router.push("/denglu")
+                }else{
+                this.$router.push("/myaddress")
+            }
         },
         fun(){
             this.$router.push("/mysearch")
@@ -50,15 +55,12 @@ export default {
                 
         // })
         
-
+        if(localStorage.lastname==0){
+            this.bool=true; 
+        }else{
+            this.bool=false
+        }
         
-        // this.axios({
-        //     url:"/link/cpydata",
-        //     method:"get"
-        // }).then((ok)=>{
-        //     // console.log(ok.data.my_like);
-        //     this.arr=ok.data.my_like;
-        // })
     },
 }
 </script>
@@ -104,6 +106,23 @@ i{
 p{
     font-size: .26rem;
     color:darkslategray;
+    animation: myfirst 2s infinite;
+    /* animation: shadow .7s linear infinite; */
+}
+/* @keyframes shadow {
+    0%, 100% {transform: scaleX(1);}
+    50% {transform: scaleX(1.2);}
+} */
+ @keyframes myfirst {
+    0% {
+        transform: translate(0px, 0px);
+    }
+    50% {
+        transform: translate(10px, 0px);
+    }
+    100% {
+        transform: translate(0px, 0px);
+    }
 }
 
 </style>

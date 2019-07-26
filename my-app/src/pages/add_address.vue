@@ -12,26 +12,46 @@
           <div id="container">
             <li>
               <span>收货地址</span>
-              <p :value="Map">{{transAddress}}</p>
+              <p class="Addhouse" @blur="checkAdd()">{{transAddress}}</p>
             </li>
           </div>
         </router-link>
         <li>
           <span>门牌号</span>
-          <input type="text" placeholder="例：8号楼808室" v-model="houseNumber" />
+          <input
+            type="text"
+            class="add_house"
+            placeholder="例：8号楼808室"
+            v-model="houseNumber"
+            @blur="checkHouse()"
+          />
         </li>
         <li>
           <span>联系人</span>
-          <input type="text" placeholder="联系人姓名" v-model="Contacts" />
+          <input
+            type="text"
+            class="addName"
+            placeholder="联系人姓名"
+            v-model="Contacts"
+            @blur="checkContats()"
+          />
         </li>
         <li>
           <span>手机号</span>
-          <input type="text" placeholder="联系人电话" v-model="ContactsPhone" />
+          <input
+            class="phone"
+            type="text"
+            placeholder="联系人电话"
+            v-model="ContactsPhone"
+            @blur="checkPhone()"
+          />
         </li>
       </ul>
+      <!-- <router-link to="/address"> -->
       <div class="addressBottom" @click="baocun()">
         <p>保存</p>
       </div>
+      <!-- </router-link> -->
     </div>
   </div>
 </template>
@@ -44,11 +64,12 @@ export default {
       mapData: {},
       houseNumber: "",
       Contacts: "",
-      ContactsPhone: "",
       address: "",
-      Map: ""
+      Map: "",
+      ContactsPhone: null
+      // placeholder:''
     };
-  },
+  }, //
   activated() {
     let { address } = this.$route.query;
     if (address) {
@@ -58,7 +79,8 @@ export default {
   computed: {
     transAddress() {
       let { address } = this.$route.query;
-      return address || '';
+      this.Map = address || "";
+      return this.Map;
     }
   },
   methods: {
@@ -68,29 +90,91 @@ export default {
         this.mapReq(row.reportPlace);
       });
     },
+    checkPhone() {
+      var phone = /^1(3|5|8|7)\d{9}$/;
+      let phoneDOM = document.getElementsByClassName("phone")[0];
+      if (!this.ContactsPhone) {
+        phoneDOM.style.border = "1px solid red";
+        return false;
+      } else if (phone.test(this.ContactsPhone)) {
+        phoneDOM.style.border = "1px solid gray";
+        return true;
+      } else {
+        this.placeholder = "手机号码格式错误";
+        phoneDOM.style.border = "1px solid red";
+        return false;
+      }
+    },
+    checkContats() {
+      console.log(this.Contacts)
+      if (!this.Contacts) {
+        document.getElementsByClassName("addName")[0].style.border =
+          "1px solid red";
+        return false;
+      } else {
+        document.getElementsByClassName("addName")[0].style.border =
+          "1px solid gray";
+        return true;
+      }
+    },
+    checkHouse() {
+      if (!this.houseNumber) {
+        document.getElementsByClassName("add_house")[0].style.border =
+          "1px solid red";
+        return false;
+      } else {
+        document.getElementsByClassName("add_house")[0].style.border =
+          "1px solid gray";
+        return true;
+      }
+    },
+    checkAdd() {
+      if (!this.Map == true) {
+        document.getElementsByClassName("Addhouse")[0].style.border =
+          "1px solid red";
+        return false;
+      } else {
+        document.getElementsByClassName("Addhouse")[0].style.border =
+          "1px solid gray";
+        return true;
+      }
+    },
 
     goToMap() {
       console.log(this);
       this.$router.push("/map");
     },
     baocun() {
-      var NowMap = this.Map + this.houseNumber;
-      console.log(this.Map);
-      this.axios({
-        url: "http://39.97.247.47:9999//address/selectaddress", //get发送数据方式
-        method: "put",
-        params: {
-          userAddress: NowMap,
-          userId: this.Contacts,
-          userPhone: this.ContactsPhone
-        } //get发送数据方式
-      }).then(ok => {
-        console.log(ok);
-        if (ok.data) {
-          console.log(ok.data);
-          this.$router.push("/myaddress");
-        }
-      });
+      let isOk1 = this.checkPhone()  //这种写法才行zhynebuxing
+      let isOk2 = this.checkContats()
+      let isOk3 = this.checkHouse()
+      let isOk4 = this.checkAdd()
+      if (
+        isOk1 && //这样写有个问题 如果checkPhone验证没通过，后面的全部都不执行了
+        isOk2 &&
+        isOk3 &&
+        isOk4
+      ) {
+        var NowMap = this.Map + this.houseNumber;
+        var add_userId = localStorage.userid;
+        console.log(NowMap);
+        this.axios({
+          url: "http://39.97.247.47:9999//address/selectaddress", //get发送数据方式
+          method: "put",
+          params: {
+            userAddress: NowMap,
+            userId: add_userId,
+            userName: this.Contacts,
+            userPhone: this.ContactsPhone
+          } //get发送数据方式
+        }).then(ok => {
+          console.log(ok);
+          if (ok.data) {
+            console.log(ok.data);
+            this.$router.push("/myaddress");
+          }
+        });
+      }
     }
   }
 };

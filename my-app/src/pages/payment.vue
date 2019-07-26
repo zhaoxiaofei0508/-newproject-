@@ -7,7 +7,7 @@
         </div>
         <!-- <p v-else>代付款</p> -->
         <div v-else>
-            <Stay :data="arrOrder"></Stay>
+            <Stay :data="arrOrderno"></Stay>
         </div>
     </div>
 </template>
@@ -19,7 +19,7 @@ export default {
     data(){
         return{
             bool:true,
-            arrOrder:[],
+            arrOrderno:[],
         }
     },
     components:{
@@ -28,12 +28,22 @@ export default {
         Stay
     },
     mounted() {
-        this.axios({
-            url:"/link/cpydata",
-            method:"get"
-            
+         this.axios({
+            url:"http://39.97.247.47:9999//order/showAllOrderByuserId",
+            method:"get",
+            params:{userId:"666"}
         }).then((ok)=>{
-            this.arrOrder=ok.data.my_order;
+            let indexno=0
+            let arrno=[]
+            ok.data.forEach((v,i) => {
+                if(v.orderState==0){
+                     arrno[indexno]=v;
+                     indexno++;
+                }
+                return arrno
+            });
+             this.arrOrderno=arrno
+             console.log(this.arrOrderno)
             this.bool=false;
         })
     },

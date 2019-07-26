@@ -1,5 +1,9 @@
 <template>
-    <div>
+        <div>
+            <div v-if="loading">
+                <Loading ></Loading>
+            </div>
+        <div v-else>
        <div class="box"></div>
         <div class="h-top">
             <div class="ha" @click="go()">
@@ -22,7 +26,7 @@
            <router-link to="/carshop">
             <div class="hc">
                 <img src="../../../static/fruitimg/h-shopping.png" alt="">
-                 <i class="shopcarnum">2</i>
+                 <i class="shopcarnum">{{shopcarnum}}</i>
             </div>
              </router-link>
             <div class="hb">
@@ -42,32 +46,37 @@
         </div>
         
     </div>
+    </div>
 </template>
 <script>
+import Loading from "../hqsh2/loading"
 import Toplist from './listtop/toplist'
 import Hlistleft from './h_listleft'
 export default {
     data() {
         return {
+            shopcarnum:0,
             id:"",
             toparr:"",
             fruitarr:[],
             FruitArr:[],
             ReinghtArr:[],
             bool:true,
-            leftindexid:""
+            leftindexid:"",
+            loading: true
+
             
         }
     },
     
     components:{
         Toplist,
-        Hlistleft
+        Hlistleft,
+        Loading
     },
     created() {
         this.id=this.$route.query.id
         // let id=this.$route.query.id
-
         // 请求头部列表
          this.axios({
                 url:"http://39.97.247.47:9999/categories/findAll",//get发送数据方式
@@ -75,6 +84,7 @@ export default {
                 //  params:{id:Left}
                  //get发送数据方式
             }).then((ok)=>{
+            this.loading=false
                 //  console.log(ok)
                 this.FruitArr=ok.data
             });
@@ -129,7 +139,13 @@ export default {
             //     console.log(this.ReinghtArr)
             //     })
     },
-       
+    mounted(){
+        // 给个变量获取存在本地存储的购物车物品总数
+        sessionStorage.setItem('watchStorage', 0)
+        window.addEventListener('setItem', ()=> {
+	              this.shopcarnum++
+            })
+    },
     methods: {
       
         go(){
