@@ -5,15 +5,21 @@
             <h3>我的地址</h3>
             <router-link to="/add_address"><span class="span">新增地址</span></router-link>
         </div>
-        <div>
+        <!-- <div>
             <No_address></No_address>
-        </div>
+        </div> -->
         <!-- <div>
             <mt-picker :slots="addressSlots" class="picker" 
             @change="onAddressChange" :visible-item-count="5" ></mt-picker >
             <mt-picker :slots="streetSlots" ref="picker" class="picker" @change="onStreetChange" :visible-item-count="5" ></mt-picker >
             上门服务地址:{{ addressProvince }} {{ addressCity }}
         </div> -->
+        <div v-for="(v,i) in addressarr" :key="i">
+            <h3>{{v.userAddress}}</h3>
+            <span>{{v.userName}}</span><span>{{v.userPhone}}</span>
+             
+        </div>
+
     </div>
 </template>
 <script>
@@ -22,7 +28,18 @@ import No_address from '../components/order/no_address'
 export default {
     components:{
         No_address,
+        addressarr:[]
        
+    },
+    created() {
+        this.axios({
+                url:"http://39.97.247.47:9999/address/selectaddress",//get发送数据方式
+                method:"get",
+                params:{id:1} //get发送数据方式
+                }).then((ok)=>{
+                    console.log(ok.data)
+                    this.addressarr = ok.data
+                })
     },
     methods: {
         fun(){

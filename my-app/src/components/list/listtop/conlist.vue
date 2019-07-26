@@ -13,7 +13,7 @@
                 <div class="ball-container">
                     
                 </div>
-                <div class="wfl" @click.stop="shpping(product,$event)">
+                <div class="wfl" @click.stop="shpping(product)">
                     <img src="../../../../static/img/h-cart.png" alt="">
                 </div>
 
@@ -36,23 +36,36 @@ export default {
     props:{
         title:String,
         content:String,
-        price:String,
+        price:Number,
         imgurl:String,
         product:Number
 
     },
     methods: {
-       shpping(product,el){
+       shpping(product){
 
            var num  = 1
-
-
-      
+           var userId = localStorage.userid;
+           console.log(userId);
+         var param=new URLSearchParams();
+            param.append("productId",product);
+            param.append("num",num);
+            param.append("userId",userId);
+            this.axios({
+            url:"http://39.97.247.47:9999/shop/save",
+            method:"post",
+            // post发送数据的时候使用data属性
+            data:param
+        }).then((ok)=>{
+            // console.log(ok.data);
+            if(ok.data==0){
+                alert("失败")
+            }else{
+                alert("成功")
+            }
+                })
        }
-
-   
     },
-    
 }
 </script>
 <style scoped>
