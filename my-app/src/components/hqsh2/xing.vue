@@ -15,7 +15,7 @@ export default {
        }
    },
    props:{
-       starnum:Number,
+       starnum:String,
        starcal:String
    },
    mounted() {

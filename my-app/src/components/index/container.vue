@@ -3,8 +3,13 @@
         <!---------------轮播图 -->
         <div class="swiper-container">
             <div class="swiper-wrapper">
-                <div class="swiper-slide" v-for="(v,i) in ContainerArr" :key="i" @click="fun(v.Type)">
+              <!-- 模拟数据 -->
+                <!-- <div class="swiper-slide" v-for="(v,i) in ContainerArr" :key="i" @click="fun(v.Type)">
                   <img style="width:100%;display:block;" :src="v.Containerimg">
+                </div> -->
+                <!-- 后台数据 -->
+                <div class="swiper-slide" v-for="(v,i) in ContainerArr" :key="i" @click="fun(v.carouselId)">
+                  <img style="width:100%;height:3rem;display:block;" :src="v.carouseUrl">
                 </div>
             </div>
          <!------------- 分页器 -->
@@ -17,6 +22,7 @@ import Swiper from 'swiper';
 export default {
   data () {
     return {
+      ContainerArrbool:true,
     }
   },
   props:{
@@ -27,7 +33,7 @@ export default {
       this.$router.push("/lundetails")
     }
   },
-  mounted(){
+  updated() {
     new Swiper ('.swiper-container', {
     loop: true,
     // ------------------轮播效果
@@ -54,7 +60,6 @@ export default {
  .swiper-container {
         width: 100%;
         height: 3rem;
-        margin-top:0.9rem;
     }
 .swiper-pagination{
   height: 0;

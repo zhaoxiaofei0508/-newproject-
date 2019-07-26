@@ -301,6 +301,24 @@ export default {
                   //  console.log( param)
     // ss= 
       
+          //  console.log(jsonarr)
+
+          // var  param={"orderProductListList":
+            // str1
+                  //  jsonarr
+              //  {
+              //    "number":5,
+              //    "pid":1
+              //  },
+              //  {
+              //    "number":5,
+              //    "pid":2
+              //  }
+              
+          //     ,
+          //     "userId":1     
+          //  } 
+          //  console.log(param)
       this.$router.push("/ddyvs/" + abb);
 
       //                         this.axios({
@@ -319,13 +337,7 @@ export default {
     }
   },
 
-
-
-  
- 
   computed:{
-  
-
           newarr(){
          for(var i=0;i<this.obj.length;i++){
            if(this.obj[i].checked){
@@ -371,9 +383,7 @@ export default {
   
   created(){
     this.io=localStorage["userid"]
-
-
-             var ann=this.io
+ var ann=this.io
     this.axios({
            
       url:"http://39.97.247.47:9999/shop/loadByUserIdShowShop?userId="+ann,
