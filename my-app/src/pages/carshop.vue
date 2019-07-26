@@ -258,32 +258,38 @@ export default {
     //  发送生成订单
     funk() {
       var abb = this.newarr;
-      var ava = this.newacc 
-      var xdd =this.io
-      var vx="" 
+      // var ava = this.newacc 
+      // var xdd =this.io
+      // var vx=""
+     
     //  console.log(typeof ava)
-      for(var i=0;i<ava.length;i++){             
-            var numbe=ava[i].shopNum
-            var pi=ava[i].shopId
+      // for(var i=0;i<ava.length;i++){             
+      //       var numbe=ava[i].shopNum
+      //       var pi=ava[i].shopId
+            // var pi=3
          
-               vx +=`{"number":${numbe},"pid":${pi}},`
-                      
-             
-      }
+      //          vx +=`{"number":${numbe},"pid":${pi}},`
+                         
+      // }
 
-      var str1 = vx.replace(/(^,*)|(,*$)/g, "");
-           
-    // var str1= JSON.parse(str1);
-  
-           var  param={
-             orderProductReq:{
-               orderProductListList:[{
-                 "number":1,
-                 "pid":1
-               }],
-               "userId":1  
-             }
-           }
+            //  vx = '[' + vx.slice(0,-1) + ']'
+   
+    //  var jsonarr =JSON.parse(vx)
+      // console.log(str3)
+
+          //  var  param={
+          
+              //  "orderProductListList":
+              //    {
+              //    "number":1,
+              //    "pid":1
+              
+              //  }
+          //      jsonarr
+          //      ,
+          //      "userId":xdd
+             
+          //  }
           //  {"orderProductListList":[
           //      {
           //        "number":1,
@@ -292,23 +298,23 @@ export default {
           //     ],
           //     "userId":1     
           //          } 
-                   console.log(param)
+                  //  console.log( param)
     // ss= 
       
       this.$router.push("/ddyvs/" + abb);
 
-                              this.axios({
-      url:"http://39.97.247.47:9999/order/saveOrder",
+      //                         this.axios({
+      // url:"http://39.97.247.47:9999/order/saveOrder",
       // url: "/line/date",
-      data:param,
-      method: "post"
-    }).then((val) => {
+    //   data:param,
+    //   method: "post"
+    // }).then((val) => {
       // console.log(val);
  
-      console.log(val)
+      // console.log(val)
       // console.log(val.data);
       // this.bool=false;
-    });
+    // });
 
     }
   },
