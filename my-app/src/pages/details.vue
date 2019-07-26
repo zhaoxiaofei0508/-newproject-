@@ -15,7 +15,7 @@
           <div style="width:80%">
             <p
               style="font-size:.32rem;font-weight:600;"
-            >{{shopInfo.productName}}{{shopInfo.productScale}}g</p>
+            >{{shopInfo.productName}} {{shopInfo.productScale}}g</p>
             <p style="color:gray">{{shopInfo.productContent}}</p>
             <p>
               <span style="color:red;font-size:.36rem;font-weight:600;">￥{{shopInfo.productPrice}}</span>/
