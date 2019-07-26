@@ -80,8 +80,8 @@
           <span>{{shopInfo.productStorage}}</span>
         </div>
       </div>
-      <div v-for="(v,i) in shopInfo.productDetailsImages" :key="i" style="width:100%;height:6rem;border:.01rem solid gray;margin:0 .15rem">
-        <img style="width:100%;height:100%;" :src="v" alt />
+      <div v-for="(v,i) in shopInfo.agriculturePictureList" :key="i" style="width:100%;height:6rem;border:.01rem solid gray;margin:0 .15rem">
+        <img style="width:100%;height:100%;" :src="v.pictureUrl" alt />
       </div>
     </div>
 
@@ -143,11 +143,11 @@ export default {
    var id = this.$route.params.id
     this.getTime();
       this.axios({
-          url:"http://39.97.247.47:9999/agricultureProduct/findBySubclassId",//get发送数据方式2
+          url:"http://39.97.247.47:9999/agricultureProduct/one",//get发送数据方式2
           method:"get",
-        params:{"subclassId":id}//get发送数据方式1
+        params:{"id":id}//get发送数据方式1
       }).then((ok)=>{
-      this.shopInfo=ok.data[0]
+      this.shopInfo=ok.data
           console.log(ok.data)
       })
       this.axios({
@@ -156,7 +156,7 @@ export default {
         params:{"pid":id}//get发送数据方式1
       }).then((ok)=>{
       this.comment=ok.data
-          console.log(ok.data)
+          // console.log(ok.data)
       })
   }
 };
