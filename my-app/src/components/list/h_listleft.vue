@@ -44,11 +44,11 @@ export default {
     mounted(){
         let listdomarr=document.querySelectorAll(".h-fruit")
         console.log(listdomarr)
-        listdomarr[0].style.backgroundColor=" "
-    
-              
-                 
-          
+        if(listdomarr.length==0){
+
+        }else{
+            listdomarr[0].style.backgroundColor=" "
+        }
     },
     methods: {
         listleft(id,n){
@@ -70,7 +70,7 @@ export default {
             this.axios({
                 url:"http://39.97.247.47:9999/agricultureProduct/findByCategoriesId",//get发送数据方式
                 method:"get",
-                params:{"categoriesId":id}
+                params:{"categoriesId":1}
                 //get发送数据方式
             }).then((ok)=>{
                 // console.log(ok)

@@ -239,11 +239,12 @@ export default {
         if (obj[i].checked) {
           price += obj[i].shopNum * obj[i].shopPrice;
           numb +=this.obj[i].shopNum;
+          console.log(numb)
         }
       }
-      this.allprice = price;
+      
       localStorage.numd=numb;
- 
+ this.allprice = price;
       // this.num = numb;
     },
     // radios: function(index) {
@@ -357,14 +358,20 @@ export default {
   
   created(){
     this.io=localStorage["userid"]
- var ann=this.io
+    var numm=0
+    var ann=this.io
     this.axios({
-           
       url:"http://39.97.247.47:9999/shop/loadByUserIdShowShop?userId="+ann,
       // url: "/line/date",
       method: "get"
     }).then(val => {
-      // console.log(val);
+      console.log(val);
+      for (var i = 0; i < val.data.length; i++) {
+          numm+=val.data[i].shopNum
+          console.log(val.data[i].shopNum)
+      }
+      
+      localStorage.numd=numm;
       if (val.data== "") {
         this.bool = true;
       } else {
