@@ -37,7 +37,8 @@ export default {
     },
     data(){
         return {
-            arr1:"../../../static/no_orderimg/loginsuccessfully.png",
+            // arr1:"../../../static/no_orderimg/loginsuccessfully.png",
+            arr1:"",
             arr:[],
             bool:true,
             username:"",
@@ -59,7 +60,7 @@ export default {
         //         }
                 
         // })
-        
+        this.arr1=localStorage.userimg;
         if(localStorage.lastname==0){
             this.bool=true; 
         }else{
