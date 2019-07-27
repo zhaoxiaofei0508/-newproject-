@@ -75,6 +75,7 @@ export default {
         Loading
     },
     created() {
+        this.shopcarnum =localStorage.numd
         this.id=this.$route.query.id
         // let id=this.$route.query.id
         // 请求头部列表
@@ -104,7 +105,7 @@ export default {
                     this.axios({
                         url:"http://39.97.247.47:9999/agricultureProduct/findByCategoriesId",//get发送数据方式
                         method:"get",
-                        params:{"categoriesId":this.leftindexid}
+                        params:{"categoriesId":1}
                         //get发送数据方式
                     }).then((ok)=>{
                         // console.log(ok)
@@ -112,32 +113,6 @@ export default {
                     })
                
             })
-            
-                
-
-
-            //   this.axios({
-            //     url:"/link/healer/hdata",//get发送数据方式
-            //     method:"get",
-            //     //  params:{id:Left}
-            //      //get发送数据方式
-            // }).then((ok)=>{
-            //      this.FruitArr=ok.data;
-            //     var Arr=ok.data.filter((v,i)=>{
-            //         if(v.id==id){
-            //             return v
-            //         }
-            //     });
-            //      this.fruitarr=Arr[0].name
-                 
-            //      var reinghtarr=Arr[0].name.filter((v,i)=>{
-            //         if(v.id=="f1"){
-            //             return v
-            //         }
-            //     });
-            //     this.ReinghtArr=reinghtarr[0].special_offer
-            //     console.log(this.ReinghtArr)
-            //     })
     },
     mounted(){
         // 给个变量获取存在本地存储的购物车物品总数
@@ -186,7 +161,7 @@ export default {
                     this.axios({
                         url:"http://39.97.247.47:9999/agricultureProduct/findByCategoriesId",//get发送数据方式
                         method:"get",
-                        params:{"categoriesId":this.leftindexid}
+                        params:{"categoriesId":1}
                         //get发送数据方式
                     }).then((ok)=>{
                         // console.log(ok)

@@ -45,7 +45,7 @@
                 <span class="span">.EXPLORE——</span>
         </div>
         <div class="like">
-            <Indexlist v-for="(v,i) in arrMylike" :key="i" :ShopImg="v.imgurl" :ShopTitle="v.title" :ShopDetails="v.p" :ShopPrice="v.span" class="like2"></Indexlist>
+            <Indexlist v-for="(v,i) in arrMylike" :key="i" :shopId="v.productId" :ShopImg="v.productDetailsImages" :ShopTitle="v.productContent" :ShopDetails="v.productComment" :ShopPrice="v.productPrice" class="like2"></Indexlist>
         </div>
     </div>
 </div>
@@ -76,6 +76,17 @@ export default {
         }
     },
     mounted() {
+        //猜你喜欢
+          this.axios({
+            url:"http://39.97.247.47:9999//agricultureProduct/findAll",
+            method:"get"
+        }).then((ok)=>{
+            console.log(ok.data)
+            this.arrMylike=ok.data
+            this.bool=false;
+        })
+
+
         var osel= this.$route.params.sel
         console.log(osel)
         // var ostatic=this.$route.params.ostatic
@@ -99,15 +110,15 @@ export default {
             this.bool=false;
 
         })
-         // 猜你喜欢
-         this.axios({
-            url:"/link/cpydata",
-            method:"get"
-        }).then((ok)=>{
-            // console.log(ok.data.my_like);
-            this.arrMylike=ok.data.my_like
-            this.bool=false;
-        })
+        //  // 猜你喜欢
+        //  this.axios({
+        //     url:"/link/cpydata",
+        //     method:"get"
+        // }).then((ok)=>{
+        //     // console.log(ok.data.my_like);
+        //     this.arrMylike=ok.data.my_like
+        //     this.bool=false;
+        // })
     },
 }
 </script>

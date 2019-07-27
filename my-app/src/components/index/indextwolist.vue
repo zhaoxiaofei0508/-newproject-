@@ -70,7 +70,6 @@ export default {
             url:"http://39.97.247.47:9999//agricultureProduct/findAll",
             method:"get"
         }).then((ok)=>{
-          console.log(ok.data)
           this.Containerarrone=ok.data
         })
     // 外卖后台数据
@@ -79,7 +78,6 @@ export default {
             method:"get",
             params:{sortId:2}
         }).then((ok)=>{
-          console.log(ok.data)
           this.Containerarrtwo=ok.data
         })
       // 菜谱后台数据
@@ -88,7 +86,6 @@ export default {
             method:"get",
             params:{sortId:3}
         }).then((ok)=>{
-          console.log(ok.data)
           this.Containerarrthree=ok.data
         })
       // 休闲后台数据
@@ -97,7 +94,6 @@ export default {
             method:"get",
             params:{sortId:4}
         }).then((ok)=>{
-          console.log(ok.data)
           this.Containerarrfour=ok.data
         })
       // 人气后台数据
@@ -106,7 +102,6 @@ export default {
             method:"get",
             params:{sortId:4}
         }).then((ok)=>{
-          console.log(ok.data)
           this.Containerarrwu=ok.data
         })
   },

@@ -33,9 +33,9 @@ export default {
       this.$router.push("/lundetails")
     }
   },
-  updated() {
+  mounted() {
     new Swiper ('.swiper-container', {
-    loop: true,
+    loop:true,
     // ------------------轮播效果
     autoplay:true,
     autoplay: {

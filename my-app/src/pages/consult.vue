@@ -77,7 +77,7 @@ export default {
         let xhr = new XMLHttpRequest();
         xhr.open(
           "post",
-          "http://www.tuling123.com/openapi/api?key=7842fde726ec4c5f9c6bd39c3fd98fd2&info=" +
+          "http://www.tuling123.com/openapi/api?key=95ce25c33c8e4fdb9a23efa941fd3ad4&info=" +
             this.message,
           true
         );

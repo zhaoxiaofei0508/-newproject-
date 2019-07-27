@@ -25,7 +25,8 @@
             </div>
             <div class="all">
                 <p class="order" @click="fun(i)">取消订单</p>
-                <router-link to="/#"><p class="order last">继续支付</p></router-link>
+                <p class="order last">继续支付</p>
+                <!-- <router-link :to="'/ddyvs/'+v[0].orderId"><p class="order last">继续支付</p></router-link> -->
             </div>
         </div>         
     </div>
@@ -43,6 +44,7 @@ export default {
     },
     computed:{
         newdata(){
+            console.log(this.data)
             return this.data
         }
     },

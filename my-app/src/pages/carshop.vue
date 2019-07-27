@@ -239,11 +239,12 @@ export default {
         if (obj[i].checked) {
           price += obj[i].shopNum * obj[i].shopPrice;
           numb +=this.obj[i].shopNum;
+          console.log(numb)
         }
       }
-      this.allprice = price;
+      
       localStorage.numd=numb;
- 
+ this.allprice = price;
       // this.num = numb;
     },
     // radios: function(index) {
@@ -258,31 +259,54 @@ export default {
     //  发送生成订单
     funk() {
       var abb = this.newarr;
-      var ava = this.newacc 
-      var xdd =this.io
-      var vx = ''
-      // var vx="[" 
+      // var ava = this.newacc 
+      // var xdd =this.io
+      // var vx=""
+     
     //  console.log(typeof ava)
-      for(var i=0;i<ava.length;i++){             
-            var numbe=ava[i].shopNum
-            var pi=ava[i].shopId
+      // for(var i=0;i<ava.length;i++){             
+      //       var numbe=ava[i].shopNum
+      //       var pi=ava[i].shopId
+            // var pi=3
          
-               vx +=`{"number":${numbe},"pid":${pi}},`
-              //  vx +=`{"number":${numbe},"pid":${pi},`
-               
-      }
-      vx = '[' + vx.slice(0,-1) + ']'
-      // "]" 
-      
-      // var jsonarr =JSON.parse(str1)
-      // {"number":12,"pid":74},{"number":3,"pid":75},{"number":1,"pid":77},{"number":2,"pid":78}
-      var jsonarr =JSON.parse(vx)
-      
-           console.log(jsonarr)
+      //          vx +=`{"number":${numbe},"pid":${pi}},`
+                         
+      // }
 
-          var  param={"orderProductListList":
+            //  vx = '[' + vx.slice(0,-1) + ']'
+   
+    //  var jsonarr =JSON.parse(vx)
+      // console.log(str3)
+
+          //  var  param={
+          
+              //  "orderProductListList":
+              //    {
+              //    "number":1,
+              //    "pid":1
+              
+              //  }
+          //      jsonarr
+          //      ,
+          //      "userId":xdd
+             
+          //  }
+          //  {"orderProductListList":[
+          //      {
+          //        "number":1,
+          //        "pid":1
+          //      }
+          //     ],
+          //     "userId":1     
+          //          } 
+                  //  console.log( param)
+    // ss= 
+      
+          //  console.log(jsonarr)
+
+          // var  param={"orderProductListList":
             // str1
-                   jsonarr
+                  //  jsonarr
               //  {
               //    "number":5,
               //    "pid":1
@@ -292,22 +316,25 @@ export default {
               //    "pid":2
               //  }
               
-              ,
-              "userId":1     
-           } 
-           console.log(param)
+          //     ,
+          //     "userId":1     
+          //  } 
+          //  console.log(param)
       this.$router.push("/ddyvs/" + abb);
-       this.axios({
-      url:"http://39.97.247.47:9999/order/saveOrder",
-      method: "post",
+
+      //                         this.axios({
+      // url:"http://39.97.247.47:9999/order/saveOrder",
       // url: "/line/date",
-      data:param
-    }).then((val) => {
+    //   data:param,
+    //   method: "post"
+    // }).then((val) => {
       // console.log(val);
-      console.log(val)
+ 
+      // console.log(val)
       // console.log(val.data);
       // this.bool=false;
-    });
+    // });
+
     }
   },
 
@@ -357,14 +384,20 @@ export default {
   
   created(){
     this.io=localStorage["userid"]
- var ann=this.io
+    var numm=0
+    var ann=this.io
     this.axios({
-           
       url:"http://39.97.247.47:9999/shop/loadByUserIdShowShop?userId="+ann,
       // url: "/line/date",
       method: "get"
     }).then(val => {
-      // console.log(val);
+      console.log(val);
+      for (var i = 0; i < val.data.length; i++) {
+          numm+=val.data[i].shopNum
+          console.log(val.data[i].shopNum)
+      }
+      
+      localStorage.numd=numm;
       if (val.data== "") {
         this.bool = true;
       } else {
