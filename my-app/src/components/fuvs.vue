@@ -81,17 +81,8 @@ export default {
 
              },
     created(){
-      this.newVal = 1
-        // this.axios({
-        //   url:"/link/data",
-        //   method:"get"
-        // }).then((val)=>{
-        //        this.obj=val.data.arr
-        //       //  console.log(val.data)
-              
-        //           // this.bool=false;
-        // })
-        //  this.obj=this.$route.params.id
+      this.newVal =localStorage.numd
+         this.obj=this.$route.params.id
     },  
     mounted(){
       sessionStorage.setItem('watchStorage', 0)

@@ -45,11 +45,11 @@ export default {
             let num=sessionStorage.getItem('watchStorage');
             num++;
             this.resetSetItem('watchStorage',num);
-             var userId = localStorage.userid;
+             let userId = localStorage.userid;
              let param=new URLSearchParams();
             param.append("productId",id);
             param.append("num",1);
-            param.append("userId",userId);
+            param.append("userId",Number(userId));
             this.axios({
             url:"http://39.97.247.47:9999/shop/save",
             method:"post",
@@ -60,9 +60,7 @@ export default {
             if(ok.data==0){
                 alert("ok")
             }
-                })
-
-
+        })
             let X=document.documentElement.clientWidth ||  document.body.clientWidth;  //可视窗口大小
             let Y=document.documentElement.clientHeight || document.body.clientHeight;
             let x=this.x           //鼠标位置
