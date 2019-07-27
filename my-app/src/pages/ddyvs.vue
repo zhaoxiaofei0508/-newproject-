@@ -65,7 +65,7 @@ export default {
     data(){
         return{
             obj:[],
-            apq:1,
+           
             allprice:0
           
          
@@ -150,7 +150,7 @@ export default {
     methods: {
       open() {
         const h = this.$createElement;
-        var abv=this.apq
+        var abv=this.allprice
         this.$msgbox({
           title: '确认支付',
           message: h('p', null, [
@@ -175,15 +175,20 @@ export default {
             this.$router.push("/pdelivery")
                 done();
 
+
+
+
+                            
                                  var io=localStorage["userid"]
+                                //  console.log(1)
                     this.axios({
                         url:"http://39.97.247.47:9999/order/paymentOrder",
                         method:"get",
-                        params:{userId:io,'old':20190726210542666}
+                        params:{userId:io,oId:201907262158021}
                         }).then((ok)=>{
                     console.log(ok)}).catch((err)=>{console.log(err)})
                         
-
+                    
     
                 
                 setTimeout(() => {

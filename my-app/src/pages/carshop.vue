@@ -383,6 +383,7 @@ export default {
   
   created(){
     this.io=localStorage["userid"]
+    // var apa=666
  var ann=this.io
     this.axios({
            
