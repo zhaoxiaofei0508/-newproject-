@@ -3,7 +3,7 @@
     <div class="big">
         <div class="box">
             <div class="left">
-                <router-link to="person"><img :src="newdata.img" alt=""></router-link>
+                <router-link to="person"><img :src="userimg" alt=""></router-link>
                 <!-- <router-link to="person"><img :src="userimg" alt=""></router-link> -->
                 <p>用户名：{{username}}</p>
             </div>
@@ -14,7 +14,7 @@
         </div>
         <div class="bottom">
             <p class="dp" @click="fun22()">昵称：{{alterusername}}</p>
-            <p class="dp" @click="fun()">我的账户：1111</p>
+            <p class="dp" @click="fun()">我的账户：{{money}}</p>
         </div>
 </div>
 </template>
@@ -36,15 +36,30 @@ export default {
         return {
             username:"",
             alterusername:"",
+            userimg:"",
+            money:"",
             userimg:""
         }
     },
     created() {
         this.username =localStorage.lastname;
         this.alterusername =localStorage.alterusername;
+        // this.money=localStorage.usermoney;
+        this.userimg=localStorage.userimg;
 
         // this.userimg =localStorage.filename_1;
         // console.log(this.userimg)
+      
+
+        var id = localStorage.userid
+         this.axios({
+                url:"http://39.97.247.47:9999/user/findByUserId",//get发送数据方式
+                method:"get",
+                params:{"userId":id} //get发送数据方式
+                }).then((ok)=>{
+                    this.money=ok.data.userMoney
+                 
+                })
     },
 }
 </script>
@@ -73,7 +88,7 @@ export default {
 }
 img{
     float:left;
-    width: 1.2rem;
+    width: .8rem;
     border-radius: 50%;
     /* background-color: aqua; */
 }

@@ -49,7 +49,7 @@ export default {
                 }).then((ok)=>{
                     console.log(ok);
                     if(ok.data==""){
-                         this.userpwd="用户名或密码不正确，请重新登录！"
+                         this.username="用户名或密码不正确，请重新登录！"
                     }else{
                         console.log(ok)
                     localStorage.lastname=ok.data.userName;
