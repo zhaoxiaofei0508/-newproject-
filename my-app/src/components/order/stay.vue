@@ -1,24 +1,28 @@
 <template>
     <div class="box">
         <div v-for="(v,i) in newdata" :key="i" >
-            <div class="top" @click="jump(v)">
-                <p >订单号：{{v.orderId}}</p>
+            <div class="top" @click="jump(v[0].orderId)">
+                <p >订单号：{{v[0].orderId}}</p>
                 <span>待支付</span>
             </div>
-            <div class="des" @click="jump(v)">
-                <img :src="v.orderProductPhoto" alt="">
-                <p>{{v.orderProductMonicker}}</p>
-                <!-- <img src="../../../static/no_orderimg/no_order.png" alt=""> -->
-                <div class="sum">
-                    <span class="allNum">共 {{v.num}} 件商品</span>
-                    <b>&gt;</b>
+            <div v-for="(v,i) in newdata[i]" :key="i" >
+                <div class="des" @click="jump(v.orderId)">
+                    <img :src="v.orderProductPhoto" alt="">
+                    <p class="detail">{{v.orderProductMonicker}}</p>
+                    <!-- <img src="../../../static/no_orderimg/no_order.png" alt=""> -->
+                    <div class="sum">
+                        <span class="allNum">共 {{v.orderProductNumber}} 件商品</span>
+                        <b>&gt;</b>
+                    </div>
+                </div>
+                <div class="to">
+                    <p class="total">单价：<span class="price">￥{{v.orderProductPrice}}</span></p>
+                    <p class="total">合计：<span class="price">￥{{v.orderProductPrice*v.orderProductNumber}}</span></p>
                 </div>
             </div>
-            <div class="to">
-                <p class="total">单价：<span class="price">￥{{v.orderProductPrice}}</span></p>
-                <p class="total">合计：<span class="price">￥{{v.orderPrice}}</span></p>
+            <div class="cpy">
+                <p class="total">应付金额合计：<span class="price2">￥{{v[0].orderPrice}}</span></p>
             </div>
-            
             <div class="all">
                 <p class="order" @click="fun(i)">取消订单</p>
                 <router-link to="/#"><p class="order last">继续支付</p></router-link>
@@ -35,7 +39,6 @@ export default {
         return {
             // newdata:this.data,
             // bool:true,
-
         }
     },
     computed:{
@@ -51,7 +54,7 @@ export default {
         jump(text){
             // this.$router.push("/orderdetail")
             // console.log(text)
-            this.$router.push("/orderdetailno/"+text.orderId)
+            this.$router.push("/orderdetailno/"+text)
         }
     },
     mounted(){
@@ -111,12 +114,21 @@ b{
     display: flex;
     justify-content: space-between;
 }
+.cpy{
+    height: .9rem;
+    display: flex;
+    justify-content:  flex-end;
+}
 .total{
-    /* float: right; */
+    float: right;
     height: .9rem;
     line-height: .9rem;
 }
 .price{
+    font-size: .2rem;
+    color: #e47f84;
+}
+.total .price2{
     font-size: .4rem;
     color: #e47f84;
 }
@@ -139,5 +151,9 @@ b{
 .last{
     color: #98cef1;
     border:1px solid #98cef1;
+}
+.des .detail{
+    width: 50%;
+    margin-left: 10px;
 }
 </style>

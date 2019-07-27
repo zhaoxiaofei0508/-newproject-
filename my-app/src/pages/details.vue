@@ -182,12 +182,12 @@ export default {
         // post发送数据的时候使用data属性
         data: param
       }).then(ok => {
-        // console.log(ok.data);
-        if (ok.data == 0) {
-          alert("失败");
-        } else {
-          alert("成功");
-        }
+        console.log(ok.data);
+        // if (ok.data == 0) {
+        //   console .log(ok.data)
+        // } else {
+        //   alert("成功");
+        // }
       });
     }
   },

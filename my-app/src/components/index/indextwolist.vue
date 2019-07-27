@@ -3,7 +3,8 @@
         <!---------------轮播图 -->
         <div class="swiper-Container">
             <div class="swiper-wrapper">
-                <div class="swiper-slide"  >
+              <!-- 模拟数据 -->
+                <!-- <div class="swiper-slide"  >
                   <IndexList :shopclass="'box'+1"  v-for="(v,i) in ContainerArr[0].Containerarr"  :key="i" :shopindex="i" :ShopImg="v.imgurl" :ShopTitle="v.title" :ShopDetails="v.p" :ShopPrice="v.span"></IndexList>
                 </div>
                 <div class="swiper-slide"  >
@@ -17,6 +18,22 @@
                 </div>
                 <div class="swiper-slide"  >
                   <IndexList :shopclass="'box'+5"  v-for="(v,i) in ContainerArr[4].Containerarr"  :key="i" :shopindex="i" :ShopImg="v.imgurl" :ShopTitle="v.title" :ShopDetails="v.p" :ShopPrice="v.span"></IndexList>
+                </div> -->
+                <!-- 后端请求 -->
+                <div class="swiper-slide"  >
+                  <IndexList :shopclass="'box'+1"  v-for="(v,i) in Containerarrone"  :key="i" :shopId="v.productId" :shopindex="i" :ShopImg="v.productDetailsImages" :ShopTitle="v.productName" :ShopDetails="v.productContent" :ShopPrice="v.productPrice"></IndexList>
+                </div>
+                <div class="swiper-slide"  >
+                  <IndexList :shopclass="'box'+2"  v-for="(v,i) in Containerarrtwo"  :key="i" :shopId="v.productId" :shopindex="i" :ShopImg="v.productDetailsImages" :ShopTitle="v.productName" :ShopDetails="v.productContent" :ShopPrice="v.productPrice"></IndexList>
+                </div>
+                <div class="swiper-slide"  >
+                  <IndexList :shopclass="'box'+3"  v-for="(v,i) in Containerarrthree"  :key="i" :shopId="v.productId" :shopindex="i" :ShopImg="v.productDetailsImages" :ShopTitle="v.productName" :ShopDetails="v.productContent" :ShopPrice="v.productPrice"></IndexList>
+                </div>
+                <div class="swiper-slide"  >
+                  <IndexList :shopclass="'box'+4"  v-for="(v,i) in Containerarrfour"  :key="i" :shopId="v.productId" :shopindex="i" :ShopImg="v.productDetailsImages" :ShopTitle="v.productName" :ShopDetails="v.productContent" :ShopPrice="v.productPrice"></IndexList>
+                </div>
+                <div class="swiper-slide"  >
+                  <IndexList :shopclass="'box'+5"  v-for="(v,i) in Containerarrwu"  :key="i" :shopId="v.productId" :shopindex="i" :ShopImg="v.productDetailsImages" :ShopTitle="v.productName" :ShopDetails="v.productContent" :ShopPrice="v.productPrice"></IndexList>
                 </div>
             </div>
          <!------------- 分页器 -->
@@ -32,7 +49,12 @@ import IndexList from './indexlist'
 export default {
   data (){
     return {
-      Swiperstyle:"display:flex;top:0"
+      Swiperstyle:"display:flex;top:0",
+      Containerarrone:[],
+      Containerarrtwo:[],
+      Containerarrthree:[],
+      Containerarrfour:[],
+      Containerarrwu:[]
   }
   },
   components:{
@@ -41,6 +63,52 @@ export default {
   props:{
     ContainerArr:Array,
     docuTop:Number
+  },
+  created() {
+    // 所有商品后台数据
+    this.axios({
+            url:"http://39.97.247.47:9999//agricultureProduct/findAll",
+            method:"get"
+        }).then((ok)=>{
+          console.log(ok.data)
+          this.Containerarrone=ok.data
+        })
+    // 外卖后台数据
+    this.axios({
+            url:"http://39.97.247.47:9999//agricultureProduct/findBySortId",
+            method:"get",
+            params:{sortId:2}
+        }).then((ok)=>{
+          console.log(ok.data)
+          this.Containerarrtwo=ok.data
+        })
+      // 菜谱后台数据
+      this.axios({
+            url:"http://39.97.247.47:9999//agricultureProduct/findBySortId",
+            method:"get",
+            params:{sortId:3}
+        }).then((ok)=>{
+          console.log(ok.data)
+          this.Containerarrthree=ok.data
+        })
+      // 休闲后台数据
+      this.axios({
+            url:"http://39.97.247.47:9999//agricultureProduct/findBySortId",
+            method:"get",
+            params:{sortId:4}
+        }).then((ok)=>{
+          console.log(ok.data)
+          this.Containerarrfour=ok.data
+        })
+      // 人气后台数据
+      this.axios({
+            url:"http://39.97.247.47:9999//agricultureProduct/findBySortId",
+            method:"get",
+            params:{sortId:4}
+        }).then((ok)=>{
+          console.log(ok.data)
+          this.Containerarrwu=ok.data
+        })
   },
   mounted(){
     window.addEventListener('scroll', this.handleScroll);

@@ -1,12 +1,14 @@
 <template>
-    <div class="Indexlist">
-        <img class="Indexlistimg" :src="ShopImg">
+    <div class="Indexlist" @click="shopcontent(shopId)">
+        <div class="Indexlistimg">
+            <img :src="ShopImg==null?'../../../static/indeximg/listtime.gif':ShopImg">
+        </div>
         <div class="IndexlistBox">
             <h1>{{ShopTitle}}</h1>
             <p>{{ShopDetails}}</p>
             <div class="Indexlistbox">
-                <span>{{ShopPrice}}</span>
-                <i class="iconfont icon-gouwuche" @touchstart="touchstart" @click="shopcaradd(shopindex)"><span :class="shopclass" v-show="shopbool" class="smallbox"></span></i>
+                <span>&yen;{{ShopPrice}}</span>
+                <i class="iconfont icon-gouwuche" @touchstart="touchstart" @click.stop="shopcaradd(shopId,shopindex)"><span :class="shopclass" v-show="shopbool" class="smallbox"></span></i>
             </div>
         </div>
     </div>
@@ -24,21 +26,43 @@ export default {
     props:{
         ShopImg:String,
         ShopTitle:String,
-        ShopPrice:String,
+        ShopPrice:Number,
         ShopDetails:String,
         shopindex:Number,
-        shopclass:String
+        shopclass:String,
+        shopId:Number
     },
     methods:{
+        shopcontent(index){
+            this.$router.push("/details/"+index)
+        },
         touchstart(e){
             this.x=e.targetTouches[0].clientX 
             this.y=e.targetTouches[0].clientY
         },
-        shopcaradd(i){
+        shopcaradd(id,i){
             this.shopbool=true
             let num=sessionStorage.getItem('watchStorage');
             num++;
             this.resetSetItem('watchStorage',num);
+             var userId = localStorage.userid;
+             let param=new URLSearchParams();
+            param.append("productId",id);
+            param.append("num",1);
+            param.append("userId",userId);
+            this.axios({
+            url:"http://39.97.247.47:9999/shop/save",
+            method:"post",
+            // post发送数据的时候使用data属性
+            data:param
+        }).then((ok)=>{
+            // console.log(ok.data);
+            if(ok.data==0){
+                alert("ok")
+            }
+                })
+
+
             let X=document.documentElement.clientWidth ||  document.body.clientWidth;  //可视窗口大小
             let Y=document.documentElement.clientHeight || document.body.clientHeight;
             let x=this.x           //鼠标位置
@@ -105,9 +129,16 @@ export default {
 .IndexlistBox{
     padding: 0.14rem 0.2rem 5px;
 }
-.Indexlist .Indexlistimg{
+.Indexlistimg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+     width: 100%;
+     height: 3.5rem;
+}
+.Indexlistimg img{
     display: block;
-    width: 100%;
+   width: 100%;
 }
 .Indexlist h1{
     font-size: 0.20rem;
