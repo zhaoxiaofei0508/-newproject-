@@ -17,11 +17,16 @@ export default {
     methods: {
         go(){
              var a=localStorage.lastname;
-                if(a=="0"){
-                    this.$router.push("/denglu")
-                }else{
-                this.$router.push("/myaddress")
-            }
+              if(!a==""){
+                     this.$router.push("/myaddress")
+                   }else{
+                     this.$router.push("/denglu")
+                   }
+                // if(a=="0"){
+                //     this.$router.push("/denglu")
+                // }else{
+                // this.$router.push("/myaddress")
+            // }
         },
         fun(){
             this.$router.push("/mysearch")
