@@ -77,25 +77,28 @@ export default {
             chongzhi:0,
         }
     },
+    created() {
+        this.yuan=localStorage.usermoney
+    },
      methods: {
           fun1(){
             this.wf=true;
-            this.chongzhi=500;
+            this.chongzhi='500';
 
         },
         fun2(){
             this.wf=true;
-            this.chongzhi=1000;
+            this.chongzhi='1000';
 
         },
         fun3(){
             this.wf=true;
-             this.chongzhi=2000;
+             this.chongzhi='2000';
 
         },
         fun4(){
             this.wf=true;
-             this.chongzhi=9999;
+             this.chongzhi='9999';
 
         },
         funcc(){
@@ -113,28 +116,37 @@ export default {
         }, 
         wan(){
             let a=localStorage.userid
+            let money=localStorage.usermoney
             if(this.pawssword.length<6){
                 this.all="密码错误" 
             }else{
                 this.all=""
+                let param=new URLSearchParams();
+                param.append("userPayPassword",String(this.pawssword));
+                param.append("userMoney",this.chongzhi);
+                param.append("userId",a);
+                console.log(String(this.pawssword))
+                console.log(this.chongzhi)
+                console.log(a)
                 this.axios({
-                url:"",//get发送数据方式
-                method:"get",
-
-
-                params:{"pawssword":this.pawssword,"chongzhi":this.chongzhi,"userId":"a"} //get发送数据方式
+                url:"http://39.97.247.47:9999//user/updateMoney",//get发送数据方式
+                method:"post",
+                data:param
                 }).then((ok)=>{
-                    console.log(ok);
+                    this.yuan=Number(money)+Number(this.chongzhi)
+                    localStorage.usermoney=this.yuan
+                    console.log(ok)
                     if(ok.data){
-                       console.log(ok.data)
-                       this.yuan+=this.chongzhi
-                        this.$router.push("/zhanghu");
-                         this.all=""
+                    this.all=""
+                    this.pawssword=""
+                    this.$router.push("/zhanghu");
+                    this.wf=false
                     }else{
                        this.all="密码错误" 
+                        this.pawssword=""
                        this.$router.push("/zhanghu");
+
                     }
- 
                 })   
             }
         },
@@ -143,25 +155,10 @@ export default {
              this.pawssword='';
              this.all="请输入密码";
         }
-    },
-    created() {
-        let b=localStorage.userid
-        this.axios({
-
-                url:"",//get发送数据方式
-                method:"get",
-                params:{"userid":this.b} //get发送数据方式
-                }).then((ok)=>{
-                    console.log(ok);
-                    if(ok.data){
-                       console.log(ok.data)
-                       this.yuan
-                        
-                    }
- 
-                })   
-            }
-}
+    
+    }
+}  
+              
 </script>
 
 <style scoped>

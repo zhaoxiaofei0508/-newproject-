@@ -13,5 +13,5 @@ export default {
 
 
 <style scoped>
-bjvs{}
+.bjvs{}
 </style>

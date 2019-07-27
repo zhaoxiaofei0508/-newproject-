@@ -42,26 +42,21 @@ export default {
                 var param=new URLSearchParams();
                     param.append("userName",this.username);
                     param.append("userPassword",this.userpwd);
-                    this.axios({
-                    url:"http://39.97.247.47:9999/user/findByUserNameByUserPassword",
+                this.axios({
+                    url:"http://39.97.247.47:9999//user/findByUserNameByUserPassword",
                     method:"post",
-                    // post发送数据的时候使用data属性
                     data:param
-            //  this.axios({
-                // url:"http://39.97.247.47:9999/user/findByUserNameByUserPassword",//get发送数据方式
-                // method:"get",
-                // params:{"userName":this.username,"userPassword":this.userpwd} //get发送数据方式
                 }).then((ok)=>{
                     console.log(ok);
                     if(ok.data==""){
-                         alert("用户名或密码不正确，请重新登录！");
+                         this.username="用户名或密码不正确，请重新登录！"
                     }else{
+                        console.log(ok)
                     localStorage.lastname=ok.data.userName;
                     localStorage.userid=ok.data.userId;
                     localStorage.userimg=ok.data.userPicture;
-                   
-               
-                    // this.$router.push("/index");
+                    localStorage.usermoney=ok.data.userMoney;
+                    this.$router.push("/index");
                        
                     }
  

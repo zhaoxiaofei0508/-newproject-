@@ -9,7 +9,7 @@
             <div class="wfa1">{{title}}</div>
             <div class="wfddd">{{content}}</div>
             <div>
-                <div class="wfp">{{price}}</div>
+                <div class="wfp">￥{{price}}</div>
                 <div class="ball-container">
                     
                 </div>

@@ -1,5 +1,6 @@
 <template>
 <div>
+    <div class="wf666">如果没设置密码默认密码为123456</div>
     <div class="wf1 wf0">
         <div class="wf2" @click="funabc"><img src="../../static/img/h-navf1.png"></div>
         <div class="wf3">更改密码</div>
@@ -333,7 +334,8 @@ export default {
             }
         },
         fun10(){
-            let d=localStorage.userid;
+            let that=this
+            let d=localStorage.getItem('userid');
             if(this.a!=""&&this.b!=""&& this.c!=""&&this.b==this.c){
                 //     var param=new URLSearchParams();
                 //     param.append("a",this.a);
@@ -355,11 +357,19 @@ export default {
  
                 // })
                  this.axios({
-                url:"http://10.12.156.25:8088/user/updatePassWord",//get发送数据方式
+                url:"http://39.97.247.47:9999//user/updatePayPassWord",//get发送数据方式
                 method:"get",
-                params:{"a":this.a,"b":this.b,"c":1} //get发送数据方式
+                params:{"userId":Number(d),"userPayPassword":that.a,"afterUserPayPassword":that.b} //get发送数据方式
                 }).then((ok)=>{
-                    console.log(ok)
+                    if(ok=""){
+                        this.d="原密码错误"
+
+                    }else{
+                        this.d="密码修改成功"
+                            
+                        
+
+                    }
                 
                 })
             }else if(this.a!=""&&this.b!=""&& this.c!=""&&this.b!=this.c){
@@ -410,10 +420,10 @@ table{
     margin-top: 1rem;
     color: gray;
 }
-table tr td{
+
     
     
-}
+
 .wf20{
     font-size: 0.4rem;
     text-align: center;
@@ -491,6 +501,9 @@ height: 100%;
 .wfnn{
     width: 100%;
     text-align: center;
+}
+.wf666{
+    font-size: 0.4rem;
 }
 
 </style>

@@ -1,7 +1,7 @@
 <template>
     <div>
     <div class="wfa">
-            <div class="wfb" @click="fun()">x</div>
+            <div class="wfb" @click="fun()">×</div>
             <div class="wfc">注册</div>
         </div>
         <div>
@@ -62,7 +62,14 @@ export default {
             this.$router.go(-1);
         },
         pwdyz(){
-            var pwda=/^\S{,10}$/
+            var pwda=/^.{6,10}$/
+             if(pwda.test(this.userpwd)==true){
+                 this.pwdcuo=""
+             }else{
+                 this.pwdcuo="密码格式错误"
+             }
+
+
 
         },
         // 用户名是否存在验证
@@ -85,6 +92,7 @@ export default {
                     this.namea="用户名过长";
                 }  
         },
+
         // 显示密码
         faaa(){
              if(this.obj==true){
@@ -115,23 +123,14 @@ export default {
         // 邮箱验证
         fun1(){
             this.btnboolll=true
-            //  this.axios({
-            //   url:"http://39.97.247.47:8088/user/sendVerifyCode",//get发送数据方式
-            //     method:"get",
-            //     params:{userEmail:this.useremail},
-            // }).then((ok)=>{
-            //     this.emailyz = ok
-            //     console.log(ok)
-            // })
-            
             var param=new URLSearchParams();
             param.append("email",this.useremail);
+            console.log(param)
                 this.axios({
                 url:"http://39.97.247.47:9999/user/sendVerifyCode",
                 method:"post",
-                params:{userEmail:this.useremail},
             // post发送数据的时候使用data属性
-            data:param
+                data:param
             }).then((ok)=>{
                 console.log(ok)
                 this.emailyz = ok.data
@@ -156,15 +155,13 @@ export default {
     },
         // 用户注册
         adduser(){
-            // if(this.emailyz == this.verify){
-            if(true){
                 this.emailcuo="";
-                var param=new URLSearchParams();
-                    param.append("userName",this.username);
-                    param.append("userPassword",this.userpwd);
-                    param.append("userEmail",this.useremail);
-                    this.axios({
-                    url:"http://39.97.247.47:9999/user/save",
+                let param=new URLSearchParams();
+                param.append("userName",this.username);
+                param.append("userPassword",this.userpwd);
+                param.append("userEmail",this.useremail);
+            this.axios({
+                    url:"http://39.97.247.47:9999//user/save",
                     method:"post",
                     // post发送数据的时候使用data属性
                     data:param
@@ -175,17 +172,9 @@ export default {
                          this.$router.push("/denglutwo");
                     }else{
                         this.emailcuo="注册失败，请重新注册";
-
                     }
-                    
                 })
-            }else{
-                this.emailcuo="验证码不正确！"
-
-            }
-           
         }
-
     }, 
     // 监听按钮
     watch:{
