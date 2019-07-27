@@ -78,6 +78,7 @@ export default {
         }
     },
     created() {
+
         this.yuan=localStorage.usermoney
     },
      methods: {
@@ -133,13 +134,13 @@ export default {
                 method:"post",
                 data:param
                 }).then((ok)=>{
-                    this.yuan=Number(money)+Number(this.chongzhi)
-                    localStorage.usermoney=this.yuan
+                    // this.yuan=Number(money)+Number(this.chongzhi)
+                    // localStorage.usermoney=this.yuan
                     console.log(ok)
                     if(ok.data){
                     this.all=""
                     this.pawssword=""
-                    this.$router.push("/zhanghu");
+                    this.$router.go(0)
                     this.wf=false
                     }else{
                        this.all="密码错误" 
@@ -156,6 +157,17 @@ export default {
              this.all="请输入密码";
         }
     
+    },
+    created(){
+        var id = localStorage.userid
+         this.axios({
+                url:"http://39.97.247.47:9999/user/findByUserId",//get发送数据方式
+                method:"get",
+                params:{"userId":id} //get发送数据方式
+                }).then((ok)=>{
+                    this.yuan=ok.data.userMoney
+                 
+                })
     }
 }  
               
