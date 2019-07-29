@@ -36,10 +36,6 @@
                 <i>订单完成后，可补开</i>
             </div>
             <div class="tall">
-                <i>下单时间</i>
-                <i>00000000</i>
-            </div>
-            <div class="tall">
                 <i>订单编号</i>
                 <i>{{orderid}}</i>
                 <!-- <i>{{arrOrder[0].oid}}</i> -->

@@ -25,7 +25,7 @@ export default {
     },
     methods: {
         funn(){
-            localStorage.lastname="0";
+            localStorage.lastname="";
         }
     },
 }

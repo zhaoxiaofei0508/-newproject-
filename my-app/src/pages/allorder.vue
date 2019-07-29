@@ -67,10 +67,12 @@ export default {
         //     //  this.arrOrderno=ok.data.my_orderno;
         //     this.bool=false;
         // })
+        var ouserid=localStorage.userid
         this.axios({
+            
             url:"http://39.97.247.47:9999//order/showAllOrderByuserId",
             method:"get",
-            params:{userId:"666"}
+            params:{userId:'1'}
         }).then((ok)=>{
             console.log(ok.data)
             // 已支付
