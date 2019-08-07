@@ -55,28 +55,43 @@ export default {
                   },
                 fuun(){
                    var a=localStorage.lastname;
-                   if(a=="0"){
-                     this.$router.push("/denglu")
-                   }else{
+                  //  if(a=="0"){
+                  //    this.$router.push("/denglu")
+                  //  }else{
+                  //    this.$router.push("/hqsh")
+                  //  }
+                   if(!a==""){
                      this.$router.push("/hqsh")
+                   }else{
+                     this.$router.push("/denglu")
                    }
                   },
                   fuun1(){
                    var a=localStorage.lastname;
-                   if(a=="0"){
-                     this.$router.push("/denglu")
-                   }else{
+                    if(!a==""){
                      this.$router.push("/carshop")
+                   }else{
+                     this.$router.push("/denglu")
                    }
+                  //  if(a=="0"){
+                  //    this.$router.push("/denglu")
+                  //  }else{
+                  //    this.$router.push("/carshop")
+                  //  }
                   },
                    fuun2(){
                    var a=localStorage.lastname;
-                   if(a=="0"){
-                     this.$router.push("/denglu")
+                    if(!a==""){
+                    this.$router.push("/my_mine")
                    }else{
-                     this.$router.push("/my_mine")
-
+                     this.$router.push("/denglu")
                    }
+                  //  if(a=="0"){
+                  //    this.$router.push("/denglu")
+                  //  }else{
+                  //    this.$router.push("/my_mine")
+
+                  //  }
                   },
 
              },

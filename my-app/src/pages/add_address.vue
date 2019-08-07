@@ -47,11 +47,11 @@
           />
         </li>
       </ul>
-      <!-- <router-link to="/address"> -->
+      <router-link to="/myaddress">
       <div class="addressBottom" @click="baocun()">
         <p>保存</p>
       </div>
-      <!-- </router-link> -->
+      </router-link>
     </div>
   </div>
 </template>

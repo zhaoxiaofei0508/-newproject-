@@ -33,10 +33,11 @@ export default {
         Stay
     },
     mounted() {
+        var ouserid=localStorage.userid
          this.axios({
             url:"http://39.97.247.47:9999//order/showAllOrderByuserId",
             method:"get",
-            params:{userId:"666"}
+            params:{userId:"1"}
         }).then((ok)=>{
             let indexno=0
             let arrno=[]

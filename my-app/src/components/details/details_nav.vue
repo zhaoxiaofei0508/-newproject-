@@ -19,7 +19,6 @@
               <span>
                 <img id="boxCardTop" class="close" src="../../../static/img/h-shopping.png" alt />
                 <p class="boxcard">{{detailsNum}}</p>
-                
               </span>
             </router-link>
           </div>
@@ -30,6 +29,7 @@
 </template>
 <script>
 export default {
+  props: ["addNum"],
   data() {
     return {
       navNum: 0,
@@ -40,9 +40,8 @@ export default {
         { title: "详情", id: "details_d" },
         { title: "服务", id: "details_recommend" }
       ],
-      detailsNum:0
+      detailsNum: 0
     };
-    
   },
   methods: {
     close() {
@@ -50,25 +49,29 @@ export default {
     }
   },
   created() {
-    var userId=localStorage.userid
-  this.axios({
-    url:"http://39.97.247.47:9999/shop/loadByUserIdShowShop",
-    method:"get",
-    params:{"userId":userId}
-  }).then((ok)=>{
-    for(var i=0;i<=ok.data.length;i++){
-       this.detailsNum+=Number(ok.data[i].shopNum)
-       console.log(this.detailsNum)
-    }
-    
-  })
+    var userId = localStorage.userid;
+    this.axios({
+      url: "http://39.97.247.47:9999/shop/loadByUserIdShowShop",
+      method: "get",
+      params: { userId: userId }
+    }).then(ok => {
+      for (var i = 0; i <= ok.data.length; i++) {
+        this.detailsNum += Number(ok.data[i].shopNum);
+        console.log(this.detailsNum);
+      }
+    });
   },
+  watch: {
+    addNum() {
+      this.detailsNum += this.addNum;
+    }
+  }
 };
 </script>
 <style scoped>
 .blue {
-  color: blue!important;
-  padding-bottom:.05rem; 
+  color: blue !important;
+  padding-bottom: 0.05rem;
   text-decoration: underline;
 }
 .detailsNav {
@@ -80,7 +83,6 @@ export default {
   position: fixed;
   z-index: 3;
   background: white;
- 
 }
 .detailsNav a {
   color: gray;
@@ -98,20 +100,20 @@ export default {
 .details_list p {
   margin: auto 0.25rem;
 }
-.boxcard{
-display:inline-block;
-border-radius: 50%;
-width:.3rem;
-height:.3rem;
-font-size:.16rem;
-background:red;
-color:white;
-text-align: center;
-position: relative;
-left:.4rem;
-bottom:.4rem;
+.boxcard {
+  display: inline-block;
+  border-radius: 50%;
+  width: 0.3rem;
+  height: 0.3rem;
+  font-size: 0.16rem;
+  background: red;
+  color: white;
+  text-align: center;
+  position: relative;
+  left: 0.4rem;
+  bottom: 0.4rem;
 }
-#boxCardTop{
-  position:absolute;
+#boxCardTop {
+  position: absolute;
 }
 </style>

@@ -46,7 +46,7 @@
                  <div style="height:1.2rem"></div>
 <!-- 底部 -->
            <div   class="btn">
-            <span style="font-size:.4rem">合计</span>&nbsp;<span style="font-size:.4rem;color:red">:￥0</span>   <input type="button" value="提交订单"  @click="open()" style="height:1.2rem;width:2rem;
+            <span style="font-size:.4rem">合计</span>&nbsp;<span  style="font-size:.4rem;color:red" >:￥{{allprice}}</span>   <input type="button" value="提交订单"  @click="open()" style="height:1.2rem;width:2rem;
            border:none;outline:none;position:absolute;top:0px;right:15px;font-size:.3rem;background:#74C0FF;">
 
         </div>
@@ -65,7 +65,8 @@ export default {
     data(){
         return{
             obj:[],
-            apq:1,
+           
+            allprice:0
           
          
         }
@@ -75,7 +76,7 @@ export default {
     
      created(){
           var cid=this.$route.params.id
-          console.log( cid)
+          // console.log( cid)
 
                        var parmers=new URLSearchParams();   
               
@@ -89,14 +90,24 @@ export default {
                 // url: "/line/date",
                 data:parmers,
                 method: "post"
-              }).then((val)=>{
-                          
+              }).then((val)=>{            
                             this.obj=val.data
+                var price=0
+            for (var i = 0; i <this.obj.length; i++) {
+                price += this.obj[i].shopNum * this.obj[i].shopPrice;   
+            }
+            this.allprice = price;
+                  
+                           
                       })
+
+      
+  
+    
 
                   
 
-                // 生成订单
+                
              
 
 
@@ -105,7 +116,15 @@ export default {
 
 
 
-                  },
+                  },  
+                
+                             
+  
+
+
+  
+    // radi
+
     // 假数据
         // mounted() {
 
@@ -131,7 +150,7 @@ export default {
     methods: {
       open() {
         const h = this.$createElement;
-        var abv=this.apq
+        var abv=this.allprice
         this.$msgbox({
           title: '确认支付',
           message: h('p', null, [
@@ -155,6 +174,22 @@ export default {
               setTimeout(() => {
             this.$router.push("/pdelivery")
                 done();
+
+
+
+
+                            
+                                 var io=localStorage["userid"]
+                                //  console.log(1)
+                    this.axios({
+                        url:"http://39.97.247.47:9999/order/paymentOrder",
+                        method:"get",
+                        params:{userId:io,oId:201907262158021}
+                        }).then((ok)=>{
+                    console.log(ok)}).catch((err)=>{console.log(err)})
+                        
+                    
+    
                 
                 setTimeout(() => {
                   instance.confirmButtonLoading = false;

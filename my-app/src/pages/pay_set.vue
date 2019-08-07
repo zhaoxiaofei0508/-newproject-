@@ -494,7 +494,7 @@ height: 100%;
     width: 50%;
     height: 0.8rem;
     line-height: 0.8rem;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     margin-top:0.1rem
     
 }

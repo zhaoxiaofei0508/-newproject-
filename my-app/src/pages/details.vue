@@ -6,7 +6,7 @@
     <div style="width: 100%">
       <div id="details_shop">
         <!-- nav -->
-        <DetailsNav></DetailsNav>
+        <DetailsNav :addNum='addNum'></DetailsNav>
         <!-- banner -->
         <Banner :data="shopInfo"></Banner>
 
@@ -150,7 +150,8 @@ export default {
       shopInfo: {},
       num: 1,
       comment: {},
-      detId:''
+      detId:'',
+      addNum:0
     };
   },
   methods: {
@@ -166,15 +167,14 @@ export default {
     },
     getNum(num) {
       this.num = num;
-      console.log(num);
     },
     shop() {
       var productid = this.$route.params.id;
       var userId = localStorage.userid;
-      console.log(userId);
       var param = new URLSearchParams();
       param.append("productId", productid);
       param.append("num", this.num);
+      this.addNum = this.num;
       param.append("userId", userId);
       this.axios({
         url: "http://39.97.247.47:9999/shop/save",
